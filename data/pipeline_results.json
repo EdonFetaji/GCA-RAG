@@ -1,0 +1,17 @@
+{
+  "cluster_idx": 1,
+  "num_documents": 2,
+  "kg_stats": {
+    "nodes": 10,
+    "edges": 9,
+    "components": 4
+  },
+  "scores": {
+    "consistency": 0.23999999999999994,
+    "missing_entities": 0.09999999999999998,
+    "contradictions": 0.1,
+    "fragmentation": 0.8999999999999999
+  },
+  "generated_summary": "Richard Metzger, a married man from London, inadvertently became a spokesperson for gay rights after questioning Facebook's removal of a photo featuring a same-sex kiss from the British soap opera \"Eastenders\". The photo, which was used to promote the John Snow Kiss-In event, was not actually removed by Facebook, but rather made private by the event's organizer, Paul Shetler, after the event concluded. The John Snow Kiss-In, which took place in London, was organized by Metzger and Shetler, and was sparked by controversy over a gay kiss aired on the BBC's \"Eastenders\" in 2008. Metzger's experience was documented on Boing Boing, shedding light on the incident and Facebook's response.",
+  "reference_summary": "\u2013 It turns out Facebook is only guilty of about half of what it\u2019s been accused of in the gay kiss incident. The social networking site apologized yesterday for taking down an image used to promote a \u201ckiss-in\u201d event in London. \u201cThe photo in question does not violate our Statement of Rights and Responsibilities, and was removed in error,\u201d the site said in a statement, according to the Advocate. But Facebook did not, as has been reported in several places, take down the kiss-in event itself. Here\u2019s what happened: The photo Facebook took down was posted by the Dangerous Minds blog to promote the event. In its initial write-up about the incident, the blog observed that the page organizing the protest had been taken down. But it was actually the organizer himself who \"removed\" the event, Dangerous Minds clarified. Organizer Paul Shetler explains that he decided to switch it from a public event to a private one, as \"there were starting to be trolls posting abusive nonsense on it.\""
+}
