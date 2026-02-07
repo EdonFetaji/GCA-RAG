@@ -2,260 +2,259 @@
   "entities": [
     {
       "id": "entity_1",
-      "name": "Republican Party",
-      "type": "ORGANIZATION",
+      "name": "Lincoln Chafee",
+      "type": "PERSON",
       "document_frequency": 2,
       "confidence": 0.95
     },
     {
       "id": "entity_2",
-      "name": "Democratic Party",
-      "type": "ORGANIZATION",
-      "document_frequency": 2,
-      "confidence": 0.95
-    },
-    {
-      "id": "entity_3",
-      "name": "Thad Kousser",
-      "type": "PERSON",
-      "document_frequency": 2,
-      "confidence": 0.95
-    },
-    {
-      "id": "entity_4",
-      "name": "University of California",
-      "type": "ORGANIZATION",
-      "document_frequency": 1,
-      "confidence": 0.85
-    },
-    {
-      "id": "entity_5",
-      "name": "Barack Obama",
-      "type": "PERSON",
-      "document_frequency": 2,
-      "confidence": 0.95
-    },
-    {
-      "id": "entity_6",
-      "name": "Mitt Romney",
-      "type": "PERSON",
-      "confidence": 0.95,
-      "document_frequency": 2,
-      "type": "PERSON"
-    },
-    {
-      "id": "entity_7",
-      "name": "North Carolina",
-      "type": "LOCATION",
-      "document_frequency": 2,
-      "confidence": 0.95
-    },
-    {
-      "id": "entity_8",
-      "name": "Pat McCrory",
-      "type": "PERSON",
-      "document_frequency": 2,
-      "confidence": 0.95
-    },
-    {
-      "id": "entity_9",
       "name": "Beverly Perdue",
       "type": "PERSON",
       "document_frequency": 2,
       "confidence": 0.95
     },
     {
-      "id": "entity_10",
+      "id": "entity_3",
+      "name": "Pat McCrory",
+      "type": "PERSON",
+      "document_frequency": 2,
+      "confidence": 0.95
+    },
+    {
+      "id": "entity_4",
       "name": "Walter Dalton",
       "type": "PERSON",
-      "document_frequency": 2,
-      "confidence": 0.95
+      "document_frequency": 1,
+      "confidence": 0.9
     },
     {
-      "id": "entity_11",
-      "name": "Montana",
-      "type": "LOCATION",
-      "document_frequency": 2,
-      "confidence": 0.95
-    },
-    {
-      "id": "entity_12",
+      "id": "entity_5",
       "name": "Brian Schweitzer",
       "type": "PERSON",
-      "document_frequency": 2,
-      "confidence": 0.95
+      "document_frequency": 1,
+      "confidence": 0.9
     },
     {
-      "id": "entity_13",
+      "id": "entity_6",
       "name": "Steve Bullock",
       "type": "PERSON",
-      "document_frequency": 2,
-      "confidence": 0.95
+      "document_frequency": 1,
+      "confidence": 0.9
     },
     {
-      "id": "entity_14",
+      "id": "entity_7",
       "name": "Rick Hill",
       "type": "PERSON",
-      "document_frequency": 2,
-      "confidence": 0.95
+      "document_frequency": 1,
+      "confidence": 0.9
     },
     {
-      "id": "entity_15",
-      "name": "New Hampshire",
-      "type": "LOCATION",
-      "document_frequency": 2,
-      "confidence": 0.95
-    },
-    {
-      "id": "entity_16",
+      "id": "entity_8",
       "name": "Maggie Hassan",
       "type": "PERSON",
-      "document_frequency": 2,
-      "confidence": 0.95
+      "document_frequency": 1,
+      "confidence": 0.9
     },
     {
-      "id": "entity_17",
+      "id": "entity_9",
       "name": "Ovide Lamontagne",
       "type": "PERSON",
-      "document_frequency": 2,
-      "confidence": 0.95
+      "document_frequency": 1,
+      "confidence": 0.9
     },
     {
-      "id": "entity_18",
-      "name": "Washington",
-      "type": "LOCATION",
-      "document_frequency": 2,
-      "confidence": 0.95
-    },
-    {
-      "id": "entity_19",
+      "id": "entity_10",
       "name": "Jay Inslee",
       "type": "PERSON",
       "document_frequency": 2,
       "confidence": 0.95
     },
     {
-      "id": "entity_20",
+      "id": "entity_11",
       "name": "Rob McKenna",
       "type": "PERSON",
       "document_frequency": 2,
       "confidence": 0.95
     },
     {
-      "id": "entity_21",
+      "id": "entity_12",
       "name": "Jack Dalrymple",
       "type": "PERSON",
-      "document_frequency": 2,
-      "confidence": 0.95
+      "document_frequency": 1,
+      "confidence": 0.9
     },
     {
-      "id": "entity_22",
+      "id": "entity_13",
       "name": "Gary Herbert",
       "type": "PERSON",
-      "document_frequency": 2,
-      "confidence": 0.95
+      "document_frequency": 1,
+      "confidence": 0.9
     },
     {
-      "id": "entity_23",
+      "id": "entity_14",
       "name": "Mike Pence",
       "type": "PERSON",
-      "document_frequency": 2,
-      "confidence": 0.95
+      "document_frequency": 1,
+      "confidence": 0.9
     },
     {
-      "id": "entity_24",
+      "id": "entity_15",
       "name": "Peter Shumlin",
       "type": "PERSON",
-      "document_frequency": 2,
-      "confidence": 0.95
+      "document_frequency": 1,
+      "confidence": 0.9
     },
     {
-      "id": "entity_25",
+      "id": "entity_16",
       "name": "Jack Markell",
       "type": "PERSON",
-      "document_frequency": 2,
-      "confidence": 0.95
+      "document_frequency": 1,
+      "confidence": 0.9
     },
     {
-      "id": "entity_26",
+      "id": "entity_17",
       "name": "Jay Nixon",
       "type": "PERSON",
       "document_frequency": 2,
       "confidence": 0.95
     },
     {
-      "id": "entity_27",
+      "id": "entity_18",
       "name": "Dave Spence",
       "type": "PERSON",
       "document_frequency": 2,
       "confidence": 0.95
     },
     {
-      "id": "entity_28",
+      "id": "entity_19",
       "name": "Earl Ray Tomblin",
       "type": "PERSON",
       "document_frequency": 2,
       "confidence": 0.95
     },
     {
-      "id": "entity_29",
+      "id": "entity_20",
       "name": "Bill Maloney",
+      "type": "PERSON",
+      "document_frequency": 1,
+      "confidence": 0.9
+    },
+    {
+      "id": "entity_21",
+      "name": "Thad Kousser",
       "type": "PERSON",
       "document_frequency": 2,
       "confidence": 0.95
     },
     {
-      "id": "entity_30",
-      "name": "Vermont",
+      "id": "entity_22",
+      "name": "University of California, San Diego",
+      "type": "ORGANIZATION",
+      "document_frequency": 1,
+      "confidence": 0.9
+    },
+    {
+      "id": "entity_23",
+      "name": "University of California-Berkeley",
+      "type": "ORGANIZATION",
+      "document_frequency": 1,
+      "confidence": 0.9
+    },
+    {
+      "id": "entity_24",
+      "name": "North Carolina",
+      "type": "LOCATION",
+      "document_frequency": 5,
+      "confidence": 0.95
+    },
+    {
+      "id": "entity_25",
+      "name": "Montana",
+      "type": "LOCATION",
+      "document_frequency": 3,
+      "confidence": 0.95
+    },
+    {
+      "id": "entity_26",
+      "name": "New Hampshire",
+      "type": "LOCATION",
+      "document_frequency": 3,
+      "confidence": 0.95
+    },
+    {
+      "id": "entity_27",
+      "name": "Washington",
+      "type": "LOCATION",
+      "document_frequency": 3,
+      "confidence": 0.95
+    },
+    {
+      "id": "entity_28",
+      "name": "Rhode Island",
       "type": "LOCATION",
       "document_frequency": 2,
       "confidence": 0.95
     },
     {
-      "id": "entity_31",
-      "name": "Delaware",
-      "type": "LOCATION",
-      "document_frequency": 2,
-      "confidence": 0.95
-    },
-    {
-      "id": "entity_32",
-      "name": "Missouri",
-      "type": "LOCATION",
-      "document_frequency": 2,
-      "confidence": 0.95
-    },
-    {
-      "id": "entity_33",
-      "name": "West Virginia",
-      "type": "LOCATION",
-      "document_frequency": 2,
-      "confidence": 0.95
-    },
-    {
-      "id": "entity_34",
-      "name": "Indiana",
-      "type": "LOCATION",
-      "document_frequency": 2,
-      "confidence": 0.95
-    },
-    {
-      "id": "entity_35",
+      "id": "entity_29",
       "name": "Utah",
       "type": "LOCATION",
       "document_frequency": 2,
       "confidence": 0.95
     },
     {
-      "id": "entity_36",
+      "id": "entity_30",
       "name": "North Dakota",
       "type": "LOCATION",
       "document_frequency": 2,
       "confidence": 0.95
     },
     {
+      "id": "entity_31",
+      "name": "Indiana",
+      "type": "LOCATION",
+      "document_frequency": 2,
+      "confidence": 0.95
+    },
+    {
+      "id": "entity_32",
+      "name": "Vermont",
+      "type": "LOCATION",
+      "document_frequency": 2,
+      "confidence": 0.95
+    },
+    {
+      "id": "entity_33",
+      "name": "Delaware",
+      "type": "LOCATION",
+      "document_frequency": 2,
+      "confidence": 0.95
+    },
+    {
+      "id": "entity_34",
+      "name": "Missouri",
+      "type": "LOCATION",
+      "document_frequency": 3,
+      "confidence": 0.95
+    },
+    {
+      "id": "entity_35",
+      "name": "West Virginia",
+      "type": "LOCATION",
+      "document_frequency": 3,
+      "confidence": 0.95
+    },
+    {
+      "id": "entity_36",
+      "name": "The Power of American Governors",
+      "type": "CONCEPT",
+      "document_frequency": 1,
+      "confidence": 0.9
+    },
+    {
       "id": "entity_37",
-      "name": "Affordable Care Act",
+      "name": "The Affordable Care Act",
       "type": "CONCEPT",
       "document_frequency": 2,
       "confidence": 0.95
@@ -269,239 +268,320 @@
     },
     {
       "id": "entity_39",
-      "name": "U.S. Supreme Court",
-      "type": "ORGANIZATION",
+      "name": "Obama administration",
+      "type": "CONCEPT",
       "document_frequency": 2,
       "confidence": 0.95
     },
     {
       "id": "entity_40",
-      "name": "Rick Scott",
-      "type": "PERSON",
+      "name": "High-speed rail network",
+      "type": "CONCEPT",
       "document_frequency": 1,
-      "confidence": 0.85
+      "confidence": 0.9
     },
     {
       "id": "entity_41",
-      "name": "Scott Walker",
-      "type": "PERSON",
+      "name": "Federal stimulus money",
+      "type": "CONCEPT",
       "document_frequency": 1,
-      "confidence": 0.85
+      "confidence": 0.9
     },
     {
       "id": "entity_42",
-      "name": "Lincoln Chafee",
+      "name": "Mitt Romney",
       "type": "PERSON",
-      "document_frequency": 1,
-      "confidence": 0.85
+      "document_frequency": 3,
+      "confidence": 0.95
     },
     {
       "id": "entity_43",
-      "name": "John Lynch",
+      "name": "Barack Obama",
       "type": "PERSON",
-      "document_frequency": 1,
-      "confidence": 0.85
+      "document_frequency": 3,
+      "confidence": 0.95
     },
     {
       "id": "entity_44",
-      "name": "Rhode Island",
-      "type": "LOCATION",
+      "name": "Rick Scott",
+      "type": "PERSON",
       "document_frequency": 1,
-      "confidence": 0.85
+      "confidence": 0.9
+    },
+    {
+      "id": "entity_45",
+      "name": "Scott Walker",
+      "type": "PERSON",
+      "document_frequency": 1,
+      "confidence": 0.9
     }
   ],
   "relations": [
     {
-      "source": "entity_8",
-      "target": "entity_7",
-      "relation_type": "won",
+      "source": "entity_1",
+      "target": "entity_24",
+      "relation_type": "holds",
       "support_count": 2,
       "source_documents": [0, 1],
       "confidence": 0.85
     },
     {
-      "source": "entity_9",
-      "target": "entity_7",
-      "relation_type": "was governor of",
-      "support_count": 2,
-      "source_documents": [0, 1],
-      "confidence": 0.85
-    },
-    {
-      "source": "entity_10",
-      "target": "entity_7",
-      "relation_type": "ran for governor of",
-      "support_count": 2,
-      "source_documents": [0, 1],
-      "confidence": 0.85
-    },
-    {
-      "source": "entity_12",
-      "target": "entity_11",
-      "relation_type": "was governor of",
-      "support_count": 2,
-      "source_documents": [0, 1],
-      "confidence": 0.85
-    },
-    {
-      "source": "entity_13",
-      "target": "entity_11",
-      "relation_type": "ran for governor of",
-      "support_count": 2,
-      "source_documents": [0, 1],
-      "confidence": 0.85
-    },
-    {
-      "source": "entity_14",
-      "target": "entity_11",
-      "relation_type": "ran for governor of",
-      "support_count": 2,
-      "source_documents": [0, 1],
-      "confidence": 0.85
-    },
-    {
-      "source": "entity_16",
-      "target": "entity_15",
-      "relation_type": "ran for governor of",
-      "support_count": 2,
-      "source_documents": [0, 1],
-      "confidence": 0.85
-    },
-    {
-      "source": "entity_17",
-      "target": "entity_15",
-      "relation_type": "ran for governor of",
-      "support_count": 2,
-      "source_documents": [0, 1],
-      "confidence": 0.85
-    },
-    {
-      "source": "entity_19",
-      "target": "entity_18",
-      "relation_type": "ran for governor of",
-      "support_count": 2,
-      "source_documents": [0, 1],
-      "confidence": 0.85
-    },
-    {
-      "source": "entity_20",
-      "target": "entity_18",
-      "relation_type": "ran for governor of",
-      "support_count": 2,
-      "source_documents": [0, 1],
-      "confidence": 0.85
-    },
-    {
-      "source": "entity_21",
-      "target": "entity_36",
-      "relation_type": "is governor of",
-      "support_count": 2,
-      "source_documents": [0, 1],
-      "confidence": 0.85
-    },
-    {
-      "source": "entity_22",
-      "target": "entity_35",
-      "relation_type": "is governor of",
-      "support_count": 2,
-      "source_documents": [0, 1],
-      "confidence": 0.85
-    },
-    {
-      "source": "entity_23",
-      "target": "entity_34",
-      "relation_type": "is running for governor of",
-      "support_count": 2,
-      "source_documents": [0, 1],
-      "confidence": 0.85
-    },
-    {
-      "source": "entity_24",
-      "target": "entity_30",
-      "relation_type": "is governor of",
-      "support_count": 2,
-      "source_documents": [0, 1],
-      "confidence": 0.85
-    },
-    {
-      "source": "entity_25",
-      "target": "entity_31",
-      "relation_type": "is governor of",
-      "support_count": 2,
-      "source_documents": [0, 1],
-      "confidence": 0.85
-    },
-    {
-      "source": "entity_26",
-      "target": "entity_32",
-      "relation_type": "is running for governor of",
-      "support_count": 2,
-      "source_documents": [0, 1],
-      "confidence": 0.85
-    },
-    {
-      "source": "entity_27",
-      "target": "entity_32",
-      "relation_type": "is running for governor of",
-      "support_count": 2,
-      "source_documents": [0, 1],
-      "confidence": 0.85
-    },
-    {
-      "source": "entity_28",
-      "target": "entity_33",
-      "relation_type": "is running for governor of",
-      "support_count": 2,
-      "source_documents": [0, 1],
-      "confidence": 0.85
-    },
-    {
-      "source": "entity_29",
-      "target": "entity_33",
-      "relation_type": "is running for governor of",
+      "source": "entity_2",
+      "target": "entity_24",
+      "relation_type": "announced",
       "support_count": 2,
       "source_documents": [0, 1],
       "confidence": 0.85
     },
     {
       "source": "entity_3",
-      "target": "entity_37",
-      "relation_type": "commented on",
+      "target": "entity_24",
+      "relation_type": "will",
       "support_count": 2,
       "source_documents": [0, 1],
       "confidence": 0.85
+    },
+    {
+      "source": "entity_4",
+      "target": "entity_3",
+      "relation_type": "will",
+      "support_count": 1,
+      "source_documents": [0],
+      "confidence": 0.8
     },
     {
       "source": "entity_5",
-      "target": "entity_37",
-      "relation_type": "signed into law",
+      "target": "entity_25",
+      "relation_type": "reached",
       "support_count": 1,
       "source_documents": [0],
-      "confidence": 0.85
+      "confidence": 0.8
     },
     {
-      "source": "entity_39",
-      "target": "entity_38",
-      "relation_type": "ruled on",
+      "source": "entity_6",
+      "target": "entity_25",
+      "relation_type": "trying",
+      "support_count": 1,
+      "source_documents": [0],
+      "confidence": 0.8
+    },
+    {
+      "source": "entity_7",
+      "target": "entity_25",
+      "relation_type": "will",
+      "support_count": 1,
+      "source_documents": [0],
+      "confidence": 0.8
+    },
+    {
+      "source": "entity_8",
+      "target": "entity_26",
+      "relation_type": "promised",
+      "support_count": 1,
+      "source_documents": [0],
+      "confidence": 0.8
+    },
+    {
+      "source": "entity_9",
+      "target": "entity_26",
+      "relation_type": "will",
+      "support_count": 1,
+      "source_documents": [0],
+      "confidence": 0.8
+    },
+    {
+      "source": "entity_10",
+      "target": "entity_27",
+      "relation_type": "will",
       "support_count": 2,
       "source_documents": [0, 1],
       "confidence": 0.85
     },
     {
-      "source": "entity_40",
-      "target": "entity_38",
-      "relation_type": "rejected expansion of",
-      "support_count": 1,
-      "source_documents": [0],
+      "source": "entity_11",
+      "target": "entity_27",
+      "relation_type": "will",
+      "support_count": 2,
+      "source_documents": [0, 1],
       "confidence": 0.85
     },
     {
-      "source": "entity_41",
-      "target": "entity_38",
-      "relation_type": "rejected expansion of",
+      "source": "entity_12",
+      "target": "entity_30",
+      "relation_type": "will",
       "support_count": 1,
       "source_documents": [0],
+      "confidence": 0.8
+    },
+    {
+      "source": "entity_13",
+      "target": "entity_29",
+      "relation_type": "will",
+      "support_count": 1,
+      "source_documents": [0],
+      "confidence": 0.8
+    },
+    {
+      "source": "entity_14",
+      "target": "entity_31",
+      "relation_type": "will",
+      "support_count": 1,
+      "source_documents": [0],
+      "confidence": 0.8
+    },
+    {
+      "source": "entity_15",
+      "target": "entity_32",
+      "relation_type": "will",
+      "support_count": 1,
+      "source_documents": [0],
+      "confidence": 0.8
+    },
+    {
+      "source": "entity_16",
+      "target": "entity_33",
+      "relation_type": "will",
+      "support_count": 1,
+      "source_documents": [0],
+      "confidence": 0.8
+    },
+    {
+      "source": "entity_17",
+      "target": "entity_34",
+      "relation_type": "will",
+      "support_count": 2,
+      "source_documents": [0, 1],
       "confidence": 0.85
-    }
-  ]
-}
+    },
+    {
+      "source": "entity_18",
+      "target": "entity_34",
+      "relation_type": "will",
+      "support_count": 2,
+      "source_documents": [0, 1],
+      "confidence": 0.85
+    },
+    {
+      "source": "entity_19",
+      "target": "entity_35",
+      "relation_type": "will",
+      "support_count": 2,
+      "source_documents": [0, 1],
+      "confidence": 0.85
+    },
+    {
+      "source": "entity_20",
+      "target": "entity_35",
+      "relation_type": "will",
+      "support_count": 2,
+      "source_documents": [0, 1],
+      "confidence": 0.85
+    },
+    {
+      "source": "entity_21",
+      "target": "entity_37",
+      "relation_type": "will",
+      "support_count": 2,
+      "source_documents": [0, 1],
+      "confidence": 0.85
+    },
+    {
+      "source": "entity_22",
+      "target": "entity_21",
+      "relation_type": "co-authored",
+      "support_count": 1,
+      "source_documents": [0],
+      "confidence": 0.8
+    },
+    {
+      "source": "entity_23",
+      "target": "entity_21",
+      "relation_type": "co-authored",
+      "support_count": 1,
+      "source_documents": [0],
+      "confidence": 0.8
+    },
+    {
+      "source": "entity_24",
+      "target": "entity_42",
+      "relation_type": "will",
+      "support_count": 2,
+      "source_documents": [0, 1],
+      "confidence": 0.85
+    },
+    {
+      "source": "entity_25",
+      "target": "entity_42",
+      "relation_type": "will",
+      "support_count": 2,
+      "source_documents": [0, 1],
+      "confidence": 0.85
+    },
+    {
+      "source": "entity_26",
+      "target": "entity_42",
+      "relation_type": "will",
+      "support_count": 2,
+      "source_documents": [0, 1],
+      "confidence": 0.85
+    },
+    {
+      "source": "entity_27",
+      "target": "entity_42",
+      "relation_type": "will",
+      "support_count": 2,
+      "source_documents": [0, 1],
+      "confidence": 0.85
+    },
+    {
+      "source": "entity_28",
+      "target": "entity_42",
+      "relation_type": "is",
+      "support_count": 2,
+      "source_documents": [0, 1],
+      "confidence": 0.85
+    },
+    {
+      "source": "entity_29",
+      "target": "entity_42",
+      "relation_type": "will",
+      "support_count": 2,
+      "source_documents": [0, 1],
+      "confidence": 0.85
+    },
+    {
+      "source": "entity_30",
+      "target": "entity_42",
+      "relation_type": "will",
+      "support_count": 2,
+      "source_documents": [0, 1],
+      "confidence": 0.85
+    },
+    {
+      "source": "entity_31",
+      "target": "entity_42",
+      "relation_type": "will",
+      "support_count": 2,
+      "source_documents": [0, 1],
+      "confidence": 0.85
+    },
+    {
+      "source": "entity_32",
+      "target": "entity_42",
+      "relation_type": "will",
+      "support_count": 2,
+      "source_documents": [0, 1],
+      "confidence": 0.85
+    },
+    {
+      "source": "entity_33",
+      "target": "entity_42",
+      "relation_type": "will",
+      "support_count": 2,
+      "source_documents": [0, 1],
+      "confidence": 0.85
+    },
+    {
+      "source": "entity_34",
+      "target": "entity_42",
+     
