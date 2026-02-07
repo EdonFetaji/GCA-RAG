@@ -1,0 +1,298 @@
+{
+  "entities": [
+    "Affordable Care Act",
+    "Barack Obama",
+    "Beverly Perdue",
+    "Bill Maloney",
+    "Brian Schweitzer",
+    "Dave Spence",
+    "Delaware",
+    "Democrats",
+    "Earl Ray Tomblin",
+    "Florida",
+    "GOP",
+    "Gary Herbert",
+    "Indiana",
+    "Jack Dalrymple",
+    "Jack Markell",
+    "Jay Inslee",
+    "Jay Nixon",
+    "John Lynch",
+    "Lincoln Chafee",
+    "Maggie Hassan",
+    "Medicaid",
+    "Mike Pence",
+    "Missouri",
+    "Mitt Romney",
+    "Montana",
+    "New Hampshire",
+    "North Carolina",
+    "North Dakota",
+    "Obama administration",
+    "Ovide Lamontagne",
+    "Pat McCrory",
+    "Peter Shumlin",
+    "Republicans",
+    "Rhode Island",
+    "Rick Hill",
+    "Rick Scott",
+    "Rob McKenna",
+    "Scott Walker",
+    "Steve Bullock",
+    "Thad Kousser",
+    "U.S. Supreme Court",
+    "University of California, San Diego",
+    "Utah",
+    "Vermont",
+    "Walter Dalton",
+    "Washington",
+    "West Virginia",
+    "Wisconsin"
+  ],
+  "edges": [
+    "announced she would not seek re-election in",
+    "appear on track to increase their numbers by at least one in",
+    "co-authored",
+    "currently hold",
+    "eyes gains in",
+    "gave states the ability to opt out of",
+    "has a gubernatorial seat up for grabs",
+    "has promised a continuation of the policies of",
+    "has reached his two-term limit in",
+    "is a",
+    "is an",
+    "is expected to win in",
+    "is expected to win the governorship in",
+    "is in a dead-heat battle to keep the governorship in",
+    "is running against",
+    "is running for a second term in",
+    "is running for his first full term in",
+    "is trying to keep the seat in his party's column in",
+    "offered federal stimulus money to states for",
+    "rejected federal stimulus money for",
+    "won",
+    "would dramatically empower"
+  ],
+  "relations": [
+    {
+      "subject": "Affordable Care Act",
+      "relation": "is a",
+      "object": "health care law"
+    },
+    {
+      "subject": "Barack Obama",
+      "relation": "won",
+      "object": "North Carolina in 2008"
+    },
+    {
+      "subject": "Beverly Perdue",
+      "relation": "announced she would not seek re-election in",
+      "object": "North Carolina"
+    },
+    {
+      "subject": "Bill Maloney",
+      "relation": "is running against",
+      "object": "Earl Ray Tomblin"
+    },
+    {
+      "subject": "Brian Schweitzer",
+      "relation": "has reached his two-term limit in",
+      "object": "Montana"
+    },
+    {
+      "subject": "Dave Spence",
+      "relation": "is running against",
+      "object": "Jay Nixon"
+    },
+    {
+      "subject": "Delaware",
+      "relation": "has a gubernatorial seat up for grabs",
+      "object": "Democratic seat"
+    },
+    {
+      "subject": "Democrats",
+      "relation": "currently hold",
+      "object": "20 governorships"
+    },
+    {
+      "subject": "Earl Ray Tomblin",
+      "relation": "is running for his first full term in",
+      "object": "West Virginia"
+    },
+    {
+      "subject": "GOP",
+      "relation": "eyes gains in",
+      "object": "11 states"
+    },
+    {
+      "subject": "Gary Herbert",
+      "relation": "is expected to win in",
+      "object": "Utah"
+    },
+    {
+      "subject": "Indiana",
+      "relation": "has a gubernatorial seat up for grabs",
+      "object": "Republican seat"
+    },
+    {
+      "subject": "Jack Dalrymple",
+      "relation": "is expected to win in",
+      "object": "North Dakota"
+    },
+    {
+      "subject": "Jack Markell",
+      "relation": "is expected to win in",
+      "object": "Delaware"
+    },
+    {
+      "subject": "Jay Inslee",
+      "relation": "is in a dead-heat battle to keep the governorship in",
+      "object": "Washington"
+    },
+    {
+      "subject": "Jay Nixon",
+      "relation": "is running for a second term in",
+      "object": "Missouri"
+    },
+    {
+      "subject": "Lincoln Chafee",
+      "relation": "is an",
+      "object": "Independent"
+    },
+    {
+      "subject": "Maggie Hassan",
+      "relation": "has promised a continuation of the policies of",
+      "object": "John Lynch"
+    },
+    {
+      "subject": "Mike Pence",
+      "relation": "is expected to win in",
+      "object": "Indiana"
+    },
+    {
+      "subject": "Missouri",
+      "relation": "has a gubernatorial seat up for grabs",
+      "object": "Democratic seat"
+    },
+    {
+      "subject": "Mitt Romney",
+      "relation": "would dramatically empower",
+      "object": "Republican governors"
+    },
+    {
+      "subject": "Montana",
+      "relation": "has a gubernatorial seat up for grabs",
+      "object": "Democratic seat"
+    },
+    {
+      "subject": "New Hampshire",
+      "relation": "has a gubernatorial seat up for grabs",
+      "object": "Democratic seat"
+    },
+    {
+      "subject": "North Carolina",
+      "relation": "has a gubernatorial seat up for grabs",
+      "object": "Democratic seat"
+    },
+    {
+      "subject": "North Dakota",
+      "relation": "has a gubernatorial seat up for grabs",
+      "object": "Republican seat"
+    },
+    {
+      "subject": "Obama administration",
+      "relation": "offered federal stimulus money to states for",
+      "object": "high-speed rail network"
+    },
+    {
+      "subject": "Ovide Lamontagne",
+      "relation": "is running against",
+      "object": "Maggie Hassan"
+    },
+    {
+      "subject": "Pat McCrory",
+      "relation": "is expected to win the governorship in",
+      "object": "North Carolina"
+    },
+    {
+      "subject": "Peter Shumlin",
+      "relation": "is expected to win in",
+      "object": "Vermont"
+    },
+    {
+      "subject": "Republicans",
+      "relation": "appear on track to increase their numbers by at least one in",
+      "object": "governorships"
+    },
+    {
+      "subject": "Republicans",
+      "relation": "currently hold",
+      "object": "29 governorships"
+    },
+    {
+      "subject": "Rick Hill",
+      "relation": "is running against",
+      "object": "Steve Bullock"
+    },
+    {
+      "subject": "Rick Scott",
+      "relation": "rejected federal stimulus money for",
+      "object": "high-speed rail network"
+    },
+    {
+      "subject": "Rob McKenna",
+      "relation": "is running against",
+      "object": "Jay Inslee"
+    },
+    {
+      "subject": "Scott Walker",
+      "relation": "rejected federal stimulus money for",
+      "object": "high-speed rail network"
+    },
+    {
+      "subject": "Steve Bullock",
+      "relation": "is trying to keep the seat in his party's column in",
+      "object": "Montana"
+    },
+    {
+      "subject": "Thad Kousser",
+      "relation": "co-authored",
+      "object": "The Power of American Governors"
+    },
+    {
+      "subject": "Thad Kousser",
+      "relation": "is a",
+      "object": "political scientist"
+    },
+    {
+      "subject": "U.S. Supreme Court",
+      "relation": "gave states the ability to opt out of",
+      "object": "Medicaid expansion"
+    },
+    {
+      "subject": "Utah",
+      "relation": "has a gubernatorial seat up for grabs",
+      "object": "Republican seat"
+    },
+    {
+      "subject": "Vermont",
+      "relation": "has a gubernatorial seat up for grabs",
+      "object": "Democratic seat"
+    },
+    {
+      "subject": "Walter Dalton",
+      "relation": "is running against",
+      "object": "Pat McCrory"
+    },
+    {
+      "subject": "Washington",
+      "relation": "has a gubernatorial seat up for grabs",
+      "object": "Democratic seat"
+    },
+    {
+      "subject": "West Virginia",
+      "relation": "has a gubernatorial seat up for grabs",
+      "object": "Democratic seat"
+    }
+  ]
+}
