@@ -1,0 +1,298 @@
+{
+  "method": "evidence_traced",
+  "cluster_index": 0,
+  "num_documents": 2,
+  "knowledge_graph": {
+    "entities": [
+      {
+        "id": "entity_1",
+        "name": "Thad Kousser",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "says political scientist Thad Kousser, co-author of The Power of American Governors.",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "says political scientist Thad Kousser, co-author of The Power of American Governors.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_2",
+        "name": "University of California",
+        "type": "ORGANIZATION",
+        "document_frequency": 2,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "of the University of California, San Diego.",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "of the University of California-Berkeley.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_3",
+        "name": "North Carolina",
+        "type": "LOCATION",
+        "document_frequency": 2,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "North Carolina: One-term incumbent Democratic Gov. Beverly Perdue, the first woman to hold the state's top office,",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "North Carolina: One-term incumbent Democratic Gov. Beverly Perdue, the first woman to hold the state's top office,",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_4",
+        "name": "Beverly Perdue",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "North Carolina: One-term incumbent Democratic Gov. Beverly Perdue, the first woman to hold the state's top office,",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "North Carolina: One-term incumbent Democratic Gov. Beverly Perdue, the first woman to hold the state's top office,",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_5",
+        "name": "Pat McCrory",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "The seat is expected to be won by McCrory, a former Charlotte mayor, who is facing Perdue's lieutenant governor, Walter Dalton.",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "The seat is expected to be won by McCrory, a former Charlotte mayor, who is facing Perdue's lieutenant governor, Walter Dalton.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_6",
+        "name": "Walter Dalton",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "The seat is expected to be won by McCrory, a former Charlotte mayor, who is facing Perdue's lieutenant governor, Walter Dalton.",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "The seat is expected to be won by McCrory, a former Charlotte mayor, who is facing Perdue's lieutenant governor, Walter Dalton.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_7",
+        "name": "Barack Obama",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "when then-presidential candidate Barack Obama became the first Democrat to win North Carolina in more than three decades.",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "when then-presidential candidate Barack Obama became the first Democrat to win North Carolina in more than three decades.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_8",
+        "name": "Mitt Romney",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "A [Mitt] Romney victory would dramatically empower Republican governors,",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "A [Mitt] Romney victory would dramatically empower Republican governors,",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_9",
+        "name": "Affordable Care Act",
+        "type": "CONCEPT",
+        "document_frequency": 2,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "No matter who wins the presidency, national politics is going to be stalemated on the Affordable Care Act,",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "No matter who wins the presidency, national politics is going to be stalemated on the Affordable Care Act,",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_10",
+        "name": "Medicaid",
+        "type": "CONCEPT",
+        "document_frequency": 2,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "A recent U.S. Supreme Court decision giving states the ability to opt out of the law's expansion of Medicaid, the federal insurance program for poor, disabled and elderly Americans,",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "A recent U.S. Supreme Court decision giving states the ability to opt out of the law's expansion of Medicaid, the federal insurance program for poor, disabled and elderly Americans,",
+            "section": null
+          }
+        ]
+      }
+    ],
+    "relations": [
+      {
+        "source": "entity_1",
+        "target": "entity_2",
+        "relation_type": "AFFILIATED_WITH",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.85,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "of the University of California, San Diego.",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "of the University of California-Berkeley.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_4",
+        "target": "entity_3",
+        "relation_type": "LOCATED_IN",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.85,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "North Carolina: One-term incumbent Democratic Gov. Beverly Perdue, the first woman to hold the state's top office,",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "North Carolina: One-term incumbent Democratic Gov. Beverly Perdue, the first woman to hold the state's top office,",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_5",
+        "target": "entity_3",
+        "relation_type": "LOCATED_IN",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.85,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "The seat is expected to be won by McCrory, a former Charlotte mayor, who is facing Perdue's lieutenant governor, Walter Dalton.",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "The seat is expected to be won by McCrory, a former Charlotte mayor, who is facing Perdue's lieutenant governor, Walter Dalton.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_9",
+        "target": "entity_10",
+        "relation_type": "RELATED_TO",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.85,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "A recent U.S. Supreme Court decision giving states the ability to opt out of the law's expansion of Medicaid, the federal insurance program for poor, disabled and elderly Americans,",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "A recent U.S. Supreme Court decision giving states the ability to opt out of the law's expansion of Medicaid, the federal insurance program for poor, disabled and elderly Americans,",
+            "section": null
+          }
+        ]
+      }
+    ],
+    "reasoning_paths": []
+  },
+  "grader_reports": [],
+  "iterations_used": 0,
+  "final_score": null,
+  "metadata": {}
+}

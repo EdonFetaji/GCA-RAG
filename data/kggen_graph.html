@@ -1,0 +1,2415 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Knowledge Graph Explorer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+        :root {
+            color-scheme: light;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #f8fafc;
+            color: #0f172a;
+        }
+
+        .layout {
+            display: grid;
+            grid-template-columns: 360px 1fr;
+            height: 100vh;
+        }
+
+        .sidebar {
+            background: #ffffff;
+            border-right: 1px solid #e2e8f0;
+            padding: 24px 24px 16px;
+            overflow-y: auto;
+        }
+
+        .sidebar h1 {
+            margin: 0 0 8px;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .sidebar p {
+            margin: 0 0 20px;
+            color: #475569;
+            font-size: 0.95rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .stat-card {
+            background: #f1f5f9;
+            border-radius: 12px;
+            padding: 12px;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .section {
+            margin-bottom: 24px;
+        }
+
+        .section h2 {
+            font-size: 1rem;
+            margin: 0 0 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: #1e293b;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #cbd5f5;
+            border-radius: 10px;
+            font-size: 0.95rem;
+        }
+
+        .search-hint {
+            margin-top: 6px;
+            font-size: 0.8rem;
+            color: #64748b;
+        }
+
+        .list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .list-item {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 10px 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+
+        .list-item strong {
+            font-weight: 600;
+        }
+
+        .cluster-item,
+        .relation-item {
+            border-left: 4px solid transparent;
+            text-align: left;
+            cursor: pointer;
+            transition: background 0.2s ease, transform 0.2s ease;
+        }
+
+        .cluster-item:hover,
+        .relation-item:hover {
+            background: #e2e8f0;
+        }
+
+        .cluster-item.active,
+        .relation-item.active {
+            transform: translateX(4px);
+            background: #e2e8f0;
+        }
+
+        .cluster-item .meta,
+        .relation-item .meta {
+            font-size: 0.8rem;
+            color: #475569;
+        }
+
+        .main {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        .tab-bar {
+            display: flex;
+            gap: 8px;
+            padding: 16px 20px 0;
+            background: #ffffff;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .tab {
+            border: none;
+            background: #e2e8f0;
+            color: #1e293b;
+            padding: 10px 16px;
+            border-radius: 999px;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+
+        .tab.active {
+            background: #1d4ed8;
+            color: #ffffff;
+        }
+
+        .tab-panel {
+            flex: 1;
+            display: none;
+            padding: 16px 20px;
+            overflow: hidden;
+        }
+
+        .tab-panel.active {
+            display: block;
+        }
+
+        .network-panel {
+            height: calc(100vh - 74px);
+            background: #ffffff;
+            border-radius: 16px;
+            border: 1px solid #e2e8f0;
+            overflow: hidden;
+        }
+
+        #networkCanvas {
+            width: 100%;
+            height: 100%;
+        }
+
+        svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .node circle {
+            stroke: #0f172a;
+            stroke-width: 1.2px;
+            transition: stroke-width 0.2s ease, opacity 0.2s ease;
+        }
+
+        .node text {
+            font-size: 0.75rem;
+            text-anchor: middle;
+            fill: #0f172a;
+            pointer-events: none;
+        }
+
+        .link {
+            fill: none;
+            stroke-opacity: 0.55;
+            transition: stroke-opacity 0.2s ease;
+        }
+
+        .edge-label {
+            font-size: 0.7rem;
+            fill: #1e293b;
+            background: rgba(255, 255, 255, 0.75);
+            pointer-events: none;
+        }
+
+        .dimmed {
+            opacity: 0.15 !important;
+        }
+
+        .highlight {
+            opacity: 1 !important;
+        }
+
+        .selection-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 12px;
+            font-size: 0.9rem;
+        }
+
+        .selection-card h3 {
+            margin: 0 0 8px;
+            font-size: 1rem;
+        }
+
+        .selection-card ul {
+            list-style: none;
+            padding-left: 0;
+            margin: 0;
+        }
+
+        .selection-card li {
+            margin-bottom: 4px;
+            color: #475569;
+        }
+
+        .table-container {
+            background: #ffffff;
+            border-radius: 16px;
+            border: 1px solid #e2e8f0;
+            height: calc(100vh - 90px);
+            overflow: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 10px 14px;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+            font-size: 0.9rem;
+        }
+
+        th {
+            background: #f8fafc;
+            position: sticky;
+            top: 0;
+            z-index: 1;
+        }
+
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 2px 10px;
+            border-radius: 999px;
+            background: #e2e8f0;
+            font-size: 0.75rem;
+            color: #0f172a;
+        }
+
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.85rem;
+            color: #475569;
+        }
+
+        .legend-swatch {
+            width: 12px;
+            height: 12px;
+            border-radius: 999px;
+            border: 1px solid rgba(15, 23, 42, 0.25);
+        }
+
+        @media (max-width: 1100px) {
+            .layout {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                height: 320px;
+                border-right: none;
+                border-bottom: 1px solid #e2e8f0;
+            }
+
+            .main {
+                height: calc(100vh - 320px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="layout">
+        <aside class="sidebar">
+            <h1>Knowledge Graph Explorer</h1>
+            <p>Search, highlight, and inspect entities and relations to understand how the graph fits together.</p>
+            <div class="stats-grid" id="statsGrid"></div>
+            <div class="section">
+                <h2>Search</h2>
+                <input id="searchInput" class="search-input" type="text" placeholder="Search for entities or
+                    relations" />
+                <div class="search-hint">Matches are highlighted. Press Escape to clear.</div>
+            </div>
+            <div class="section" id="selectionSection">
+                <h2>Selection</h2>
+                <div id="selectionDetails" class="selection-card">Click a node or relation in the network to inspect
+                    details.</div>
+            </div>
+            <div class="section">
+                <h2>Entity Clusters</h2>
+                <div id="clusterList" class="list"></div>
+            </div>
+            <div class="section">
+                <h2>Top Entities</h2>
+                <div id="topEntities" class="list"></div>
+            </div>
+            <div class="section">
+                <h2>Top Relations</h2>
+                <div id="topRelations" class="list"></div>
+            </div>
+        </aside>
+        <main class="main">
+            <div class="tab-bar">
+                <button class="tab active" data-tab="network">Network</button>
+                <button class="tab" data-tab="relations">Relations</button>
+                <button class="tab" data-tab="insights">Insights</button>
+            </div>
+            <section id="network" class="tab-panel active">
+                <div class="network-panel">
+                    <div id="networkCanvas"></div>
+                </div>
+            </section>
+            <section id="relations" class="tab-panel">
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Subject</th>
+                                <th>Relation</th>
+                                <th>Object</th>
+                            </tr>
+                        </thead>
+                        <tbody id="relationsTable"></tbody>
+                    </table>
+                </div>
+            </section>
+            <section id="insights" class="tab-panel">
+                <div class="table-container" style="padding: 20px;">
+                    <div id="insightsContent"></div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script id="viz-data" type="application/json">
+{
+  "nodes": [
+    {
+      "id": "Affordable Care Act",
+      "label": "Affordable Care Act",
+      "cluster": "Affordable Care Act",
+      "color": "#d619ab",
+      "degree": 3,
+      "indegree": 0,
+      "outdegree": 3,
+      "isRepresentative": true,
+      "radius": 24,
+      "neighbors": [
+        "health care law",
+        "Medicaid expansion",
+        "opt out of Medicaid expansion"
+      ],
+      "edgeIds": {
+        "incoming": [],
+        "outgoing": [
+          "e18",
+          "e19",
+          "e28"
+        ]
+      }
+    },
+    {
+      "id": "Barack Obama",
+      "label": "Barack Obama",
+      "cluster": "Barack Obama",
+      "color": "#8de816",
+      "degree": 2,
+      "indegree": 0,
+      "outdegree": 2,
+      "isRepresentative": true,
+      "radius": 22,
+      "neighbors": [
+        "high-speed rail network",
+        "North Carolina in 2008"
+      ],
+      "edgeIds": {
+        "incoming": [],
+        "outgoing": [
+          "e32",
+          "e42"
+        ]
+      }
+    },
+    {
+      "id": "Mitt Romney",
+      "label": "Mitt Romney",
+      "cluster": "Mitt Romney",
+      "color": "#25d9db",
+      "degree": 25,
+      "indegree": 3,
+      "outdegree": 22,
+      "isRepresentative": true,
+      "radius": 34,
+      "neighbors": [
+        "Delaware governorship",
+        "federal stimulus money",
+        "high-speed rail network",
+        "Independent",
+        "Indiana governorship",
+        "John Lynch's policies",
+        "Missouri governorship",
+        "Mitt Romney",
+        "Montana governorship",
+        "Montana governorship in Democratic hands",
+        "North Carolina governorship",
+        "North Dakota governorship",
+        "Republican governors",
+        "Rob McKenna",
+        "United States",
+        "Utah governorship",
+        "Vermont governorship",
+        "Washington governorship in Democratic hands",
+        "West Virginia governorship"
+      ],
+      "edgeIds": {
+        "incoming": [
+          "e3",
+          "e4",
+          "e35"
+        ],
+        "outgoing": [
+          "e3",
+          "e6",
+          "e7",
+          "e8",
+          "e9",
+          "e10",
+          "e11",
+          "e12",
+          "e13",
+          "e14",
+          "e22",
+          "e23",
+          "e24",
+          "e29",
+          "e31",
+          "e34",
+          "e35",
+          "e36",
+          "e37",
+          "e38",
+          "e39",
+          "e43"
+        ]
+      }
+    },
+    {
+      "id": "parties",
+      "label": "parties",
+      "cluster": "parties",
+      "color": "#7b6ef2",
+      "degree": 8,
+      "indegree": 0,
+      "outdegree": 8,
+      "isRepresentative": true,
+      "radius": 34,
+      "neighbors": [
+        "11 states",
+        "20 governorships",
+        "29 governorships",
+        "governorships",
+        "North Carolina governorship",
+        "one",
+        "United States"
+      ],
+      "edgeIds": {
+        "incoming": [],
+        "outgoing": [
+          "e1",
+          "e2",
+          "e15",
+          "e16",
+          "e17",
+          "e25",
+          "e26",
+          "e27"
+        ]
+      }
+    },
+    {
+      "id": "Rob McKenna",
+      "label": "Rob McKenna",
+      "cluster": "Rob McKenna",
+      "color": "#74bcea",
+      "degree": 2,
+      "indegree": 0,
+      "outdegree": 2,
+      "isRepresentative": true,
+      "radius": 22,
+      "neighbors": [
+        "Mitt Romney",
+        "United States"
+      ],
+      "edgeIds": {
+        "incoming": [],
+        "outgoing": [
+          "e0",
+          "e4"
+        ]
+      }
+    },
+    {
+      "id": "Thad Kousser",
+      "label": "Thad Kousser",
+      "cluster": "Thad Kousser",
+      "color": "#6980d6",
+      "degree": 3,
+      "indegree": 0,
+      "outdegree": 3,
+      "isRepresentative": true,
+      "radius": 24,
+      "neighbors": [
+        "governors will wield significant influence in health care",
+        "political scientist",
+        "The Power of American Governors"
+      ],
+      "edgeIds": {
+        "incoming": [],
+        "outgoing": [
+          "e5",
+          "e30",
+          "e40"
+        ]
+      }
+    },
+    {
+      "id": "United States",
+      "label": "United States",
+      "cluster": "United States",
+      "color": "#d24fdb",
+      "degree": 9,
+      "indegree": 7,
+      "outdegree": 2,
+      "isRepresentative": true,
+      "radius": 34,
+      "neighbors": [
+        "Democratic seat",
+        "Mitt Romney",
+        "parties",
+        "Republican seat",
+        "Rob McKenna"
+      ],
+      "edgeIds": {
+        "incoming": [
+          "e0",
+          "e11",
+          "e15",
+          "e23",
+          "e27",
+          "e31",
+          "e37"
+        ],
+        "outgoing": [
+          "e20",
+          "e21"
+        ]
+      }
+    },
+    {
+      "id": "University of California",
+      "label": "University of California",
+      "cluster": "University of California",
+      "color": "#9058d5",
+      "degree": 0,
+      "indegree": 0,
+      "outdegree": 0,
+      "isRepresentative": true,
+      "radius": 18,
+      "neighbors": [],
+      "edgeIds": {
+        "incoming": [],
+        "outgoing": []
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "e0",
+      "source": "Rob McKenna",
+      "target": "United States",
+      "predicate": "announced she would not seek re-election in",
+      "cluster": "announced she would not seek re-election in",
+      "color": "#59de72",
+      "tooltip": "Rob McKenna —announced she would not seek re-election in→ United States"
+    },
+    {
+      "id": "e1",
+      "source": "parties",
+      "target": "governorships",
+      "predicate": "appear on track to increase their numbers by at least",
+      "cluster": "appear on track to increase their numbers by at least",
+      "color": "#de7ed6",
+      "tooltip": "parties —appear on track to increase their numbers by at least→ governorships"
+    },
+    {
+      "id": "e2",
+      "source": "parties",
+      "target": "one",
+      "predicate": "appear on track to increase their numbers by at least",
+      "cluster": "appear on track to increase their numbers by at least",
+      "color": "#de7ed6",
+      "tooltip": "parties —appear on track to increase their numbers by at least→ one"
+    },
+    {
+      "id": "e3",
+      "source": "Mitt Romney",
+      "target": "Mitt Romney",
+      "predicate": "challenges",
+      "cluster": "challenges",
+      "color": "#dc7cb0",
+      "tooltip": "Mitt Romney —challenges→ Mitt Romney"
+    },
+    {
+      "id": "e4",
+      "source": "Rob McKenna",
+      "target": "Mitt Romney",
+      "predicate": "challenges",
+      "cluster": "challenges",
+      "color": "#dc7cb0",
+      "tooltip": "Rob McKenna —challenges→ Mitt Romney"
+    },
+    {
+      "id": "e5",
+      "source": "Thad Kousser",
+      "target": "The Power of American Governors",
+      "predicate": "co-authored",
+      "cluster": "co-authored",
+      "color": "#a827d2",
+      "tooltip": "Thad Kousser —co-authored→ The Power of American Governors"
+    },
+    {
+      "id": "e6",
+      "source": "Mitt Romney",
+      "target": "Delaware governorship",
+      "predicate": "expected to win",
+      "cluster": "expected to win",
+      "color": "#33db7a",
+      "tooltip": "Mitt Romney —expected to win→ Delaware governorship"
+    },
+    {
+      "id": "e7",
+      "source": "Mitt Romney",
+      "target": "Indiana governorship",
+      "predicate": "expected to win",
+      "cluster": "expected to win",
+      "color": "#33db7a",
+      "tooltip": "Mitt Romney —expected to win→ Indiana governorship"
+    },
+    {
+      "id": "e8",
+      "source": "Mitt Romney",
+      "target": "Missouri governorship",
+      "predicate": "expected to win",
+      "cluster": "expected to win",
+      "color": "#33db7a",
+      "tooltip": "Mitt Romney —expected to win→ Missouri governorship"
+    },
+    {
+      "id": "e9",
+      "source": "Mitt Romney",
+      "target": "North Carolina governorship",
+      "predicate": "expected to win",
+      "cluster": "expected to win",
+      "color": "#33db7a",
+      "tooltip": "Mitt Romney —expected to win→ North Carolina governorship"
+    },
+    {
+      "id": "e10",
+      "source": "Mitt Romney",
+      "target": "North Dakota governorship",
+      "predicate": "expected to win",
+      "cluster": "expected to win",
+      "color": "#33db7a",
+      "tooltip": "Mitt Romney —expected to win→ North Dakota governorship"
+    },
+    {
+      "id": "e11",
+      "source": "Mitt Romney",
+      "target": "United States",
+      "predicate": "expected to win",
+      "cluster": "expected to win",
+      "color": "#33db7a",
+      "tooltip": "Mitt Romney —expected to win→ United States"
+    },
+    {
+      "id": "e12",
+      "source": "Mitt Romney",
+      "target": "Utah governorship",
+      "predicate": "expected to win",
+      "cluster": "expected to win",
+      "color": "#33db7a",
+      "tooltip": "Mitt Romney —expected to win→ Utah governorship"
+    },
+    {
+      "id": "e13",
+      "source": "Mitt Romney",
+      "target": "Vermont governorship",
+      "predicate": "expected to win",
+      "cluster": "expected to win",
+      "color": "#33db7a",
+      "tooltip": "Mitt Romney —expected to win→ Vermont governorship"
+    },
+    {
+      "id": "e14",
+      "source": "Mitt Romney",
+      "target": "West Virginia governorship",
+      "predicate": "expected to win",
+      "cluster": "expected to win",
+      "color": "#33db7a",
+      "tooltip": "Mitt Romney —expected to win→ West Virginia governorship"
+    },
+    {
+      "id": "e15",
+      "source": "parties",
+      "target": "United States",
+      "predicate": "expected to win",
+      "cluster": "expected to win",
+      "color": "#33db7a",
+      "tooltip": "parties —expected to win→ United States"
+    },
+    {
+      "id": "e16",
+      "source": "parties",
+      "target": "North Carolina governorship",
+      "predicate": "expected to wrest",
+      "cluster": "expected to wrest",
+      "color": "#84a3db",
+      "tooltip": "parties —expected to wrest→ North Carolina governorship"
+    },
+    {
+      "id": "e17",
+      "source": "parties",
+      "target": "11 states",
+      "predicate": "eyes gains in",
+      "cluster": "eyes gains in",
+      "color": "#2ea4be",
+      "tooltip": "parties —eyes gains in→ 11 states"
+    },
+    {
+      "id": "e18",
+      "source": "Affordable Care Act",
+      "target": "Medicaid expansion",
+      "predicate": "gave states the ability to",
+      "cluster": "gave states the ability to",
+      "color": "#3ba4e6",
+      "tooltip": "Affordable Care Act —gave states the ability to→ Medicaid expansion"
+    },
+    {
+      "id": "e19",
+      "source": "Affordable Care Act",
+      "target": "opt out of Medicaid expansion",
+      "predicate": "gave states the ability to",
+      "cluster": "gave states the ability to",
+      "color": "#3ba4e6",
+      "tooltip": "Affordable Care Act —gave states the ability to→ opt out of Medicaid expansion"
+    },
+    {
+      "id": "e20",
+      "source": "United States",
+      "target": "Democratic seat",
+      "predicate": "has a gubernatorial seat up for grabs",
+      "cluster": "has a gubernatorial seat up for grabs",
+      "color": "#4edf69",
+      "tooltip": "United States —has a gubernatorial seat up for grabs→ Democratic seat"
+    },
+    {
+      "id": "e21",
+      "source": "United States",
+      "target": "Republican seat",
+      "predicate": "has a gubernatorial seat up for grabs",
+      "cluster": "has a gubernatorial seat up for grabs",
+      "color": "#4edf69",
+      "tooltip": "United States —has a gubernatorial seat up for grabs→ Republican seat"
+    },
+    {
+      "id": "e22",
+      "source": "Mitt Romney",
+      "target": "Montana governorship in Democratic hands",
+      "predicate": "hold",
+      "cluster": "hold",
+      "color": "#19cbe6",
+      "tooltip": "Mitt Romney —hold→ Montana governorship in Democratic hands"
+    },
+    {
+      "id": "e23",
+      "source": "Mitt Romney",
+      "target": "United States",
+      "predicate": "hold",
+      "cluster": "hold",
+      "color": "#19cbe6",
+      "tooltip": "Mitt Romney —hold→ United States"
+    },
+    {
+      "id": "e24",
+      "source": "Mitt Romney",
+      "target": "Washington governorship in Democratic hands",
+      "predicate": "hold",
+      "cluster": "hold",
+      "color": "#19cbe6",
+      "tooltip": "Mitt Romney —hold→ Washington governorship in Democratic hands"
+    },
+    {
+      "id": "e25",
+      "source": "parties",
+      "target": "20 governorships",
+      "predicate": "hold",
+      "cluster": "hold",
+      "color": "#19cbe6",
+      "tooltip": "parties —hold→ 20 governorships"
+    },
+    {
+      "id": "e26",
+      "source": "parties",
+      "target": "29 governorships",
+      "predicate": "hold",
+      "cluster": "hold",
+      "color": "#19cbe6",
+      "tooltip": "parties —hold→ 29 governorships"
+    },
+    {
+      "id": "e27",
+      "source": "parties",
+      "target": "United States",
+      "predicate": "hold",
+      "cluster": "hold",
+      "color": "#19cbe6",
+      "tooltip": "parties —hold→ United States"
+    },
+    {
+      "id": "e28",
+      "source": "Affordable Care Act",
+      "target": "health care law",
+      "predicate": "is",
+      "cluster": "is",
+      "color": "#6fe1b5",
+      "tooltip": "Affordable Care Act —is→ health care law"
+    },
+    {
+      "id": "e29",
+      "source": "Mitt Romney",
+      "target": "Independent",
+      "predicate": "is",
+      "cluster": "is",
+      "color": "#6fe1b5",
+      "tooltip": "Mitt Romney —is→ Independent"
+    },
+    {
+      "id": "e30",
+      "source": "Thad Kousser",
+      "target": "political scientist",
+      "predicate": "is",
+      "cluster": "is",
+      "color": "#6fe1b5",
+      "tooltip": "Thad Kousser —is→ political scientist"
+    },
+    {
+      "id": "e31",
+      "source": "Mitt Romney",
+      "target": "United States",
+      "predicate": "is running for a term in",
+      "cluster": "is running for a term in",
+      "color": "#d4e47d",
+      "tooltip": "Mitt Romney —is running for a term in→ United States"
+    },
+    {
+      "id": "e32",
+      "source": "Barack Obama",
+      "target": "high-speed rail network",
+      "predicate": "offered federal stimulus money to states for",
+      "cluster": "offered federal stimulus money to states for",
+      "color": "#a977e8",
+      "tooltip": "Barack Obama —offered federal stimulus money to states for→ high-speed rail network"
+    },
+    {
+      "id": "e33",
+      "source": "Voters",
+      "target": "11 states",
+      "predicate": "pick governors in",
+      "cluster": "pick governors in",
+      "color": "#4ccae9",
+      "tooltip": "Voters —pick governors in→ 11 states"
+    },
+    {
+      "id": "e34",
+      "source": "Mitt Romney",
+      "target": "John Lynch's policies",
+      "predicate": "promises to continue",
+      "cluster": "promises to continue",
+      "color": "#8e2dc0",
+      "tooltip": "Mitt Romney —promises to continue→ John Lynch's policies"
+    },
+    {
+      "id": "e35",
+      "source": "Mitt Romney",
+      "target": "Mitt Romney",
+      "predicate": "promises to continue",
+      "cluster": "promises to continue",
+      "color": "#8e2dc0",
+      "tooltip": "Mitt Romney —promises to continue→ Mitt Romney"
+    },
+    {
+      "id": "e36",
+      "source": "Mitt Romney",
+      "target": "Montana governorship",
+      "predicate": "reached his two-term limit",
+      "cluster": "reached his two-term limit",
+      "color": "#50e123",
+      "tooltip": "Mitt Romney —reached his two-term limit→ Montana governorship"
+    },
+    {
+      "id": "e37",
+      "source": "Mitt Romney",
+      "target": "United States",
+      "predicate": "reached his two-term limit",
+      "cluster": "reached his two-term limit",
+      "color": "#50e123",
+      "tooltip": "Mitt Romney —reached his two-term limit→ United States"
+    },
+    {
+      "id": "e38",
+      "source": "Mitt Romney",
+      "target": "federal stimulus money",
+      "predicate": "rejected",
+      "cluster": "rejected",
+      "color": "#dd754c",
+      "tooltip": "Mitt Romney —rejected→ federal stimulus money"
+    },
+    {
+      "id": "e39",
+      "source": "Mitt Romney",
+      "target": "high-speed rail network",
+      "predicate": "rejected",
+      "cluster": "rejected",
+      "color": "#dd754c",
+      "tooltip": "Mitt Romney —rejected→ high-speed rail network"
+    },
+    {
+      "id": "e40",
+      "source": "Thad Kousser",
+      "target": "governors will wield significant influence in health care",
+      "predicate": "says",
+      "cluster": "says",
+      "color": "#d670e9",
+      "tooltip": "Thad Kousser —says→ governors will wield significant influence in health care"
+    },
+    {
+      "id": "e41",
+      "source": "Polls and race analysts",
+      "target": "three contests are competitive",
+      "predicate": "suggest",
+      "cluster": "suggest",
+      "color": "#6c1ed5",
+      "tooltip": "Polls and race analysts —suggest→ three contests are competitive"
+    },
+    {
+      "id": "e42",
+      "source": "Barack Obama",
+      "target": "North Carolina in 2008",
+      "predicate": "won",
+      "cluster": "won",
+      "color": "#26e5d1",
+      "tooltip": "Barack Obama —won→ North Carolina in 2008"
+    },
+    {
+      "id": "e43",
+      "source": "Mitt Romney",
+      "target": "Republican governors",
+      "predicate": "would dramatically empower",
+      "cluster": "would dramatically empower",
+      "color": "#4b2bbf",
+      "tooltip": "Mitt Romney —would dramatically empower→ Republican governors"
+    }
+  ],
+  "clusters": [
+    {
+      "id": "Barack Obama",
+      "label": "Barack Obama",
+      "members": [
+        "Barack Obama",
+        "Obama administration"
+      ],
+      "size": 2,
+      "color": "#8de816"
+    },
+    {
+      "id": "Mitt Romney",
+      "label": "Mitt Romney",
+      "members": [
+        "Brian Schweitzer",
+        "Earl Ray Tomblin",
+        "Gary Herbert",
+        "Jack Dalrymple",
+        "Jack Markell",
+        "Jay Inslee",
+        "Jay Nixon",
+        "John Lynch",
+        "Lincoln Chafee",
+        "Maggie Hassan",
+        "Mike Pence",
+        "Mitt Romney",
+        "Pat McCrory",
+        "Peter Shumlin",
+        "Rick Hill",
+        "Rick Scott",
+        "Scott Walker",
+        "Steve Bullock"
+      ],
+      "size": 18,
+      "color": "#25d9db"
+    },
+    {
+      "id": "United States",
+      "label": "United States",
+      "members": [
+        "Delaware",
+        "Florida",
+        "Indiana",
+        "Missouri",
+        "Montana",
+        "New Hampshire",
+        "North Carolina",
+        "North Dakota",
+        "Rhode Island",
+        "United States",
+        "Utah",
+        "Vermont",
+        "Washington",
+        "West Virginia",
+        "Wisconsin"
+      ],
+      "size": 15,
+      "color": "#d24fdb"
+    },
+    {
+      "id": "parties",
+      "label": "parties",
+      "members": [
+        "Democrats",
+        "GOP",
+        "parties",
+        "Republicans"
+      ],
+      "size": 4,
+      "color": "#7b6ef2"
+    },
+    {
+      "id": "Rob McKenna",
+      "label": "Rob McKenna",
+      "members": [
+        "Beverly Perdue",
+        "Bill Maloney",
+        "Dave Spence",
+        "Ovide Lamontagne",
+        "Rob McKenna",
+        "Walter Dalton"
+      ],
+      "size": 6,
+      "color": "#74bcea"
+    },
+    {
+      "id": "University of California",
+      "label": "University of California",
+      "members": [
+        "University of California",
+        "University of California, San Diego",
+        "University of California-Berkeley"
+      ],
+      "size": 3,
+      "color": "#9058d5"
+    },
+    {
+      "id": "Affordable Care Act",
+      "label": "Affordable Care Act",
+      "members": [
+        "Affordable Care Act",
+        "Medicaid",
+        "U.S. Supreme Court"
+      ],
+      "size": 3,
+      "color": "#d619ab"
+    },
+    {
+      "id": "Thad Kousser",
+      "label": "Thad Kousser",
+      "members": [
+        "Thad Kousser"
+      ],
+      "size": 1,
+      "color": "#6980d6"
+    }
+  ],
+  "edgeClusters": [
+    {
+      "id": "expected to win",
+      "label": "expected to win",
+      "members": [
+        "expected to easily win",
+        "expected to notch safe wins in",
+        "expected to win",
+        "is expected to win in",
+        "is expected to win the governorship in"
+      ],
+      "size": 5,
+      "color": "#33db7a"
+    },
+    {
+      "id": "gave states the ability to",
+      "label": "gave states the ability to",
+      "members": [
+        "gave states the ability to",
+        "gave states the ability to opt out of"
+      ],
+      "size": 2,
+      "color": "#3ba4e6"
+    },
+    {
+      "id": "is running for a term in",
+      "label": "is running for a term in",
+      "members": [
+        "is running for a second term in",
+        "is running for a term in",
+        "is running for his first full term in"
+      ],
+      "size": 3,
+      "color": "#d4e47d"
+    },
+    {
+      "id": "challenges",
+      "label": "challenges",
+      "members": [
+        "challenges",
+        "faces",
+        "is running against"
+      ],
+      "size": 3,
+      "color": "#dc7cb0"
+    },
+    {
+      "id": "hold",
+      "label": "hold",
+      "members": [
+        "currently hold",
+        "hold",
+        "is in a dead-heat battle to keep the governorship in",
+        "is trying to keep the seat in his party's column in",
+        "likely to hold on to",
+        "tries to keep"
+      ],
+      "size": 6,
+      "color": "#19cbe6"
+    },
+    {
+      "id": "appear on track to increase their numbers by at least",
+      "label": "appear on track to increase their numbers by at least",
+      "members": [
+        "appear on track to increase their numbers by at least",
+        "appear on track to increase their numbers by at least one in"
+      ],
+      "size": 2,
+      "color": "#de7ed6"
+    },
+    {
+      "id": "reached his two-term limit",
+      "label": "reached his two-term limit",
+      "members": [
+        "has reached his two-term limit in",
+        "reached his two-term limit"
+      ],
+      "size": 2,
+      "color": "#50e123"
+    },
+    {
+      "id": "rejected",
+      "label": "rejected",
+      "members": [
+        "rejected",
+        "rejected federal stimulus money for"
+      ],
+      "size": 2,
+      "color": "#dd754c"
+    },
+    {
+      "id": "promises to continue",
+      "label": "promises to continue",
+      "members": [
+        "has promised a continuation of the policies of",
+        "promises to continue"
+      ],
+      "size": 2,
+      "color": "#8e2dc0"
+    },
+    {
+      "id": "is",
+      "label": "is",
+      "members": [
+        "is",
+        "is a",
+        "is an"
+      ],
+      "size": 3,
+      "color": "#6fe1b5"
+    },
+    {
+      "id": "suggest",
+      "label": "suggest",
+      "members": [
+        "suggest"
+      ],
+      "size": 1,
+      "color": "#6c1ed5"
+    },
+    {
+      "id": "offered federal stimulus money to states for",
+      "label": "offered federal stimulus money to states for",
+      "members": [
+        "offered federal stimulus money to states for"
+      ],
+      "size": 1,
+      "color": "#a977e8"
+    },
+    {
+      "id": "eyes gains in",
+      "label": "eyes gains in",
+      "members": [
+        "eyes gains in"
+      ],
+      "size": 1,
+      "color": "#2ea4be"
+    },
+    {
+      "id": "has a gubernatorial seat up for grabs",
+      "label": "has a gubernatorial seat up for grabs",
+      "members": [
+        "has a gubernatorial seat up for grabs"
+      ],
+      "size": 1,
+      "color": "#4edf69"
+    },
+    {
+      "id": "won",
+      "label": "won",
+      "members": [
+        "won"
+      ],
+      "size": 1,
+      "color": "#26e5d1"
+    },
+    {
+      "id": "co-authored",
+      "label": "co-authored",
+      "members": [
+        "co-authored"
+      ],
+      "size": 1,
+      "color": "#a827d2"
+    },
+    {
+      "id": "expected to wrest",
+      "label": "expected to wrest",
+      "members": [
+        "expected to wrest"
+      ],
+      "size": 1,
+      "color": "#84a3db"
+    },
+    {
+      "id": "pick governors in",
+      "label": "pick governors in",
+      "members": [
+        "pick governors in"
+      ],
+      "size": 1,
+      "color": "#4ccae9"
+    },
+    {
+      "id": "says",
+      "label": "says",
+      "members": [
+        "says"
+      ],
+      "size": 1,
+      "color": "#d670e9"
+    },
+    {
+      "id": "would dramatically empower",
+      "label": "would dramatically empower",
+      "members": [
+        "would dramatically empower"
+      ],
+      "size": 1,
+      "color": "#4b2bbf"
+    },
+    {
+      "id": "announced she would not seek re-election in",
+      "label": "announced she would not seek re-election in",
+      "members": [
+        "announced she would not seek re-election in"
+      ],
+      "size": 1,
+      "color": "#59de72"
+    }
+  ],
+  "topEntities": [
+    {
+      "label": "Mitt Romney",
+      "degree": 25,
+      "indegree": 3,
+      "outdegree": 22,
+      "cluster": "Mitt Romney"
+    },
+    {
+      "label": "United States",
+      "degree": 9,
+      "indegree": 7,
+      "outdegree": 2,
+      "cluster": "United States"
+    },
+    {
+      "label": "parties",
+      "degree": 8,
+      "indegree": 0,
+      "outdegree": 8,
+      "cluster": "parties"
+    },
+    {
+      "label": "Affordable Care Act",
+      "degree": 3,
+      "indegree": 0,
+      "outdegree": 3,
+      "cluster": "Affordable Care Act"
+    },
+    {
+      "label": "Thad Kousser",
+      "degree": 3,
+      "indegree": 0,
+      "outdegree": 3,
+      "cluster": "Thad Kousser"
+    },
+    {
+      "label": "Barack Obama",
+      "degree": 2,
+      "indegree": 0,
+      "outdegree": 2,
+      "cluster": "Barack Obama"
+    },
+    {
+      "label": "Rob McKenna",
+      "degree": 2,
+      "indegree": 0,
+      "outdegree": 2,
+      "cluster": "Rob McKenna"
+    },
+    {
+      "label": "University of California",
+      "degree": 0,
+      "indegree": 0,
+      "outdegree": 0,
+      "cluster": "University of California"
+    }
+  ],
+  "topRelations": [
+    {
+      "predicate": "expected to win",
+      "count": 10,
+      "cluster": "expected to win",
+      "color": "#33db7a"
+    },
+    {
+      "predicate": "hold",
+      "count": 6,
+      "cluster": "hold",
+      "color": "#19cbe6"
+    },
+    {
+      "predicate": "is",
+      "count": 3,
+      "cluster": "is",
+      "color": "#6fe1b5"
+    },
+    {
+      "predicate": "appear on track to increase their numbers by at least",
+      "count": 2,
+      "cluster": "appear on track to increase their numbers by at least",
+      "color": "#de7ed6"
+    },
+    {
+      "predicate": "challenges",
+      "count": 2,
+      "cluster": "challenges",
+      "color": "#dc7cb0"
+    },
+    {
+      "predicate": "gave states the ability to",
+      "count": 2,
+      "cluster": "gave states the ability to",
+      "color": "#3ba4e6"
+    },
+    {
+      "predicate": "has a gubernatorial seat up for grabs",
+      "count": 2,
+      "cluster": "has a gubernatorial seat up for grabs",
+      "color": "#4edf69"
+    },
+    {
+      "predicate": "promises to continue",
+      "count": 2,
+      "cluster": "promises to continue",
+      "color": "#8e2dc0"
+    },
+    {
+      "predicate": "reached his two-term limit",
+      "count": 2,
+      "cluster": "reached his two-term limit",
+      "color": "#50e123"
+    },
+    {
+      "predicate": "rejected",
+      "count": 2,
+      "cluster": "rejected",
+      "color": "#dd754c"
+    }
+  ],
+  "stats": {
+    "entities": 8,
+    "relations": 44,
+    "relationTypes": 21,
+    "entityClusters": 8,
+    "edgeClusters": 21,
+    "isolatedEntities": 1,
+    "components": 4,
+    "averageDegree": 6.5,
+    "density": 0.786
+  },
+  "isolatedEntities": [
+    "University of California"
+  ],
+  "components": [
+    {
+      "size": 30,
+      "members": [
+        "11 states",
+        "20 governorships",
+        "29 governorships",
+        "Barack Obama",
+        "Delaware governorship",
+        "Democratic seat",
+        "federal stimulus money",
+        "governorships",
+        "high-speed rail network",
+        "Independent",
+        "Indiana governorship",
+        "John Lynch's policies",
+        "Missouri governorship",
+        "Mitt Romney",
+        "Montana governorship",
+        "Montana governorship in Democratic hands",
+        "North Carolina governorship",
+        "North Carolina in 2008",
+        "North Dakota governorship",
+        "one",
+        "parties",
+        "Republican governors",
+        "Republican seat",
+        "Rob McKenna",
+        "United States",
+        "Utah governorship",
+        "Vermont governorship",
+        "Voters",
+        "Washington governorship in Democratic hands",
+        "West Virginia governorship"
+      ]
+    },
+    {
+      "size": 4,
+      "members": [
+        "Affordable Care Act",
+        "health care law",
+        "Medicaid expansion",
+        "opt out of Medicaid expansion"
+      ]
+    },
+    {
+      "size": 4,
+      "members": [
+        "governors will wield significant influence in health care",
+        "political scientist",
+        "Thad Kousser",
+        "The Power of American Governors"
+      ]
+    },
+    {
+      "size": 1,
+      "members": [
+        "University of California"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "source": "Rob McKenna",
+      "predicate": "announced she would not seek re-election in",
+      "target": "United States",
+      "edgeId": "e0",
+      "color": "#59de72"
+    },
+    {
+      "source": "parties",
+      "predicate": "appear on track to increase their numbers by at least",
+      "target": "governorships",
+      "edgeId": "e1",
+      "color": "#de7ed6"
+    },
+    {
+      "source": "parties",
+      "predicate": "appear on track to increase their numbers by at least",
+      "target": "one",
+      "edgeId": "e2",
+      "color": "#de7ed6"
+    },
+    {
+      "source": "Mitt Romney",
+      "predicate": "challenges",
+      "target": "Mitt Romney",
+      "edgeId": "e3",
+      "color": "#dc7cb0"
+    },
+    {
+      "source": "Rob McKenna",
+      "predicate": "challenges",
+      "target": "Mitt Romney",
+      "edgeId": "e4",
+      "color": "#dc7cb0"
+    },
+    {
+      "source": "Thad Kousser",
+      "predicate": "co-authored",
+      "target": "The Power of American Governors",
+      "edgeId": "e5",
+      "color": "#a827d2"
+    },
+    {
+      "source": "Mitt Romney",
+      "predicate": "expected to win",
+      "target": "Delaware governorship",
+      "edgeId": "e6",
+      "color": "#33db7a"
+    },
+    {
+      "source": "Mitt Romney",
+      "predicate": "expected to win",
+      "target": "Indiana governorship",
+      "edgeId": "e7",
+      "color": "#33db7a"
+    },
+    {
+      "source": "Mitt Romney",
+      "predicate": "expected to win",
+      "target": "Missouri governorship",
+      "edgeId": "e8",
+      "color": "#33db7a"
+    },
+    {
+      "source": "Mitt Romney",
+      "predicate": "expected to win",
+      "target": "North Carolina governorship",
+      "edgeId": "e9",
+      "color": "#33db7a"
+    },
+    {
+      "source": "Mitt Romney",
+      "predicate": "expected to win",
+      "target": "North Dakota governorship",
+      "edgeId": "e10",
+      "color": "#33db7a"
+    },
+    {
+      "source": "Mitt Romney",
+      "predicate": "expected to win",
+      "target": "United States",
+      "edgeId": "e11",
+      "color": "#33db7a"
+    },
+    {
+      "source": "Mitt Romney",
+      "predicate": "expected to win",
+      "target": "Utah governorship",
+      "edgeId": "e12",
+      "color": "#33db7a"
+    },
+    {
+      "source": "Mitt Romney",
+      "predicate": "expected to win",
+      "target": "Vermont governorship",
+      "edgeId": "e13",
+      "color": "#33db7a"
+    },
+    {
+      "source": "Mitt Romney",
+      "predicate": "expected to win",
+      "target": "West Virginia governorship",
+      "edgeId": "e14",
+      "color": "#33db7a"
+    },
+    {
+      "source": "parties",
+      "predicate": "expected to win",
+      "target": "United States",
+      "edgeId": "e15",
+      "color": "#33db7a"
+    },
+    {
+      "source": "parties",
+      "predicate": "expected to wrest",
+      "target": "North Carolina governorship",
+      "edgeId": "e16",
+      "color": "#84a3db"
+    },
+    {
+      "source": "parties",
+      "predicate": "eyes gains in",
+      "target": "11 states",
+      "edgeId": "e17",
+      "color": "#2ea4be"
+    },
+    {
+      "source": "Affordable Care Act",
+      "predicate": "gave states the ability to",
+      "target": "Medicaid expansion",
+      "edgeId": "e18",
+      "color": "#3ba4e6"
+    },
+    {
+      "source": "Affordable Care Act",
+      "predicate": "gave states the ability to",
+      "target": "opt out of Medicaid expansion",
+      "edgeId": "e19",
+      "color": "#3ba4e6"
+    },
+    {
+      "source": "United States",
+      "predicate": "has a gubernatorial seat up for grabs",
+      "target": "Democratic seat",
+      "edgeId": "e20",
+      "color": "#4edf69"
+    },
+    {
+      "source": "United States",
+      "predicate": "has a gubernatorial seat up for grabs",
+      "target": "Republican seat",
+      "edgeId": "e21",
+      "color": "#4edf69"
+    },
+    {
+      "source": "Mitt Romney",
+      "predicate": "hold",
+      "target": "Montana governorship in Democratic hands",
+      "edgeId": "e22",
+      "color": "#19cbe6"
+    },
+    {
+      "source": "Mitt Romney",
+      "predicate": "hold",
+      "target": "United States",
+      "edgeId": "e23",
+      "color": "#19cbe6"
+    },
+    {
+      "source": "Mitt Romney",
+      "predicate": "hold",
+      "target": "Washington governorship in Democratic hands",
+      "edgeId": "e24",
+      "color": "#19cbe6"
+    },
+    {
+      "source": "parties",
+      "predicate": "hold",
+      "target": "20 governorships",
+      "edgeId": "e25",
+      "color": "#19cbe6"
+    },
+    {
+      "source": "parties",
+      "predicate": "hold",
+      "target": "29 governorships",
+      "edgeId": "e26",
+      "color": "#19cbe6"
+    },
+    {
+      "source": "parties",
+      "predicate": "hold",
+      "target": "United States",
+      "edgeId": "e27",
+      "color": "#19cbe6"
+    },
+    {
+      "source": "Affordable Care Act",
+      "predicate": "is",
+      "target": "health care law",
+      "edgeId": "e28",
+      "color": "#6fe1b5"
+    },
+    {
+      "source": "Mitt Romney",
+      "predicate": "is",
+      "target": "Independent",
+      "edgeId": "e29",
+      "color": "#6fe1b5"
+    },
+    {
+      "source": "Thad Kousser",
+      "predicate": "is",
+      "target": "political scientist",
+      "edgeId": "e30",
+      "color": "#6fe1b5"
+    },
+    {
+      "source": "Mitt Romney",
+      "predicate": "is running for a term in",
+      "target": "United States",
+      "edgeId": "e31",
+      "color": "#d4e47d"
+    },
+    {
+      "source": "Barack Obama",
+      "predicate": "offered federal stimulus money to states for",
+      "target": "high-speed rail network",
+      "edgeId": "e32",
+      "color": "#a977e8"
+    },
+    {
+      "source": "Voters",
+      "predicate": "pick governors in",
+      "target": "11 states",
+      "edgeId": "e33",
+      "color": "#4ccae9"
+    },
+    {
+      "source": "Mitt Romney",
+      "predicate": "promises to continue",
+      "target": "John Lynch's policies",
+      "edgeId": "e34",
+      "color": "#8e2dc0"
+    },
+    {
+      "source": "Mitt Romney",
+      "predicate": "promises to continue",
+      "target": "Mitt Romney",
+      "edgeId": "e35",
+      "color": "#8e2dc0"
+    },
+    {
+      "source": "Mitt Romney",
+      "predicate": "reached his two-term limit",
+      "target": "Montana governorship",
+      "edgeId": "e36",
+      "color": "#50e123"
+    },
+    {
+      "source": "Mitt Romney",
+      "predicate": "reached his two-term limit",
+      "target": "United States",
+      "edgeId": "e37",
+      "color": "#50e123"
+    },
+    {
+      "source": "Mitt Romney",
+      "predicate": "rejected",
+      "target": "federal stimulus money",
+      "edgeId": "e38",
+      "color": "#dd754c"
+    },
+    {
+      "source": "Mitt Romney",
+      "predicate": "rejected",
+      "target": "high-speed rail network",
+      "edgeId": "e39",
+      "color": "#dd754c"
+    },
+    {
+      "source": "Thad Kousser",
+      "predicate": "says",
+      "target": "governors will wield significant influence in health care",
+      "edgeId": "e40",
+      "color": "#d670e9"
+    },
+    {
+      "source": "Polls and race analysts",
+      "predicate": "suggest",
+      "target": "three contests are competitive",
+      "edgeId": "e41",
+      "color": "#6c1ed5"
+    },
+    {
+      "source": "Barack Obama",
+      "predicate": "won",
+      "target": "North Carolina in 2008",
+      "edgeId": "e42",
+      "color": "#26e5d1"
+    },
+    {
+      "source": "Mitt Romney",
+      "predicate": "would dramatically empower",
+      "target": "Republican governors",
+      "edgeId": "e43",
+      "color": "#4b2bbf"
+    }
+  ]
+}
+    </script>
+    <script>
+        (function () {
+            const dataElement = document.getElementById('viz-data');
+            const vizData = JSON.parse(dataElement.textContent);
+
+            const state = {
+                activeElement: null,
+                focusCluster: null,
+                focusPredicate: null,
+                searchTerm: ''
+            };
+
+            const nodeById = Object.fromEntries(vizData.nodes.map(node => [node.id, node]));
+            const edgeById = Object.fromEntries(vizData.edges.map(edge => [edge.id, edge]));
+            const clusterById = Object.fromEntries(vizData.clusters.map(cluster => [cluster.id, cluster]));
+            const edgesByPredicate = {};
+            vizData.edges.forEach(edge => {
+                if (!edgesByPredicate[edge.predicate]) {
+                    edgesByPredicate[edge.predicate] = [];
+                }
+                edgesByPredicate[edge.predicate].push(edge.id);
+            });
+
+            const nodesByCluster = {};
+            vizData.clusters.forEach(cluster => {
+                cluster.members.forEach(member => {
+                    if (!nodesByCluster[cluster.id]) {
+                        nodesByCluster[cluster.id] = new Set();
+                    }
+                    nodesByCluster[cluster.id].add(member);
+                });
+            });
+
+            function renderStats() {
+                const grid = document.getElementById('statsGrid');
+                const stats = vizData.stats;
+                const entries = [
+                    { label: 'Entities', value: stats.entities },
+                    { label: 'Relations', value: stats.relations },
+                    { label: 'Relation types', value: stats.relationTypes },
+                    { label: 'Entity clusters', value: stats.entityClusters },
+                    { label: 'Edge clusters', value: stats.edgeClusters },
+                    { label: 'Isolated entities', value: stats.isolatedEntities },
+                    { label: 'Components', value: stats.components },
+                    { label: 'Average degree', value: stats.averageDegree }
+                ];
+                grid.innerHTML = entries
+                    .map(entry => `
+                        <div class="stat-card">
+                            <div class="stat-value">${entry.value}</div>
+                            <div>${entry.label}</div>
+                        </div>
+                    `)
+                    .join('');
+            }
+
+            function renderTopLists() {
+                const topEntitiesContainer = document.getElementById('topEntities');
+                const topRelationsContainer = document.getElementById('topRelations');
+
+                const entityItems = vizData.topEntities.map(item => {
+                    const clusterLabel = item.cluster ? `${item.cluster}` : 'Unclustered';
+                    return `
+                        <div class="list-item">
+                            <div>
+                                <strong>${item.label}</strong>
+                                <div class="meta">Cluster: ${clusterLabel}</div>
+                            </div>
+                            <div>${item.degree}</div>
+                        </div>
+                    `;
+                });
+                topEntitiesContainer.innerHTML = entityItems.join('') || '<div class="meta">No entities</div>';
+
+                const relationItems = vizData.topRelations.map(item => `
+                    <div class="list-item relation-item" data-predicate="${item.predicate}">
+                        <div>
+                            <strong>${item.predicate}</strong>
+                            <div class="meta">${item.count} relations</div>
+                        </div>
+                        <div class="pill" style="background: ${item.color}1a; border: 1px solid ${item.color};">${item.count}</div>
+                    </div>
+                `);
+                topRelationsContainer.innerHTML = relationItems.join('') || '<div class="meta">No relations</div>';
+            }
+
+            function renderClusters() {
+                const container = document.getElementById('clusterList');
+                if (!vizData.clusters.length) {
+                    container.innerHTML = '<div class="meta">No cluster information provided.</div>';
+                    return;
+                }
+                container.innerHTML = vizData.clusters
+                    .map(cluster => `
+                        <button class="list-item cluster-item" data-cluster="${cluster.id}" style="border-left-color: ${cluster.color};">
+                            <div>
+                                <strong>${cluster.label}</strong>
+                                <div class="meta">${cluster.size} members</div>
+                            </div>
+                            <span class="legend-swatch" style="background: ${cluster.color};"></span>
+                        </button>
+                    `)
+                    .join('');
+            }
+
+            function renderRelationsTable() {
+                const tbody = document.getElementById('relationsTable');
+                tbody.innerHTML = vizData.relations
+                    .map(rel => `
+                        <tr data-edge="${rel.edgeId}">
+                            <td>${rel.source}</td>
+                            <td><span class="pill" style="border: 1px solid ${rel.color}; background: ${rel.color}1a;">${rel.predicate}</span></td>
+                            <td>${rel.target}</td>
+                        </tr>
+                    `)
+                    .join('');
+            }
+
+            function renderInsights() {
+                const insights = document.getElementById('insightsContent');
+                const clusters = vizData.clusters
+                    .map(cluster => `
+                        <div class="list-item" style="border-left: 4px solid ${cluster.color};">
+                            <div>
+                                <strong>${cluster.label}</strong>
+                                <div class="meta">Members: ${cluster.members.join(', ')}</div>
+                            </div>
+                            <div>${cluster.size}</div>
+                        </div>
+                    `)
+                    .join('');
+
+                const components = vizData.components
+                    .map((component, index) => `
+                        <div class="list-item">
+                            <div>
+                                <strong>Component ${index + 1}</strong>
+                                <div class="meta">${component.members.join(', ')}</div>
+                            </div>
+                            <div>${component.size}</div>
+                        </div>
+                    `)
+                    .join('');
+
+                const isolates = vizData.isolatedEntities.length
+                    ? vizData.isolatedEntities.join(', ')
+                    : 'None';
+
+                insights.innerHTML = `
+                    <div class="section">
+                        <h2>Clusters</h2>
+                        <div class="list">${clusters || '<div class="meta">No clusters</div>'}</div>
+                    </div>
+                    <div class="section">
+                        <h2>Connected components</h2>
+                        <div class="list">${components || '<div class="meta">Single connected component</div>'}</div>
+                    </div>
+                    <div class="section">
+                        <h2>Isolated entities</h2>
+                        <div class="meta">${isolates}</div>
+                    </div>
+                `;
+            }
+
+            function setActiveElement(element) {
+                state.activeElement = element;
+                renderSelectionDetails();
+                updateHighlights();
+            }
+
+            function clearActiveElement() {
+                state.activeElement = null;
+                renderSelectionDetails();
+                updateHighlights();
+            }
+
+            function renderSelectionDetails() {
+                const panel = document.getElementById('selectionDetails');
+                const active = state.activeElement;
+                if (!active) {
+                    panel.innerHTML = 'Click a node or relation in the network to inspect details.';
+                    return;
+                }
+
+                if (active.type === 'node') {
+                    const node = nodeById[active.id];
+                    const cluster = node.cluster ? `Cluster: ${node.cluster}` : 'Unclustered';
+                    const neighbors = node.neighbors.length ? node.neighbors.join(', ') : 'None';
+                    panel.innerHTML = `
+                        <h3>${node.label}</h3>
+                        <ul>
+                            <li>${cluster}</li>
+                            <li>Total degree: ${node.degree}</li>
+                            <li>Outgoing: ${node.outdegree}</li>
+                            <li>Incoming: ${node.indegree}</li>
+                            <li>Neighbors: ${neighbors}</li>
+                        </ul>
+                    `;
+                } else if (active.type === 'edge') {
+                    const edge = edgeById[active.id];
+                    const cluster = edge.cluster ? `Cluster: ${edge.cluster}` : 'Unclustered';
+                    panel.innerHTML = `
+                        <h3>${edge.source} → ${edge.target}</h3>
+                        <ul>
+                            <li>Relation: ${edge.predicate}</li>
+                            <li>${cluster}</li>
+                        </ul>
+                    `;
+                }
+            }
+
+            function toggleClusterFocus(clusterId) {
+                if (state.focusCluster === clusterId) {
+                    state.focusCluster = null;
+                } else {
+                    state.focusCluster = clusterId;
+                }
+                updateActiveButtons();
+                updateHighlights();
+            }
+
+            function togglePredicateFocus(predicate) {
+                if (state.focusPredicate === predicate) {
+                    state.focusPredicate = null;
+                } else {
+                    state.focusPredicate = predicate;
+                }
+                updateActiveButtons();
+                updateHighlights();
+            }
+
+            function updateActiveButtons() {
+                document.querySelectorAll('.cluster-item').forEach(item => {
+                    const clusterId = item.getAttribute('data-cluster');
+                    item.classList.toggle('active', state.focusCluster === clusterId);
+                });
+                document.querySelectorAll('.relation-item').forEach(item => {
+                    const predicate = item.getAttribute('data-predicate');
+                    item.classList.toggle('active', state.focusPredicate === predicate);
+                });
+            }
+
+            let nodeSelection = null;
+            let linkSelection = null;
+            let labelSelection = null;
+
+            function createNetwork() {
+                const container = document.getElementById('networkCanvas');
+                const width = container.clientWidth || container.getBoundingClientRect().width || 900;
+                const height = container.clientHeight || container.getBoundingClientRect().height || 680;
+
+                const nodes = vizData.nodes.map(node => ({ ...node }));
+                const edges = vizData.edges.map(edge => ({ ...edge }));
+
+                const svg = d3
+                    .select(container)
+                    .append('svg')
+                    .attr('viewBox', [0, 0, width, height])
+                    .attr('width', width)
+                    .attr('height', height);
+
+                const zoomLayer = svg.append('g');
+
+                svg.call(
+                    d3
+                        .zoom()
+                        .extent([[0, 0], [width, height]])
+                        .scaleExtent([0.25, 3])
+                        .on('zoom', event => {
+                            zoomLayer.attr('transform', event.transform);
+                        })
+                );
+
+                const defs = svg.append('defs');
+                defs
+                    .append('marker')
+                    .attr('id', 'arrow')
+                    .attr('viewBox', '0 -5 10 10')
+                    .attr('refX', 24)
+                    .attr('refY', 0)
+                    .attr('markerWidth', 6)
+                    .attr('markerHeight', 6)
+                    .attr('orient', 'auto')
+                    .append('path')
+                    .attr('d', 'M0,-5L10,0L0,5')
+                    .attr('fill', '#94a3b8');
+
+                const linkGroup = zoomLayer.append('g').attr('class', 'links');
+                const nodeGroup = zoomLayer.append('g').attr('class', 'nodes');
+                const labelGroup = zoomLayer.append('g').attr('class', 'edge-labels');
+
+                const simulation = d3
+                    .forceSimulation(nodes)
+                    .force(
+                        'link',
+                        d3
+                            .forceLink(edges)
+                            .id(d => d.id)
+                            .distance(120)
+                            .strength(0.3)
+                    )
+                    .force('charge', d3.forceManyBody().strength(-280))
+                    .force('center', d3.forceCenter(width / 2, height / 2))
+                    .force('collision', d3.forceCollide().radius(d => d.radius + 12));
+
+                const drag = d3
+                    .drag()
+                    .on('start', (event, d) => {
+                        if (!event.active) simulation.alphaTarget(0.3).restart();
+                        d.fx = d.x;
+                        d.fy = d.y;
+                    })
+                    .on('drag', (event, d) => {
+                        d.fx = event.x;
+                        d.fy = event.y;
+                    })
+                    .on('end', (event, d) => {
+                        if (!event.active) simulation.alphaTarget(0);
+                        d.fx = null;
+                        d.fy = null;
+                    });
+
+                linkSelection = linkGroup
+                    .selectAll('path')
+                    .data(edges, edge => edge.id)
+                    .join('path')
+                    .attr('class', 'link')
+                    .attr('stroke', edge => edge.color)
+                    .attr('stroke-width', 1.4)
+                    .attr('marker-end', 'url(#arrow)')
+                    .on('click', (event, edge) => {
+                        event.stopPropagation();
+                        setActiveElement({ type: 'edge', id: edge.id });
+                    });
+
+                labelSelection = labelGroup
+                    .selectAll('text')
+                    .data(edges, edge => edge.id)
+                    .join('text')
+                    .attr('class', 'edge-label')
+                    .text(edge => edge.predicate);
+
+                nodeSelection = nodeGroup
+                    .selectAll('g')
+                    .data(nodes, node => node.id)
+                    .join(enter => {
+                        const node = enter.append('g').attr('class', 'node').call(drag);
+                        node
+                            .append('circle')
+                            .attr('r', d => d.radius)
+                            .attr('fill', d => d.color);
+                        node
+                            .append('text')
+                            .attr('dy', d => d.radius + 14)
+                            .text(d => d.label);
+                        node.on('click', (event, d) => {
+                            event.stopPropagation();
+                            setActiveElement({ type: 'node', id: d.id });
+                        });
+                        return node;
+                    });
+
+                svg.on('click', () => {
+                    clearActiveElement();
+                });
+
+                simulation.on('tick', () => {
+                    nodeSelection.attr('transform', d => `translate(${d.x}, ${d.y})`);
+
+                    linkSelection.attr('d', edge => {
+                        const source = edge.source;
+                        const target = edge.target;
+                        const dx = target.x - source.x;
+                        const dy = target.y - source.y;
+                        const distance = Math.sqrt(dx * dx + dy * dy) || 1;
+                        const normX = dx / distance;
+                        const normY = dy / distance;
+                        const sourcePadding = source.radius + 2;
+                        const targetPadding = target.radius + 8;
+                        const sourceX = source.x + normX * sourcePadding;
+                        const sourceY = source.y + normY * sourcePadding;
+                        const targetX = target.x - normX * targetPadding;
+                        const targetY = target.y - normY * targetPadding;
+                        return `M${sourceX},${sourceY} L${targetX},${targetY}`;
+                    });
+
+                    labelSelection
+                        .attr('x', edge => (edge.source.x + edge.target.x) / 2)
+                        .attr('y', edge => (edge.source.y + edge.target.y) / 2);
+                });
+            }
+
+            function updateHighlights() {
+                if (!nodeSelection || !linkSelection) {
+                    return;
+                }
+
+                const highlightedNodes = new Set();
+                const highlightedEdges = new Set();
+                let isFiltering = false;
+
+                const addNode = id => {
+                    if (id) {
+                        highlightedNodes.add(id);
+                    }
+                };
+                const addEdge = id => {
+                    if (id) {
+                        highlightedEdges.add(id);
+                    }
+                };
+
+                if (state.activeElement) {
+                    isFiltering = true;
+                    if (state.activeElement.type === 'node') {
+                        const node = nodeById[state.activeElement.id];
+                        addNode(node.id);
+                        node.neighbors.forEach(addNode);
+                        (node.edgeIds.outgoing || []).forEach(addEdge);
+                        (node.edgeIds.incoming || []).forEach(addEdge);
+                    } else if (state.activeElement.type === 'edge') {
+                        const edge = edgeById[state.activeElement.id];
+                        addEdge(edge.id);
+                        addNode(edge.source);
+                        addNode(edge.target);
+                    }
+                }
+
+                if (state.focusCluster && nodesByCluster[state.focusCluster]) {
+                    isFiltering = true;
+                    nodesByCluster[state.focusCluster].forEach(addNode);
+                    vizData.edges.forEach(edge => {
+                        if (
+                            nodesByCluster[state.focusCluster].has(edge.source) &&
+                            nodesByCluster[state.focusCluster].has(edge.target)
+                        ) {
+                            addEdge(edge.id);
+                        }
+                    });
+                }
+
+                if (state.focusPredicate && edgesByPredicate[state.focusPredicate]) {
+                    isFiltering = true;
+                    edgesByPredicate[state.focusPredicate].forEach(edgeId => {
+                        addEdge(edgeId);
+                        const edge = edgeById[edgeId];
+                        addNode(edge.source);
+                        addNode(edge.target);
+                    });
+                }
+
+                if (state.searchTerm) {
+                    const term = state.searchTerm.toLowerCase();
+                    isFiltering = true;
+                    vizData.nodes.forEach(node => {
+                        if (node.label.toLowerCase().includes(term)) {
+                            addNode(node.id);
+                            node.neighbors.forEach(addNode);
+                        }
+                    });
+                    vizData.edges.forEach(edge => {
+                        if (edge.predicate.toLowerCase().includes(term)) {
+                            addEdge(edge.id);
+                            addNode(edge.source);
+                            addNode(edge.target);
+                        }
+                    });
+                }
+
+                nodeSelection.classed('highlight', node => highlightedNodes.has(node.id));
+                nodeSelection.classed('dimmed', node => isFiltering && !highlightedNodes.has(node.id));
+
+                linkSelection.classed('highlight', edge => highlightedEdges.has(edge.id));
+                linkSelection.classed('dimmed', edge => isFiltering && !highlightedEdges.has(edge.id));
+
+                if (labelSelection) {
+                    labelSelection.classed('highlight', edge => highlightedEdges.has(edge.id));
+                    labelSelection.classed('dimmed', edge => isFiltering && !highlightedEdges.has(edge.id));
+                }
+            }
+
+            function bindInteractions() {
+                document.querySelectorAll('.cluster-item').forEach(item => {
+                    item.addEventListener('click', () => toggleClusterFocus(item.getAttribute('data-cluster')));
+                });
+
+                document.querySelectorAll('.relation-item').forEach(item => {
+                    item.addEventListener('click', () => togglePredicateFocus(item.getAttribute('data-predicate')));
+                });
+
+                document.getElementById('relationsTable').addEventListener('click', event => {
+                    const row = event.target.closest('tr');
+                    if (!row) {
+                        return;
+                    }
+                    const edgeId = row.getAttribute('data-edge');
+                    if (edgeId) {
+                        setActiveElement({ type: 'edge', id: edgeId });
+                    }
+                });
+
+                const searchInput = document.getElementById('searchInput');
+                searchInput.addEventListener('input', () => {
+                    state.searchTerm = searchInput.value.trim();
+                    updateHighlights();
+                });
+                searchInput.addEventListener('keydown', event => {
+                    if (event.key === 'Escape') {
+                        searchInput.value = '';
+                        state.searchTerm = '';
+                        updateHighlights();
+                    }
+                });
+
+                document.querySelectorAll('.tab').forEach(tab => {
+                    tab.addEventListener('click', event => {
+                        const target = event.currentTarget;
+                        document.querySelectorAll('.tab').forEach(button => button.classList.remove('active'));
+                        target.classList.add('active');
+                        const tabId = target.getAttribute('data-tab');
+                        document.querySelectorAll('.tab-panel').forEach(panel => {
+                            panel.classList.toggle('active', panel.id === tabId);
+                        });
+                    });
+                });
+            }
+
+            renderStats();
+            renderTopLists();
+            renderClusters();
+            renderRelationsTable();
+            renderInsights();
+            createNetwork();
+            bindInteractions();
+        })();
+    </script>
+</body>
+
+</html>

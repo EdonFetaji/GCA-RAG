@@ -1,0 +1,408 @@
+{
+  "entities": [
+    "Affordable Care Act",
+    "Barack Obama",
+    "Mitt Romney",
+    "Rob McKenna",
+    "Thad Kousser",
+    "United States",
+    "University of California",
+    "parties"
+  ],
+  "edges": [
+    "announced she would not seek re-election in",
+    "appear on track to increase their numbers by at least",
+    "challenges",
+    "co-authored",
+    "expected to win",
+    "expected to wrest",
+    "eyes gains in",
+    "gave states the ability to",
+    "has a gubernatorial seat up for grabs",
+    "hold",
+    "is",
+    "is running for a term in",
+    "offered federal stimulus money to states for",
+    "pick governors in",
+    "promises to continue",
+    "reached his two-term limit",
+    "rejected",
+    "says",
+    "suggest",
+    "won",
+    "would dramatically empower"
+  ],
+  "relations": [
+    {
+      "subject": "Affordable Care Act",
+      "relation": "gave states the ability to",
+      "object": "Medicaid expansion"
+    },
+    {
+      "subject": "Affordable Care Act",
+      "relation": "gave states the ability to",
+      "object": "opt out of Medicaid expansion"
+    },
+    {
+      "subject": "Affordable Care Act",
+      "relation": "is",
+      "object": "health care law"
+    },
+    {
+      "subject": "Barack Obama",
+      "relation": "offered federal stimulus money to states for",
+      "object": "high-speed rail network"
+    },
+    {
+      "subject": "Barack Obama",
+      "relation": "won",
+      "object": "North Carolina in 2008"
+    },
+    {
+      "subject": "Mitt Romney",
+      "relation": "challenges",
+      "object": "Mitt Romney"
+    },
+    {
+      "subject": "Mitt Romney",
+      "relation": "expected to win",
+      "object": "Delaware governorship"
+    },
+    {
+      "subject": "Mitt Romney",
+      "relation": "expected to win",
+      "object": "Indiana governorship"
+    },
+    {
+      "subject": "Mitt Romney",
+      "relation": "expected to win",
+      "object": "Missouri governorship"
+    },
+    {
+      "subject": "Mitt Romney",
+      "relation": "expected to win",
+      "object": "North Carolina governorship"
+    },
+    {
+      "subject": "Mitt Romney",
+      "relation": "expected to win",
+      "object": "North Dakota governorship"
+    },
+    {
+      "subject": "Mitt Romney",
+      "relation": "expected to win",
+      "object": "United States"
+    },
+    {
+      "subject": "Mitt Romney",
+      "relation": "expected to win",
+      "object": "Utah governorship"
+    },
+    {
+      "subject": "Mitt Romney",
+      "relation": "expected to win",
+      "object": "Vermont governorship"
+    },
+    {
+      "subject": "Mitt Romney",
+      "relation": "expected to win",
+      "object": "West Virginia governorship"
+    },
+    {
+      "subject": "Mitt Romney",
+      "relation": "hold",
+      "object": "Montana governorship in Democratic hands"
+    },
+    {
+      "subject": "Mitt Romney",
+      "relation": "hold",
+      "object": "United States"
+    },
+    {
+      "subject": "Mitt Romney",
+      "relation": "hold",
+      "object": "Washington governorship in Democratic hands"
+    },
+    {
+      "subject": "Mitt Romney",
+      "relation": "is",
+      "object": "Independent"
+    },
+    {
+      "subject": "Mitt Romney",
+      "relation": "is running for a term in",
+      "object": "United States"
+    },
+    {
+      "subject": "Mitt Romney",
+      "relation": "promises to continue",
+      "object": "John Lynch's policies"
+    },
+    {
+      "subject": "Mitt Romney",
+      "relation": "promises to continue",
+      "object": "Mitt Romney"
+    },
+    {
+      "subject": "Mitt Romney",
+      "relation": "reached his two-term limit",
+      "object": "Montana governorship"
+    },
+    {
+      "subject": "Mitt Romney",
+      "relation": "reached his two-term limit",
+      "object": "United States"
+    },
+    {
+      "subject": "Mitt Romney",
+      "relation": "rejected",
+      "object": "federal stimulus money"
+    },
+    {
+      "subject": "Mitt Romney",
+      "relation": "rejected",
+      "object": "high-speed rail network"
+    },
+    {
+      "subject": "Mitt Romney",
+      "relation": "would dramatically empower",
+      "object": "Republican governors"
+    },
+    {
+      "subject": "Polls and race analysts",
+      "relation": "suggest",
+      "object": "three contests are competitive"
+    },
+    {
+      "subject": "Rob McKenna",
+      "relation": "announced she would not seek re-election in",
+      "object": "United States"
+    },
+    {
+      "subject": "Rob McKenna",
+      "relation": "challenges",
+      "object": "Mitt Romney"
+    },
+    {
+      "subject": "Thad Kousser",
+      "relation": "co-authored",
+      "object": "The Power of American Governors"
+    },
+    {
+      "subject": "Thad Kousser",
+      "relation": "is",
+      "object": "political scientist"
+    },
+    {
+      "subject": "Thad Kousser",
+      "relation": "says",
+      "object": "governors will wield significant influence in health care"
+    },
+    {
+      "subject": "United States",
+      "relation": "has a gubernatorial seat up for grabs",
+      "object": "Democratic seat"
+    },
+    {
+      "subject": "United States",
+      "relation": "has a gubernatorial seat up for grabs",
+      "object": "Republican seat"
+    },
+    {
+      "subject": "Voters",
+      "relation": "pick governors in",
+      "object": "11 states"
+    },
+    {
+      "subject": "parties",
+      "relation": "appear on track to increase their numbers by at least",
+      "object": "governorships"
+    },
+    {
+      "subject": "parties",
+      "relation": "appear on track to increase their numbers by at least",
+      "object": "one"
+    },
+    {
+      "subject": "parties",
+      "relation": "expected to win",
+      "object": "United States"
+    },
+    {
+      "subject": "parties",
+      "relation": "expected to wrest",
+      "object": "North Carolina governorship"
+    },
+    {
+      "subject": "parties",
+      "relation": "eyes gains in",
+      "object": "11 states"
+    },
+    {
+      "subject": "parties",
+      "relation": "hold",
+      "object": "20 governorships"
+    },
+    {
+      "subject": "parties",
+      "relation": "hold",
+      "object": "29 governorships"
+    },
+    {
+      "subject": "parties",
+      "relation": "hold",
+      "object": "United States"
+    }
+  ],
+  "entity_clusters": {
+    "Barack Obama": [
+      "Barack Obama",
+      "Obama administration"
+    ],
+    "Mitt Romney": [
+      "Brian Schweitzer",
+      "Earl Ray Tomblin",
+      "Gary Herbert",
+      "Jack Dalrymple",
+      "Jack Markell",
+      "Jay Inslee",
+      "Jay Nixon",
+      "John Lynch",
+      "Lincoln Chafee",
+      "Maggie Hassan",
+      "Mike Pence",
+      "Mitt Romney",
+      "Pat McCrory",
+      "Peter Shumlin",
+      "Rick Hill",
+      "Rick Scott",
+      "Scott Walker",
+      "Steve Bullock"
+    ],
+    "United States": [
+      "Delaware",
+      "Florida",
+      "Indiana",
+      "Missouri",
+      "Montana",
+      "New Hampshire",
+      "North Carolina",
+      "North Dakota",
+      "Rhode Island",
+      "Utah",
+      "Vermont",
+      "Washington",
+      "West Virginia",
+      "Wisconsin"
+    ],
+    "parties": [
+      "Democrats",
+      "GOP",
+      "Republicans"
+    ],
+    "Rob McKenna": [
+      "Beverly Perdue",
+      "Bill Maloney",
+      "Dave Spence",
+      "Ovide Lamontagne",
+      "Rob McKenna",
+      "Walter Dalton"
+    ],
+    "University of California": [
+      "University of California, San Diego",
+      "University of California-Berkeley"
+    ],
+    "Affordable Care Act": [
+      "Affordable Care Act",
+      "Medicaid",
+      "U.S. Supreme Court"
+    ],
+    "Thad Kousser": [
+      "Thad Kousser"
+    ]
+  },
+  "edge_clusters": {
+    "expected to win": [
+      "expected to easily win",
+      "expected to notch safe wins in",
+      "expected to win",
+      "is expected to win in",
+      "is expected to win the governorship in"
+    ],
+    "gave states the ability to": [
+      "gave states the ability to",
+      "gave states the ability to opt out of"
+    ],
+    "is running for a term in": [
+      "is running for a second term in",
+      "is running for his first full term in"
+    ],
+    "challenges": [
+      "challenges",
+      "faces",
+      "is running against"
+    ],
+    "hold": [
+      "currently hold",
+      "hold",
+      "is in a dead-heat battle to keep the governorship in",
+      "is trying to keep the seat in his party's column in",
+      "likely to hold on to",
+      "tries to keep"
+    ],
+    "appear on track to increase their numbers by at least": [
+      "appear on track to increase their numbers by at least",
+      "appear on track to increase their numbers by at least one in"
+    ],
+    "reached his two-term limit": [
+      "has reached his two-term limit in",
+      "reached his two-term limit"
+    ],
+    "rejected": [
+      "rejected",
+      "rejected federal stimulus money for"
+    ],
+    "promises to continue": [
+      "has promised a continuation of the policies of",
+      "promises to continue"
+    ],
+    "is": [
+      "is",
+      "is a",
+      "is an"
+    ],
+    "suggest": [
+      "suggest"
+    ],
+    "offered federal stimulus money to states for": [
+      "offered federal stimulus money to states for"
+    ],
+    "eyes gains in": [
+      "eyes gains in"
+    ],
+    "has a gubernatorial seat up for grabs": [
+      "has a gubernatorial seat up for grabs"
+    ],
+    "won": [
+      "won"
+    ],
+    "co-authored": [
+      "co-authored"
+    ],
+    "expected to wrest": [
+      "expected to wrest"
+    ],
+    "pick governors in": [
+      "pick governors in"
+    ],
+    "says": [
+      "says"
+    ],
+    "would dramatically empower": [
+      "would dramatically empower"
+    ],
+    "announced she would not seek re-election in": [
+      "announced she would not seek re-election in"
+    ]
+  }
+}

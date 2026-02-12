@@ -1,0 +1,353 @@
+{
+  "method": "two_agent",
+  "cluster_index": 0,
+  "num_documents": 2,
+  "knowledge_graph": {
+    "entities": [
+      {
+        "id": "entity_1",
+        "name": "Thad Kousser",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "says political scientist Thad Kousser, co-author of The Power of American Governors.",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "says political scientist Thad Kousser, co-author of The Power of American Governors.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_2",
+        "name": "University of California",
+        "type": "ORGANIZATION",
+        "document_frequency": 1,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "of the University of California, San Diego.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_3",
+        "name": "University of California-Berkeley",
+        "type": "ORGANIZATION",
+        "document_frequency": 1,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "of the University of California-Berkeley.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_4",
+        "name": "Beverly Perdue",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "One-term incumbent Democratic Gov. Beverly Perdue, the first woman to hold the state's top office,",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "One-term incumbent Democratic Gov. Beverly Perdue, the first woman to hold the state's top office,",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_5",
+        "name": "Pat McCrory",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "The seat is expected to be won by McCrory, a former Charlotte mayor,",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "The seat is expected to be won by McCrory, a former Charlotte mayor,",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_6",
+        "name": "North Carolina",
+        "type": "LOCATION",
+        "document_frequency": 2,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "North Carolina: One-term incumbent Democratic Gov. Beverly Perdue,",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "North Carolina: One-term incumbent Democratic Gov. Beverly Perdue,",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_7",
+        "name": "Affordable Care Act",
+        "type": "CONCEPT",
+        "document_frequency": 2,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "No matter who wins the presidency, national politics is going to be stalemated on the Affordable Care Act,",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "No matter who wins the presidency, national politics is going to be stalemated on the Affordable Care Act,",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_8",
+        "name": "Mitt Romney",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "A [Mitt] Romney victory would dramatically empower Republican governors,",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "A [Mitt] Romney victory would dramatically empower Republican governors,",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_9",
+        "name": "Barack Obama",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "when then-presidential candidate Barack Obama became the first Democrat to win North Carolina in more than three decades.",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "when then-presidential candidate Barack Obama became the first Democrat to win North Carolina in more than three decades.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_10",
+        "name": "Rick Scott",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Three Republican governors, including Rick Scott of Florida and Scott Walker of Wisconsin,",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "Three Republican governors, including Rick Scott of Florida and Scott Walker of Wisconsin,",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_11",
+        "name": "Scott Walker",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Three Republican governors, including Rick Scott of Florida and Scott Walker of Wisconsin,",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "Three Republican governors, including Rick Scott of Florida and Scott Walker of Wisconsin,",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_12",
+        "name": "Medicaid",
+        "type": "CONCEPT",
+        "document_frequency": 2,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "A recent U.S. Supreme Court decision giving states the ability to opt out of the law's expansion of Medicaid,",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "A recent U.S. Supreme Court decision giving states the ability to opt out of the law's expansion of Medicaid,",
+            "section": null
+          }
+        ]
+      }
+    ],
+    "relations": [
+      {
+        "source": "entity_7",
+        "target": "entity_8",
+        "relation_type": "RELATED_TO",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.85,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "A [Mitt] Romney victory would dramatically empower Republican governors,",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "A [Mitt] Romney victory would dramatically empower Republican governors,",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_6",
+        "target": "entity_4",
+        "relation_type": "LOCATED_IN",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.85,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "North Carolina: One-term incumbent Democratic Gov. Beverly Perdue,",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "North Carolina: One-term incumbent Democratic Gov. Beverly Perdue,",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_1",
+        "target": "entity_7",
+        "relation_type": "RELATED_TO",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.85,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "No matter who wins the presidency, national politics is going to be stalemated on the Affordable Care Act,",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "No matter who wins the presidency, national politics is going to be stalemated on the Affordable Care Act,",
+            "section": null
+          }
+        ]
+      }
+    ],
+    "reasoning_paths": []
+  },
+  "grader_reports": [
+    {
+      "overall_score": 0.8,
+      "issues": [
+        {
+          "issue_type": "MISSING_RELATION",
+          "element_id": null,
+          "description": "There is no relation between entity_2 (University of California) and entity_1 (Thad Kousser), despite the evidence quote mentioning 'of the University of California, San Diego.' A relation of type 'AFFILIATED_WITH' should be added.",
+          "severity": "medium"
+        },
+        {
+          "issue_type": "MISSING_RELATION",
+          "element_id": null,
+          "description": "There is no relation between entity_3 (University of California-Berkeley) and entity_1 (Thad Kousser), despite the evidence quote mentioning 'of the University of California-Berkeley.' A relation of type 'AFFILIATED_WITH' should be added.",
+          "severity": "medium"
+        },
+        {
+          "issue_type": "MISSING_ENTITY",
+          "element_id": null,
+          "description": "The entity 'University of California, San Diego' is mentioned in the evidence quote, but it is not included as a separate entity. It should be added as a separate entity of type 'ORGANIZATION'.",
+          "severity": "low"
+        },
+        {
+          "issue_type": "MISSING_RELATION",
+          "element_id": null,
+          "description": "There is no relation between entity_8 (Mitt Romney) and entity_10 (Rick Scott), despite the evidence quote mentioning 'A [Mitt] Romney victory would dramatically empower Republican governors, including Rick Scott of Florida...'. A relation of type 'RELATED_TO' should be added.",
+          "severity": "medium"
+        },
+        {
+          "issue_type": "MISSING_RELATION",
+          "element_id": null,
+          "description": "There is no relation between entity_8 (Mitt Romney) and entity_11 (Scott Walker), despite the evidence quote mentioning 'A [Mitt] Romney victory would dramatically empower Republican governors, including Rick Scott of Florida and Scott Walker of Wisconsin...'. A relation of type 'RELATED_TO' should be added.",
+          "severity": "medium"
+        },
+        {
+          "issue_type": "MISSING_RELATION",
+          "element_id": null,
+          "description": "There is no relation between entity_7 (Affordable Care Act) and entity_12 (Medicaid), despite the evidence quote mentioning 'A recent U.S. Supreme Court decision giving states the ability to opt out of the law's expansion of Medicaid...'. A relation of type 'RELATED_TO' should be added.",
+          "severity": "medium"
+        },
+        {
+          "issue_type": "WRONG_TYPE",
+          "element_id": "entity_3",
+          "description": "Entity_3 (University of California-Berkeley) is of type 'ORGANIZATION', but it is not clear if it is a separate entity from entity_2 (University of California). If they are the same entity, entity_3 should be removed.",
+          "severity": "low"
+        }
+      ],
+      "passes_threshold": false,
+      "feedback_summary": "The extracted knowledge graph is mostly accurate, but there are some missing relations and entities that need to be added. Specifically, relations between Thad Kousser and the University of California, Mitt Romney and Republican governors, and the Affordable Care Act and Medicaid should be added. Additionally, the entity 'University of California, San Diego' should be added as a separate entity. Finally, the type of entity_3 (University of California-Berkeley) should be reviewed to ensure it is accurate."
+    }
+  ],
+  "iterations_used": 1,
+  "final_score": 0.8,
+  "metadata": {}
+}

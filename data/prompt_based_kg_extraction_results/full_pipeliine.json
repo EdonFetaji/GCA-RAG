@@ -1,0 +1,570 @@
+{
+  "method": "full_pipeline",
+  "cluster_index": 0,
+  "num_documents": 2,
+  "knowledge_graph": {
+    "entities": [
+      {
+        "id": "entity_1",
+        "name": "Republicans",
+        "type": "ORGANIZATION",
+        "document_frequency": 9,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Voters in 11 states will pick their governors tonight, and Republicans appear on track to increase their numbers by at least one, with the potential to extend their hold to more than two-thirds of the nation's top state offices.",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "Voters in 11 states will pick their governors tonight, and Republicans appear on track to increase their numbers by at least one, and with the potential to extend their hold to more than two-thirds of the nation's top state offices.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_2",
+        "name": "Democrats",
+        "type": "ORGANIZATION",
+        "document_frequency": 9,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Eight of the gubernatorial seats up for grabs are now held by Democrats; three are in Republican hands.",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "Eight of the gubernatorial seats up for grabs today are now held by Democrats; three are in Republican hands.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_3",
+        "name": "North Carolina",
+        "type": "LOCATION",
+        "document_frequency": 3,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "North Carolina: One-term incumbent Democratic Gov. Beverly Perdue, the first woman to hold the state's top office, announced in January that she would not seek re-election after polls showed her with high disapproval ratings and trailing Republican candidate Pat McCrory.",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "North Carolina: One-term incumbent Democratic Gov. Beverly Perdue, the first woman to hold the state's top office, announced in January she would not seek re-election after polls showed her with high disapproval ratings and trailing Republican candidate Pat McCrory.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_4",
+        "name": "Pat McCrory",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "The seat is expected to be won by McCrory, a former Charlotte mayor, who is facing Perdue's lieutenant governor, Walter Dalton.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_5",
+        "name": "Beverly Perdue",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "North Carolina: One-term incumbent Democratic Gov. Beverly Perdue, the first woman to hold the state's top office, announced in January that she would not seek re-election after polls showed her with high disapproval ratings and trailing Republican candidate Pat McCrory.",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "North Carolina: One-term incumbent Democratic Gov. Beverly Perdue, the first woman to hold the state's top office, announced in January she would not seek re-election after polls showed her with high disapproval ratings and trailing Republican candidate Pat McCrory.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_6",
+        "name": "Affordable Care Act",
+        "type": "CONCEPT",
+        "document_frequency": 1,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "No matter who wins the presidency, national politics is going to be stalemated on the Affordable Care Act,",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_7",
+        "name": "Thad Kousser",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "And that's health care, says political scientist Thad Kousser, co-author of The Power of American Governors.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_8",
+        "name": "University of California, San Diego",
+        "type": "ORGANIZATION",
+        "document_frequency": 1,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "says Kousser, of the University of California, San Diego.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_9",
+        "name": "University of California, Berkeley",
+        "type": "ORGANIZATION",
+        "document_frequency": 1,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "says Kousser, of the University of California-Berkeley.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_10",
+        "name": "Lincoln Chafee",
+        "type": "PERSON",
+        "document_frequency": 1,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Rhode Island's Gov. Lincoln Chafee is an Independent.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_11",
+        "name": "Barack Obama",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "when then-presidential candidate Barack Obama became the first Democrat to win North Carolina in more than three decades.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_12",
+        "name": "Montana",
+        "type": "LOCATION",
+        "document_frequency": 2,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Montana: Popular Democratic Gov. Brian Schweitzer — he won his last election with 65 percent of the vote — has reached his two-term limit.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_13",
+        "name": "Brian Schweitzer",
+        "type": "PERSON",
+        "document_frequency": 1,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Montana: Popular Democratic Gov. Brian Schweitzer — he won his last election with 65 percent of the vote — has reached his two-term limit.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_14",
+        "name": "Steve Bullock",
+        "type": "PERSON",
+        "document_frequency": 1,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "The state's Democratic Attorney General Steve Bullock is trying to keep the seat in his party's column by associating himself with Schweitzer's legacy.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_15",
+        "name": "Rick Hill",
+        "type": "PERSON",
+        "document_frequency": 1,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "He's in a tough race with former two-term GOP Rep. Rick Hill.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_16",
+        "name": "New Hampshire",
+        "type": "LOCATION",
+        "document_frequency": 2,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "New Hampshire: Former Democratic state Sen. Maggie Hassan has also promised a continuation of the policies of her predecessor, retiring Democratic Gov. John Lynch.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_17",
+        "name": "Maggie Hassan",
+        "type": "PERSON",
+        "document_frequency": 1,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "New Hampshire: Former Democratic state Sen. Maggie Hassan has also promised a continuation of the policies of her predecessor, retiring Democratic Gov. John Lynch.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_18",
+        "name": "John Lynch",
+        "type": "PERSON",
+        "document_frequency": 1,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "New Hampshire: Former Democratic state Sen. Maggie Hassan has also promised a continuation of the policies of her predecessor, retiring Democratic Gov. John Lynch.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_19",
+        "name": "Ovide Lamontagne",
+        "type": "PERSON",
+        "document_frequency": 1,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Her opponent is lawyer Ovide Lamontagne, a Tea Party conservative who ran unsuccessfully for governor in 1996 and for the U.S. Senate in 2010.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_20",
+        "name": "Washington",
+        "type": "LOCATION",
+        "document_frequency": 2,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Washington: The state's governorship has been in Democratic hands for 32 years, and former Rep. Jay Inslee is in a dead-heat battle to keep it that way.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_21",
+        "name": "Jay Inslee",
+        "type": "PERSON",
+        "document_frequency": 1,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Washington: The state's governorship has been in Democratic hands for 32 years, and former Rep. Jay Inslee is in a dead-heat battle to keep it that way.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_22",
+        "name": "Rob McKenna",
+        "type": "PERSON",
+        "document_frequency": 1,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "His opponent is the state's Republican Attorney General Rob McKenna.",
+            "section": null
+          }
+        ]
+      }
+    ],
+    "relations": [
+      {
+        "source": "entity_4",
+        "target": "entity_3",
+        "relation_type": "LOCATED_IN",
+        "support_count": 1,
+        "source_documents": [
+          0
+        ],
+        "confidence": 0.85,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "North Carolina: One-term incumbent Democratic Gov. Beverly Perdue, the first woman to hold the state's top office, announced in January that she would not seek re-election after polls showed her with high disapproval ratings and trailing Republican candidate Pat McCrory.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_7",
+        "target": "entity_8",
+        "relation_type": "AFFILIATED_WITH",
+        "support_count": 1,
+        "source_documents": [
+          0
+        ],
+        "confidence": 0.85,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "says Kousser, of the University of California, San Diego.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_7",
+        "target": "entity_9",
+        "relation_type": "AFFILIATED_WITH",
+        "support_count": 1,
+        "source_documents": [
+          1
+        ],
+        "confidence": 0.85,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "says Kousser, of the University of California-Berkeley.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_6",
+        "target": "entity_1",
+        "relation_type": "RELATED_TO",
+        "support_count": 1,
+        "source_documents": [
+          0
+        ],
+        "confidence": 0.85,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "No matter who wins the presidency, national politics is going to be stalemated on the Affordable Care Act,",
+            "section": null
+          }
+        ]
+      }
+    ],
+    "reasoning_paths": [
+      {
+        "path": [
+          "entity_1",
+          "entity_4",
+          "entity_3"
+        ],
+        "description": "The Republicans (entity_1) have a candidate Pat McCrory (entity_4) who is running for office in North Carolina (entity_3), indicating a connection between the party and the location through the candidate.",
+        "confidence": 0.85
+      },
+      {
+        "path": [
+          "entity_7",
+          "entity_8",
+          "entity_1"
+        ],
+        "description": "Thad Kousser (entity_7) is affiliated with the University of California, San Diego (entity_8), and his statements might relate to the Republicans (entity_1) and their stance on issues like the Affordable Care Act, suggesting a chain of influence from academia to political parties.",
+        "confidence": 0.8
+      },
+      {
+        "path": [
+          "entity_6",
+          "entity_1",
+          "entity_4"
+        ],
+        "description": "The Affordable Care Act (entity_6) is related to the Republicans (entity_1), who have a candidate Pat McCrory (entity_4) running in North Carolina, implying that the party's stance on the act could influence or be influenced by local candidates and their elections.",
+        "confidence": 0.82
+      },
+      {
+        "path": [
+          "entity_1",
+          "entity_3",
+          "entity_5"
+        ],
+        "description": "The Republicans (entity_1) are mentioned in the context of North Carolina (entity_3) where Beverly Perdue (entity_5), a Democrat, decided not to seek re-election, suggesting that the Republicans' actions or popularity might have had an indirect effect on the decision-making of opposing party members.",
+        "confidence": 0.78
+      }
+    ]
+  },
+  "grader_reports": [
+    {
+      "overall_score": 0.6,
+      "issues": [
+        {
+          "issue_type": "HALLUCINATION",
+          "element_id": "entity_3",
+          "description": "The entity 'entity_3' has two different names: 'North Carolina' and 'Lincoln Chafee'. This is a hallucination as the same entity ID is used for two different entities.",
+          "severity": "high"
+        },
+        {
+          "issue_type": "HALLUCINATION",
+          "element_id": "entity_5",
+          "description": "The entity 'entity_5' has two different names: 'Beverly Perdue' and 'University of California-Berkeley'. This is a hallucination as the same entity ID is used for two different entities.",
+          "severity": "high"
+        },
+        {
+          "issue_type": "HALLUCINATION",
+          "element_id": "entity_6",
+          "description": "The entity 'entity_6' has two different names: 'Affordable Care Act' and 'Barack Obama'. This is a hallucination as the same entity ID is used for two different entities.",
+          "severity": "high"
+        },
+        {
+          "issue_type": "MISSING_RELATION",
+          "element_id": null,
+          "description": "There is no relation between 'entity_1' (Republicans) and 'entity_2' (Democrats) despite them being mentioned together in the context of gubernatorial seats.",
+          "severity": "medium"
+        },
+        {
+          "issue_type": "MISSING_ENTITY",
+          "element_id": null,
+          "description": "The document mentions 'Walter Dalton' as the lieutenant governor of North Carolina, but there is no entity for him in the knowledge graph.",
+          "severity": "medium"
+        },
+        {
+          "issue_type": "MISSING_ENTITY",
+          "element_id": null,
+          "description": "The document mentions 'Rick Scott' and 'Scott Walker' as Republican governors, but there is no entity for them in the knowledge graph.",
+          "severity": "medium"
+        },
+        {
+          "issue_type": "WEAK_EVIDENCE",
+          "element_id": "relation_4",
+          "description": "The evidence quote for the relation between 'entity_1' (Republicans) and 'entity_7' (Thad Kousser) is not directly related to the relation type 'LOCATED_IN'.",
+          "severity": "low"
+        },
+        {
+          "issue_type": "WRONG_TYPE",
+          "element_id": "entity_8",
+          "description": "The entity 'entity_8' (University of California, San Diego) is mentioned as the affiliation of 'entity_7' (Thad Kousser), but the relation type is 'AFFILIATED_WITH' instead of 'LOCATED_IN' or 'EMPLOYED_BY'.",
+          "severity": "low"
+        }
+      ],
+      "passes_threshold": false,
+      "feedback_summary": "The knowledge graph has several issues, including hallucinations where the same entity ID is used for different entities, missing relations and entities, weak evidence for some relations, and incorrect types for some entities and relations. These issues need to be addressed to improve the accuracy and reliability of the knowledge graph."
+    },
+    {
+      "overall_score": 0.8,
+      "issues": [
+        {
+          "issue_type": "CONTRADICTION",
+          "element_id": "entity_8 and entity_9",
+          "description": "Thad Kousser is affiliated with both the University of California, San Diego and the University of California, Berkeley, which is a contradiction.",
+          "severity": "high"
+        },
+        {
+          "issue_type": "MISSING_RELATION",
+          "element_id": null,
+          "description": "There is no relation between entity_1 (Republicans) and entity_2 (Democrats) despite being two major political parties.",
+          "severity": "medium"
+        },
+        {
+          "issue_type": "MISSING_ENTITY",
+          "element_id": null,
+          "description": "There is no entity for 'Walter Dalton', who is mentioned as the lieutenant governor of North Carolina.",
+          "severity": "low"
+        },
+        {
+          "issue_type": "MISSING_ENTITY",
+          "element_id": null,
+          "description": "There is no entity for 'Mitt Romney', who is mentioned as a presidential candidate.",
+          "severity": "low"
+        },
+        {
+          "issue_type": "MISSING_RELATION",
+          "element_id": null,
+          "description": "There is no relation between entity_6 (Affordable Care Act) and entity_3 (North Carolina) despite the state being mentioned in the context of the Affordable Care Act.",
+          "severity": "low"
+        }
+      ],
+      "passes_threshold": false,
+      "feedback_summary": "The knowledge graph is generally well-structured, but there are some issues with contradictory information, missing relations, and missing entities. Specifically, Thad Kousser's affiliation with two different universities is a contradiction, and there are no relations between major political parties or between the Affordable Care Act and relevant states. Additionally, some entities, such as Walter Dalton and Mitt Romney, are missing from the graph."
+    }
+  ],
+  "iterations_used": 2,
+  "final_score": 0.8,
+  "metadata": {
+    "ontology_entity_types": [
+      "PERSON",
+      "ORGANIZATION",
+      "LOCATION",
+      "EVENT",
+      "CONCEPT",
+      "DISEASE",
+      "TREATMENT",
+      "SYMPTOM",
+      "METRIC",
+      "DATE"
+    ],
+    "ontology_relation_types": [
+      "CAUSES",
+      "TREATS",
+      "LOCATED_IN",
+      "AFFILIATED_WITH",
+      "ANNOUNCED",
+      "ACQUIRED",
+      "PARTICIPATED_IN",
+      "RESULTED_IN",
+      "CONTRADICTS",
+      "SUPPORTS",
+      "MEASURED_BY",
+      "RELATED_TO"
+    ],
+    "domain_context": "general news articles"
+  }
+}

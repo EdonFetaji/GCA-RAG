@@ -1,0 +1,558 @@
+{
+  "entities": [
+    "AP",
+    "Affordable Care Act",
+    "America",
+    "Charlotte",
+    "Democratic Party",
+    "Governor",
+    "Governors",
+    "Jim Cole",
+    "Medicaid",
+    "Obama",
+    "Real Clear Politics",
+    "Romney",
+    "San Diego",
+    "Tea Party",
+    "Thad Kousser",
+    "U.S. Senate",
+    "U.S. Supreme Court",
+    "United States",
+    "University of California",
+    "Voters"
+  ],
+  "edges": [
+    "announced not seeking re-election",
+    "appear on track to increase numbers by",
+    "are expected to notch safe wins in",
+    "co-authored",
+    "eyes gains as",
+    "gave",
+    "governor",
+    "governors",
+    "has promised continuation of policies of",
+    "has reached two-term limit",
+    "have the ability to",
+    "hold",
+    "is",
+    "is expected to win",
+    "is facing",
+    "is leading in",
+    "is opponent of",
+    "is running against",
+    "is trying to keep seat in party's column",
+    "likely to retain seat",
+    "rejected",
+    "says",
+    "won",
+    "would dramatically empower"
+  ],
+  "relations": [
+    {
+      "subject": "Democratic Party",
+      "relation": "appear on track to increase numbers by",
+      "object": "at least one"
+    },
+    {
+      "subject": "Democratic Party",
+      "relation": "are expected to notch safe wins in",
+      "object": "United States"
+    },
+    {
+      "subject": "Democratic Party",
+      "relation": "eyes gains as",
+      "object": "Voters"
+    },
+    {
+      "subject": "Democratic Party",
+      "relation": "hold",
+      "object": "20 governorships"
+    },
+    {
+      "subject": "Democratic Party",
+      "relation": "hold",
+      "object": "29 governorships"
+    },
+    {
+      "subject": "Democratic Party",
+      "relation": "hold",
+      "object": "United States"
+    },
+    {
+      "subject": "Democratic Party",
+      "relation": "is expected to win",
+      "object": "United States"
+    },
+    {
+      "subject": "Democratic Party",
+      "relation": "likely to retain seat",
+      "object": "North Carolina governorship"
+    },
+    {
+      "subject": "Governor",
+      "relation": "governor",
+      "object": "United States"
+    },
+    {
+      "subject": "Governor",
+      "relation": "has promised continuation of policies of",
+      "object": "Governor"
+    },
+    {
+      "subject": "Governor",
+      "relation": "has reached two-term limit",
+      "object": "Montana governorship"
+    },
+    {
+      "subject": "Governor",
+      "relation": "has reached two-term limit",
+      "object": "United States"
+    },
+    {
+      "subject": "Governor",
+      "relation": "is",
+      "object": "Governor"
+    },
+    {
+      "subject": "Governor",
+      "relation": "is expected to win",
+      "object": "None"
+    },
+    {
+      "subject": "Governor",
+      "relation": "is expected to win",
+      "object": "North Carolina governorship"
+    },
+    {
+      "subject": "Governor",
+      "relation": "is expected to win",
+      "object": "United States"
+    },
+    {
+      "subject": "Governor",
+      "relation": "is facing",
+      "object": "Governor"
+    },
+    {
+      "subject": "Governor",
+      "relation": "is leading in",
+      "object": "Governor"
+    },
+    {
+      "subject": "Governor",
+      "relation": "is opponent of",
+      "object": "Governor"
+    },
+    {
+      "subject": "Governor",
+      "relation": "is opponent of",
+      "object": "Governors"
+    },
+    {
+      "subject": "Governor",
+      "relation": "is running against",
+      "object": "Governor"
+    },
+    {
+      "subject": "Governor",
+      "relation": "is running against",
+      "object": "Governors"
+    },
+    {
+      "subject": "Governor",
+      "relation": "is trying to keep seat in party's column",
+      "object": "Democratic Party"
+    },
+    {
+      "subject": "Governor",
+      "relation": "is trying to keep seat in party's column",
+      "object": "Montana governorship"
+    },
+    {
+      "subject": "Governor",
+      "relation": "likely to retain seat",
+      "object": "Democratic Party"
+    },
+    {
+      "subject": "Governor",
+      "relation": "likely to retain seat",
+      "object": "None"
+    },
+    {
+      "subject": "Governor",
+      "relation": "likely to retain seat",
+      "object": "United States"
+    },
+    {
+      "subject": "Governor",
+      "relation": "rejected",
+      "object": "federal stimulus money"
+    },
+    {
+      "subject": "Governor",
+      "relation": "rejected",
+      "object": "high-speed rail network"
+    },
+    {
+      "subject": "Governor",
+      "relation": "won",
+      "object": "Governor"
+    },
+    {
+      "subject": "Governor",
+      "relation": "won",
+      "object": "Governors"
+    },
+    {
+      "subject": "Governors",
+      "relation": "announced not seeking re-election",
+      "object": "North Carolina governorship"
+    },
+    {
+      "subject": "Governors",
+      "relation": "governors",
+      "object": "North Carolina governorship"
+    },
+    {
+      "subject": "Governors",
+      "relation": "is",
+      "object": "Tea Party"
+    },
+    {
+      "subject": "Governors",
+      "relation": "is",
+      "object": "Tea Party conservative"
+    },
+    {
+      "subject": "Governors",
+      "relation": "is facing",
+      "object": "Governor"
+    },
+    {
+      "subject": "Governors",
+      "relation": "is running against",
+      "object": "Governor"
+    },
+    {
+      "subject": "Governors",
+      "relation": "likely to retain seat",
+      "object": "United States"
+    },
+    {
+      "subject": "Governors",
+      "relation": "won",
+      "object": "Governor"
+    },
+    {
+      "subject": "Governors",
+      "relation": "won",
+      "object": "Romney"
+    },
+    {
+      "subject": "Obama",
+      "relation": "is leading in",
+      "object": "Romney"
+    },
+    {
+      "subject": "Obama",
+      "relation": "rejected",
+      "object": "federal stimulus money"
+    },
+    {
+      "subject": "Obama",
+      "relation": "rejected",
+      "object": "high-speed rail network"
+    },
+    {
+      "subject": "Obama",
+      "relation": "won",
+      "object": "North Carolina in 2008"
+    },
+    {
+      "subject": "Obama",
+      "relation": "won",
+      "object": "Romney"
+    },
+    {
+      "subject": "Obama",
+      "relation": "won",
+      "object": "United States"
+    },
+    {
+      "subject": "Real Clear Politics",
+      "relation": "is leading in",
+      "object": "Obama"
+    },
+    {
+      "subject": "Romney",
+      "relation": "is leading in",
+      "object": "United States"
+    },
+    {
+      "subject": "Romney",
+      "relation": "won",
+      "object": "Obama"
+    },
+    {
+      "subject": "Romney",
+      "relation": "would dramatically empower",
+      "object": "Republican governors"
+    },
+    {
+      "subject": "Thad Kousser",
+      "relation": "co-authored",
+      "object": "The Power of American Governors"
+    },
+    {
+      "subject": "Thad Kousser",
+      "relation": "is",
+      "object": "political scientist"
+    },
+    {
+      "subject": "Thad Kousser",
+      "relation": "says",
+      "object": "national politics is going to be stalemated on the Affordable Care Act"
+    },
+    {
+      "subject": "U.S. Supreme Court",
+      "relation": "gave",
+      "object": "Medicaid expansion"
+    },
+    {
+      "subject": "U.S. Supreme Court",
+      "relation": "gave",
+      "object": "states"
+    },
+    {
+      "subject": "United States",
+      "relation": "governor",
+      "object": "Governor"
+    },
+    {
+      "subject": "United States",
+      "relation": "governors",
+      "object": "Democratic Party"
+    },
+    {
+      "subject": "Voters",
+      "relation": "governors",
+      "object": "11 states"
+    },
+    {
+      "subject": "states",
+      "relation": "have the ability to",
+      "object": "opt out of the law's expansion of Medicaid"
+    }
+  ],
+  "entity_clusters": {
+    "Obama": [
+      "Barack Obama",
+      "Obama",
+      "Obama administration"
+    ],
+    "Romney": [
+      "Mitt Romney",
+      "Romney"
+    ],
+    "Democratic Party": [
+      "Democratic Party",
+      "Democrats",
+      "GOP",
+      "Republican Party",
+      "Republicans"
+    ],
+    "Governor": [
+      "Bill Maloney",
+      "Brian Schweitzer",
+      "Dave Spence",
+      "Earl Ray Tomblin",
+      "Gary Herbert",
+      "Jack Dalrymple",
+      "Jack Markell",
+      "Jay Inslee",
+      "Jay Nixon",
+      "John Lynch",
+      "Lincoln Chafee",
+      "Maggie Hassan",
+      "Mike Pence",
+      "Pat McCrory",
+      "Peter Shumlin",
+      "Rick Hill",
+      "Rick Scott",
+      "Scott Walker",
+      "Steve Bullock"
+    ],
+    "United States": [
+      "Delaware",
+      "Florida",
+      "Indiana",
+      "Missouri",
+      "Montana",
+      "New Hampshire",
+      "North Carolina",
+      "North Dakota",
+      "Rhode Island",
+      "Utah",
+      "Vermont",
+      "Washington",
+      "West Virginia",
+      "Wisconsin"
+    ],
+    "Governors": [
+      "Beverly Perdue",
+      "Governors",
+      "McCrory",
+      "Ovide Lamontagne",
+      "Rob McKenna",
+      "Walter Dalton"
+    ],
+    "University of California": [
+      "University of California",
+      "University of California-Berkeley"
+    ],
+    "U.S. Senate": [
+      "U.S. Rep",
+      "U.S. Senate"
+    ],
+    "Jim Cole": [
+      "Jim Cole"
+    ],
+    "Real Clear Politics": [
+      "Real Clear Politics"
+    ],
+    "AP": [
+      "AP"
+    ],
+    "Affordable Care Act": [
+      "Affordable Care Act"
+    ],
+    "Voters": [
+      "Voters"
+    ],
+    "San Diego": [
+      "San Diego"
+    ],
+    "America": [
+      "America"
+    ],
+    "U.S. Supreme Court": [
+      "U.S. Supreme Court"
+    ],
+    "Thad Kousser": [
+      "Thad Kousser"
+    ],
+    "Medicaid": [
+      "Medicaid"
+    ],
+    "Charlotte": [
+      "Charlotte"
+    ],
+    "Tea Party": [
+      "Tea Party"
+    ]
+  },
+  "edge_clusters": {
+    "is leading in": [
+      "has average lead over",
+      "is consistently outpolling",
+      "is leading in",
+      "shows average lead of"
+    ],
+    "is trying to keep seat in party's column": [
+      "is trying to keep seat in party's column",
+      "is trying to keep the seat in his party's column"
+    ],
+    "is running against": [
+      "is running against",
+      "is running for first full term against",
+      "is running for second term against"
+    ],
+    "has reached two-term limit": [
+      "has reached his two-term limit",
+      "has reached two-term limit"
+    ],
+    "announced not seeking re-election": [
+      "announced not seeking re-election",
+      "announced she would not seek re-election"
+    ],
+    "is expected to win": [
+      "are expected to easily win",
+      "is expected to win"
+    ],
+    "rejected": [
+      "offered",
+      "offered federal stimulus money to states for",
+      "rejected",
+      "rejected federal stimulus money for"
+    ],
+    "won": [
+      "is leading",
+      "is trailing",
+      "won"
+    ],
+    "governor": [
+      "has governor",
+      "is governor of"
+    ],
+    "gave": [
+      "gave",
+      "gave states ability to opt out of"
+    ],
+    "hold": [
+      "are likely to hold on to",
+      "currently holds",
+      "hold"
+    ],
+    "likely to retain seat": [
+      "are expected to wrest",
+      "has proven ability to win statewide",
+      "is likely to retain seat",
+      "is trying to keep governorship in"
+    ],
+    "appear on track to increase numbers by": [
+      "appear on track to increase numbers by",
+      "appears on track to increase numbers by"
+    ],
+    "co-authored": [
+      "co-authored",
+      "is co-author of"
+    ],
+    "governors": [
+      "has gubernatorial seat up for grabs",
+      "is running for",
+      "pick governors in"
+    ],
+    "has promised continuation of policies of": [
+      "has promised a continuation of the policies of",
+      "has promised continuation of policies of"
+    ],
+    "is": [
+      "is",
+      "is a",
+      "is associated with",
+      "is member of"
+    ],
+    "is facing": [
+      "is facing",
+      "is in a tough race with"
+    ],
+    "have the ability to": [
+      "have the ability to"
+    ],
+    "are expected to notch safe wins in": [
+      "are expected to notch safe wins in"
+    ],
+    "is opponent of": [
+      "is opponent of"
+    ],
+    "eyes gains as": [
+      "eyes gains as"
+    ],
+    "says": [
+      "says"
+    ],
+    "would dramatically empower": [
+      "would dramatically empower"
+    ]
+  }
+}
