@@ -1,7 +1,7 @@
 import unicodedata
 import re
 from typing import Dict, List
-from constants import VALID_ENTITY_TYPES
+from extractor_agent.constants import VALID_ENTITY_TYPES
 
 def normalize_text(text: str) -> str:
     text = text.strip()

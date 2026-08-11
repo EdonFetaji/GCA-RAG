@@ -1,6 +1,6 @@
 import json
 from typing import Tuple, Dict, List
-from constants import VALID_ENTITY_TYPES
+from extractor_agent.constants import VALID_ENTITY_TYPES
 
 def validate_schema(entities: Dict) -> Tuple[bool, Dict, List]:
     """
