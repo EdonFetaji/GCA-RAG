@@ -1,20 +1,10 @@
 import os
-import json
 from dotenv import load_dotenv
 from cerebras.cloud.sdk import Cerebras
-from constants import VALID_ENTITY_TYPES
+from extractor_agent.constants import VALID_ENTITY_TYPES
+from extractor_agent.json_utils import parse_json_with_repair
 
 load_dotenv()
-
-def safe_parse_json(text: str):
-    try:
-        return json.loads(text)
-    except json.JSONDecodeError:
-        start = text.find("{")
-        end = text.rfind("}") + 1
-        if start != -1 and end != -1:
-            return json.loads(text[start:end])
-        raise
 
 def extract_entities(document: str) -> dict:
     """
@@ -39,25 +29,26 @@ Document:
 {document}
 """
 
-    response = client.chat.completions.create(
-        model="llama-3.1-8b",
-        temperature=0.0,
-        top_p=1.0,
-        max_tokens=1024,
-        messages=[
-            {
-                "role": "system",
-                "content": "You are a deterministic knowledge graph entity extractor. Output strictly valid JSON. No explanations."
-            },
-            {
-                "role": "user",
-                "content": prompt
-            }
-        ]
-    )
+    def _call(p: str) -> str:
+        response = client.chat.completions.create(
+            model="llama-3.1-8b",
+            temperature=0.0,
+            top_p=1.0,
+            max_tokens=1024,
+            messages=[
+                {
+                    "role": "system",
+                    "content": "You are a deterministic knowledge graph entity extractor. Output strictly valid JSON. No explanations."
+                },
+                {
+                    "role": "user",
+                    "content": p
+                }
+            ]
+        )
+        return response.choices[0].message.content.strip()
 
-    response_text = response.choices[0].message.content.strip()
-    entities = safe_parse_json(response_text)
+    entities = parse_json_with_repair(_call, prompt)
     
     # Validate schema
     if not isinstance(entities, dict):

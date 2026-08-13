@@ -2,6 +2,7 @@ import os
 import json
 from dotenv import load_dotenv
 from cerebras.cloud.sdk import Cerebras
+from extractor_agent.json_utils import parse_json_with_repair
 
 # Load environment variables from .env file
 load_dotenv()
@@ -44,19 +45,28 @@ Response format:
 Return only the JSON array, no additional text."""
     
     # Call Cerebras model
-    response = client.chat.completions.create(
-        model="llama-3.1-8b",
-        max_tokens=2048,
-        messages=[
-            {
-                "role": "user",
-                "content": prompt
-            }
-        ]
-    )
-    
-    # Extract and parse the response
-    response_text = response.choices[0].message.content.strip()
-    relations = json.loads(response_text)
-    
+    def _call(p: str) -> str:
+        response = client.chat.completions.create(
+            model="llama-3.1-8b",
+            max_tokens=2048,
+            messages=[
+                {
+                    "role": "user",
+                    "content": p
+                }
+            ]
+        )
+        return response.choices[0].message.content.strip()
+
+    # Parse the response, surviving markdown fences, leading commentary, or
+    # truncated JSON by retrying with a repair prompt instead of a bare
+    # json.loads() that would crash the whole pipeline on the first
+    # malformed response.
+    relations = parse_json_with_repair(_call, prompt)
+
+    if not isinstance(relations, list):
+        raise ValueError(
+            f"Relation extraction expected a JSON array, got {type(relations).__name__}."
+        )
+
     return relations

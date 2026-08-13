@@ -38,11 +38,9 @@ cp .env.example .env
 
 ### 2. Run POC Scripts (In Order)
 
-> set LLM_PROVIDER = groq
+> set your CEREBRAS_API_KEY= **(your api key)**
 
-> set your GROQ_API_KEY= **(your api key)** 
-
-> best model for kg extraction : **llama-3.3-70b-versatile ** 
+> default model : **llama-3.1-70b** (`extractor_agent/` uses **llama-3.1-8b**)
 
 **POC 1: Extraction** - Proves KG extraction works
 ```bash
@@ -108,7 +106,7 @@ Once all three POCs run successfully, you're ready to build the full system:
 ## Dependencies
 
 Core libraries:
-- `anthropic` or `openai` - LLM API access
+- `cerebras-cloud-sdk` - LLM API access
 - `datasets` - HuggingFace Multi-News
 - `networkx` - Graph manipulation
 - `torch` + `torch-geometric` - GNN implementation
@@ -119,24 +117,20 @@ See `requirements.txt` for complete list with pinned versions.
 ## Configuration
 
 Edit `.env` to configure:
-- `LLM_PROVIDER`: "anthropic", "openai", "gemini", or "groq"
-- `ANTHROPIC_API_KEY`: Your Anthropic key
-- `OPENAI_API_KEY`: Your OpenAI key
-- `GEMINI_API_KEY`: Your Google AI Studio key
-- `GROQ_API_KEY`: Your Groq key
-- Model selection: `ANTHROPIC_MODEL`, `OPENAI_MODEL`, `GEMINI_MODEL`, `GROQ_MODEL`
+- `CEREBRAS_API_KEY`: Your Cerebras key (required — every script in this repo, POCs and `extractor_agent/`, calls Cerebras and only Cerebras)
+- `CEREBRAS_MODEL`: Model for the POC scripts / `utils/llm_utils.py` (default `llama-3.1-70b`). `extractor_agent/` currently hardcodes `llama-3.1-8b` in `extract_entities.py`/`extract_relations.py`.
+
+The repo previously supported Anthropic/OpenAI/Gemini/Groq as alternate providers; that's been dropped in favor of standardizing on Cerebras everywhere (`utils/llm_utils.py` and `extractor_agent/` were already Cerebras-only, so this just brings `poc_extraction.py` in line with them). If you want multi-provider support back, restore the Anthropic/OpenAI/Gemini/Groq branches removed from `poc_extraction.py`'s `call_llm()`, plus the corresponding branches in `utils/llm_utils.py`.
 
 ## Troubleshooting
 
 **"Missing API key"**
-- Make sure `.env` file exists and has your key
-- Check the key starts with `sk-ant-` (Anthropic) or `sk-` (OpenAI)
+- Make sure `.env` file exists and has `CEREBRAS_API_KEY` set
 
 **"Graph validation failed"**
 - LLM didn't output valid JSON
 - Check `data/raw_extraction_response.json` to see raw output
 - Adjust prompt if needed
-- For Gemini, ensure `GEMINI_MODEL` is valid for `generate_content` (see ListModels)
 
 **PyTorch Geometric install issues**
 - Follow official install guide: https://pytorch-geometric.readthedocs.io/

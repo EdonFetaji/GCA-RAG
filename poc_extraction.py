@@ -12,25 +12,24 @@ Run: python poc_extraction.py
 
 import os
 import json
+import pickle
 from dotenv import load_dotenv
 from datasets import load_dataset
 import networkx as nx
 import matplotlib.pyplot as plt
-from anthropic import Anthropic
-from openai import OpenAI
-from google import genai
-from groq import Groq
+from cerebras.cloud.sdk import Cerebras
 
 
 # Load environment variables
 load_dotenv()
 
 # Configuration
-LLM_PROVIDER = os.getenv("LLM_PROVIDER", "anthropic")
-ANTHROPIC_MODEL = os.getenv("ANTHROPIC_MODEL", "claude-sonnet-4-20250514")
-OPENAI_MODEL = os.getenv("OPENAI_MODEL", "gpt-4-turbo-preview")
-GEMINI_MODEL = os.getenv("GEMINI_MODEL", "models/gemini-2.5-flash")
-GROQ_MODEL = os.getenv("GROQ_MODEL", "llama-3.3-70b-versatile")
+# The repo previously supported Anthropic/OpenAI/Gemini/Groq here, but
+# utils/llm_utils.py (used by extraction/service.py) and extractor_agent/
+# only ever implemented Cerebras. Standardizing every entrypoint on
+# Cerebras so one CEREBRAS_API_KEY is enough to run the whole repo — see
+# Track 0.2 in the work plan for the alternative (restore multi-provider).
+CEREBRAS_MODEL = os.getenv("CEREBRAS_MODEL", "llama-3.1-70b")
 
 
 def load_single_cluster(cluster_idx=0):
@@ -107,66 +106,19 @@ Extract the knowledge graph as JSON:"""
 
 
 def call_llm(prompt):
-    """Call LLM API based on configured provider."""
+    """Call the Cerebras API (see the CEREBRAS_MODEL note above)."""
+    client = Cerebras(api_key=os.getenv("CEREBRAS_API_KEY"))
 
-    if LLM_PROVIDER == "anthropic":
-        client = Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
+    response = client.chat.completions.create(
+        model=CEREBRAS_MODEL,
+        messages=[
+            {"role": "user", "content": prompt}
+        ],
+        temperature=0.3,
+        max_tokens=4000,
+    )
 
-        response = client.messages.create(
-            model=ANTHROPIC_MODEL,
-            max_tokens=4000,
-            messages=[
-                {"role": "user", "content": prompt}
-            ]
-        )
-
-        return response.content[0].text
-
-    elif LLM_PROVIDER == "openai":
-        client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
-
-        response = client.chat.completions.create(
-            model=OPENAI_MODEL,
-            messages=[
-                {"role": "user", "content": prompt}
-            ],
-            temperature=0.3
-        )
-
-        return response.choices[0].message.content
-
-    elif LLM_PROVIDER == "gemini":
-        client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
-
-        response = client.models.generate_content(
-            model=GEMINI_MODEL,
-            contents=prompt,
-            config={
-                "temperature": 0.3,
-                "max_output_tokens": 4000,
-                "response_mime_type": "application/json"
-            }
-        )
-
-        return response.text
-
-    elif LLM_PROVIDER == "groq":
-        client = Groq(api_key=os.getenv("GROQ_API_KEY"))
-
-        response = client.chat.completions.create(
-            model=GROQ_MODEL,
-            messages=[
-                {"role": "user", "content": prompt}
-            ],
-            temperature=0.3,
-            max_completion_tokens=4000,
-            top_p=1
-        )
-
-        return response.choices[0].message.content
-
-    else:
-        raise ValueError(f"Unknown LLM provider: {LLM_PROVIDER}")
+    return response.choices[0].message.content
 
 
 def parse_json_to_graph(json_text):
@@ -347,7 +299,7 @@ def main():
     print(f"✓ Prompt built ({len(prompt)} chars)\n")
 
     # Step 3: Call LLM
-    print(f"Calling {LLM_PROVIDER.upper()} API...")
+    print(f"Calling CEREBRAS API ({CEREBRAS_MODEL})...")
     response = call_llm(prompt)
     print(f"✓ Received response ({len(response)} chars)\n")
 
@@ -385,8 +337,11 @@ def main():
     print("\nVisualizing graph...")
     visualize_graph(G)
 
-    # Save graph for later use
-    nx.write_gpickle(G, "data/extracted_graph.pkl")
+    # Save graph for later use.
+    # nx.write_gpickle()/read_gpickle() were removed in networkx 3.x, so we
+    # pickle the graph object directly instead.
+    with open("data/extracted_graph.pkl", "wb") as f:
+        pickle.dump(G, f)
     print("\n✓ Graph saved to data/extracted_graph.pkl")
 
     print(f"\n{'='*80}")
