@@ -1,0 +1,787 @@
+{
+  "cluster_idx": 9,
+  "corruption_type": "fragmentation",
+  "severity": 0.3,
+  "label": {
+    "consistency": 0.0,
+    "missing_entities": 0.0,
+    "contradictions": 0.0,
+    "fragmentation": 1.0
+  },
+  "corruption_metadata": {
+    "corruption_type": "fragmentation",
+    "severity": 0.3,
+    "removed_relations": 4
+  },
+  "knowledge_graph": {
+    "entities": [
+      {
+        "id": "entity_1",
+        "name": "Crystal Almeida",
+        "type": "PERSON",
+        "document_frequency": 4,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "The wounded officer is Crystal Almeida, 26.",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "Officer Crystal Almeida...",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "Officer Almeida was shot in the face.",
+            "section": null
+          },
+          {
+            "document_index": 2,
+            "quote": "Santander, officer Crystal Almeida and a loss-prevention officer for Home Depot were shot Tuesday by a man identified by police as 29-year-old Armando Luis Juarez.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_2",
+        "name": "Scott Painter",
+        "type": "PERSON",
+        "document_frequency": 4,
+        "confidence": 0.98,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "The third victim was identified as Scott Painter, a Home Depot loss-prevention officer.",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "the Home Depot security guard, now identified as Scott Painter",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "We are happy to report that Officer Crystal Almeida and our loss-prevention officer Scott Painter is making remarkable recovery.",
+            "section": null
+          },
+          {
+            "document_index": 2,
+            "quote": "Santander, officer Crystal Almeida and a loss-prevention officer for Home Depot were shot Tuesday by a man identified by police as 29-year-old Armando Luis Juarez.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_3",
+        "name": "Home Depot",
+        "type": "ORGANIZATION",
+        "document_frequency": 5,
+        "confidence": 0.97,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "The third victim was identified as Scott Painter, a Home Depot loss-prevention officer.",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "The shooting happened just after 4 p.m. Tuesday at the Home Depot store in the 11600 block of Forest Central Drive, near U.S. Highway 75 and Forest Lane",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "Home Depot security guard, now identified as Scott Painter",
+            "section": null
+          },
+          {
+            "document_index": 2,
+            "quote": "two Dallas policemen were shot at a nearby Home Depot",
+            "section": null
+          },
+          {
+            "document_index": 2,
+            "quote": "Santander, officer Crystal Almeida and a loss-prevention officer for Home Depot were shot Tuesday by a man identified by police as 29-year-old Armando Luis Juarez.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_4",
+        "name": "U. Renee Hall",
+        "type": "PERSON",
+        "document_frequency": 3,
+        "confidence": 0.97,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Dallas Police Chief U. Renee Hall said at a news conference Wednesday morning.",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "Dallas police Chief U. Renee Hall held a press conference outside the hospital this morning.",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "During the press conference Chief Hall said, \u201cWe are happy to report that Officer Crystal Almeida and our loss-prevention officer Scott Painter is making remarkable recovery.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_5",
+        "name": "Armando Luis Juarez",
+        "type": "PERSON",
+        "document_frequency": 7,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "The suspect, 29-year-old Armando Luis Juarez, was arrested Tuesday night after a police chase that ended in a neighborhood near Love Field.",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "The man who police say shot the officers and the security guard \u2013 Armando Luis Juarez \u2013 woke up behind bars today.",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "Police later spotted the truck, with Juarez and a female passenger inside, in Southeast Dallas and gave chase.",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "with the death of Officer Santander, Juarez has now been charged with Capital Murder...",
+            "section": null
+          },
+          {
+            "document_index": 2,
+            "quote": "Police arrested Juarez following a high-speed car chase.",
+            "section": null
+          },
+          {
+            "document_index": 2,
+            "quote": "\"There's no way my son could've done this,\" Ruben Juarez told The Dallas Morning News",
+            "section": null
+          },
+          {
+            "document_index": 2,
+            "quote": "Armando Juarez's grandmother, Janie Longoria, told reporters Tuesday that her grandson is a \"sweet, lovable person,\" but that his friends are a bad influence.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_6",
+        "name": "Love Field Airport",
+        "type": "LOCATION",
+        "document_frequency": 2,
+        "confidence": 0.96,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "near Love Field.",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "near Dallas Love Field Airport",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_7",
+        "name": "Police chase",
+        "type": "EVENT",
+        "document_frequency": 3,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "after a police chase that ended in a neighborhood near Love Field.",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "Police later spotted the truck... gave chase.",
+            "section": null
+          },
+          {
+            "document_index": 2,
+            "quote": "high-speed car chase.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_8",
+        "name": "Faith Johnson",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 0.96,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "District Attorney Faith Johnson said in a written statement.",
+            "section": null
+          },
+          {
+            "document_index": 0,
+            "quote": "the district attorney's office has assigned a team of attorneys to prosecute Juarez",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_9",
+        "name": "District Attorney's Office",
+        "type": "ORGANIZATION",
+        "document_frequency": 1,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "the district attorney's office has assigned a team of attorneys to prosecute Juarez",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_10",
+        "name": "Dallas Police Department",
+        "type": "ORGANIZATION",
+        "document_frequency": 5,
+        "confidence": 0.96,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "Officers Santander and Almeida both joined the Dallas Police Department there years ago",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "Dallas police Chief U. Renee Hall held a press conference",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "Dallas police Sergeant Michael Mata, who is also president of the Dallas Police Association",
+            "section": null
+          },
+          {
+            "document_index": 2,
+            "quote": "the city's mayor said.",
+            "section": null
+          },
+          {
+            "document_index": 2,
+            "quote": "Dallas Police Chief U. Renee Hall said late Tuesday.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_11",
+        "name": "Tuesday night",
+        "type": "DATE",
+        "document_frequency": 2,
+        "confidence": 0.94,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "was arrested Tuesday night after a police chase",
+            "section": null
+          },
+          {
+            "document_index": 2,
+            "quote": "He was taken into custody shortly before 10 p.m.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_12",
+        "name": "Wednesday morning",
+        "type": "DATE",
+        "document_frequency": 2,
+        "confidence": 0.94,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Dallas Police Chief U. Renee Hall said at a news conference Wednesday morning.",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "Dallas police Chief U. Renee Hall held a press conference outside the hospital this morning.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_13",
+        "name": "Rogelio Santander",
+        "type": "PERSON",
+        "document_frequency": 5,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "Officer Rogelio Santander died at Texas Health Presbyterian Dallas hospital at 8:11 a.m. Wednesday.",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "Officer Santander was shot in the back of the head.",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "Dallas Mayor Mike Rawlings also announced Officer Santander\u2019s death during a regularly scheduled city council meeting.",
+            "section": null
+          },
+          {
+            "document_index": 2,
+            "quote": "Mayor Mike Rawlings was presiding over a city council meeting when he announced the death of Rogelio Santander",
+            "section": null
+          },
+          {
+            "document_index": 2,
+            "quote": "Santander, officer Crystal Almeida and a loss-prevention officer for Home Depot were shot Tuesday by a man identified by police as 29-year-old Armando Luis Juarez.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_14",
+        "name": "Mike Rawlings",
+        "type": "PERSON",
+        "document_frequency": 3,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "Dallas Mayor Mike Rawlings also announced Officer Santander\u2019s death during a regularly scheduled city council meeting.",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "\u201cWe got our man,\u201d Dallas Mayor Mike Rawlings said.",
+            "section": null
+          },
+          {
+            "document_index": 2,
+            "quote": "Mayor Mike Rawlings was presiding over a city council meeting when he announced the death of Rogelio Santander",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_15",
+        "name": "Michael Mata",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 0.94,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "Dallas police Sergeant Michael Mata, who is also president of the Dallas Police Association, said",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "When an officer is shot or killed or injured in one city, it affects every officer across the country.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_16",
+        "name": "Dallas Police Association",
+        "type": "ORGANIZATION",
+        "document_frequency": 1,
+        "confidence": 0.9,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "who is also president of the Dallas Police Association",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_17",
+        "name": "Dallas County Jail",
+        "type": "LOCATION",
+        "document_frequency": 2,
+        "confidence": 0.96,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "taken into custody and ultimately transferred to the Dallas County Jail very early Wednesday morning.",
+            "section": null
+          },
+          {
+            "document_index": 2,
+            "quote": "He remains in jail on a $1.1 million bond.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_18",
+        "name": "Texas Health Presbyterian Dallas Hospital",
+        "type": "LOCATION",
+        "document_frequency": 2,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "Officer Rogelio Santander died at Texas Health Presbyterian Dallas hospital at 8:11 a.m. Wednesday.",
+            "section": null
+          },
+          {
+            "document_index": 2,
+            "quote": "late-night news conference at Texas Health Presbyterian Hospital Dallas.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_19",
+        "name": "Forest Central Drive",
+        "type": "LOCATION",
+        "document_frequency": 1,
+        "confidence": 0.92,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "The shooting happened just after 4 p.m. Tuesday at the Home Depot store in the 11600 block of Forest Central Drive, near U.S. Highway 75 and Forest Lane",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_20",
+        "name": "Shooting at Home Depot",
+        "type": "EVENT",
+        "document_frequency": 3,
+        "confidence": 0.96,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "The shooting happened just after 4 p.m. Tuesday at the Home Depot store in the 11600 block of Forest Central Drive",
+            "section": null
+          },
+          {
+            "document_index": 2,
+            "quote": "two Dallas policemen were shot at a nearby Home Depot",
+            "section": null
+          },
+          {
+            "document_index": 2,
+            "quote": "Santander, officer Crystal Almeida and a loss-prevention officer for Home Depot were shot Tuesday by a man identified by police as 29-year-old Armando Luis Juarez.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_21",
+        "name": "Arrest of Armando Luis Juarez",
+        "type": "EVENT",
+        "document_frequency": 3,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "was arrested Tuesday night after a police chase that ended in a neighborhood near Love Field.",
+            "section": null
+          },
+          {
+            "document_index": 2,
+            "quote": "Police arrested Juarez following a high-speed car chase.",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "officers were ultimately able to corner Juarez in a residential neighborhood near Dallas Love Field Airport and took the 29-year-old man into custody.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_22",
+        "name": "Ruben Juarez",
+        "type": "PERSON",
+        "document_frequency": 1,
+        "confidence": 0.96,
+        "evidence": [
+          {
+            "document_index": 2,
+            "quote": "\"There's no way my son could've done this,\" Ruben Juarez told The Dallas Morning News",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_23",
+        "name": "Janie Longoria",
+        "type": "PERSON",
+        "document_frequency": 1,
+        "confidence": 0.97,
+        "evidence": [
+          {
+            "document_index": 2,
+            "quote": "Armando Juarez's grandmother, Janie Longoria, told reporters Tuesday that her grandson is a \"sweet, lovable person,\" but that his friends are a bad influence.",
+            "section": null
+          }
+        ]
+      }
+    ],
+    "relations": [
+      {
+        "source": "entity_2",
+        "target": "entity_3",
+        "relation_type": "AFFILIATED_WITH",
+        "support_count": 1,
+        "source_documents": [
+          0
+        ],
+        "confidence": 0.94,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Scott Painter, a Home Depot loss-prevention officer.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_5",
+        "target": "entity_20",
+        "relation_type": "PARTICIPATED_IN",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          2
+        ],
+        "confidence": 0.98,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "The suspect, 29-year-old Armando Luis Juarez, was arrested Tuesday night after a police chase...",
+            "section": null
+          },
+          {
+            "document_index": 2,
+            "quote": "Santander, officer Crystal Almeida and a loss-prevention officer for Home Depot were shot Tuesday by a man identified by police as 29-year-old Armando Luis Juarez.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_20",
+        "target": "entity_13",
+        "relation_type": "RESULTED_IN",
+        "support_count": 2,
+        "source_documents": [
+          1,
+          2
+        ],
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "Officer Rogelio Santander died at Texas Health Presbyterian Dallas hospital at 8:11 a.m. Wednesday.",
+            "section": null
+          },
+          {
+            "document_index": 2,
+            "quote": "Mayor Mike Rawlings was presiding over a city council meeting when he announced the death of Rogelio Santander",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_20",
+        "target": "entity_1",
+        "relation_type": "RESULTED_IN",
+        "support_count": 2,
+        "source_documents": [
+          1,
+          2
+        ],
+        "confidence": 0.96,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "Officer Crystal Almeida... all underwent surgery after the shooting.",
+            "section": null
+          },
+          {
+            "document_index": 2,
+            "quote": "Santander, officer Crystal Almeida and a loss-prevention officer for Home Depot were shot Tuesday...",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_20",
+        "target": "entity_19",
+        "relation_type": "LOCATED_IN",
+        "support_count": 1,
+        "source_documents": [
+          1
+        ],
+        "confidence": 0.94,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "The shooting happened just after 4 p.m. Tuesday at the Home Depot store in the 11600 block of Forest Central Drive",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_7",
+        "target": "entity_21",
+        "relation_type": "RESULTED_IN",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          2
+        ],
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "The suspect, 29-year-old Armando Luis Juarez, was arrested Tuesday night after a police chase...",
+            "section": null
+          },
+          {
+            "document_index": 2,
+            "quote": "Police arrested Juarez following a high-speed car chase.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_21",
+        "target": "entity_17",
+        "relation_type": "LOCATED_IN",
+        "support_count": 1,
+        "source_documents": [
+          1
+        ],
+        "confidence": 0.94,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "taken into custody and ultimately transferred to the Dallas County Jail very early Wednesday morning.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_14",
+        "target": "entity_13",
+        "relation_type": "ANNOUNCED",
+        "support_count": 2,
+        "source_documents": [
+          1,
+          2
+        ],
+        "confidence": 0.98,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "Dallas Mayor Mike Rawlings also announced Officer Santander\u2019s death during a regularly scheduled city council meeting.",
+            "section": null
+          },
+          {
+            "document_index": 2,
+            "quote": "Mayor Mike Rawlings was presiding over a city council meeting when he announced the death of Rogelio Santander",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_15",
+        "target": "entity_10",
+        "relation_type": "AFFILIATED_WITH",
+        "support_count": 1,
+        "source_documents": [
+          1
+        ],
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "Dallas police Sergeant Michael Mata, who is also president of the Dallas Police Association",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_15",
+        "target": "entity_16",
+        "relation_type": "AFFILIATED_WITH",
+        "support_count": 1,
+        "source_documents": [
+          1
+        ],
+        "confidence": 0.93,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "who is also president of the Dallas Police Association",
+            "section": null
+          }
+        ]
+      }
+    ],
+    "reasoning_paths": [
+      {
+        "path": [
+          "entity_5",
+          "entity_20",
+          "entity_1"
+        ],
+        "description": "Armando Luis\u202fJuarez participated in the Home Depot shooting; that shooting directly resulted in Officer Crystal\u202fAlmeida being injured and requiring surgery.",
+        "confidence": 0.96
+      },
+      {
+        "path": [
+          "entity_5",
+          "entity_21",
+          "entity_17"
+        ],
+        "description": "The police chase involving Armando Luis\u202fJuarez resulted in his arrest, after which he was taken into custody and transferred to the Dallas County Jail.",
+        "confidence": 0.94
+      },
+      {
+        "path": [
+          "entity_20",
+          "entity_13",
+          "entity_14"
+        ],
+        "description": "The Home Depot shooting caused the death of Officer Rogelio\u202fSantander, and Mayor Mike\u202fRawlings publicly announced Santander\u2019s death during a city\u2011council meeting.",
+        "confidence": 0.98
+      },
+      {
+        "path": [
+          "entity_4",
+          "entity_10",
+          "entity_1"
+        ],
+        "description": "Dallas Police Chief U.\u202fRenee\u202fHall is affiliated with the Dallas Police Department, the same department to which Officer Crystal\u202fAlmeida is affiliated.",
+        "confidence": 0.95
+      }
+    ]
+  }
+}

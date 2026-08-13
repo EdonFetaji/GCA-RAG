@@ -2,7 +2,7 @@
 
 ## Overview
 
-- Clean KGs: 5
+- Clean KGs: 13
 - Train split: 4 clusters
 - Val split: 1 clusters
 - Test split: 0 clusters
@@ -11,9 +11,9 @@
 
 | Corruption type | Count |
 |---|---|
-| contradictions | 15 |
-| fragmentation | 15 |
-| missing_entities | 15 |
+| contradictions | 39 |
+| fragmentation | 39 |
+| missing_entities | 39 |
 
 Corruption types are reasonably balanced (all within 80% of the max).
 
@@ -31,11 +31,11 @@ Corruption types are reasonably balanced (all within 80% of the max).
 
 ## Spot-check sample
 
-- Cluster 4, **fragmentation** (severity=0.2): 45e/26r → 45e/21r — {'corruption_type': 'fragmentation', 'severity': 0.2, 'removed_relations': 5}
-- Cluster 0, **missing_entities** (severity=0.2): 47e/48r → 38e/9r — {'corruption_type': 'missing_entities', 'severity': 0.2, 'removed_entities': 9, 'removed_relations': 39}
-- Cluster 0, **contradictions** (severity=0.2): 47e/48r → 47e/48r — {'corruption_type': 'contradictions', 'severity': 0.2, 'flipped_relations': 10}
-- Cluster 1, **missing_entities** (severity=0.3): 21e/16r → 15e/2r — {'corruption_type': 'missing_entities', 'severity': 0.3, 'removed_entities': 6, 'removed_relations': 14}
-- Cluster 1, **missing_entities** (severity=0.1): 21e/16r → 19e/8r — {'corruption_type': 'missing_entities', 'severity': 0.1, 'removed_entities': 2, 'removed_relations': 8}
-- Cluster 1, **fragmentation** (severity=0.3): 21e/16r → 21e/11r — {'corruption_type': 'fragmentation', 'severity': 0.3, 'removed_relations': 5}
-- Cluster 0, **missing_entities** (severity=0.3): 47e/48r → 33e/3r — {'corruption_type': 'missing_entities', 'severity': 0.3, 'removed_entities': 14, 'removed_relations': 45}
-- Cluster 0, **missing_entities** (severity=0.1): 47e/48r → 42e/14r — {'corruption_type': 'missing_entities', 'severity': 0.1, 'removed_entities': 5, 'removed_relations': 34}
+- Cluster 6, **contradictions** (severity=0.1): 30e/10r → 30e/10r — {'corruption_type': 'contradictions', 'severity': 0.1, 'flipped_relations': 1}
+- Cluster 11, **fragmentation** (severity=0.3): 30e/22r → 30e/15r — {'corruption_type': 'fragmentation', 'severity': 0.3, 'removed_relations': 7}
+- Cluster 0, **fragmentation** (severity=0.1): 47e/48r → 47e/43r — {'corruption_type': 'fragmentation', 'severity': 0.1, 'removed_relations': 5}
+- Cluster 7, **fragmentation** (severity=0.2): 31e/22r → 31e/18r — {'corruption_type': 'fragmentation', 'severity': 0.2, 'removed_relations': 4}
+- Cluster 13, **missing_entities** (severity=0.3): 11e/5r → 8e/0r — {'corruption_type': 'missing_entities', 'severity': 0.3, 'removed_entities': 3, 'removed_relations': 5}
+- Cluster 13, **fragmentation** (severity=0.2): 11e/5r → 11e/4r — {'corruption_type': 'fragmentation', 'severity': 0.2, 'removed_relations': 1}
+- Cluster 13, **contradictions** (severity=0.2): 11e/5r → 11e/5r — {'corruption_type': 'contradictions', 'severity': 0.2, 'flipped_relations': 1}
+- Cluster 11, **missing_entities** (severity=0.3): 30e/22r → 21e/4r — {'corruption_type': 'missing_entities', 'severity': 0.3, 'removed_entities': 9, 'removed_relations': 18}

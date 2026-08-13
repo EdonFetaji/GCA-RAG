@@ -1,0 +1,599 @@
+{
+  "cluster_idx": 12,
+  "corruption_type": "fragmentation",
+  "severity": 0.1,
+  "label": {
+    "consistency": 0.0,
+    "missing_entities": 0.0,
+    "contradictions": 0.0,
+    "fragmentation": 1.0
+  },
+  "corruption_metadata": {
+    "corruption_type": "fragmentation",
+    "severity": 0.1,
+    "removed_relations": 1
+  },
+  "knowledge_graph": {
+    "entities": [
+      {
+        "id": "entity_1",
+        "name": "Benjamin Ullestad",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Officers found Benjamin Ullestad, 25, and Brandon Ullestad, 22, dead in the apartment they shared just before 3 p.m., according to the Orange County Coroner\u2019s Office.",
+            "section": null
+          },
+          {
+            "document_index": 2,
+            "quote": "They found the bodies of two men identified by the county coroner\u2019s office as 25-year\u2011old Benjamin Ullestad and 22\u2011year\u2011old Brandon Ullestad, he said.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_2",
+        "name": "Brandon Ullestad",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Officers found Benjamin Ullestad, 25, and Brandon Ullestad, 22, dead in the apartment they shared just before 3 p.m., according to the Orange County Coroner\u2019s Office.",
+            "section": null
+          },
+          {
+            "document_index": 2,
+            "quote": "They found the bodies of two men identified by the county coroner\u2019s office as 25-year\u2011old Benjamin Ullestad and 22\u2011year\u2011old Brandon Ullestad, he said.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_3",
+        "name": "Officer Angela Bennett",
+        "type": "PERSON",
+        "document_frequency": 1,
+        "confidence": 0.97,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Investigators are trying to piece together what led to the deaths, said Officer Angela Bennett, an agency spokeswoman.",
+            "section": null
+          },
+          {
+            "document_index": 0,
+            "quote": "We don\u2019t know,\u201d she said. \u201cWe\u2019re not ruling (murder\u2011suicide) out. We\u2019re not ruling out an accident\u2011suicide. But we are not looking for any outstanding suspects.\u201d",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_4",
+        "name": "Huntington Beach Police",
+        "type": "ORGANIZATION",
+        "document_frequency": 1,
+        "confidence": 0.96,
+        "evidence": [
+          {
+            "document_index": 2,
+            "quote": "Police received a call at 2:45 p.m. Sunday that sent officers to the 15700 block of Taft Lane, said Huntington Beach police Lt. David Dereszynski.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_5",
+        "name": "Orange County Coroner\u2019s Office",
+        "type": "ORGANIZATION",
+        "document_frequency": 2,
+        "confidence": 0.97,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Officers found Benjamin Ullestad, 25, and Brandon Ullestad, 22, dead in the apartment they shared just before 3 p.m., according to the Orange County Coroner\u2019s Office.",
+            "section": null
+          },
+          {
+            "document_index": 2,
+            "quote": "They found the bodies of two men identified by the county coroner\u2019s office as 25-year\u2011old Benjamin Ullestad and 22\u2011year\u2011old Brandon Ullestad, he said.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_6",
+        "name": "Huntington Beach",
+        "type": "LOCATION",
+        "document_frequency": 2,
+        "confidence": 0.98,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Two young men found dead from gunshot wounds in a Huntington Beach apartment on Sunday, Nov. 19 have been identified as brothers",
+            "section": null
+          },
+          {
+            "document_index": 2,
+            "quote": "The shooting deaths of two brothers inside a Huntington Beach apartment were being investigated Tuesday as the result of a possible murder\u2011suicide, authorities said.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_7",
+        "name": "Apartment (Huntington Beach)",
+        "type": "LOCATION",
+        "document_frequency": 2,
+        "confidence": 0.96,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Officers found Benjamin Ullestad, 25, and Brandon Ullestad, 22, dead in the apartment they shared just before 3 p.m., according to the Orange County Coroner\u2019s Office.",
+            "section": null
+          },
+          {
+            "document_index": 2,
+            "quote": "The shooting deaths of two brothers inside a Huntington Beach apartment were being investigated Tuesday as the result of a possible murder\u2011suicide, authorities said.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_8",
+        "name": "Marina High School",
+        "type": "LOCATION",
+        "document_frequency": 1,
+        "confidence": 0.94,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "It was unclear who made the distressed call from inside the home that led police to the apartment, which is close to Marina High School, the baseball fields of Marina Park and Helen Murphy Branch Library.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_9",
+        "name": "Marina Park",
+        "type": "LOCATION",
+        "document_frequency": 1,
+        "confidence": 0.94,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "It was unclear who made the distressed call from inside the home that led police to the apartment, which is close to Marina High School, the baseball fields of Marina Park and Helen Murphy Branch Library.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_10",
+        "name": "Helen Murphy Branch Library",
+        "type": "LOCATION",
+        "document_frequency": 1,
+        "confidence": 0.94,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "It was unclear who made the distress call from inside the home that led police to the apartment, which is close to Marina High School, the baseball fields of Marina Park and Helen Murphy Branch Library.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_11",
+        "name": "Nov. 19",
+        "type": "DATE",
+        "document_frequency": 1,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Two young men found dead from gunshot wounds in a Huntington Beach apartment on Sunday, Nov. 19 have been identified as brothers",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_12",
+        "name": "Handgun",
+        "type": "PRODUCT",
+        "document_frequency": 2,
+        "confidence": 0.97,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Though police would not give many details about the investigation yet, they did say a handgun was found at the scene.",
+            "section": null
+          },
+          {
+            "document_index": 2,
+            "quote": "A handgun was recovered at the scene.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_13",
+        "name": "Possible murder\u2011suicide",
+        "type": "CONCEPT",
+        "document_frequency": 2,
+        "confidence": 0.96,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "We\u2019re not ruling (murder\u2011suicide) out.",
+            "section": null
+          },
+          {
+            "document_index": 2,
+            "quote": "The shooting deaths of two brothers inside a Huntington Beach apartment were being investigated Tuesday as the result of a possible murder\u2011suicide, authorities said.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_14",
+        "name": "Shooting deaths of two brothers",
+        "type": "EVENT",
+        "document_frequency": 2,
+        "confidence": 0.98,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Two young men found dead from gunshot wounds in a Huntington Beach apartment on Sunday, Nov. 19 have been identified as brothers",
+            "section": null
+          },
+          {
+            "document_index": 2,
+            "quote": "The shooting deaths of two brothers inside a Huntington Beach apartment were being investigated Tuesday as the result of a possible murder\u2011suicide, authorities said.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_15",
+        "name": "Unidentified man (building owner)",
+        "type": "PERSON",
+        "document_frequency": 1,
+        "confidence": 0.94,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "A man who declined to give his name but identified himself as the owner of the building wore surgical gloves as he loaded full trash bags into the back of an SUV.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_16",
+        "name": "Surgical gloves",
+        "type": "PRODUCT",
+        "document_frequency": 1,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "A man who declined to give his name but identified himself as the owner of the building wore surgical gloves as he loaded full trash bags into the back of an SUV.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_17",
+        "name": "Trash bags",
+        "type": "PRODUCT",
+        "document_frequency": 1,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "A man who declined to give his name but identified himself as the owner of the building wore surgical gloves as he loaded full trash bags into the back of an SUV.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_18",
+        "name": "SUV",
+        "type": "PRODUCT",
+        "document_frequency": 1,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "A man who declined to give his name but identified himself as the owner of the building wore surgical gloves as he loaded full trash bags into the back of an SUV.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_19",
+        "name": "Taft Lane",
+        "type": "LOCATION",
+        "document_frequency": 1,
+        "confidence": 0.94,
+        "evidence": [
+          {
+            "document_index": 2,
+            "quote": "Police received a call at 2:45 p.m. Sunday that sent officers to the 15700 block of Taft Lane, said Huntington Beach police Lt. David Dereszynski.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_20",
+        "name": "15700 block of Taft Lane",
+        "type": "LOCATION",
+        "document_frequency": 1,
+        "confidence": 0.94,
+        "evidence": [
+          {
+            "document_index": 2,
+            "quote": "Police received a call at 2:45 p.m. Sunday that sent officers to the 15700 block of Taft Lane, said Huntington Beach police Lt. David Dereszynski.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_21",
+        "name": "David Dereszynski",
+        "type": "PERSON",
+        "document_frequency": 1,
+        "confidence": 0.98,
+        "evidence": [
+          {
+            "document_index": 2,
+            "quote": "Police received a call at 2:45 p.m. Sunday that sent officers to the 15700 block of Taft Lane, said Huntington Beach police Lt. David Dereszynski.",
+            "section": null
+          },
+          {
+            "document_index": 2,
+            "quote": "We are not looking for outstanding suspects at this time,\u201d Dereszynski said, adding that \u201cthere is no threat to the community.\u201d",
+            "section": null
+          }
+        ]
+      }
+    ],
+    "relations": [
+      {
+        "source": "entity_1",
+        "target": "entity_2",
+        "relation_type": "RELATED_TO",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          2
+        ],
+        "confidence": 0.96,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Two young men found dead from gunshot wounds in a Huntington Beach apartment on Sunday, Nov. 19 have been identified as brothers",
+            "section": null
+          },
+          {
+            "document_index": 2,
+            "quote": "The shooting deaths of two brothers inside a Huntington Beach apartment were being investigated Tuesday as the result of a possible murder\u2011suicide, authorities said.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_1",
+        "target": "entity_7",
+        "relation_type": "LOCATED_IN",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          2
+        ],
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Officers found Benjamin Ullestad, 25, and Brandon Ullestad, 22, dead in the apartment they shared just before 3 p.m., according to the Orange County Coroner\u2019s Office.",
+            "section": null
+          },
+          {
+            "document_index": 2,
+            "quote": "The shooting deaths of two brothers inside a Huntington Beach apartment were being investigated Tuesday as the result of a possible murder\u2011suicide, authorities said.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_2",
+        "target": "entity_7",
+        "relation_type": "LOCATED_IN",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          2
+        ],
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Officers found Benjamin Ullestad, 25, and Brandon Ullestad, 22, dead in the apartment they shared just before 3 p.m., according to the Orange County Coroner\u2019s Office.",
+            "section": null
+          },
+          {
+            "document_index": 2,
+            "quote": "The shooting deaths of two brothers inside a Huntington Beach apartment were being investigated Tuesday as the result of a possible murder\u2011suicide, authorities said.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_7",
+        "target": "entity_6",
+        "relation_type": "LOCATED_IN",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          2
+        ],
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Two young men found dead from gunshot wounds in a Huntington Beach apartment on Sunday, Nov. 19 have been identified as brothers",
+            "section": null
+          },
+          {
+            "document_index": 2,
+            "quote": "The shooting deaths of two brothers inside a Huntington Beach apartment were being investigated Tuesday as the result of a possible murder\u2011suicide, authorities said.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_21",
+        "target": "entity_4",
+        "relation_type": "AFFILIATED_WITH",
+        "support_count": 1,
+        "source_documents": [
+          2
+        ],
+        "confidence": 0.98,
+        "evidence": [
+          {
+            "document_index": 2,
+            "quote": "Police received a call at 2:45 p.m. Sunday that sent officers to the 15700 block of Taft Lane, said Huntington Beach police Lt. David Dereszynski.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_21",
+        "target": "entity_14",
+        "relation_type": "ANNOUNCED",
+        "support_count": 1,
+        "source_documents": [
+          2
+        ],
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 2,
+            "quote": "We are not looking for outstanding suspects at this time,\u201d Dereszynski said, adding that \u201cthere is no threat to the community.\u201d",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_12",
+        "target": "entity_14",
+        "relation_type": "RELATED_TO",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          2
+        ],
+        "confidence": 0.97,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Though police would not give many details about the investigation yet, they did say a handgun was found at the scene.",
+            "section": null
+          },
+          {
+            "document_index": 2,
+            "quote": "A handgun was recovered at the scene.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_14",
+        "target": "entity_1",
+        "relation_type": "RESULTED_IN",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          2
+        ],
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Officers found Benjamin Ullestad, 25, and Brandon Ullestad, 22, dead in the apartment they shared just before 3 p.m., according to the Orange County Coroner\u2019s Office.",
+            "section": null
+          },
+          {
+            "document_index": 2,
+            "quote": "They found the bodies of two men identified by the county coroner\u2019s office as 25-year\u2011old Benjamin Ullestad and 22\u2011year\u2011old Brandon Ullestad, he said.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_14",
+        "target": "entity_2",
+        "relation_type": "RESULTED_IN",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          2
+        ],
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Officers found Benjamin Ullestad, 25, and Brandon Ullestad, 22, dead in the apartment they shared just before 3 p.m., according to the Orange County Coroner\u2019s Office.",
+            "section": null
+          },
+          {
+            "document_index": 2,
+            "quote": "They found the bodies of two men identified by the county coroner\u2019s office as 25-year\u2011old Benjamin Ullestad and 22\u2011year\u2011old Brandon Ullestad, he said.",
+            "section": null
+          }
+        ]
+      }
+    ],
+    "reasoning_paths": [
+      {
+        "path": [
+          "entity_1",
+          "entity_14",
+          "entity_13"
+        ],
+        "description": "The shooting deaths (entity_14) that resulted in Benjamin Ullestad's death (entity_1) are being investigated as a possible murder\u2011suicide (entity_13), linking the victim to that hypothesis.",
+        "confidence": 0.94
+      },
+      {
+        "path": [
+          "entity_12",
+          "entity_14",
+          "entity_1"
+        ],
+        "description": "A handgun (entity_12) was found at the scene and is related to the shooting deaths (entity_14) that caused Benjamin Ullestad\u2019s death (entity_1), suggesting the gun was the lethal instrument.",
+        "confidence": 0.95
+      },
+      {
+        "path": [
+          "entity_21",
+          "entity_14",
+          "entity_13"
+        ],
+        "description": "Lt. David Dereszynski (entity_21) announced the investigation into the shooting deaths (entity_14) and mentioned the possibility of a murder\u2011suicide (entity_13), connecting the official\u2019s statement to that hypothesis.",
+        "confidence": 0.94
+      },
+      {
+        "path": [
+          "entity_1",
+          "entity_2",
+          "entity_14"
+        ],
+        "description": "Benjamin (entity_1) and his brother Brandon (entity_2) are identified as related brothers, both of whom were victims of the same shooting deaths (entity_14), highlighting the familial nature of the incident.",
+        "confidence": 0.95
+      }
+    ]
+  }
+}

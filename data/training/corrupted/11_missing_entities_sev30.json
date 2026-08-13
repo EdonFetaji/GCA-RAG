@@ -1,0 +1,414 @@
+{
+  "cluster_idx": 11,
+  "corruption_type": "missing_entities",
+  "severity": 0.3,
+  "label": {
+    "consistency": 0.0,
+    "missing_entities": 1.0,
+    "contradictions": 0.0,
+    "fragmentation": 0.0
+  },
+  "corruption_metadata": {
+    "corruption_type": "missing_entities",
+    "severity": 0.3,
+    "removed_entities": 9,
+    "removed_relations": 18
+  },
+  "knowledge_graph": {
+    "entities": [
+      {
+        "id": "entity_1",
+        "name": "Barack Obama",
+        "type": "PERSON",
+        "document_frequency": 1,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "High-profile Hollywooders, as well as several sports, business and political luminaries, are offering up a string of last-minute, big-dollar contributions both Barack Obama and Mitt Romney.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_3",
+        "name": "Jake Gyllenhaal",
+        "type": "PERSON",
+        "document_frequency": 1,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Actors Jake Gyllenhaal, Zach Galifianakis, Renee Zellweger, Susan Saint James Ebersol and Amanda Seyfried are among the four-figure donors in recent days to Obama\u2019s campaign, according to federal campaign finance disclosures.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_4",
+        "name": "Zach Galifianakis",
+        "type": "PERSON",
+        "document_frequency": 1,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Actors Jake Gyllenhaal, Zach Galifianakis, Renee Zellweger, Susan Saint James Ebersol and Amanda Seyfried are among the four-figure donors in recent days to Obama\u2019s campaign, according to federal campaign finance disclosures.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_5",
+        "name": "Renee Zellweger",
+        "type": "PERSON",
+        "document_frequency": 1,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Actors Jake Gyllenhaal, Zach Galifianakis, Renee Zellweger, Susan Saint James Ebersol and Amanda Seyfried are among the four-figure donors in recent days to Obama\u2019s campaign, according to federal campaign finance disclosures.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_6",
+        "name": "Susan Saint James Ebersol",
+        "type": "PERSON",
+        "document_frequency": 1,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Actors Jake Gyllenhaal, Zach Galifianakis, Renee Zellweger, Susan Saint James Ebersol and Amanda Seyfried are among the four-figure donors in recent days to Obama\u2019s campaign, according to federal campaign finance disclosures.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_8",
+        "name": "Anne Rice",
+        "type": "PERSON",
+        "document_frequency": 1,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Author Anne Rice, Disney TV Animation Executive Producer Dan Povenmire, and comedy writer Ian Maxtone-Graham are other notable Obama contributors.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_9",
+        "name": "Dan Povenmire",
+        "type": "PERSON",
+        "document_frequency": 1,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Author Anne Rice, Disney TV Animation Executive Producer Dan Povenmire, and comedy writer Ian Maxtone-Graham are other notable Obama contributors.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_11",
+        "name": "Kelsey Grammer",
+        "type": "PERSON",
+        "document_frequency": 1,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "For Romney, actor Kelsey Grammer, Denver Broncos executive John Elway and former game show host Bob Barker have made 11th hour, four-figure donations.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_14",
+        "name": "Sarah Palin",
+        "type": "PERSON",
+        "document_frequency": 1,
+        "confidence": 0.97,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Sarah Palin\u2019s political action committee, SARAH PAC, also chipped in $5,000 last week.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_16",
+        "name": "Becky Dunlop",
+        "type": "PERSON",
+        "document_frequency": 1,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Heritage Foundation Executive Becky Dunlop",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_17",
+        "name": "Heritage Foundation",
+        "type": "ORGANIZATION",
+        "document_frequency": 1,
+        "confidence": 0.94,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Heritage Foundation Executive Becky Dunlop",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_18",
+        "name": "Susan Neely",
+        "type": "PERSON",
+        "document_frequency": 1,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "American Beverage Association Chief Executive Susan Neely",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_19",
+        "name": "American Beverage Association",
+        "type": "ORGANIZATION",
+        "document_frequency": 1,
+        "confidence": 0.94,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "American Beverage Association Chief Executive Susan Neely",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_20",
+        "name": "Philip W. O\u2019Neil",
+        "type": "PERSON",
+        "document_frequency": 1,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "former Mike\u2019s Hard Lemonade President Philip W. O\u2019Neil",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_21",
+        "name": "Mike\u2019s Hard Lemonade",
+        "type": "PRODUCT",
+        "document_frequency": 1,
+        "confidence": 0.93,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "former Mike\u2019s Hard Lemonade President Philip W. O\u2019Neil",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_22",
+        "name": "Consumer Electronics Association",
+        "type": "ORGANIZATION",
+        "document_frequency": 1,
+        "confidence": 0.94,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "the political action committee of the Consumer Electronics Association",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_23",
+        "name": "Frank Wolf",
+        "type": "PERSON",
+        "document_frequency": 1,
+        "confidence": 0.96,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "the congressional campaign of Rep. Frank Wolf (R-Va.) are among the recent donors of at least $1,000 to Romney\u2019s campaign.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_26",
+        "name": "Ohio",
+        "type": "LOCATION",
+        "document_frequency": 1,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "The Obama campaign is using a mailer ... in the crucial battleground state of Ohio.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_27",
+        "name": "Reddit",
+        "type": "ORGANIZATION",
+        "document_frequency": 1,
+        "confidence": 0.97,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "A user on the social news site Reddit with the handle MollyBloom11 posted a picture of the mailer on the site last night.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_28",
+        "name": "MollyBloom11",
+        "type": "PERSON",
+        "document_frequency": 1,
+        "confidence": 0.96,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "A user on the social news site Reddit with the handle MollyBloom11 posted a picture of the mailer on the site last night.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_29",
+        "name": "Hunter Walker",
+        "type": "PERSON",
+        "document_frequency": 1,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "Follow Hunter Walker on Twitter or via RSS.",
+            "section": null
+          }
+        ]
+      }
+    ],
+    "relations": [
+      {
+        "source": "entity_16",
+        "target": "entity_17",
+        "relation_type": "AFFILIATED_WITH",
+        "support_count": 1,
+        "source_documents": [
+          0
+        ],
+        "confidence": 0.88,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Heritage Foundation Executive Becky Dunlop",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_18",
+        "target": "entity_19",
+        "relation_type": "AFFILIATED_WITH",
+        "support_count": 1,
+        "source_documents": [
+          0
+        ],
+        "confidence": 0.88,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "American Beverage Association Chief Executive Susan Neely",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_20",
+        "target": "entity_21",
+        "relation_type": "AFFILIATED_WITH",
+        "support_count": 1,
+        "source_documents": [
+          0
+        ],
+        "confidence": 0.88,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "former Mike\u2019s Hard Lemonade President Philip W. O\u2019Neil",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_28",
+        "target": "entity_27",
+        "relation_type": "PARTICIPATED_IN",
+        "support_count": 1,
+        "source_documents": [
+          1
+        ],
+        "confidence": 0.9,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "A user on the social news site Reddit with the handle MollyBloom11 posted a picture of the mailer on the site last night.",
+            "section": null
+          }
+        ]
+      }
+    ],
+    "reasoning_paths": [
+      {
+        "path": [
+          "entity_14",
+          "entity_15",
+          "entity_2"
+        ],
+        "description": "Sarah Palin is affiliated with her political action committee SARAH PAC, and SARAH PAC made a $5,000 donation to Mitt Romney, showing Palin's indirect financial backing for Romney's campaign.",
+        "confidence": 0.85
+      },
+      {
+        "path": [
+          "entity_8",
+          "entity_25",
+          "entity_26"
+        ],
+        "description": "Author Anne Rice contributed to the Obama campaign, and the Obama campaign focused a get\u2011out\u2011the\u2011vote mailer in Ohio, a pivotal swing state, indicating that literary contributors were supporting Obama\u2019s effort in a key battleground.",
+        "confidence": 0.91
+      },
+      {
+        "path": [
+          "entity_3",
+          "entity_25",
+          "entity_26"
+        ],
+        "description": "Actor Jake Gyllenhaal donated to the Obama campaign, which was deploying a targeted mailer in Ohio, suggesting that celebrity donors were helping Obama\u2019s push in an essential swing state.",
+        "confidence": 0.92
+      }
+    ]
+  }
+}

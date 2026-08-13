@@ -1,0 +1,350 @@
+{
+  "cluster_idx": 8,
+  "corruption_type": "contradictions",
+  "severity": 0.3,
+  "label": {
+    "consistency": 0.0,
+    "missing_entities": 0.0,
+    "contradictions": 1.0,
+    "fragmentation": 0.0
+  },
+  "corruption_metadata": {
+    "corruption_type": "contradictions",
+    "severity": 0.3,
+    "flipped_relations": 2
+  },
+  "knowledge_graph": {
+    "entities": [
+      {
+        "id": "entity_1",
+        "name": "Alexa Internet",
+        "type": "ORGANIZATION",
+        "document_frequency": 1,
+        "confidence": 0.97,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Starting in 1996, Alexa Internet has been donating their crawl data to the Internet Archive.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_2",
+        "name": "Internet Archive",
+        "type": "ORGANIZATION",
+        "document_frequency": 1,
+        "confidence": 0.97,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Starting in 1996, Alexa Internet has been donating their crawl data to the Internet Archive.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_3",
+        "name": "Wayback Machine",
+        "type": "PRODUCT",
+        "document_frequency": 1,
+        "confidence": 0.96,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "these data are added to the Wayback Machine after an embargo period.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_4",
+        "name": "1996",
+        "type": "DATE",
+        "document_frequency": 1,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Starting in 1996, Alexa Internet has been donating their crawl data to the Internet Archive.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_5",
+        "name": "crawl data",
+        "type": "CONCEPT",
+        "document_frequency": 1,
+        "confidence": 0.94,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Starting in 1996, Alexa Internet has been donating their crawl data to the Internet Archive.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_6",
+        "name": "St. Paul",
+        "type": "LOCATION",
+        "document_frequency": 1,
+        "confidence": 0.98,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "St. Paul's Top 3 Dive Bars",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "Artsy Deals Worth Seeking Out In St. Paul This Week",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_7",
+        "name": "Minneapolis",
+        "type": "LOCATION",
+        "document_frequency": 1,
+        "confidence": 0.98,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "Minneapolis Moonshine: 5 Of The City's Top Distilleries",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "northeast Minneapolis called Que Viet",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_8",
+        "name": "WCCO",
+        "type": "ORGANIZATION",
+        "document_frequency": 1,
+        "confidence": 0.97,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "WCCO Viewers' Choice For Best Egg Roll In Minnesota",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_9",
+        "name": "Que Viet",
+        "type": "ORGANIZATION",
+        "document_frequency": 1,
+        "confidence": 0.96,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "northeast Minneapolis called Que Viet",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_10",
+        "name": "The Sunshine Factory",
+        "type": "ORGANIZATION",
+        "document_frequency": 1,
+        "confidence": 0.96,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "The Sunshine Factory opened in New Hope in 1976",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "The Sunshine Factory Burns Bright In Plymouth",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_11",
+        "name": "Plymouth",
+        "type": "LOCATION",
+        "document_frequency": 1,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "The Sunshine Factory Burns Bright In Plymouth",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_12",
+        "name": "New Hope",
+        "type": "LOCATION",
+        "document_frequency": 1,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "The Sunshine Factory opened in New Hope in 1976",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_13",
+        "name": "1976",
+        "type": "DATE",
+        "document_frequency": 1,
+        "confidence": 0.94,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "The Sunshine Factory opened in New Hope in 1976",
+            "section": null
+          }
+        ]
+      }
+    ],
+    "relations": [
+      {
+        "source": "entity_1",
+        "target": "entity_2",
+        "relation_type": "RELATED_TO",
+        "support_count": 1,
+        "source_documents": [
+          0
+        ],
+        "confidence": 0.9,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "donating their crawl data to the Internet Archive.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_5",
+        "target": "entity_3",
+        "relation_type": "RELATED_TO",
+        "support_count": 1,
+        "source_documents": [
+          0
+        ],
+        "confidence": 0.88,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "these data are added to the Wayback Machine after an embargo period.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_7",
+        "target": "entity_9",
+        "relation_type": "LOCATED_IN",
+        "support_count": 1,
+        "source_documents": [
+          1
+        ],
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "northeast Minneapolis called Que Viet",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_10",
+        "target": "entity_12",
+        "relation_type": "LOCATED_IN",
+        "support_count": 1,
+        "source_documents": [
+          1
+        ],
+        "confidence": 0.94,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "The Sunshine Factory opened in New Hope in 1976",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_10",
+        "target": "entity_11",
+        "relation_type": "LOCATED_IN",
+        "support_count": 1,
+        "source_documents": [
+          1
+        ],
+        "confidence": 0.94,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "The Sunshine Factory Burns Bright In Plymouth",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_13",
+        "target": "entity_10",
+        "relation_type": "ANNOUNCED",
+        "support_count": 1,
+        "source_documents": [
+          1
+        ],
+        "confidence": 0.93,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "The Sunshine Factory opened in New Hope in 1976",
+            "section": null
+          }
+        ]
+      }
+    ],
+    "reasoning_paths": [
+      {
+        "path": [
+          "entity_1",
+          "entity_5",
+          "entity_3"
+        ],
+        "description": "Alexa Internet (entity_1) generates crawl data (entity_5); that crawl data is later added to the Wayback Machine (entity_3). Therefore, the web\u2011archive content supplied by Alexa eventually appears in the Wayback Machine.",
+        "confidence": 0.84
+      },
+      {
+        "path": [
+          "entity_1",
+          "entity_2",
+          "entity_3"
+        ],
+        "description": "Alexa Internet (entity_1) donates its crawl data to the Internet Archive (entity_2), and the Internet Archive operates the Wayback Machine (entity_3). Hence, Alexa\u2019s contributions flow through the Internet Archive and become accessible via the Wayback Machine.",
+        "confidence": 0.8
+      },
+      {
+        "path": [
+          "entity_10",
+          "entity_12",
+          "entity_13"
+        ],
+        "description": "The Sunshine Factory (entity_10) opened in New Hope (entity_12) in the year 1976 (entity_13). This links the company\u2019s establishment date directly to its New Hope location.",
+        "confidence": 0.92
+      }
+    ]
+  }
+}
