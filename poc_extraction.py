@@ -1,4 +1,21 @@
 """
+LEGACY / REFERENCE ONLY — not the canonical extraction path.
+
+This was POC Step 1, the original proof-of-concept that KG extraction from
+a Multi-News cluster works at all: single inline prompt, one LLM call, no
+evidence tracing, no grading, no ontology customization. It's been
+superseded by extraction/service.py's five methods (ontology-constrained,
+evidence-traced, two-agent finder/grader, evidence accumulation, and the
+full pipeline combining all of them), which is the production extraction
+path per docs/adr/0001-canonical-extraction-path.md.
+
+Kept around because it's small, self-contained, and useful for a quick
+sanity check that an API key + model + graph pipeline works end-to-end
+without spinning up the FastAPI service — but new work should go through
+extraction/service.py (or extraction/router.py's endpoints), not here.
+
+---
+
 POC Step 1: Extract Knowledge Graph from a single Multi-News cluster
 
 This script proves the core extraction logic works:
@@ -29,7 +46,11 @@ load_dotenv()
 # only ever implemented Cerebras. Standardizing every entrypoint on
 # Cerebras so one CEREBRAS_API_KEY is enough to run the whole repo — see
 # Track 0.2 in the work plan for the alternative (restore multi-provider).
-CEREBRAS_MODEL = os.getenv("CEREBRAS_MODEL", "llama-3.1-70b")
+# Cerebras retires/rotates model IDs on its public endpoints periodically
+# (llama-3.1-8b/70b, used here previously, are gone as of mid-2026), so this
+# is read from the environment with a current production-tier default
+# rather than hardcoded.
+CEREBRAS_MODEL = os.getenv("CEREBRAS_MODEL", "gpt-oss-120b")
 
 
 def load_single_cluster(cluster_idx=0):

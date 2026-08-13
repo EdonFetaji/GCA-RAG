@@ -7,9 +7,13 @@ from extractor_agent.json_utils import parse_json_with_repair
 # Load environment variables from .env file
 load_dotenv()
 
+# See extract_entities.py — read the model from the environment rather than
+# hardcoding a Cerebras model ID that can be retired without notice.
+CEREBRAS_MODEL = os.getenv("CEREBRAS_MODEL", "gpt-oss-120b")
+
 def extract_relations(document: str, entities: dict) -> list:
     """
-    Extract relations between entities from a document using Cerebras Llama 3.1 model.
+    Extract relations between entities from a document using a Cerebras-hosted model.
     
     Args:
         document (str): The original document text
@@ -47,7 +51,7 @@ Return only the JSON array, no additional text."""
     # Call Cerebras model
     def _call(p: str) -> str:
         response = client.chat.completions.create(
-            model="llama-3.1-8b",
+            model=CEREBRAS_MODEL,
             max_tokens=2048,
             messages=[
                 {

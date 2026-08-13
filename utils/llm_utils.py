@@ -8,7 +8,7 @@ load_dotenv()
 
 # Configuration
 LLM_PROVIDER = os.getenv("LLM_PROVIDER", "cerebras")
-CEREBRAS_MODEL = os.getenv("CEREBRAS_MODEL", "llama-3.1-70b")
+CEREBRAS_MODEL = os.getenv("CEREBRAS_MODEL", "gpt-oss-120b")
 
 
 def call_llm(prompt):

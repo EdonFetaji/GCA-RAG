@@ -1,4 +1,17 @@
 """
+EXPLORATORY — not the canonical extraction path, not superseded either.
+
+This is a library-exploration spike: it tests a genuinely different
+approach (the third-party kg-gen library instead of hand-rolled prompts)
+rather than an earlier draft of the same thing, so — unlike
+poc_extraction.py — there's nothing to fold into extraction/service.py
+here. Per docs/adr/0001-canonical-extraction-path.md, extraction/service.py
+is the production path for real pipeline work (Track 2+); this file stays
+as a standalone comparison point in case kg-gen's output quality/ontology
+fit is ever worth revisiting, not something to build on top of.
+
+---
+
 POC: Knowledge Graph Extraction using kg-gen library
 
 This script tests the kg-gen library for KG extraction on Multi-News clusters

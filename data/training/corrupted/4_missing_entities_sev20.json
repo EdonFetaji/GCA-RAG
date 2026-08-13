@@ -1,0 +1,678 @@
+{
+  "cluster_idx": 4,
+  "corruption_type": "missing_entities",
+  "severity": 0.2,
+  "label": {
+    "consistency": 0.0,
+    "missing_entities": 1.0,
+    "contradictions": 0.0,
+    "fragmentation": 0.0
+  },
+  "corruption_metadata": {
+    "corruption_type": "missing_entities",
+    "severity": 0.2,
+    "removed_entities": 9,
+    "removed_relations": 20
+  },
+  "knowledge_graph": {
+    "entities": [
+      {
+        "id": "entity_2",
+        "name": "Friedrichs v. California Teachers Association",
+        "type": "EVENT",
+        "document_frequency": 1,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "The case, Friedrichs v. California Teachers Association, was brought by Orange County, Calif. schoolteacher Rebecca Friedrichs and other teachers",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_3",
+        "name": "Orange County, California",
+        "type": "LOCATION",
+        "document_frequency": 1,
+        "confidence": 0.94,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Orange County, Calif. schoolteacher Rebecca Friedrichs",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_4",
+        "name": "Catherine Fisk",
+        "type": "PERSON",
+        "document_frequency": 1,
+        "confidence": 0.96,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "The significance is substantial, either way it comes out,\" said University of California at Irvine Law Professor Catherine Fisk.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_5",
+        "name": "University of California at Irvine",
+        "type": "ORGANIZATION",
+        "document_frequency": 1,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "University of California at Irvine Law Professor Catherine Fisk",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_6",
+        "name": "Justice Anthony Kennedy",
+        "type": "PERSON",
+        "document_frequency": 1,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Justice Anthony Kennedy won the support of six other justices for a decision that said such programs must be handled with \"strict scrutiny\"",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_7",
+        "name": "Justice Elena Kagan",
+        "type": "PERSON",
+        "document_frequency": 1,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Justice Elena Kagan has recused herself because she was involved in the case during her previous service as solicitor general.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_8",
+        "name": "Little Sisters of the Poor",
+        "type": "ORGANIZATION",
+        "document_frequency": 1,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "including the Little Sisters of the Poor nursing home in Denver",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_9",
+        "name": "Denver",
+        "type": "LOCATION",
+        "document_frequency": 1,
+        "confidence": 0.94,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "including the Little Sisters of the Poor nursing home in Denver",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_10",
+        "name": "Judge Edith Jones",
+        "type": "PERSON",
+        "document_frequency": 1,
+        "confidence": 0.94,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "5th Circuit Judge Edith Jones complained in a dissent last week.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_11",
+        "name": "5th Circuit",
+        "type": "ORGANIZATION",
+        "document_frequency": 1,
+        "confidence": 0.94,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "5th Circuit Judge Edith Jones complained in a dissent last week.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_12",
+        "name": "Governor Walker",
+        "type": "PERSON",
+        "document_frequency": 1,
+        "confidence": 0.94,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "\"Governor Walker, before he withdrew from the presidential competition, said he thought abortion should be forbidden even if the mother dies as a result, ... \"Is that kind of official Wisconsin policy?\"",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_13",
+        "name": "Assistant Attorney General Brian Keenan",
+        "type": "PERSON",
+        "document_frequency": 1,
+        "confidence": 0.94,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "\"That perhaps is Governor Walker\u2019s personal view, but it\u2019s not a state policy,\" Assistant Attorney General Brian Keenan replied.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_15",
+        "name": "Abigail Fisher",
+        "type": "PERSON",
+        "document_frequency": 1,
+        "confidence": 0.96,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "The case was brought by rejected applicant Abigail Fisher",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_16",
+        "name": "University of Texas at Austin",
+        "type": "ORGANIZATION",
+        "document_frequency": 1,
+        "confidence": 0.96,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "the constitutionality of the University of Texas at Austin's affirmative action program.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_21",
+        "name": "University of Illinois College of Law",
+        "type": "ORGANIZATION",
+        "document_frequency": 1,
+        "confidence": 0.98,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "said Vikram D. Amar, dean of the University of Illinois College of Law.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_22",
+        "name": "Neal E. Devins",
+        "type": "PERSON",
+        "document_frequency": 1,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "\u201cThis coming term will again put into focus that the court is divided along partisan lines...,\u201d said Neal E. Devins, a law professor at William & Mary.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_23",
+        "name": "William & Mary",
+        "type": "ORGANIZATION",
+        "document_frequency": 1,
+        "confidence": 0.98,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "a law professor at William & Mary.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_24",
+        "name": "Irving L. Gornstein",
+        "type": "PERSON",
+        "document_frequency": 1,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "said Irving L. Gornstein, the executive director of Georgetown\u2019s Supreme Court Institute.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_25",
+        "name": "Georgetown\u2019s Supreme Court Institute",
+        "type": "ORGANIZATION",
+        "document_frequency": 1,
+        "confidence": 0.98,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "the executive director of Georgetown\u2019s Supreme Court Institute.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_26",
+        "name": "John P. Elwood",
+        "type": "PERSON",
+        "document_frequency": 1,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "\u201cIt could set the stage for a Citizens United\u2011style reconsideration in the area of union dues,\u201d said John P. Elwood, a lawyer at Vinson & Elkins.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_27",
+        "name": "Vinson & Elkins",
+        "type": "ORGANIZATION",
+        "document_frequency": 1,
+        "confidence": 0.98,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "a lawyer at Vinson & Elkins.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_28",
+        "name": "Justice Stephen G. Breyer",
+        "type": "PERSON",
+        "document_frequency": 1,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "On the last day of the term in June, Justices Breyer and Ginsburg announced that they had grave doubts about the constitutionality of the death penalty",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_29",
+        "name": "Justice Ruth Bader Ginsburg",
+        "type": "PERSON",
+        "document_frequency": 1,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "Justices Breyer and Ginsburg announced that they had grave doubts about the constitutionality of the death penalty",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_31",
+        "name": "June",
+        "type": "DATE",
+        "document_frequency": 3,
+        "confidence": 0.94,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "In June the Supreme Court voted, 5\u20114, to block key parts of the law...",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "On the last day of the term in June, Justices Breyer and Ginsburg announced...",
+            "section": null
+          },
+          {
+            "document_index": 2,
+            "quote": "In June the Supreme Court voted, 5\u20114, to block key parts of the law...",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_32",
+        "name": "New term",
+        "type": "EVENT",
+        "document_frequency": 2,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "as the court's new term kicks off Monday",
+            "section": null
+          },
+          {
+            "document_index": 2,
+            "quote": "the court is set to hear arguments over the constitutionality of capital sentences",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_33",
+        "name": "Monday",
+        "type": "DATE",
+        "document_frequency": 2,
+        "confidence": 0.94,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "the court's new term kicks off Monday",
+            "section": null
+          },
+          {
+            "document_index": 2,
+            "quote": "as it begins a new term Monday",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_36",
+        "name": "Florida",
+        "type": "LOCATION",
+        "document_frequency": 1,
+        "confidence": 0.97,
+        "evidence": [
+          {
+            "document_index": 2,
+            "quote": "capital sentences in Florida",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_37",
+        "name": "Georgia",
+        "type": "LOCATION",
+        "document_frequency": 1,
+        "confidence": 0.97,
+        "evidence": [
+          {
+            "document_index": 2,
+            "quote": "capital sentences in Georgia",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_38",
+        "name": "Kansas",
+        "type": "LOCATION",
+        "document_frequency": 1,
+        "confidence": 0.97,
+        "evidence": [
+          {
+            "document_index": 2,
+            "quote": "capital sentences in Kansas",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_39",
+        "name": "Pennsylvania",
+        "type": "LOCATION",
+        "document_frequency": 1,
+        "confidence": 0.97,
+        "evidence": [
+          {
+            "document_index": 2,
+            "quote": "capital sentences in Pennsylvania",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_40",
+        "name": "June Supreme Court vote",
+        "type": "EVENT",
+        "document_frequency": 1,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "In June the Supreme Court voted, 5\u20114, to block key parts of the law until the justices decide whether to weigh in.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_41",
+        "name": "Obama administration",
+        "type": "ORGANIZATION",
+        "document_frequency": 1,
+        "confidence": 0.94,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Many in the Obama administration would also like to see the court weigh in on immigration",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_42",
+        "name": "Abood v. Detroit Board of Education",
+        "type": "CONCEPT",
+        "document_frequency": 1,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "the new case takes aim at a compromise fashioned by the court in 1977 in Abood v. Detroit Board of Education.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_43",
+        "name": "Justice Antonin Scalia",
+        "type": "PERSON",
+        "document_frequency": 1,
+        "confidence": 0.97,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "By the time the next president is inaugurated, Justice Stephen G. Breyer will be 78, Justices Scalia and Kennedy will be 80, and Justice Ruth Bader Ginsburg will be 83.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_44",
+        "name": "President Ronald Reagan",
+        "type": "PERSON",
+        "document_frequency": 1,
+        "confidence": 0.97,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "Justice Kennedy, who was appointed by President Ronald Reagan and sits at the court\u2019s ideological fulcrum",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_45",
+        "name": "Judge Richard Posner",
+        "type": "PERSON",
+        "document_frequency": 1,
+        "confidence": 0.98,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Judge Richard Posner suggested the law was a transparent effort to prevent abortions, not aid women.",
+            "section": null
+          }
+        ]
+      }
+    ],
+    "relations": [
+      {
+        "source": "entity_4",
+        "target": "entity_5",
+        "relation_type": "AFFILIATED_WITH",
+        "support_count": 1,
+        "source_documents": [
+          0
+        ],
+        "confidence": 0.96,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "University of California at Irvine Law Professor Catherine Fisk",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_8",
+        "target": "entity_9",
+        "relation_type": "LOCATED_IN",
+        "support_count": 1,
+        "source_documents": [
+          0
+        ],
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "including the Little Sisters of the Poor nursing home in Denver",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_10",
+        "target": "entity_11",
+        "relation_type": "AFFILIATED_WITH",
+        "support_count": 1,
+        "source_documents": [
+          0
+        ],
+        "confidence": 0.94,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "5th Circuit Judge Edith Jones complained in a dissent last week.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_22",
+        "target": "entity_23",
+        "relation_type": "AFFILIATED_WITH",
+        "support_count": 1,
+        "source_documents": [
+          1
+        ],
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "a law professor at William & Mary.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_24",
+        "target": "entity_25",
+        "relation_type": "AFFILIATED_WITH",
+        "support_count": 1,
+        "source_documents": [
+          1
+        ],
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "the executive director of Georgetown\u2019s Supreme Court Institute.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_26",
+        "target": "entity_27",
+        "relation_type": "AFFILIATED_WITH",
+        "support_count": 1,
+        "source_documents": [
+          1
+        ],
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "a lawyer at Vinson & Elkins.",
+            "section": null
+          }
+        ]
+      }
+    ],
+    "reasoning_paths": [
+      {
+        "path": [
+          "entity_30",
+          "entity_35",
+          "entity_36"
+        ],
+        "description": "The Supreme Court (entity_30) is set to hear arguments on the constitutionality of capital sentences (entity_35). One of the states whose capital\u2011punishment statutes are at issue is Florida (entity_36). Thus, the Court's agenda directly impacts Florida's death\u2011penalty laws.",
+        "confidence": 0.9
+      },
+      {
+        "path": [
+          "entity_12",
+          "entity_14",
+          "entity_45"
+        ],
+        "description": "Governor Walker (entity_12) made statements that were tied to a Wisconsin law (entity_14) concerning abortion regulation. Judge Richard Posner (entity_45) later described that same law as a transparent attempt to prevent abortions. The chain links the governor's rhetoric to judicial criticism of the law.",
+        "confidence": 0.85
+      },
+      {
+        "path": [
+          "entity_16",
+          "entity_17",
+          "entity_18"
+        ],
+        "description": "The University of Texas at Austin (entity_16) is the institution whose affirmative\u2011action admissions program is being challenged in Fisher v. University of Texas at Austin (entity_17). That case was brought by the Project on Fair Representation (entity_18), a conservative advocacy group. Hence, the advocacy group\u2019s litigation directly targets the university\u2019s admissions policy.",
+        "confidence": 0.88
+      }
+    ]
+  }
+}

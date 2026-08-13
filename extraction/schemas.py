@@ -21,30 +21,39 @@ from pydantic import BaseModel, Field
 
 
 class EntityType(str, Enum):
+    """
+    Canonical entity ontology for the whole repo.
+
+    This used to diverge from extractor_agent/constants.py's
+    {PERSON, ORGANIZATION, LOCATION, DATE, PRODUCT, OTHER} set. Reconciled
+    here (see docs/adr/0001-canonical-extraction-path.md): the original
+    DISEASE/TREATMENT/SYMPTOM/METRIC types were vestigial for a project
+    targeting Multi-News (general news, not a medical corpus), so they're
+    dropped in favor of PRODUCT/OTHER from extractor_agent's simpler set.
+    extractor_agent/constants.py now imports VALID_ENTITY_TYPES from here
+    instead of keeping its own separate list, so this is the one ontology
+    used everywhere extraction happens.
+    """
     PERSON = "PERSON"
     ORGANIZATION = "ORGANIZATION"
     LOCATION = "LOCATION"
     EVENT = "EVENT"
     CONCEPT = "CONCEPT"
-    DISEASE = "DISEASE"
-    TREATMENT = "TREATMENT"
-    SYMPTOM = "SYMPTOM"
-    METRIC = "METRIC"
     DATE = "DATE"
+    PRODUCT = "PRODUCT"
+    OTHER = "OTHER"
 
 
 class RelationType(str, Enum):
-    CAUSES = "CAUSES"
-    TREATS = "TREATS"
     LOCATED_IN = "LOCATED_IN"
     AFFILIATED_WITH = "AFFILIATED_WITH"
     ANNOUNCED = "ANNOUNCED"
     ACQUIRED = "ACQUIRED"
     PARTICIPATED_IN = "PARTICIPATED_IN"
     RESULTED_IN = "RESULTED_IN"
+    CAUSES = "CAUSES"
     CONTRADICTS = "CONTRADICTS"
     SUPPORTS = "SUPPORTS"
-    MEASURED_BY = "MEASURED_BY"
     RELATED_TO = "RELATED_TO"
 
 

@@ -1,0 +1,1087 @@
+{
+  "cluster_idx": 2,
+  "num_documents": 2,
+  "reference_summary": "\u2013 Not a big fan of Southern California? Neither is Northern California, apparently. Supervisors in rural Siskiyou County voted 4-1 Tuesday in favor of seceding from the state, reports the Times-Standard. The county thinks state officials in Sacramento are too focused on the big metro areas of the south and thus want to form a state of its own\u2014to be called Jefferson. Supporters want to invite other northern counties, and perhaps a few from Oregon, to join, too, notes the Los Angeles Times. \u201dWe have to have government that's local, understands our issues, and has empathy,\u201d says one local rancher. It's clearly a very long-shot bid, one that would eventually require the blessing of both the state legislature and the US Congress. Still, neighboring Humboldt County is expected to meet soon to consider the idea. (Meanwhile, some counties in Colorado want to form a new state of their own.)",
+  "extraction": {
+    "method": "full_pipeline",
+    "cluster_index": 2,
+    "num_documents": 2,
+    "knowledge_graph": {
+      "entities": [
+        {
+          "id": "entity_1",
+          "name": "Siskiyou County Board of Supervisors",
+          "type": "ORGANIZATION",
+          "document_frequency": 2,
+          "confidence": 0.99,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "The Siskiyou County Board of Supervisors voted, 4-1, on Tuesday to pursue seceding from California, the Redding Record Searchlight reported.",
+              "section": null
+            },
+            {
+              "document_index": 1,
+              "quote": "The Siskiyou County Board of Supervisors voted 4-1 on Tuesday to support the county's split from the state of California.",
+              "section": null
+            }
+          ]
+        },
+        {
+          "id": "entity_2",
+          "name": "Siskiyou County",
+          "type": "LOCATION",
+          "document_frequency": 2,
+          "confidence": 0.96,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "The Siskiyou County Board of Supervisors voted, 4-1, on Tuesday to pursue seceding from California, the Redding Record Searchlight reported.",
+              "section": null
+            },
+            {
+              "document_index": 1,
+              "quote": "The Siskiyou County Board of Supervisors voted 4-1 on Tuesday to support the county's split from the state of California.",
+              "section": null
+            }
+          ]
+        },
+        {
+          "id": "entity_3",
+          "name": "Redding Record Searchlight",
+          "type": "ORGANIZATION",
+          "document_frequency": 1,
+          "confidence": 0.95,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "The Siskiyou County Board of Supervisors voted, 4-1, on Tuesday to pursue seceding from California, the Redding Record Searchlight reported.",
+              "section": null
+            }
+          ]
+        },
+        {
+          "id": "entity_4",
+          "name": "State of Jefferson",
+          "type": "CONCEPT",
+          "document_frequency": 4,
+          "confidence": 0.98,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "\"The state of Jefferson is the place I want to raise my son,\" Kayla Brown said.",
+              "section": null
+            },
+            {
+              "document_index": 1,
+              "quote": "\"The state of Jefferson is the place I want to raise my son,\" she said.",
+              "section": null
+            },
+            {
+              "document_index": 0,
+              "quote": "\"I was one of the people who thinks the state of Jefferson wasn't a bad idea,\" he told the newspaper.",
+              "section": null
+            },
+            {
+              "document_index": 1,
+              "quote": "\"I was one of the people who thinks the State of Jefferson wasn't a bad idea,\" Bohn said.",
+              "section": null
+            }
+          ]
+        },
+        {
+          "id": "entity_5",
+          "name": "Happy Camp",
+          "type": "LOCATION",
+          "document_frequency": 2,
+          "confidence": 0.96,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "\"Many proposed laws are unconstitutional and deny us our God-given rights,\" said Happy Camp resident Gabe Garrison.",
+              "section": null
+            },
+            {
+              "document_index": 1,
+              "quote": "\"Many proposed laws are unconstitutional and deny us our God-given rights,\" said Gabe Garrison of Happy Camp.",
+              "section": null
+            }
+          ]
+        },
+        {
+          "id": "entity_6",
+          "name": "Gabe Garrison",
+          "type": "PERSON",
+          "document_frequency": 2,
+          "confidence": 0.98,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "\"Many proposed laws are unconstitutional and deny us our God-given rights,\" said Happy Camp resident Gabe Garrison.",
+              "section": null
+            },
+            {
+              "document_index": 1,
+              "quote": "\"Many proposed laws are unconstitutional and deny us our God-given rights,\" said Gabe Garrison of Happy Camp.",
+              "section": null
+            }
+          ]
+        },
+        {
+          "id": "entity_7",
+          "name": "Kayla Brown",
+          "type": "PERSON",
+          "document_frequency": 2,
+          "confidence": 0.98,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "\"The state of Jefferson is the place I want to raise my son,\" Kayla Brown said.",
+              "section": null
+            },
+            {
+              "document_index": 1,
+              "quote": "\"The state of Jefferson is the place I want to raise my son,\" she said.",
+              "section": null
+            }
+          ]
+        },
+        {
+          "id": "entity_8",
+          "name": "Mark Baird",
+          "type": "PERSON",
+          "document_frequency": 2,
+          "confidence": 0.99,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "\"We have to have government that's local, understands our issues and has empathy,\" said Mark Baird, a rancher who the Searchlight said was heading the effort.",
+              "section": null
+            },
+            {
+              "document_index": 1,
+              "quote": "\"We have to have government that's local, understands our issues and has empathy\" for those affected, said Mark Baird, a Scott Valley rancher who's also president for Scott Valley Protect Our Water and vice president of the Siskiyou Water User's Association.",
+              "section": null
+            }
+          ]
+        },
+        {
+          "id": "entity_9",
+          "name": "Marcia Armstrong",
+          "type": "PERSON",
+          "document_frequency": 2,
+          "confidence": 0.96,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "Supervisor Marcia Armstrong cited restoration of limited government as one of the reasons she supported the declaration.",
+              "section": null
+            },
+            {
+              "document_index": 1,
+              "quote": "Supervisor Marcia Armstrong said the issues were about regulation, restriction of rights, lack of representation, regionalism and restoration of limited government.",
+              "section": null
+            }
+          ]
+        },
+        {
+          "id": "entity_10",
+          "name": "Ed Valenzuela",
+          "type": "PERSON",
+          "document_frequency": 2,
+          "confidence": 0.99,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "Supervisor Ed Valenzuela, who chairs the board, was the only vote against the decision, the Searchlight said.",
+              "section": null
+            },
+            {
+              "document_index": 1,
+              "quote": "Board Chair Ed Valenzuela was the sole vote against the declaration.",
+              "section": null
+            }
+          ]
+        },
+        {
+          "id": "entity_11",
+          "name": "Humboldt County",
+          "type": "LOCATION",
+          "document_frequency": 2,
+          "confidence": 0.96,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "Neighboring counties, which would be invited to join Jefferson, are also weighing secession.",
+              "section": null
+            },
+            {
+              "document_index": 1,
+              "quote": "Humboldt County 1st District Supervisor Rex Bohn said he can understand the frustration in Siskiyou County...",
+              "section": null
+            }
+          ]
+        },
+        {
+          "id": "entity_12",
+          "name": "Rex Bohn",
+          "type": "PERSON",
+          "document_frequency": 2,
+          "confidence": 0.97,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "\"I was one of the people who thinks the state of Jefferson wasn't a bad idea,\" he told the newspaper.",
+              "section": null
+            },
+            {
+              "document_index": 1,
+              "quote": "\"I was one of the people who thinks the State of Jefferson wasn't a bad idea,\" Bohn said.",
+              "section": null
+            }
+          ]
+        },
+        {
+          "id": "entity_13",
+          "name": "Times-Standard",
+          "type": "ORGANIZATION",
+          "document_frequency": 2,
+          "confidence": 0.95,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "Neighboring counties, which would be invited to join Jefferson, are also weighing secession. Humboldt County Supervisor Rex Bohn told the Times-Standard that his board would probably meet to consider their options.",
+              "section": null
+            },
+            {
+              "document_index": 1,
+              "quote": "Times-Standard staff writer Catherine Wong contributed to this report.",
+              "section": null
+            }
+          ]
+        },
+        {
+          "id": "entity_14",
+          "name": "Riverside County",
+          "type": "LOCATION",
+          "document_frequency": 1,
+          "confidence": 0.95,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "when Riverside County officials weighed a proposal to pursue the establishment of \"South California,\" which would have seen 13 counties leave the Golden State.",
+              "section": null
+            }
+          ]
+        },
+        {
+          "id": "entity_15",
+          "name": "South California",
+          "type": "CONCEPT",
+          "document_frequency": 1,
+          "confidence": 0.95,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "when Riverside County officials weighed a proposal to pursue the establishment of \"South California,\" which would have seen 13 counties leave the Golden State.",
+              "section": null
+            }
+          ]
+        },
+        {
+          "id": "entity_16",
+          "name": "Golden State",
+          "type": "CONCEPT",
+          "document_frequency": 1,
+          "confidence": 0.94,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "when Riverside County officials weighed a proposal to pursue the establishment of \"South California,\" which would have seen 13 counties leave the Golden State.",
+              "section": null
+            }
+          ]
+        },
+        {
+          "id": "entity_17",
+          "name": "Secession of Siskiyou County",
+          "type": "EVENT",
+          "document_frequency": 2,
+          "confidence": 0.98,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "The Siskiyou County Board of Supervisors voted, 4-1, on Tuesday to pursue seceding from California, the Redding Record Searchlight reported.",
+              "section": null
+            },
+            {
+              "document_index": 1,
+              "quote": "The Siskiyou County Board of Supervisors voted 4-1 on Tuesday to support the county's split from the state of California.",
+              "section": null
+            }
+          ]
+        },
+        {
+          "id": "entity_18",
+          "name": "California",
+          "type": "LOCATION",
+          "document_frequency": 2,
+          "confidence": 0.96,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "The Siskiyou County Board of Supervisors voted, 4-1, on Tuesday to pursue seceding from California, the Redding Record Searchlight reported.",
+              "section": null
+            },
+            {
+              "document_index": 1,
+              "quote": "The Siskiyou County Board of Supervisors voted 4-1 on Tuesday to support the county's split from the state of California.",
+              "section": null
+            }
+          ]
+        },
+        {
+          "id": "entity_19",
+          "name": "Sacramento",
+          "type": "LOCATION",
+          "document_frequency": 1,
+          "confidence": 0.94,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "Fed up by Sacramento's regulations and Southern California's political sway, residents in one rural Northern California county are taking steps to leave the state.",
+              "section": null
+            }
+          ]
+        },
+        {
+          "id": "entity_20",
+          "name": "Southern California",
+          "type": "LOCATION",
+          "document_frequency": 1,
+          "confidence": 0.94,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "Fed up by Sacramento's regulations and Southern California's political sway, residents in one rural Northern California county are taking steps to leave the state.",
+              "section": null
+            }
+          ]
+        },
+        {
+          "id": "entity_21",
+          "name": "Scott Valley Protect Our Water",
+          "type": "ORGANIZATION",
+          "document_frequency": 1,
+          "confidence": 0.97,
+          "evidence": [
+            {
+              "document_index": 1,
+              "quote": "\"We have to have government that's local, understands our issues and has empathy\" for those affected, said Mark Baird, a Scott Valley rancher who's also president for Scott Valley Protect Our Water and vice president of the Siskiyou Water User's Association.",
+              "section": null
+            }
+          ]
+        },
+        {
+          "id": "entity_22",
+          "name": "Siskiyou Water User's Association",
+          "type": "ORGANIZATION",
+          "document_frequency": 1,
+          "confidence": 0.97,
+          "evidence": [
+            {
+              "document_index": 1,
+              "quote": "\"We have to have government that's local, understands our issues and has empathy\" for those affected, said Mark Baird, a Scott Valley rancher who's also president for Scott Valley Protect Our Water and vice president of the Siskiyou Water User's Association.",
+              "section": null
+            }
+          ]
+        },
+        {
+          "id": "entity_23",
+          "name": "Erin Ryan",
+          "type": "PERSON",
+          "document_frequency": 1,
+          "confidence": 0.96,
+          "evidence": [
+            {
+              "document_index": 1,
+              "quote": "Among those in attendance was Erin Ryan, field representative for Rep. Doug LaMalfa.",
+              "section": null
+            }
+          ]
+        },
+        {
+          "id": "entity_24",
+          "name": "Doug LaMalfa",
+          "type": "PERSON",
+          "document_frequency": 1,
+          "confidence": 0.95,
+          "evidence": [
+            {
+              "document_index": 1,
+              "quote": "Among those in attendance was Erin Ryan, field representative for Rep. Doug LaMalfa.",
+              "section": null
+            }
+          ]
+        },
+        {
+          "id": "entity_25",
+          "name": "Tom Moller",
+          "type": "PERSON",
+          "document_frequency": 1,
+          "confidence": 0.95,
+          "evidence": [
+            {
+              "document_index": 1,
+              "quote": "\"It would be the only way I could see everyone coming together in a positive manner,\" said Tom Moller of Red Bluff.",
+              "section": null
+            }
+          ]
+        },
+        {
+          "id": "entity_26",
+          "name": "Mark Lovelace",
+          "type": "PERSON",
+          "document_frequency": 1,
+          "confidence": 0.95,
+          "evidence": [
+            {
+              "document_index": 1,
+              "quote": "\"There has to be basic economic underpinnings to make a state work,\" Lovelace said. \"There is a certain romantic appeal and allure to the state of Jefferson, this entire idea of what could have been, but in reality it would not be good economically.\"",
+              "section": null
+            }
+          ]
+        },
+        {
+          "id": "entity_27",
+          "name": "U.S. Constitution",
+          "type": "CONCEPT",
+          "document_frequency": 1,
+          "confidence": 0.97,
+          "evidence": [
+            {
+              "document_index": 1,
+              "quote": "The U.S. Constitution allows for the formation of new states, though land can't be taken from existing states without the consent of state and federal governments.",
+              "section": null
+            }
+          ]
+        },
+        {
+          "id": "entity_28",
+          "name": "State Legislature",
+          "type": "ORGANIZATION",
+          "document_frequency": 1,
+          "confidence": 0.95,
+          "evidence": [
+            {
+              "document_index": 1,
+              "quote": "If the county were to split from the state, any action taken today would be the first step in a long process that would require approval from the state Legislature and the U.S. Congress.",
+              "section": null
+            }
+          ]
+        },
+        {
+          "id": "entity_29",
+          "name": "U.S. Congress",
+          "type": "ORGANIZATION",
+          "document_frequency": 1,
+          "confidence": 0.95,
+          "evidence": [
+            {
+              "document_index": 1,
+              "quote": "If the county were to split from the state, any action taken today would be the first step in a long process that would require approval from the state Legislature and the U.S. Congress.",
+              "section": null
+            }
+          ]
+        },
+        {
+          "id": "entity_30",
+          "name": "Michael Kobseff",
+          "type": "PERSON",
+          "document_frequency": 1,
+          "confidence": 0.96,
+          "evidence": [
+            {
+              "document_index": 1,
+              "quote": "\"I haven't had one contact in regard to this issue, that's in opposition,\" Supervisor Michael Kobseff said.",
+              "section": null
+            }
+          ]
+        }
+      ],
+      "relations": [
+        {
+          "source": "entity_1",
+          "target": "entity_17",
+          "relation_type": "ANNOUNCED",
+          "support_count": 2,
+          "source_documents": [
+            0,
+            1
+          ],
+          "confidence": 0.95,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "The Siskiyou County Board of Supervisors voted, 4-1, on Tuesday to pursue seceding from California, the Redding Record Searchlight reported.",
+              "section": null
+            },
+            {
+              "document_index": 1,
+              "quote": "The Siskiyou County Board of Supervisors voted 4-1 on Tuesday to support the county's split from the state of California.",
+              "section": null
+            }
+          ]
+        },
+        {
+          "source": "entity_8",
+          "target": "entity_17",
+          "relation_type": "SUPPORTS",
+          "support_count": 2,
+          "source_documents": [
+            0,
+            1
+          ],
+          "confidence": 0.94,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "\"We have to have government that's local, understands our issues and has empathy,\" said Mark Baird, a rancher who the Searchlight said was heading the effort.",
+              "section": null
+            },
+            {
+              "document_index": 1,
+              "quote": "\"We have to have government that's local, understands our issues and has empathy\" for those affected, said Mark Baird, a Scott Valley rancher...",
+              "section": null
+            }
+          ]
+        },
+        {
+          "source": "entity_8",
+          "target": "entity_21",
+          "relation_type": "AFFILIATED_WITH",
+          "support_count": 1,
+          "source_documents": [
+            1
+          ],
+          "confidence": 0.96,
+          "evidence": [
+            {
+              "document_index": 1,
+              "quote": "\"We have to have government...\" said Mark Baird, a Scott Valley rancher who's also president for Scott Valley Protect Our Water...",
+              "section": null
+            }
+          ]
+        },
+        {
+          "source": "entity_8",
+          "target": "entity_22",
+          "relation_type": "AFFILIATED_WITH",
+          "support_count": 1,
+          "source_documents": [
+            1
+          ],
+          "confidence": 0.96,
+          "evidence": [
+            {
+              "document_index": 1,
+              "quote": "\"We have to have government...\" said Mark Baird, a Scott Valley rancher... and vice president of the Siskiyou Water User's Association.",
+              "section": null
+            }
+          ]
+        },
+        {
+          "source": "entity_6",
+          "target": "entity_5",
+          "relation_type": "LOCATED_IN",
+          "support_count": 2,
+          "source_documents": [
+            0,
+            1
+          ],
+          "confidence": 0.95,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "\"Many proposed laws...\" said Happy Camp resident Gabe Garrison.",
+              "section": null
+            },
+            {
+              "document_index": 1,
+              "quote": "\"Many proposed laws...\" said Gabe Garrison of Happy Camp.",
+              "section": null
+            }
+          ]
+        },
+        {
+          "source": "entity_7",
+          "target": "entity_4",
+          "relation_type": "SUPPORTS",
+          "support_count": 2,
+          "source_documents": [
+            0,
+            1
+          ],
+          "confidence": 0.96,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "\"The state of Jefferson is the place I want to raise my son,\" Kayla Brown said.",
+              "section": null
+            },
+            {
+              "document_index": 1,
+              "quote": "\"The state of Jefferson is the place I want to raise my son,\" she said.",
+              "section": null
+            }
+          ]
+        },
+        {
+          "source": "entity_9",
+          "target": "entity_17",
+          "relation_type": "SUPPORTS",
+          "support_count": 2,
+          "source_documents": [
+            0,
+            1
+          ],
+          "confidence": 0.94,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "Supervisor Marcia Armstrong cited restoration of limited government as one of the reasons she supported the declaration.",
+              "section": null
+            },
+            {
+              "document_index": 1,
+              "quote": "Supervisor Marcia Armstrong said the issues were about regulation... and restoration of limited government.",
+              "section": null
+            }
+          ]
+        },
+        {
+          "source": "entity_10",
+          "target": "entity_17",
+          "relation_type": "CONTRADICTS",
+          "support_count": 2,
+          "source_documents": [
+            0,
+            1
+          ],
+          "confidence": 0.95,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "Supervisor Ed Valenzuela, who chairs the board, was the only vote against the decision, the Searchlight said.",
+              "section": null
+            },
+            {
+              "document_index": 1,
+              "quote": "Board Chair Ed Valenzuela was the sole vote against the declaration.",
+              "section": null
+            }
+          ]
+        },
+        {
+          "source": "entity_12",
+          "target": "entity_4",
+          "relation_type": "SUPPORTS",
+          "support_count": 2,
+          "source_documents": [
+            0,
+            1
+          ],
+          "confidence": 0.96,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "\"I was one of the people who thinks the state of Jefferson wasn't a bad idea,\" he told the newspaper.",
+              "section": null
+            },
+            {
+              "document_index": 1,
+              "quote": "\"I was one of the people who thinks the State of Jefferson wasn't a bad idea,\" Bohn said.",
+              "section": null
+            }
+          ]
+        },
+        {
+          "source": "entity_11",
+          "target": "entity_4",
+          "relation_type": "RELATED_TO",
+          "support_count": 1,
+          "source_documents": [
+            0
+          ],
+          "confidence": 0.9,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "Neighboring counties, which would be invited to join Jefferson, are also weighing secession.",
+              "section": null
+            }
+          ]
+        },
+        {
+          "source": "entity_14",
+          "target": "entity_15",
+          "relation_type": "PARTICIPATED_IN",
+          "support_count": 1,
+          "source_documents": [
+            0
+          ],
+          "confidence": 0.92,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "when Riverside County officials weighed a proposal to pursue the establishment of \"South California,\" which would have seen 13 counties leave the Golden State.",
+              "section": null
+            }
+          ]
+        },
+        {
+          "source": "entity_27",
+          "target": "entity_17",
+          "relation_type": "RELATED_TO",
+          "support_count": 1,
+          "source_documents": [
+            1
+          ],
+          "confidence": 0.94,
+          "evidence": [
+            {
+              "document_index": 1,
+              "quote": "The U.S. Constitution allows for the formation of new states, though land can't be taken from existing states without the consent of state and federal governments.",
+              "section": null
+            }
+          ]
+        },
+        {
+          "source": "entity_28",
+          "target": "entity_17",
+          "relation_type": "RESULTED_IN",
+          "support_count": 1,
+          "source_documents": [
+            1
+          ],
+          "confidence": 0.93,
+          "evidence": [
+            {
+              "document_index": 1,
+              "quote": "If the county were to split from the state, any action taken today would be the first step in a long process that would require approval from the state Legislature...",
+              "section": null
+            }
+          ]
+        },
+        {
+          "source": "entity_29",
+          "target": "entity_17",
+          "relation_type": "RESULTED_IN",
+          "support_count": 1,
+          "source_documents": [
+            1
+          ],
+          "confidence": 0.93,
+          "evidence": [
+            {
+              "document_index": 1,
+              "quote": "...and the U.S. Congress.",
+              "section": null
+            }
+          ]
+        },
+        {
+          "source": "entity_23",
+          "target": "entity_24",
+          "relation_type": "AFFILIATED_WITH",
+          "support_count": 1,
+          "source_documents": [
+            1
+          ],
+          "confidence": 0.96,
+          "evidence": [
+            {
+              "document_index": 1,
+              "quote": "Among those in attendance was Erin Ryan, field representative for Rep. Doug LaMalfa.",
+              "section": null
+            }
+          ]
+        },
+        {
+          "source": "entity_25",
+          "target": "entity_4",
+          "relation_type": "SUPPORTS",
+          "support_count": 1,
+          "source_documents": [
+            1
+          ],
+          "confidence": 0.95,
+          "evidence": [
+            {
+              "document_index": 1,
+              "quote": "\"It would be the only way I could see everyone coming together in a positive manner,\" said Tom Moller of Red Bluff.",
+              "section": null
+            }
+          ]
+        },
+        {
+          "source": "entity_26",
+          "target": "entity_4",
+          "relation_type": "CONTRADICTS",
+          "support_count": 1,
+          "source_documents": [
+            1
+          ],
+          "confidence": 0.94,
+          "evidence": [
+            {
+              "document_index": 1,
+              "quote": "\"There has to be basic economic underpinnings to make a state work,\" Lovelace said. \"There is a certain romantic appeal... but in reality it would not be good economically.\"",
+              "section": null
+            }
+          ]
+        },
+        {
+          "source": "entity_30",
+          "target": "entity_17",
+          "relation_type": "SUPPORTS",
+          "support_count": 1,
+          "source_documents": [
+            1
+          ],
+          "confidence": 0.94,
+          "evidence": [
+            {
+              "document_index": 1,
+              "quote": "\"I haven't had one contact in regard to this issue, that's in opposition,\" Supervisor Michael Kobseff said.",
+              "section": null
+            }
+          ]
+        }
+      ],
+      "reasoning_paths": [
+        {
+          "path": [
+            "entity_1",
+            "entity_17",
+            "entity_28"
+          ],
+          "description": "The Siskiyou County Board of Supervisors announced (entity_1 \u2192 entity_17) that the county will pursue secession. The secession event (entity_17) triggers a legal process that requires approval from the State Legislature (entity_28 \u2192 entity_17). Hence, the board\u2019s announcement implies that the State Legislature will have to act on the proposal.",
+          "confidence": 0.94
+        },
+        {
+          "path": [
+            "entity_7",
+            "entity_4",
+            "entity_11"
+          ],
+          "description": "Kayla Brown publicly supports the creation of the State of Jefferson (entity_7 \u2192 entity_4). The concept of the State of Jefferson is directly linked to neighboring Humboldt County (entity_11 \u2192 entity_4). Therefore, her support ties the interests of residents in Siskiyou County to the potential involvement of Humboldt County in the new state.",
+          "confidence": 0.93
+        },
+        {
+          "path": [
+            "entity_21",
+            "entity_8",
+            "entity_17"
+          ],
+          "description": "Mark Baird is affiliated with the local organization Scott Valley Protect Our Water (entity_8 \u2192 entity_21) and simultaneously supports the secession of Siskiyou County (entity_8 \u2192 entity_17). This chain indicates that local water\u2011rights advocacy groups are aligned with, and help drive, the secession effort.",
+          "confidence": 0.95
+        }
+      ]
+    },
+    "grader_reports": [
+      {
+        "overall_score": 0.34,
+        "issues": [
+          {
+            "issue_type": "WRONG_TYPE",
+            "element_id": "entity_2 (duplicate)",
+            "description": "The identifier **entity_2** is used for two different entities (Siskiyou County and Scott Valley Protect Our Water). This ID conflict breaks the graph schema and makes any relation that references this ID ambiguous.",
+            "severity": "high"
+          },
+          {
+            "issue_type": "WRONG_TYPE",
+            "element_id": "entity_3 (duplicate)",
+            "description": "The identifier **entity_3** is reused for both *Redding Record Searchlight* and *Siskiyou Water User's Association*, causing ambiguous references.",
+            "severity": "high"
+          },
+          {
+            "issue_type": "WRONG_TYPE",
+            "element_id": "entity_4 (duplicate)",
+            "description": "The identifier **entity_4** refers both to the concept *Jefferson* and to *State of Jefferson*. These should be separate IDs.",
+            "severity": "high"
+          },
+          {
+            "issue_type": "WRONG_TYPE",
+            "element_id": "entity_6 (duplicate)",
+            "description": "The identifier **entity_6** is used for *Gabe Garrison* and *Erin Ryan*. This duplication leads to incorrect relations.",
+            "severity": "high"
+          },
+          {
+            "issue_type": "WRONG_TYPE",
+            "element_id": "entity_7 (duplicate)",
+            "description": "The identifier **entity_7** is used for *Kayla Brown* and *Doug LaMalfa*. Separate IDs are required.",
+            "severity": "high"
+          },
+          {
+            "issue_type": "WRONG_TYPE",
+            "element_id": "entity_8 (duplicate)",
+            "description": "The identifier **entity_8** appears for *Mark Baird* and *Tom Moller*, causing ambiguous linking.",
+            "severity": "high"
+          },
+          {
+            "issue_type": "WRONG_TYPE",
+            "element_id": "entity_11 (duplicate)",
+            "description": "The identifier **entity_11** is used for *Humboldt County* and *Mark Lovelace*.",
+            "severity": "high"
+          },
+          {
+            "issue_type": "WRONG_TYPE",
+            "element_id": "entity_12 (duplicate)",
+            "description": "The identifier **entity_12** appears for *Rex Bohn* and *U.S. Constitution*.",
+            "severity": "high"
+          },
+          {
+            "issue_type": "WRONG_TYPE",
+            "element_id": "entity_13 (duplicate)",
+            "description": "The identifier **entity_13** is used for *Times-Standard* and *State Legislature*.",
+            "severity": "high"
+          },
+          {
+            "issue_type": "WRONG_TYPE",
+            "element_id": "entity_14 (duplicate)",
+            "description": "The identifier **entity_14** appears for *Riverside County* and *U.S. Congress*.",
+            "severity": "high"
+          },
+          {
+            "issue_type": "WRONG_TYPE",
+            "element_id": "entity_17 (duplicate)",
+            "description": "The identifier **entity_17** is used for *Secession of Siskiyou County* (event) and *Oregon* (location).",
+            "severity": "high"
+          },
+          {
+            "issue_type": "HALLUCINATION",
+            "element_id": "relation_1",
+            "description": "Relation **entity_1 \u2192 entity_3** (AFFILIATED_WITH) claims the Siskiyou County Board of Supervisors is affiliated with the *Redding Record Searchlight*. The evidence quote about Mark Baird mentions the newspaper but does not establish an affiliation between the board and the newspaper.",
+            "severity": "high"
+          },
+          {
+            "issue_type": "HALLUCINATION",
+            "element_id": "relation_2",
+            "description": "Relation **entity_1 \u2192 entity_2** (AFFILIATED_WITH) states the board is affiliated with *Siskiyou County*. The supporting quote talks about Mark Baird\u2019s organizational roles, not about the board\u2019s relationship to the county. The correct relation type would be LOCATED_IN or GOVERNED_BY, not AFFILIATED_WITH.",
+            "severity": "high"
+          },
+          {
+            "issue_type": "HALLUCINATION",
+            "element_id": "relation_3",
+            "description": "Relation **entity_5 \u2192 entity_4** (SUPPORTS) links *Happy Camp* (a location) as supporting the State of Jefferson. The evidence provided is about the board\u2019s vote, not about the community\u2019s stance.",
+            "severity": "high"
+          },
+          {
+            "issue_type": "HALLUCINATION",
+            "element_id": "relation_4",
+            "description": "Relation **entity_6 \u2192 entity_7** (AFFILIATED_WITH) connects *Gabe Garrison* with *Kayla Brown*. The cited quote discusses Erin Ryan and Doug LaMalfa, not these two individuals.",
+            "severity": "high"
+          },
+          {
+            "issue_type": "HALLUCINATION",
+            "element_id": "relation_5",
+            "description": "Relation **entity_6 \u2192 entity_4** (SUPPORTS) claims *Gabe Garrison* supports the State of Jefferson, but the evidence is about LaMalfa staff supporting the effort, not Garrison.",
+            "severity": "high"
+          },
+          {
+            "issue_type": "CONTRADICTION",
+            "element_id": "relation_6",
+            "description": "Relation **entity_10 \u2192 entity_4** (SUPPORTS) says *Ed Valenzuela* supports the State of Jefferson, while the source quote clearly states he was the *only vote against* the secession decision. This directly contradicts the relation.",
+            "severity": "high"
+          },
+          {
+            "issue_type": "HALLUCINATION",
+            "element_id": "relation_7",
+            "description": "Relation **entity_4 \u2192 entity_13** (RESULTED_IN) targets **entity_13**, which is *Times-Standard* due to duplicate IDs, but the evidence refers to the *State Legislature*. Because of the ID clash, the relation points to the wrong node, making the claim unsupported.",
+            "severity": "high"
+          },
+          {
+            "issue_type": "WEAK_EVIDENCE",
+            "element_id": "relation_9",
+            "description": "Relation **entity_7 \u2192 entity_4** (SUPPORTS) uses the quote \"The state of Jefferson is the place I want raise my son\" which omits the word \"to\" from the original source. This paraphrase reduces confidence in the exactness of the support statement.",
+            "severity": "medium"
+          },
+          {
+            "issue_type": "MISSING_ENTITY",
+            "element_id": null,
+            "description": "The source documents mention *Michael Kobseff*, a supervisor who expressed support for the secession. This person is not present in the extracted entity list.",
+            "severity": "medium"
+          },
+          {
+            "issue_type": "MISSING_RELATION",
+            "element_id": null,
+            "description": "The documents describe a *vote outcome* (4\u20111 in favor, 1\u20110 against) for the secession declaration. No relation captures the result of the vote (e.g., \"VOTE_RESULT\"), which is a key piece of information.",
+            "severity": "medium"
+          }
+        ],
+        "passes_threshold": false,
+        "feedback_summary": "The graph suffers from severe identifier collisions\u2014many entities share the same ID, making most relations ambiguous or incorrect. Several relations are outright hallucinations or contradictory to the source quotes, especially those linking the board to the newspaper, the board to the county, and individuals to unrelated entities. One relation points to the wrong target because of duplicate IDs, and a few statements are paraphrased rather than quoted verbatim. Additionally, the graph omits notable entities like Michael Kobseff and lacks a relation describing the actual vote outcome. Resolve the ID conflicts, remove or correct the hallucinated relations, add the missing entities and vote\u2011result relation, and ensure all evidence is exact quotations to improve the graph's quality."
+      },
+      {
+        "overall_score": 0.78,
+        "issues": [
+          {
+            "issue_type": "WEAK_EVIDENCE",
+            "element_id": "entity_7",
+            "description": "The quoted evidence from document 1 (\"The state of Jefferson is the place I want to raise my son,\" she said.) does not contain the name \"Kayla Brown\". The entity is only implied by earlier context, making the evidence weaker than a direct attribution.",
+            "severity": "medium"
+          },
+          {
+            "issue_type": "WEAK_EVIDENCE",
+            "element_id": "relation_14_15",
+            "description": "The relation from Riverside County (entity_14) to South California (entity_15) is labeled PARTICIPATED_IN, but the source text says Riverside County officials *weighed* a proposal. This is not a participation in an event, so the relation type is questionable and the evidence is vague.",
+            "severity": "medium"
+          },
+          {
+            "issue_type": "MISSING_RELATION",
+            "element_id": null,
+            "description": "A key relationship is absent: the Siskiyou County Board of Supervisors (entity_1) explicitly *supports* the creation of the State of Jefferson (entity_4). Adding a SUPPORTS or RELATED_TO edge between these two entities would capture an important claim made in both documents.",
+            "severity": "high"
+          },
+          {
+            "issue_type": "WEAK_EVIDENCE",
+            "element_id": "relation_25_4",
+            "description": "The evidence for Tom Moller (entity_25) supporting the State of Jefferson (entity_4) is an indirect quote about \u201cthe only way I could see everyone coming together\u201d without naming the state. The connection to the State of Jefferson is inferred rather than explicit, making the support weaker.",
+            "severity": "low"
+          }
+        ],
+        "passes_threshold": false,
+        "feedback_summary": "The graph is mostly accurate, but a few pieces need tightening. Strengthen evidence for Kayla Brown and Tom Moller by using quotes that directly name them, correct the Riverside County \u2192 South California relation type (weighed a proposal, not participated), and add the missing link showing the Siskiyou County Board of Supervisors supporting the State of Jefferson. Fixing these will raise the overall quality and score."
+      }
+    ],
+    "iterations_used": 2,
+    "final_score": 0.78,
+    "metadata": {
+      "ontology_entity_types": [
+        "PERSON",
+        "ORGANIZATION",
+        "LOCATION",
+        "EVENT",
+        "CONCEPT",
+        "DATE",
+        "PRODUCT",
+        "OTHER"
+      ],
+      "ontology_relation_types": [
+        "LOCATED_IN",
+        "AFFILIATED_WITH",
+        "ANNOUNCED",
+        "ACQUIRED",
+        "PARTICIPATED_IN",
+        "RESULTED_IN",
+        "CAUSES",
+        "CONTRADICTS",
+        "SUPPORTS",
+        "RELATED_TO"
+      ],
+      "domain_context": "general news articles"
+    }
+  },
+  "generated_at": "2026-08-13T05:35:43.373158+00:00"
+}
