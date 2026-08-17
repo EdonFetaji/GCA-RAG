@@ -1,4 +1,10 @@
-"""llm — the model port, its adapters, and the provider factory."""
+"""
+llm — the model port, its adapters, and the provider factory.
+
+Registered providers: `cerebras`, `groq`, `gemini`. Select with
+`KG_LLM_PROVIDER`; each reads its own vendor-named key (`CEREBRAS_API_KEY`,
+`GROQ_API_KEY`, `GEMINI_API_KEY` / `GOOGLE_API_KEY`).
+"""
 
 from kg_agentic_extraction.llm.base import (
     LLMClient,

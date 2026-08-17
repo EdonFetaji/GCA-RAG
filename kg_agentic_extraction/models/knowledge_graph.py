@@ -43,7 +43,7 @@ class Relation(BaseModel):
     target: str = Field(..., min_length=1, description="Target entity id.")
     relation_type: RelationType
     support_count: int = Field(1, ge=1, description="How many documents support it.")
-    source_documents: list[int] = Field(default_factory=list) # not sure if we want this
+    source_documents: list[int] = Field(default_factory=list)  # not sure if we want this
     confidence: float = Field(1.0, ge=0.0, le=1.0)
     evidence: list[EvidenceSpan] = Field(default_factory=list)
 

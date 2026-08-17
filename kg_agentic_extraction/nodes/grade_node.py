@@ -66,7 +66,7 @@ def make_grade_node(
             len(report.issues),
             " — converged" if report.converged else "",
         )
-        
+
         return PipelineState(
             grader_report=report,
             grader_reports=[report],

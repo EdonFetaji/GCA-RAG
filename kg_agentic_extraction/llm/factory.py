@@ -49,7 +49,36 @@ def _build_cerebras(settings: PipelineSettings) -> LLMClient:
         model=settings.model,
         api_key=settings.cerebras_api_key,
         temperature=settings.temperature,
+        max_tokens=settings.max_tokens,
+    )
+
+
+def _build_groq(settings: PipelineSettings) -> LLMClient:
+    from kg_agentic_extraction.llm.groq_client import GroqClient
+
+    if not settings.groq_api_key:
+        raise LLMError("GROQ_API_KEY is not set (see .env.example)")
+    return GroqClient(
+        model=settings.model,
+        api_key=settings.groq_api_key,
+        temperature=settings.temperature,
+        max_tokens=settings.max_tokens,
+    )
+
+
+def _build_gemini(settings: PipelineSettings) -> LLMClient:
+    from kg_agentic_extraction.llm.gemini_client import GeminiClient
+
+    if not settings.gemini_api_key:
+        raise LLMError("GEMINI_API_KEY (or GOOGLE_API_KEY) is not set (see .env.example)")
+    return GeminiClient(
+        model=settings.model,
+        api_key=settings.gemini_api_key,
+        temperature=settings.temperature,
+        max_tokens=settings.max_tokens,
     )
 
 
 register_provider("cerebras", _build_cerebras)
+register_provider("groq", _build_groq)
+register_provider("gemini", _build_gemini)

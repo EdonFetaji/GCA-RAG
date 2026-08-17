@@ -32,6 +32,9 @@ dependencies = [
     "fastapi>=0.110",
     "uvicorn>=0.27",
     "fastmcp>=3.4.7",
+    "langchain-groq>=1.1.3",
+    "langchain-google-genai>=4.3.4",
+    "h5py>=3.16.0",
 ]
 
 [dependency-groups]
@@ -44,8 +47,12 @@ dev = [
     "grandalf>=0.8",  # graph.get_graph().draw_ascii()
 ]
 
-[tool.uv]
-package = false
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["kg_agentic_extraction", "mcp_server", "utils", "validator", "extractor_agent"]
 
 [tool.ruff]
 line-length = 100

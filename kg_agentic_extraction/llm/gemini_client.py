@@ -1,9 +1,13 @@
 """
-Cerebras adapter for the `LLMClient` port, via LangChain's ChatCerebras.
+Google Gemini adapter for the `LLMClient` port, via langchain-google-genai.
 
-The only file in the pipeline that names a specific provider. Swapping to
-another vendor means writing a sibling adapter and registering it in
-`factory.py` — no agent changes.
+Third sibling of `cerebras_client.py` / `groq_client.py`. Same shape, different
+vendor — no agent, node, or graph change was needed to add it.
+
+Note the constructor keyword differences: `ChatGoogleGenerativeAI` exposes the
+key as `api_key`, the completion cap as `max_tokens` (aliasing its internal
+`max_output_tokens`), and the retry count as `retries`. Those aliases are used
+below so this adapter presents the same signature as its siblings.
 """
 
 from __future__ import annotations
@@ -21,14 +25,13 @@ logger = logging.getLogger(__name__)
 TModel = TypeVar("TModel", bound=BaseModel)
 
 
-class CerebrasClient:
+class GeminiClient:
     """
-    `LLMClient` implementation backed by Cerebras.
+    `LLMClient` implementation backed by Google Gemini.
 
-    Structured decoding is delegated to LangChain's `with_structured_output`,
-    which pins the provider's JSON-schema mode to the Pydantic model. That is
-    why this class has no fence-stripping or repair-retry logic — malformed
-    JSON is prevented at decode time rather than repaired afterwards.
+    `with_structured_output` already defaults to `method="json_schema"` here, so
+    unlike the Groq adapter there is nothing to override — Gemini constrains
+    decoding to the Pydantic schema natively.
     """
 
     def __init__(
@@ -43,15 +46,15 @@ class CerebrasClient:
         # Imported lazily so that merely importing the pipeline (to inspect the
         # graph, run unit tests with a fake client, etc.) does not require the
         # provider SDK to be installed or an API key to be present.
-        from langchain_cerebras import ChatCerebras
+        from langchain_google_genai import ChatGoogleGenerativeAI
 
         self._model_name = model
-        self._llm = ChatCerebras(
+        self._llm = ChatGoogleGenerativeAI(
             model=model,
             api_key=api_key,
             temperature=temperature,
             max_tokens=max_tokens,
-            max_retries=max_retries,
+            retries=max_retries,
         )
 
     @property
@@ -66,8 +69,8 @@ class CerebrasClient:
         schema: type[TModel],
     ) -> TModel:
         """Invoke the model and return a validated `schema` instance."""
-        logger.debug("Cerebras call — model=%s schema=%s", self._model_name, schema.__name__)
-        runnable = self._llm.with_structured_output(schema)
+        logger.debug("Gemini call — model=%s schema=%s", self._model_name, schema.__name__)
+        runnable = self._llm.with_structured_output(schema, method="json_schema")
         try:
             result = runnable.invoke([SystemMessage(content=system), HumanMessage(content=user)])
         except Exception as exc:  # provider/validation failures alike

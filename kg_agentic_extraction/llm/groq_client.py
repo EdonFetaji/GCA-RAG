@@ -1,9 +1,9 @@
 """
-Cerebras adapter for the `LLMClient` port, via LangChain's ChatCerebras.
+Groq adapter for the `LLMClient` port, via LangChain's ChatGroq.
 
-The only file in the pipeline that names a specific provider. Swapping to
-another vendor means writing a sibling adapter and registering it in
-`factory.py` — no agent changes.
+Sibling of `cerebras_client.py` — same shape, different vendor. Adding it
+required no change to any agent, node, or graph: `llm/factory.py` registers it
+and `KG_LLM_PROVIDER=groq` selects it.
 """
 
 from __future__ import annotations
@@ -21,14 +21,14 @@ logger = logging.getLogger(__name__)
 TModel = TypeVar("TModel", bound=BaseModel)
 
 
-class CerebrasClient:
+class GroqClient:
     """
-    `LLMClient` implementation backed by Cerebras.
+    `LLMClient` implementation backed by Groq.
 
     Structured decoding is delegated to LangChain's `with_structured_output`,
-    which pins the provider's JSON-schema mode to the Pydantic model. That is
-    why this class has no fence-stripping or repair-retry logic — malformed
-    JSON is prevented at decode time rather than repaired afterwards.
+    which pins the provider's JSON-schema mode to the Pydantic model — so, as
+    with the Cerebras adapter, there is no fence-stripping or repair-retry
+    logic here. Malformed JSON is prevented at decode time.
     """
 
     def __init__(
@@ -43,10 +43,10 @@ class CerebrasClient:
         # Imported lazily so that merely importing the pipeline (to inspect the
         # graph, run unit tests with a fake client, etc.) does not require the
         # provider SDK to be installed or an API key to be present.
-        from langchain_cerebras import ChatCerebras
+        from langchain_groq import ChatGroq
 
         self._model_name = model
-        self._llm = ChatCerebras(
+        self._llm = ChatGroq(
             model=model,
             api_key=api_key,
             temperature=temperature,
@@ -66,8 +66,12 @@ class CerebrasClient:
         schema: type[TModel],
     ) -> TModel:
         """Invoke the model and return a validated `schema` instance."""
-        logger.debug("Cerebras call — model=%s schema=%s", self._model_name, schema.__name__)
-        runnable = self._llm.with_structured_output(schema)
+        logger.debug("Groq call — model=%s schema=%s", self._model_name, schema.__name__)
+        # json_schema, not the default function_calling: Groq wraps the schema
+        # in a tool call under that method, and any truncated generation then
+        # fails tool-call parsing with an opaque 400 tool_use_failed rather
+        # than surfacing as a length problem.
+        runnable = self._llm.with_structured_output(schema, method="json_schema")
         try:
             result = runnable.invoke([SystemMessage(content=system), HumanMessage(content=user)])
         except Exception as exc:  # provider/validation failures alike
