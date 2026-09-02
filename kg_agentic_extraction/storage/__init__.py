@@ -6,6 +6,7 @@ read back by anything (Track 3's GNN training, analysis notebooks) without
 importing the pipeline.
 """
 
+from kg_agentic_extraction.storage.gcs import GCSUploadError, object_name, upload_graph
 from kg_agentic_extraction.storage.hdf5 import (
     SCHEMA_VERSION,
     graph_filename,
@@ -15,7 +16,10 @@ from kg_agentic_extraction.storage.hdf5 import (
 
 __all__ = [
     "SCHEMA_VERSION",
+    "GCSUploadError",
     "graph_filename",
     "load_knowledge_graph",
+    "object_name",
     "save_knowledge_graph",
+    "upload_graph",
 ]

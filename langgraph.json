@@ -1,0 +1,7 @@
+{
+  "dependencies": ["."],
+  "graphs": {
+    "kg_extraction": "./kg_agentic_extraction/studio.py:graph"
+  },
+  "env": ".env"
+}

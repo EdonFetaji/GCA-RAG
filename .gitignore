@@ -9,3 +9,6 @@ __pycache__/
 
 .pytest_cache/
 .ruff_cache/
+
+# Local state written by `langgraph dev` (in-memory server's checkpoint cache).
+.langgraph_api/

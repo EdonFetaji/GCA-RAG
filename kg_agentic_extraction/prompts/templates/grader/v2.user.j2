@@ -1,0 +1,14 @@
+Grade the knowledge graph below against the source documents.
+
+{% if iteration and iteration > 1 %}
+This is revision round {{ iteration }}. The extractor has already acted on
+earlier feedback — verify the previous issues were genuinely fixed rather than
+worked around, and check that fixing them did not break anything that was
+previously correct.
+{% endif %}
+
+## EXTRACTED KNOWLEDGE GRAPH
+{{ graph_json }}
+
+## SOURCE DOCUMENTS
+{{ documents_text }}

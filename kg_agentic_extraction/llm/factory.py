@@ -79,6 +79,57 @@ def _build_gemini(settings: PipelineSettings) -> LLMClient:
     )
 
 
+def _build_meta(settings: PipelineSettings) -> LLMClient:
+    from kg_agentic_extraction.llm.meta_client import MetaClient
+
+    if not settings.meta_api_key:
+        raise LLMError("META_API_KEY (or MODEL_API_KEY) is not set (see .env.example)")
+    return MetaClient(
+        model=settings.model,
+        api_key=settings.meta_api_key,
+        base_url=settings.meta_base_url,
+        temperature=settings.temperature,
+        max_tokens=settings.max_tokens,
+        reasoning_effort=settings.meta_reasoning_effort,
+        structured_method=settings.meta_structured_method,
+    )
+
+
+def _build_nvidia(settings: PipelineSettings) -> LLMClient:
+    from kg_agentic_extraction.llm.nvidia_client import NvidiaClient
+
+    if not settings.nvidia_api_key:
+        raise LLMError("NVIDIA_API_KEY is not set (see .env.example)")
+    return NvidiaClient(
+        model=settings.model,
+        api_key=settings.nvidia_api_key,
+        base_url=settings.nvidia_base_url,
+        temperature=settings.temperature,
+        max_tokens=settings.max_tokens,
+        top_p=settings.nvidia_top_p,
+        enable_thinking=settings.nvidia_enable_thinking,
+    )
+
+
+def _build_mistral(settings: PipelineSettings) -> LLMClient:
+    from kg_agentic_extraction.llm.mistral_client import MistralClient
+
+    if not settings.mistral_api_key:
+        raise LLMError("MISTRAL_API_KEY is not set (see .env.example)")
+    return MistralClient(
+        model=settings.model,
+        api_key=settings.mistral_api_key,
+        base_url=settings.mistral_base_url,
+        temperature=settings.temperature,
+        max_tokens=settings.max_tokens,
+        timeout=settings.mistral_timeout_seconds,
+        structured_method=settings.mistral_structured_method,
+    )
+
+
 register_provider("cerebras", _build_cerebras)
 register_provider("groq", _build_groq)
 register_provider("gemini", _build_gemini)
+register_provider("meta", _build_meta)
+register_provider("nvidia", _build_nvidia)
+register_provider("mistral", _build_mistral)

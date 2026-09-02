@@ -12,7 +12,6 @@ from __future__ import annotations
 import logging
 
 from kg_agentic_extraction.agents.extractor_agent import ExtractionTask, ExtractorAgent
-from kg_agentic_extraction.models.ontology import OntologyConfig
 from kg_agentic_extraction.state import PipelineState
 from kg_agentic_extraction.types import NodeFn
 
@@ -22,7 +21,7 @@ logger = logging.getLogger(__name__)
 def make_extract_node(
     agent: ExtractorAgent,
     *,
-    ontology: OntologyConfig,
+    domain_context: str,
     max_documents: int,
 ) -> NodeFn:
     """Build the node function that runs first-pass extraction *and* repairs."""
@@ -34,7 +33,7 @@ def make_extract_node(
 
         task = ExtractionTask(
             documents=state["documents"],
-            ontology=ontology,
+            domain_context=domain_context,
             max_documents=max_documents,
             # Both must be present for the agent to enter repair mode; on the
             # first pass they are None and it extracts from scratch.

@@ -16,16 +16,18 @@ import logging
 from typing import TypeVar
 
 from langchain_core.messages import HumanMessage, SystemMessage
+from langchain_core.runnables import Runnable
 from pydantic import BaseModel
 
 from kg_agentic_extraction.llm.base import LLMStructuredOutputError
+from kg_agentic_extraction.llm.tool_calling import LangChainToolLoopMixin
 
 logger = logging.getLogger(__name__)
 
 TModel = TypeVar("TModel", bound=BaseModel)
 
 
-class GeminiClient:
+class GeminiClient(LangChainToolLoopMixin):
     """
     `LLMClient` implementation backed by Google Gemini.
 
@@ -81,3 +83,7 @@ class GeminiClient:
                 schema, TypeError(f"provider returned {type(result).__name__}")
             )
         return result
+
+    def _structured_runnable(self, schema: type[TModel]) -> Runnable:
+        """`json_schema` for the tool loop's closing call, matching `structured()`."""
+        return self._llm.with_structured_output(schema, method="json_schema")

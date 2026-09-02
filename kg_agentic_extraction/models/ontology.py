@@ -1,13 +1,13 @@
 """
-The ontology every agent in the pipeline is constrained by.
+The controlled vocabulary the grounder maps onto.
 
-This module is the single source of truth for what an entity or a relation is
-allowed to be, repo-wide. `validator/corruption.py` and
-`extractor_agent/constants.py` import from here.
+Not a constraint on extraction. Since ADR 0004 the extractor names its own
+entity and relation types and `Entity.type` is a plain `str`; these enums are
+read by the grounder, which uses them to build its DBpedia hint tables, and by
+`kg_dataset/corruption.py` and `extractor_agent/constants.py`.
 
-Extending the ontology means adding a member to one of the enums below — no
-prompt edits required, because the templates render `OntologyConfig` at
-runtime rather than hardcoding the type lists.
+Adding a member here therefore widens what the grounder knows a first guess for.
+It does not widen — and never restricted — what the extractor may emit.
 """
 
 from __future__ import annotations
@@ -47,11 +47,15 @@ class RelationType(StrEnum):
 
 class OntologyConfig(BaseModel):
     """
-    The ontology as handed to an agent for a single run.
+    The ontology as handed to the grounder for a single run.
 
     Defaults to the full enums, but callers may narrow the lists to constrain a
-    particular run without touching the enums themselves — which is why agents
-    take an `OntologyConfig` rather than reading the enums directly.
+    particular run without touching the enums themselves — which is why the
+    grounder takes an `OntologyConfig` rather than reading the enums directly.
+
+    `domain_context` is the exception: it is the one field the extractor still
+    receives, passed as a plain string, and it steers subject matter rather
+    than types.
     """
 
     entity_types: list[EntityType] = Field(default_factory=lambda: list(EntityType))

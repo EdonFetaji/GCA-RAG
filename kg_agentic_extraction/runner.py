@@ -11,6 +11,7 @@ import argparse
 import json
 import logging
 import sys
+import time
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -20,7 +21,12 @@ from kg_agentic_extraction.models.grading import GraderReport
 from kg_agentic_extraction.models.grounding import GroundedKnowledgeGraph
 from kg_agentic_extraction.models.knowledge_graph import KnowledgeGraph
 from kg_agentic_extraction.state import initial_state
-from kg_agentic_extraction.storage import graph_filename, save_knowledge_graph
+from kg_agentic_extraction.storage import (
+    GCSUploadError,
+    graph_filename,
+    save_knowledge_graph,
+    upload_graph,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -37,6 +43,11 @@ class PipelineResult:
     iterations: int
     converged: bool
     errors: list[str]
+    #: Wall-clock seconds spent inside the graph. Wall-clock rather than CPU
+    #: because the run is almost entirely provider latency — which is the thing
+    #: worth watching when comparing providers, and the thing a CPU timer would
+    #: report as zero.
+    elapsed_seconds: float
 
     @property
     def succeeded(self) -> bool:
@@ -47,6 +58,7 @@ class PipelineResult:
         payload = {
             "converged": self.converged,
             "iterations": self.iterations,
+            "elapsed_seconds": round(self.elapsed_seconds, 3),
             "errors": self.errors,
             "knowledge_graph": (
                 self.knowledge_graph.model_dump(mode="json") if self.knowledge_graph else None
@@ -78,9 +90,19 @@ def run_pipeline(
     settings = settings or PipelineSettings()
     app = graph or build_graph(settings=settings)
 
-    final = app.invoke(initial_state(documents, cluster_index=cluster_index))  # type: ignore[attr-defined]
+    # perf_counter, not time(): monotonic, so a clock adjustment mid-run cannot
+    # produce a negative or wildly wrong duration for a pass that takes minutes.
+    started = time.perf_counter()
+    try:
+        final = app.invoke(initial_state(documents, cluster_index=cluster_index))  # type: ignore[attr-defined]
+    except BaseException:
+        # A run that dies still cost real time, and that is exactly the run
+        # whose duration you want — a provider timing out is the usual reason.
+        logger.info("pipeline failed after %s", format_duration(time.perf_counter() - started))
+        raise
+    elapsed = time.perf_counter() - started
 
-    return PipelineResult(
+    result = PipelineResult(
         knowledge_graph=final.get("knowledge_graph"),
         grounded_graph=final.get("grounded_graph"),
         grader_report=final.get("grader_report"),
@@ -89,7 +111,33 @@ def run_pipeline(
         iterations=final.get("iteration", 0),
         converged=final.get("converged", False),
         errors=final.get("errors", []),
+        elapsed_seconds=elapsed,
     )
+    logger.info(
+        "pipeline finished in %s — %d iteration(s), %s%s",
+        format_duration(elapsed),
+        result.iterations,
+        "converged" if result.converged else "unconverged",
+        "" if result.succeeded else ", no graph produced",
+    )
+    return result
+
+
+def format_duration(seconds: float) -> str:
+    """
+    Seconds as something readable at a glance: `4.2s`, `1m 07.4s`, `1h 02m 07s`.
+
+    A pipeline run spans three orders of magnitude — a cached failure returns in
+    milliseconds, a five-iteration pass over a slow provider takes minutes — so
+    a bare float in seconds is the one format that reads badly at both ends.
+    """
+    if seconds < 60:
+        return f"{seconds:.1f}s"
+    minutes, secs = divmod(seconds, 60)
+    if minutes < 60:
+        return f"{int(minutes)}m {secs:04.1f}s"
+    hours, minutes = divmod(int(minutes), 60)
+    return f"{hours}h {minutes:02d}m {int(secs):02d}s"
 
 
 # ── CLI ───────────────────────────────────────────────────────────────
@@ -111,6 +159,13 @@ def _build_parser() -> argparse.ArgumentParser:
         help="Directory for the HDF5 graph (default: KG_GRAPH_OUTPUT_DIR, data/graphs).",
     )
     parser.add_argument("--no-save", action="store_true", help="Skip writing the HDF5 graph.")
+    parser.add_argument(
+        "--gcs-bucket",
+        help="Upload the saved .h5 to this bucket (default: KG_GCS_BUCKET; unset = no upload).",
+    )
+    parser.add_argument(
+        "--no-upload", action="store_true", help="Skip the GCS upload even if a bucket is set."
+    )
     parser.add_argument("--max-iterations", type=int, help="Override KG_MAX_ITERATIONS.")
     parser.add_argument("--no-grounding", action="store_true", help="Skip the grounder.")
     parser.add_argument("--draw", action="store_true", help="Print the graph topology and exit.")
@@ -158,11 +213,36 @@ def _save_graph(
                 "prompt_version": settings.prompt_version,
                 "converged": result.converged,
                 "iterations": result.iterations,
+                "elapsed_seconds": round(result.elapsed_seconds, 3),
                 "grounded": result.grounded_graph is not None,
             },
         )
     except Exception as exc:
         logger.error("failed to save graph to %s: %s", path, exc)
+        return None
+
+
+def _upload_graph(
+    path: Path,
+    settings: PipelineSettings,
+    *,
+    bucket: str | None = None,
+) -> str | None:
+    """
+    Copy the saved graph to GCS, if a bucket is configured.
+
+    Best-effort for the same reason as `_save_graph`, and more so: the local
+    file already exists and the run has already succeeded, so a bucket that is
+    unreachable or unauthorised is worth a log line and nothing else. Returns
+    the `gs://` URI, or None when no bucket is set or the upload failed.
+    """
+    bucket = bucket or settings.gcs_bucket
+    if not bucket:
+        return None
+    try:
+        return upload_graph(path, bucket, prefix=settings.gcs_prefix)
+    except GCSUploadError as exc:
+        logger.error("%s", exc)
         return None
 
 
@@ -198,7 +278,9 @@ def main(argv: list[str] | None = None) -> int:
     )
 
     if result.knowledge_graph is not None and not args.no_save:
-        _save_graph(result, settings, cluster_index=args.cluster, out_dir=args.h5_dir)
+        saved = _save_graph(result, settings, cluster_index=args.cluster, out_dir=args.h5_dir)
+        if saved is not None and not args.no_upload:
+            _upload_graph(saved, settings, bucket=args.gcs_bucket)
 
     if args.report and result.grader_markdown:
         args.report.write_text(result.grader_markdown)
@@ -214,6 +296,11 @@ def main(argv: list[str] | None = None) -> int:
     if result.errors:
         for err in result.errors:
             logger.error("%s", err)
+
+    # Repeated from `run_pipeline`, deliberately: the result JSON printed above
+    # can be thousands of lines, and the timing is worth having as the last line
+    # on screen rather than scrolled off the top.
+    logger.info("total pipeline time: %s", format_duration(result.elapsed_seconds))
     return 0 if result.succeeded else 1
 
 

@@ -12,6 +12,9 @@ dependencies = [
     "langgraph>=0.2.60",
     "langchain-core>=0.3.30",
     "langchain-cerebras>=0.5.0",
+    # Not for OpenAI: ChatOpenAI is the client for any OpenAI-compatible
+    # endpoint, which is how the `meta` provider reaches Meta Model API.
+    "langchain-openai>=1.5.1",
     "mcp>=1.2.0",
     "jinja2>=3.1.6",
     "pydantic>=2.10",
@@ -34,7 +37,16 @@ dependencies = [
     "fastmcp>=3.4.7",
     "langchain-groq>=1.1.3",
     "langchain-google-genai>=4.3.4",
+    # ChatNVIDIA rather than ChatOpenAI at NVIDIA's compatible base: it knows
+    # NIM's nvext guided decoding and the chat-template thinking toggle.
+    "langchain-nvidia-ai-endpoints>=1.4.3",
     "h5py>=3.16.0",
+    # ChatMistralAI rather than ChatOpenAI at Mistral's base: the parameter is
+    # `endpoint`, not `base_url`, and its json_schema mode converts with strict=True.
+    "langchain-mistralai>=1.1.6",
+    # Optional at runtime: only imported when KG_GCS_BUCKET is set. Kept a hard
+    # dependency anyway so `uv sync` gives everyone the same lock.
+    "google-cloud-storage>=3.13.1",
 ]
 
 [dependency-groups]
@@ -45,6 +57,7 @@ dev = [
     "ipykernel>=6.29",
     "matplotlib>=3.8",
     "grandalf>=0.8",  # graph.get_graph().draw_ascii()
+    "langgraph-cli[inmem]>=0.4.31",
 ]
 
 [build-system]
@@ -64,3 +77,8 @@ select = ["E", "F", "I", "UP", "B"]
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 asyncio_mode = "auto"
+# `live` tests hit dbpedia.org for real. Deselected by default so the suite is
+# offline and deterministic; run them with `pytest -m live` when changing a
+# SPARQL query, since a stubbed transport cannot tell you the query is valid.
+addopts = "-m 'not live'"
+markers = ["live: hits the real DBpedia endpoints; deselected by default"]

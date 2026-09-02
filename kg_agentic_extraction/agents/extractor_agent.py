@@ -3,17 +3,22 @@ The extractor agent — documents in, knowledge graph out.
 
 Handles both roles in the loop: the first-pass extraction, and the repair pass
 that consumes the grader's Markdown. They are one agent rather than two because
-the persona, ontology, and output schema are identical — only the user-side
-template differs, which `user_role_for()` selects.
+the persona and output schema are identical — only the user-side template
+differs, which `user_role_for()` selects.
+
+No ontology reaches this agent. Extraction is open-vocabulary: the model names
+entity and relation types from what the documents actually say, and nothing
+here checks those names against a list. Mapping them onto a controlled
+vocabulary is the grounder's job, and only if grounding is enabled — see
+docs/adr/0004-open-vocabulary-extraction.md for why the constraint moved.
 """
 
 from __future__ import annotations
 
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 
 from kg_agentic_extraction.agents.base_agent import Agent
 from kg_agentic_extraction.models.knowledge_graph import KnowledgeGraph
-from kg_agentic_extraction.models.ontology import OntologyConfig
 from kg_agentic_extraction.prompts.renderers import format_documents, graph_to_json
 
 
@@ -27,7 +32,7 @@ class ExtractionTask:
     """
 
     documents: list[str]
-    ontology: OntologyConfig = field(default_factory=OntologyConfig)
+    domain_context: str = "general news articles"
     max_documents: int = 10
     previous_graph: KnowledgeGraph | None = None
     grader_markdown: str | None = None
@@ -54,9 +59,7 @@ class ExtractorAgent(Agent[ExtractionTask, KnowledgeGraph]):
         context: dict[str, object] = {
             "documents_text": documents_text,
             "document_count": min(len(payload.documents), payload.max_documents),
-            "entity_types": payload.ontology.entity_type_names,
-            "relation_types": payload.ontology.relation_type_names,
-            "domain_context": payload.ontology.domain_context,
+            "domain_context": payload.domain_context,
         }
         if payload.is_repair:
             assert payload.previous_graph is not None  # narrowed by is_repair

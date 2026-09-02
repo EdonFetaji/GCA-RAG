@@ -1,0 +1,439 @@
+{
+  "converged": true,
+  "iterations": 2,
+  "elapsed_seconds": 166.165,
+  "errors": [
+    "ground: could not open an MCP session: could not connect to http://127.0.0.1:8931/mcp/: Client failed to connect: All connection attempts failed"
+  ],
+  "knowledge_graph": {
+    "entities": [
+      {
+        "id": "facebook",
+        "name": "Facebook",
+        "type": "ORGANIZATION",
+        "document_frequency": 2,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "A photo of two men kissing that was posted on a Facebook page protesting a London pub\u0019s decision to eject a same-sex couple for kissing has been removed by the social networking site, an error, according to a rep for the company."
+          },
+          {
+            "document_index": 0,
+            "quote": "FB have NOT removed the kiss-in event page; it\u0019s still there, but _I made the event private after the event_ was over"
+          }
+        ]
+      },
+      {
+        "id": "dangerous_minds_page",
+        "name": "Dangerous Minds Facebook page",
+        "type": "SOCIAL_MEDIA_PAGE",
+        "document_frequency": 1,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "The Dangerous Minds Facebook page was set up to promote a \u0003gay kiss-in\u0003 demonstration in London to protest the pub."
+          }
+        ]
+      },
+      {
+        "id": "john_snow_kiss_in",
+        "name": "John Snow Kiss-In",
+        "type": "EVENT",
+        "document_frequency": 2,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "The photo which was used to illustrate my first post about the John Snow Kiss-In is a promotional still from the British soap opera \u0003Eastenders.\u0003"
+          },
+          {
+            "document_index": 1,
+            "quote": "The Dangerous Minds Facebook page was set up to promote a \u0003gay kiss-in\u0003 demonstration in London to protest the pub."
+          }
+        ]
+      },
+      {
+        "id": "john_snow_kiss_in_facebook_page",
+        "name": "John Snow Kiss-In Facebook event page",
+        "type": "SOCIAL_MEDIA_PAGE",
+        "document_frequency": 1,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "FB have NOT removed the kiss-in event page; it\u0019s still there, but _I made the event private after the event_ was over"
+          }
+        ]
+      },
+      {
+        "id": "london_pub",
+        "name": "London pub",
+        "type": "LOCATION",
+        "document_frequency": 1,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "A photo of two men kissing that was posted on a Facebook page protesting a London pub\u0019s decision to eject a same-sex couple for kissing has been removed by the social networking site, an error, according to a rep for the company."
+          }
+        ]
+      },
+      {
+        "id": "same_sex_couple",
+        "name": "same-sex couple",
+        "type": "GROUP",
+        "document_frequency": 1,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "A photo of two men kissing that was posted on a Facebook page protesting a London pub\u0019s decision to eject a same-sex couple for kissing has been removed by the social networking site, an error, according to a rep for the company."
+          }
+        ]
+      },
+      {
+        "id": "photo_two_men_kissing",
+        "name": "photo of two men kissing",
+        "type": "PHOTO",
+        "document_frequency": 2,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "A photo of two men kissing that was posted on a Facebook page protesting a London pub\u0019s decision to eject a same-sex couple for kissing has been removed by the social networking site, an error, according to a rep for the company."
+          },
+          {
+            "document_index": 0,
+            "quote": "The photo which was used to illustrate my first post about the John Snow Kiss-In is a promotional still from the British soap opera \u0003Eastenders.\u0003"
+          }
+        ]
+      },
+      {
+        "id": "richard_metzger",
+        "name": "Richard Metzger",
+        "type": "PERSON",
+        "document_frequency": 1,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "It has been erroneously reported in the media that our own Richard Metzger (who lives in Los Angeles) organized the London \u0003Kiss-In\u0003 event"
+          }
+        ]
+      },
+      {
+        "id": "paul_shetler",
+        "name": "Paul Shetler",
+        "type": "PERSON",
+        "document_frequency": 1,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Paul Shetler, the organizer, left this comment on the previous thread:"
+          }
+        ]
+      },
+      {
+        "id": "christian_clarke",
+        "name": "Christian Clarke",
+        "type": "FICTIONAL_CHARACTER",
+        "document_frequency": 1,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "It features one of the main characters from the show (Christian Clarke, played by the actor John Partridge- left)"
+          }
+        ]
+      },
+      {
+        "id": "john_partridge",
+        "name": "John Partridge",
+        "type": "PERSON",
+        "document_frequency": 1,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "It features one of the main characters from the show (Christian Clarke, played by the actor John Partridge- left)"
+          }
+        ]
+      },
+      {
+        "id": "eastenders",
+        "name": "Eastenders",
+        "type": "TV_SHOW",
+        "document_frequency": 1,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "The photo which was used to illustrate my first post about the John Snow Kiss-In is a promotional still from the British soap opera \u0003Eastenders.\u0003"
+          }
+        ]
+      }
+    ],
+    "relations": [
+      {
+        "source": "facebook",
+        "target": "photo_two_men_kissing",
+        "relation_type": "REMOVED",
+        "support_count": 1,
+        "source_documents": [
+          1
+        ],
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "A photo of two men kissing that was posted on a Facebook page protesting a London pub\u0019s decision to eject a same-sex couple for kissing has been removed by the social networking site, an error, according to a rep for the company."
+          }
+        ]
+      },
+      {
+        "source": "facebook",
+        "target": "photo_two_men_kissing",
+        "relation_type": "STATED_REMOVED_IN_ERROR",
+        "support_count": 1,
+        "source_documents": [
+          1
+        ],
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "\"The photo in question does not violate our Statement of Rights and Responsibilities and was removed in error,\" the statement, obtained by America Blog, says."
+          },
+          {
+            "document_index": 1,
+            "quote": "A photo of two men kissing that was posted on a Facebook page protesting a London pub\u0019s decision to eject a same-sex couple for kissing has been removed by the social networking site, an error, according to a rep for the company."
+          }
+        ]
+      },
+      {
+        "source": "dangerous_minds_page",
+        "target": "john_snow_kiss_in",
+        "relation_type": "PROMOTED",
+        "support_count": 1,
+        "source_documents": [
+          1
+        ],
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "The Dangerous Minds Facebook page was set up to promote a \u0003gay kiss-in\u0003 demonstration in London to protest the pub."
+          }
+        ]
+      },
+      {
+        "source": "dangerous_minds_page",
+        "target": "photo_two_men_kissing",
+        "relation_type": "USED_TO_PROMOTE",
+        "support_count": 1,
+        "source_documents": [
+          1
+        ],
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "The Dangerous Minds Facebook page was set up to promote a \u0003gay kiss-in\u0003 demonstration in London to protest the pub. The page used a photo of two men kissing to promote the event."
+          }
+        ]
+      },
+      {
+        "source": "photo_two_men_kissing",
+        "target": "eastenders",
+        "relation_type": "IS_PROMOTIONAL_STILL_FROM",
+        "support_count": 1,
+        "source_documents": [
+          0
+        ],
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "The photo which was used to illustrate my first post about the John Snow Kiss-In is a promotional still from the British soap opera \u0003Eastenders.\u0003"
+          }
+        ]
+      },
+      {
+        "source": "christian_clarke",
+        "target": "john_partridge",
+        "relation_type": "PLAYED_BY",
+        "support_count": 1,
+        "source_documents": [
+          0
+        ],
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "It features one of the main characters from the show (Christian Clarke, played by the actor John Partridge- left)"
+          }
+        ]
+      },
+      {
+        "source": "paul_shetler",
+        "target": "john_snow_kiss_in",
+        "relation_type": "ORGANIZED",
+        "support_count": 1,
+        "source_documents": [
+          0
+        ],
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Paul Shetler, the organizer, left this comment on the previous thread: \n \n \u0003Hey I just saw this. Before it goes too far, I just want people to know that FB have NOT removed the kiss-in event page; it\u0019s still there, but _I made the event private after the event_ was over"
+          }
+        ]
+      },
+      {
+        "source": "paul_shetler",
+        "target": "john_snow_kiss_in_facebook_page",
+        "relation_type": "MADE_PRIVATE",
+        "support_count": 1,
+        "source_documents": [
+          0
+        ],
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Paul Shetler, the organizer, left this comment on the previous thread: \n \n \u0003Hey I just saw this. Before it goes too far, I just want people to know that FB have NOT removed the kiss-in event page; it\u0019s still there, but _I made the event private after the event_ was over"
+          }
+        ]
+      },
+      {
+        "source": "facebook",
+        "target": "john_snow_kiss_in_facebook_page",
+        "relation_type": "DID_NOT_REMOVE",
+        "support_count": 1,
+        "source_documents": [
+          0
+        ],
+        "confidence": 0.9,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "FB have NOT removed the kiss-in event page; it\u0019s still there, but _I made the event private after the event_ was over"
+          }
+        ]
+      },
+      {
+        "source": "london_pub",
+        "target": "same_sex_couple",
+        "relation_type": "EJECTED",
+        "support_count": 1,
+        "source_documents": [
+          1
+        ],
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "A photo of two men kissing that was posted on a Facebook page protesting a London pub\u0019s decision to eject a same-sex couple for kissing has been removed by the social networking site, an error, according to a rep for the company."
+          }
+        ]
+      },
+      {
+        "source": "richard_metzger",
+        "target": "john_snow_kiss_in",
+        "relation_type": "ERRONEOUSLY_REPORTED_AS_ORGANIZER_OF",
+        "support_count": 1,
+        "source_documents": [
+          0
+        ],
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "It has been erroneously reported in the media that our own Richard Metzger (who lives in Los Angeles) organized the London \u0003Kiss-In\u0003 event"
+          }
+        ]
+      },
+      {
+        "source": "facebook",
+        "target": "dangerous_minds_page",
+        "relation_type": "SENT_REMOVAL_NOTICE_STATING_POLICY",
+        "support_count": 1,
+        "source_documents": [
+          1
+        ],
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "According to NYULocal.com, the photo was quickly removed and the following e-mail was sent to administrators of the Facebook page: \u0003Shares that contain nudity, or any kind of graphic or sexually suggestive content, are not permitted on Facebook.\u0003"
+          }
+        ]
+      }
+    ]
+  },
+  "grounded_graph": null,
+  "grader_history": [
+    {
+      "issues": [
+        {
+          "issue_type": "HALLUCINATION",
+          "severity": "high",
+          "element_id": "london_pub|EJECTED|photo_two_men_kissing",
+          "description": "Relation asserts London pub ejected the photo. Documents state the pub ejected a same-sex couple for kissing, not a photo. The quote does not support pub->photo ejection and the target is wrong.",
+          "suggested_fix": "Remove this edge. Add entity 'same-sex couple' and add relation london_pub|EJECTED|same-sex couple with quote 'London pub\\u2019s decision to eject a same-sex couple for kissing' (Doc 1)."
+        },
+        {
+          "issue_type": "MISSING_ENTITY",
+          "severity": "high",
+          "element_id": "photo_two_men_kissing",
+          "description": "Material entity omitted: the same-sex couple ejected by the London pub. The ejection is the inciting incident for the kiss-in and the Facebook protest page; a summary without it is incoherent.",
+          "suggested_fix": "Add entity id:same_sex_couple name:'same-sex couple' type:PERSON (or GROUP). Evidence Doc1: 'London pub\\u2019s decision to eject a same-sex couple for kissing'."
+        },
+        {
+          "issue_type": "WRONG_TYPE",
+          "severity": "medium",
+          "element_id": "john_snow_kiss_in",
+          "description": "Graph conflates the John Snow Kiss-In demonstration (EVENT) with its Facebook event page. DID_NOT_REMOVE and MADE_PRIVATE both refer to the Facebook event page, not the demonstration itself. Doc0 explicitly distinguishes: 'FB have NOT removed the kiss-in event page; it\\u2019s still there, but I made the event private after the event was over'.",
+          "suggested_fix": "Add separate entity id:john_snow_kiss_in_facebook_page type:SOCIAL_MEDIA_PAGE (or EVENT_PAGE). Retarget facebook|DID_NOT_REMOVE|john_snow_kiss_in and paul_shetler|MADE_PRIVATE|john_snow_kiss_in to that page entity. Keep john_snow_kiss_in for the demonstration."
+        },
+        {
+          "issue_type": "WEAK_EVIDENCE",
+          "severity": "medium",
+          "element_id": "facebook|DID_NOT_REMOVE|john_snow_kiss_in",
+          "description": "Relation facebook DID_NOT_REMOVE john_snow_kiss_in targets the demonstration instead of the Facebook event page. Evidence is about the event page not being removed.",
+          "suggested_fix": "Retarget to the Facebook event page entity (see above) or retype to DID_NOT_REMOVE_EVENT_PAGE. Quote must include 'FB have NOT removed the kiss-in event page' and show Facebook as actor via context."
+        },
+        {
+          "issue_type": "WEAK_EVIDENCE",
+          "severity": "medium",
+          "element_id": "paul_shetler|MADE_PRIVATE|john_snow_kiss_in",
+          "description": "Relation paul_shetler MADE_PRIVATE john_snow_kiss_in targets the demonstration instead of the Facebook event page. Quote says 'I made the event private' referring to the Facebook event page.",
+          "suggested_fix": "Retarget to the Facebook event page entity. Evidence is correct but endpoint is wrong; change target to john_snow_kiss_in_facebook_page."
+        },
+        {
+          "issue_type": "WEAK_EVIDENCE",
+          "severity": "medium",
+          "element_id": "facebook|PROMPTED_PROTEST_POSTS|photo_two_men_kissing",
+          "description": "Relation facebook PROMPTED_PROTEST_POSTS photo_two_men_kissing has wrong target and is not supported by quote. Quote says 'The decision to remove the photo has prompted scores of people to post their own pictures...' - the prompt leads to protest posts/people, not to the original photo, and the actor is the removal decision, not Facebook directly as stated.",
+          "suggested_fix": "Retarget to a new entity for protest posts or remove. If kept, change to REMOVAL_PROMPTED_PROTEST_POSTS with target as protest posts/people and provide full quote including 'prompted scores of people to post their own pictures of same-sex couples kissing in protest'."
+        },
+        {
+          "issue_type": "WEAK_EVIDENCE",
+          "severity": "medium",
+          "element_id": "facebook|SENT_REMOVAL_NOTICE_STATING_POLICY|dangerous_minds_page",
+          "description": "Relation facebook SENT_REMOVAL_NOTICE_STATING_POLICY dangerous_minds_page cites only the policy text 'Shares that contain nudity...' which names neither Facebook as sender nor Dangerous Minds page as recipient. Document context that supports it ('following e-mail was sent to administrators of the Facebook page: \"Shares that contain nudity...\"' Doc1) is omitted.",
+          "suggested_fix": "Replace evidence with full context quote: 'According to NYULocal.com, the photo was quickly removed and the following e-mail was sent to administrators of the Facebook page: \"Shares that contain nudity, or any kind of graphic or sexually suggestive content, are not permitted on Facebook.\"' (Doc1) to establish both endpoints."
+        }
+      ],
+      "summary": "Graph is largely faithful but contains a false ejection edge (pub ejected photo instead of same-sex couple), omits the central same-sex couple entity, and conflates the kiss-in demonstration with its Facebook event page, causing two edges to target the wrong node. Two additional edges have weak evidence due to truncated quotes or wrong targets."
+    },
+    {
+      "issues": [],
+      "summary": "Graph is faithful on re-check. All entity and relation quotes are verbatim and present in the cited documents, endpoints are correctly linked, types are specific and consistently applied, and salience counts match document frequencies. No hallucination, contradiction, weak evidence, wrong type, missing entity/relation, or dangling reference was found. Revision appears to have preserved prior correctness."
+    }
+  ]
+}

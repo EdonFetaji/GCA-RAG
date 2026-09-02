@@ -15,13 +15,14 @@ from langchain_core.messages import HumanMessage, SystemMessage
 from pydantic import BaseModel
 
 from kg_agentic_extraction.llm.base import LLMStructuredOutputError
+from kg_agentic_extraction.llm.tool_calling import LangChainToolLoopMixin
 
 logger = logging.getLogger(__name__)
 
 TModel = TypeVar("TModel", bound=BaseModel)
 
 
-class CerebrasClient:
+class CerebrasClient(LangChainToolLoopMixin):
     """
     `LLMClient` implementation backed by Cerebras.
 

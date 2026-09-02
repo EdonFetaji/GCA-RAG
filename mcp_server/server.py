@@ -5,6 +5,9 @@ Defines the server, links the tools from `tools.py` onto it, and exposes it.
 
     uv run python -m mcp_server.server                      # streamable-http
     uv run python -m mcp_server.server --transport stdio    # stdio
+
+Endpoints and limits come from `DBPEDIA_*` environment variables — see
+`mcp_server/dbpedia/config.py` and `.env.example`.
 """
 
 from __future__ import annotations
@@ -21,10 +24,35 @@ logger = logging.getLogger("mcp-server")
 
 SERVER_NAME = "gca-rag"
 SERVER_INSTRUCTIONS = """\
-Scaffold MCP server. Exposes two example tools:
+DBpedia grounding toolkit. Maps entity mentions and relation phrases from an
+extracted knowledge graph onto canonical DBpedia URIs.
 
-- `echo` — return a message back with its length.
-- `add`  — add two numbers.
+ENTITY TOOLS — surface form → dbpedia.org/resource/…
+  spotlight_link         link a mention using the sentence around it. Start here
+                         whenever you have context; it is the only tool that
+                         reads it.
+  search_resource        search by name, optionally narrowed to a class.
+                         The fallback when there is no usable context.
+  get_resource_profile   abstract, types, redirect and disambiguation flags for
+                         one URI. The confirmation step before committing.
+  search_class           find the ontology class name to pass as expected_types.
+
+RELATION TOOLS — relation phrase → dbpedia.org/ontology/…
+  find_object_properties    properties linking two resources.
+  find_datatype_properties  properties whose object is a date/number/string.
+  get_property_profile      meaning, domain, range and real-world usage of one
+                            property.
+  get_predicates_between    what DBpedia actually asserts between two resources.
+                            The strongest evidence for a relation.
+
+A workable order: spotlight_link (or search_resource) → get_resource_profile to
+confirm → find_object_properties on the relation → get_predicates_between to
+check the edge really exists.
+
+No tool raises. A failure comes back as an empty result with `note` explaining
+why, so try a different route rather than retrying the same call. Never emit a
+URI a tool did not return: a reconstructed one will look plausible and resolve
+to nothing.
 """
 
 DEFAULT_HOST = "127.0.0.1"

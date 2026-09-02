@@ -11,7 +11,6 @@ from __future__ import annotations
 import logging
 
 from kg_agentic_extraction.agents.grader_agent import GraderAgent, GradingTask
-from kg_agentic_extraction.models.ontology import OntologyConfig
 from kg_agentic_extraction.prompts.renderers import report_to_markdown
 from kg_agentic_extraction.state import PipelineState
 from kg_agentic_extraction.types import NodeFn
@@ -22,7 +21,6 @@ logger = logging.getLogger(__name__)
 def make_grade_node(
     agent: GraderAgent,
     *,
-    ontology: OntologyConfig,
     max_documents: int,
 ) -> NodeFn:
     """Build the node function that audits the current graph."""
@@ -43,7 +41,6 @@ def make_grade_node(
         task = GradingTask(
             graph=graph,
             documents=state["documents"],
-            ontology=ontology,
             max_documents=max_documents,
             iteration=iteration,
         )

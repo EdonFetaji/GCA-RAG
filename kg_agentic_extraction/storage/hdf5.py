@@ -158,7 +158,7 @@ def save_knowledge_graph(
 
 def _write_entities(f: h5py.File, entities: list[Entity]) -> None:
     rows = np.array(
-        [(e.id, e.name, e.type.value, e.document_frequency, e.confidence) for e in entities],
+        [(e.id, e.name, e.type, e.document_frequency, e.confidence) for e in entities],
         dtype=_ENTITY_DTYPE,
     )
     f.create_dataset("entities", data=rows, compression="gzip")
@@ -172,7 +172,7 @@ def _write_entities(f: h5py.File, entities: list[Entity]) -> None:
 def _write_relations(f: h5py.File, relations: list[Relation]) -> None:
     rows = np.array(
         [
-            (r.source, r.target, r.relation_type.value, r.support_count, r.confidence)
+            (r.source, r.target, r.relation_type, r.support_count, r.confidence)
             for r in relations
         ],
         dtype=_RELATION_DTYPE,

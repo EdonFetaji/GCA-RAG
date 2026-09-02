@@ -1,0 +1,1561 @@
+{
+  "converged": false,
+  "iterations": 5,
+  "elapsed_seconds": 340.932,
+  "errors": [],
+  "knowledge_graph": {
+    "entities": [
+      {
+        "id": "republicans",
+        "name": "Republicans",
+        "type": "POLITICAL_PARTY",
+        "document_frequency": 2,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Republicans currently hold 29 governorships"
+          },
+          {
+            "document_index": 1,
+            "quote": "Republicans currently hold 29 governorships"
+          }
+        ]
+      },
+      {
+        "id": "democrats",
+        "name": "Democrats",
+        "type": "POLITICAL_PARTY",
+        "document_frequency": 2,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Democrats have 20"
+          },
+          {
+            "document_index": 1,
+            "quote": "Democrats have 20"
+          }
+        ]
+      },
+      {
+        "id": "lincoln_chafee",
+        "name": "Lincoln Chafee",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Rhode Island's Gov. Lincoln Chafee is an Independent"
+          },
+          {
+            "document_index": 1,
+            "quote": "Rhode Island's Gov. Lincoln Chafee is an Independent"
+          }
+        ]
+      },
+      {
+        "id": "rhode_island",
+        "name": "Rhode Island",
+        "type": "STATE",
+        "document_frequency": 2,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Rhode Island's Gov. Lincoln Chafee is an Independent"
+          },
+          {
+            "document_index": 1,
+            "quote": "Rhode Island's Gov. Lincoln Chafee is an Independent"
+          }
+        ]
+      },
+      {
+        "id": "gubernatorial_election",
+        "name": "Gubernatorial Elections in 11 States",
+        "type": "ELECTION",
+        "document_frequency": 2,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Voters in 11 states will pick their governors tonight"
+          },
+          {
+            "document_index": 1,
+            "quote": "Voters in 11 states will pick their governors tonight"
+          }
+        ]
+      },
+      {
+        "id": "north_carolina",
+        "name": "North Carolina",
+        "type": "STATE",
+        "document_frequency": 2,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "North Carolina governorship from Democratic control"
+          },
+          {
+            "document_index": 1,
+            "quote": "North Carolina governorship from Democratic control"
+          }
+        ]
+      },
+      {
+        "id": "montana",
+        "name": "Montana",
+        "type": "STATE",
+        "document_frequency": 2,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Montana, New Hampshire and Washington"
+          },
+          {
+            "document_index": 1,
+            "quote": "Montana, New Hampshire and Washington"
+          }
+        ]
+      },
+      {
+        "id": "new_hampshire",
+        "name": "New Hampshire",
+        "type": "STATE",
+        "document_frequency": 2,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Montana, New Hampshire and Washington"
+          },
+          {
+            "document_index": 1,
+            "quote": "Montana, New Hampshire and Washington"
+          }
+        ]
+      },
+      {
+        "id": "washington",
+        "name": "Washington",
+        "type": "STATE",
+        "document_frequency": 2,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Montana, New Hampshire and Washington"
+          },
+          {
+            "document_index": 1,
+            "quote": "Montana, New Hampshire and Washington"
+          }
+        ]
+      },
+      {
+        "id": "north_dakota",
+        "name": "North Dakota",
+        "type": "STATE",
+        "document_frequency": 2,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Republican Govs. Jack Dalrymple in North Dakota and Gary Herbert in Utah, and GOP Rep. Mike Pence in Indiana are expected to win"
+          },
+          {
+            "document_index": 1,
+            "quote": "Republican governors Jack Dalrymple in North Dakota and Gary Herbert in Utah, and GOP Rep. Mike Pence in Indiana are expected to win"
+          }
+        ]
+      },
+      {
+        "id": "utah",
+        "name": "Utah",
+        "type": "STATE",
+        "document_frequency": 2,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Republican Govs. Jack Dalrymple in North Dakota and Gary Herbert in Utah, and GOP Rep. Mike Pence in Indiana are expected to win"
+          },
+          {
+            "document_index": 1,
+            "quote": "Republican governors Jack Dalrymple in North Dakota and Gary Herbert in Utah, and GOP Rep. Mike Pence in Indiana are expected to win"
+          }
+        ]
+      },
+      {
+        "id": "indiana",
+        "name": "Indiana",
+        "type": "STATE",
+        "document_frequency": 2,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Republican Govs. Jack Dalrymple in North Dakota and Gary Herbert in Utah, and GOP Rep. Mike Pence in Indiana are expected to win"
+          },
+          {
+            "document_index": 1,
+            "quote": "Republican governors Jack Dalrymple in North Dakota and Gary Herbert in Utah, and GOP Rep. Mike Pence in Indiana are expected to win"
+          }
+        ]
+      },
+      {
+        "id": "vermont",
+        "name": "Vermont",
+        "type": "STATE",
+        "document_frequency": 2,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "So are Democratic Govs. Peter Shumlin in Vermont and Jack Markell in Delaware"
+          },
+          {
+            "document_index": 1,
+            "quote": "So are Democratic governors Peter Shumlin in Vermont and Jack Markell in Delaware"
+          }
+        ]
+      },
+      {
+        "id": "delaware",
+        "name": "Delaware",
+        "type": "STATE",
+        "document_frequency": 2,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "So are Democratic Govs. Peter Shumlin in Vermont and Jack Markell in Delaware"
+          },
+          {
+            "document_index": 1,
+            "quote": "So are Democratic governors Peter Shumlin in Vermont and Jack Markell in Delaware"
+          }
+        ]
+      },
+      {
+        "id": "missouri",
+        "name": "Missouri",
+        "type": "STATE",
+        "document_frequency": 2,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Democrats are likely to hold on to their seats in West Virginia and Missouri"
+          },
+          {
+            "document_index": 1,
+            "quote": "Democrats are also hoping to hold on to the governorship in Missouri, where Jay Nixon is running for a second term"
+          }
+        ]
+      },
+      {
+        "id": "west_virginia",
+        "name": "West Virginia",
+        "type": "STATE",
+        "document_frequency": 2,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Democrats are likely to hold on to their seats in West Virginia and Missouri"
+          },
+          {
+            "document_index": 1,
+            "quote": "Democrats are also hoping to hold on to the governorship in Missouri, where Jay Nixon is running for a second term against Republican Dave Spence; and in West Virginia, where Gov. Earl Ray Tomblin"
+          }
+        ]
+      },
+      {
+        "id": "thad_kousser",
+        "name": "Thad Kousser",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 0.98,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Thad Kousser, co-author of The Power of American Governors"
+          },
+          {
+            "document_index": 1,
+            "quote": "Thad Kousser, co-author of The Power of American Governors"
+          }
+        ]
+      },
+      {
+        "id": "beverly_perdue",
+        "name": "Beverly Perdue",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "One-term incumbent Democratic Gov. Beverly Perdue"
+          },
+          {
+            "document_index": 1,
+            "quote": "One-term incumbent Democratic Gov. Beverly Perdue"
+          }
+        ]
+      },
+      {
+        "id": "pat_mccrory",
+        "name": "Pat McCrory",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Republican candidate Pat McCrory"
+          },
+          {
+            "document_index": 1,
+            "quote": "Republican candidate Pat McCrory"
+          }
+        ]
+      },
+      {
+        "id": "walter_dalton",
+        "name": "Walter Dalton",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Perdue's lieutenant governor, Walter Dalton"
+          },
+          {
+            "document_index": 1,
+            "quote": "Perdue's lieutenant governor, Walter Dalton"
+          }
+        ]
+      },
+      {
+        "id": "brian_schweitzer",
+        "name": "Brian Schweitzer",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Popular Democratic Gov. Brian Schweitzer"
+          },
+          {
+            "document_index": 1,
+            "quote": "Popular Democratic Gov. Brian Schweitzer"
+          }
+        ]
+      },
+      {
+        "id": "steve_bullock",
+        "name": "Steve Bullock",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Democratic Attorney General Steve Bullock"
+          },
+          {
+            "document_index": 1,
+            "quote": "Democratic Attorney General Steve Bullock"
+          }
+        ]
+      },
+      {
+        "id": "rick_hill",
+        "name": "Rick Hill",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "former two-term GOP Rep. Rick Hill"
+          },
+          {
+            "document_index": 1,
+            "quote": "former two-term GOP Rep. Rick Hill"
+          }
+        ]
+      },
+      {
+        "id": "maggie_hassan",
+        "name": "Maggie Hassan",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Former Democratic state Sen. Maggie Hassan"
+          },
+          {
+            "document_index": 1,
+            "quote": "Former Democratic state Sen. Maggie Hassan"
+          }
+        ]
+      },
+      {
+        "id": "john_lynch",
+        "name": "John Lynch",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "retiring Democratic Gov. John Lynch"
+          },
+          {
+            "document_index": 1,
+            "quote": "retiring Democratic Gov. John Lynch"
+          }
+        ]
+      },
+      {
+        "id": "ovide_lamontagne",
+        "name": "Ovide Lamontagne",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "lawyer Ovide Lamontagne, a Tea Party conservative"
+          },
+          {
+            "document_index": 1,
+            "quote": "lawyer Ovide Lamontagne, a Tea Party conservative"
+          }
+        ]
+      },
+      {
+        "id": "jay_inslee",
+        "name": "Jay Inslee",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "former U.S. Rep. Jay Inslee is in a dead-heat battle"
+          },
+          {
+            "document_index": 1,
+            "quote": "former Rep. Jay Inslee is in a dead-heat battle"
+          }
+        ]
+      },
+      {
+        "id": "rob_mckenna",
+        "name": "Rob McKenna",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "state's Republican Attorney General Rob McKenna"
+          },
+          {
+            "document_index": 1,
+            "quote": "state's Republican Attorney General Rob McKenna"
+          }
+        ]
+      },
+      {
+        "id": "jack_dalrymple",
+        "name": "Jack Dalrymple",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Republican Govs. Jack Dalrymple in North Dakota"
+          },
+          {
+            "document_index": 1,
+            "quote": "Republican governors Jack Dalrymple in North Dakota"
+          }
+        ]
+      },
+      {
+        "id": "gary_herbert",
+        "name": "Gary Herbert",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Gary Herbert in Utah"
+          },
+          {
+            "document_index": 1,
+            "quote": "Gary Herbert in Utah"
+          }
+        ]
+      },
+      {
+        "id": "mike_pence",
+        "name": "Mike Pence",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "GOP Rep. Mike Pence in Indiana"
+          },
+          {
+            "document_index": 1,
+            "quote": "GOP Rep. Mike Pence in Indiana"
+          }
+        ]
+      },
+      {
+        "id": "peter_shumlin",
+        "name": "Peter Shumlin",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "So are Democratic Govs. Peter Shumlin in Vermont"
+          },
+          {
+            "document_index": 1,
+            "quote": "So are Democratic governors Peter Shumlin in Vermont"
+          }
+        ]
+      },
+      {
+        "id": "jack_markell",
+        "name": "Jack Markell",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Jack Markell in Delaware"
+          },
+          {
+            "document_index": 1,
+            "quote": "Jack Markell in Delaware"
+          }
+        ]
+      },
+      {
+        "id": "jay_nixon",
+        "name": "Jay Nixon",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Jay Nixon is running for a second term against Republican Dave Spence"
+          },
+          {
+            "document_index": 1,
+            "quote": "Jay Nixon is running for a second term against Republican Dave Spence"
+          }
+        ]
+      },
+      {
+        "id": "dave_spence",
+        "name": "Dave Spence",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Jay Nixon is running for a second term against Republican Dave Spence"
+          },
+          {
+            "document_index": 1,
+            "quote": "Jay Nixon is running for a second term against Republican Dave Spence"
+          }
+        ]
+      },
+      {
+        "id": "earl_ray_tomblin",
+        "name": "Earl Ray Tomblin",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Gov. Earl Ray Tomblin, former state senate president, is running for his first full term"
+          },
+          {
+            "document_index": 1,
+            "quote": "Gov. Earl Ray Tomblin, former state senate president, is running for his first full term"
+          }
+        ]
+      },
+      {
+        "id": "bill_maloney",
+        "name": "Bill Maloney",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "GOP businessman Bill Maloney is his opponent"
+          },
+          {
+            "document_index": 1,
+            "quote": "GOP businessman Bill Maloney is his opponent"
+          }
+        ]
+      },
+      {
+        "id": "affordable_care_act",
+        "name": "Affordable Care Act",
+        "type": "LAW",
+        "document_frequency": 2,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "A recent U.S. Supreme Court decision giving states the ability to opt out of the law's expansion of Medicaid"
+          },
+          {
+            "document_index": 1,
+            "quote": "A recent U.S. Supreme Court decision giving states the ability to opt out of the law's expansion of Medicaid"
+          }
+        ]
+      }
+    ],
+    "relations": [
+      {
+        "source": "lincoln_chafee",
+        "target": "rhode_island",
+        "relation_type": "GOVERNOR_OF",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Rhode Island's Gov. Lincoln Chafee is an Independent"
+          },
+          {
+            "document_index": 1,
+            "quote": "Rhode Island's Gov. Lincoln Chafee is an Independent"
+          }
+        ]
+      },
+      {
+        "source": "democrats",
+        "target": "gubernatorial_election",
+        "relation_type": "HOLDS_SEATS_IN_ELECTION",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Eight of the gubernatorial seats up for grabs are now held by Democrats; three are in Republican hands"
+          },
+          {
+            "document_index": 1,
+            "quote": "Eight of the gubernatorial seats up for grabs today are now held by Democrats; three are in Republican hands"
+          }
+        ]
+      },
+      {
+        "source": "republicans",
+        "target": "gubernatorial_election",
+        "relation_type": "HOLDS_SEATS_IN_ELECTION",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Eight of the gubernatorial seats up for grabs are now held by Democrats; three are in Republican hands"
+          },
+          {
+            "document_index": 1,
+            "quote": "Eight of the gubernatorial seats up for grabs today are now held by Democrats; three are in Republican hands"
+          }
+        ]
+      },
+      {
+        "source": "gubernatorial_election",
+        "target": "montana",
+        "relation_type": "COMPETITIVE_RACE_IN",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.98,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "only three of tonight's contests are considered competitive, all in states where incumbent Democratic governors aren't running again: Montana, New Hampshire and Washington"
+          },
+          {
+            "document_index": 1,
+            "quote": "only three of tonight's contests are considered competitive, all in states where incumbent Democratic governors aren't running again: Montana, New Hampshire and Washington"
+          }
+        ]
+      },
+      {
+        "source": "gubernatorial_election",
+        "target": "new_hampshire",
+        "relation_type": "COMPETITIVE_RACE_IN",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.98,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "only three of tonight's contests are considered competitive, all in states where incumbent Democratic governors aren't running again: Montana, New Hampshire and Washington"
+          },
+          {
+            "document_index": 1,
+            "quote": "only three of tonight's contests are considered competitive, all in states where incumbent Democratic governors aren't running again: Montana, New Hampshire and Washington"
+          }
+        ]
+      },
+      {
+        "source": "gubernatorial_election",
+        "target": "washington",
+        "relation_type": "COMPETITIVE_RACE_IN",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.98,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "only three of tonight's contests are considered competitive, all in states where incumbent Democratic governors aren't running again: Montana, New Hampshire and Washington"
+          },
+          {
+            "document_index": 1,
+            "quote": "only three of tonight's contests are considered competitive, all in states where incumbent Democratic governors aren't running again: Montana, New Hampshire and Washington"
+          }
+        ]
+      },
+      {
+        "source": "republicans",
+        "target": "north_carolina",
+        "relation_type": "EXPECTED_TO_GAIN",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Republicans are expected to wrest the North Carolina governorship from Democratic control"
+          },
+          {
+            "document_index": 1,
+            "quote": "Republicans are expected to wrest the North Carolina governorship from Democratic control"
+          }
+        ]
+      },
+      {
+        "source": "thad_kousser",
+        "target": "affordable_care_act",
+        "relation_type": "COMMENTS_ON",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.97,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "\"No matter who wins the presidency, national politics is going to be stalemated on the Affordable Care Act,\" says Kousser, of the University of California, San Diego"
+          },
+          {
+            "document_index": 1,
+            "quote": "\"No matter who wins the presidency, national politics is going to be stalemated on the Affordable Care Act,\" says Kousser, of the University of California-Berkeley"
+          }
+        ]
+      },
+      {
+        "source": "beverly_perdue",
+        "target": "north_carolina",
+        "relation_type": "GOVERNOR_OF",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "North Carolina: One-term incumbent Democratic Gov. Beverly Perdue, the first woman to hold the state's top office"
+          },
+          {
+            "document_index": 1,
+            "quote": "North Carolina: One-term incumbent Democratic Gov. Beverly Perdue, the first woman to hold the state's top office"
+          }
+        ]
+      },
+      {
+        "source": "pat_mccrory",
+        "target": "walter_dalton",
+        "relation_type": "OPPONENT_IN_RACE",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.96,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "The seat is expected to be won by McCrory, a former Charlotte mayor, who is facing Perdue's lieutenant governor, Walter Dalton"
+          },
+          {
+            "document_index": 1,
+            "quote": "The seat is expected to be won by McCrory, a former Charlotte mayor, who is facing Perdue's lieutenant governor, Walter Dalton"
+          }
+        ]
+      },
+      {
+        "source": "pat_mccrory",
+        "target": "walter_dalton",
+        "relation_type": "LEADS_IN_POLL",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.97,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "The seat is expected to be won by McCrory, a former Charlotte mayor, who is facing Perdue's lieutenant governor, Walter Dalton. McCrory lost a close race to Perdue in 2008, when then-presidential candidate Barack Obama became the first Democrat to win North Carolina in more than three decades. The Real Clear Politics average for the race has McCrory maintaining a 14.3 percentage point lead"
+          },
+          {
+            "document_index": 1,
+            "quote": "The seat is expected to be won by McCrory, a former Charlotte mayor, who is facing Perdue's lieutenant governor, Walter Dalton. McCrory lost a close race to Perdue in 2008, when then-presidential candidate Barack Obama became the first Democrat to win North Carolina in more than three decades. The Real Clear Politics average for the race has McCrory maintaining a 14.3 percentage point lead"
+          }
+        ]
+      },
+      {
+        "source": "pat_mccrory",
+        "target": "north_carolina",
+        "relation_type": "EXPECTED_TO_WIN",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.96,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "North Carolina: One-term incumbent Democratic Gov. Beverly Perdue, the first woman to hold the state's top office, announced in January that she would not seek re-election after polls showed her with high disapproval ratings and trailing Republican candidate Pat McCrory. \n \n The seat is expected to be won by McCrory, a former Charlotte mayor, who is facing Perdue's lieutenant governor, Walter Dalton"
+          },
+          {
+            "document_index": 1,
+            "quote": "North Carolina: One-term incumbent Democratic Gov. Beverly Perdue, the first woman to hold the state's top office, announced in January she would not seek re-election after polls showed her with high disapproval ratings and trailing Republican candidate Pat McCrory. \n \n The seat is expected to be won by McCrory, a former Charlotte mayor, who is facing Perdue's lieutenant governor, Walter Dalton"
+          }
+        ]
+      },
+      {
+        "source": "brian_schweitzer",
+        "target": "montana",
+        "relation_type": "GOVERNOR_OF",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Montana: Popular Democratic Gov. Brian Schweitzer \u0000 he won his last election with 65 percent of the vote \u0000 has reached his two-term limit"
+          },
+          {
+            "document_index": 1,
+            "quote": "Montana: Popular Democratic Gov. Brian Schweitzer \u0000 he won his last election with 65 percent of the vote \u0000 has reached his two-term limit"
+          }
+        ]
+      },
+      {
+        "source": "steve_bullock",
+        "target": "rick_hill",
+        "relation_type": "OPPONENT_IN_RACE",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.96,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "The state's Democratic Attorney General Steve Bullock is trying to keep the seat in his party's column by associating himself with Schweitzer's legacy. He's in a tough race with former two-term GOP Rep. Rick Hill"
+          },
+          {
+            "document_index": 1,
+            "quote": "The state's Democratic Attorney General Steve Bullock is trying to keep the seat in his party's column by associating himself with Schweitzer's legacy. He's in a tough race with former two-term GOP Rep. Rick Hill"
+          }
+        ]
+      },
+      {
+        "source": "maggie_hassan",
+        "target": "john_lynch",
+        "relation_type": "SUCCESSOR_CANDIDATE_TO",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Former Democratic state Sen. Maggie Hassan has also promised a continuation of the policies of her predecessor, retiring Democratic Gov. John Lynch"
+          },
+          {
+            "document_index": 1,
+            "quote": "Former Democratic state Sen. Maggie Hassan has also promised a continuation of the policies of her predecessor, retiring Democratic Gov. John Lynch"
+          }
+        ]
+      },
+      {
+        "source": "john_lynch",
+        "target": "new_hampshire",
+        "relation_type": "GOVERNOR_OF",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "New Hampshire: Former Democratic state Sen. Maggie Hassan has also promised a continuation of the policies of her predecessor, retiring Democratic Gov. John Lynch"
+          },
+          {
+            "document_index": 1,
+            "quote": "New Hampshire: Former Democratic state Sen. Maggie Hassan has also promised a continuation of the policies of her predecessor, retiring Democratic Gov. John Lynch"
+          }
+        ]
+      },
+      {
+        "source": "maggie_hassan",
+        "target": "ovide_lamontagne",
+        "relation_type": "OPPONENT_IN_RACE",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.96,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Former Democratic state Sen. Maggie Hassan has also promised a continuation of the policies of her predecessor, retiring Democratic Gov. John Lynch. Her opponent is lawyer Ovide Lamontagne, a Tea Party conservative"
+          },
+          {
+            "document_index": 1,
+            "quote": "Former Democratic state Sen. Maggie Hassan has also promised a continuation of the policies of her predecessor, retiring Democratic Gov. John Lynch. Her opponent is lawyer Ovide Lamontagne, a Tea Party conservative"
+          }
+        ]
+      },
+      {
+        "source": "democrats",
+        "target": "washington",
+        "relation_type": "HOLDS_GOVERNORSHIP",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Washington: The state's governorship has been in Democratic hands for 32 years"
+          },
+          {
+            "document_index": 1,
+            "quote": "Washington: The state's governorship has been in Democratic hands for 32 years"
+          }
+        ]
+      },
+      {
+        "source": "jay_inslee",
+        "target": "rob_mckenna",
+        "relation_type": "OPPONENT_IN_RACE",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.97,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "former U.S. Rep. Jay Inslee is in a dead-heat battle to keep it that way. His opponent is the state's Republican Attorney General Rob McKenna"
+          },
+          {
+            "document_index": 1,
+            "quote": "former Rep. Jay Inslee is in a dead-heat battle to keep it that way. His opponent is the state's Republican Attorney General Rob McKenna"
+          }
+        ]
+      },
+      {
+        "source": "jay_inslee",
+        "target": "rob_mckenna",
+        "relation_type": "LEADS_IN_POLL",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.96,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Inslee is leading McKenna by an average of 1 percentage point"
+          },
+          {
+            "document_index": 1,
+            "quote": "Inslee's leading McKenna by an average of 1 percentage point"
+          }
+        ]
+      },
+      {
+        "source": "jack_dalrymple",
+        "target": "gubernatorial_election",
+        "relation_type": "EXPECTED_TO_WIN",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.96,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Republican Govs. Jack Dalrymple in North Dakota and Gary Herbert in Utah, and GOP Rep. Mike Pence in Indiana are expected to win"
+          },
+          {
+            "document_index": 1,
+            "quote": "Republican governors Jack Dalrymple in North Dakota and Gary Herbert in Utah, and GOP Rep. Mike Pence in Indiana are expected to win"
+          }
+        ]
+      },
+      {
+        "source": "gary_herbert",
+        "target": "gubernatorial_election",
+        "relation_type": "EXPECTED_TO_WIN",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.96,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Republican Govs. Jack Dalrymple in North Dakota and Gary Herbert in Utah, and GOP Rep. Mike Pence in Indiana are expected to win"
+          },
+          {
+            "document_index": 1,
+            "quote": "Republican governors Jack Dalrymple in North Dakota and Gary Herbert in Utah, and GOP Rep. Mike Pence in Indiana are expected to win"
+          }
+        ]
+      },
+      {
+        "source": "mike_pence",
+        "target": "gubernatorial_election",
+        "relation_type": "EXPECTED_TO_WIN",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.96,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Republican Govs. Jack Dalrymple in North Dakota and Gary Herbert in Utah, and GOP Rep. Mike Pence in Indiana are expected to win"
+          },
+          {
+            "document_index": 1,
+            "quote": "Republican governors Jack Dalrymple in North Dakota and Gary Herbert in Utah, and GOP Rep. Mike Pence in Indiana are expected to win"
+          }
+        ]
+      },
+      {
+        "source": "peter_shumlin",
+        "target": "gubernatorial_election",
+        "relation_type": "EXPECTED_TO_WIN",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.96,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Republican Govs. Jack Dalrymple in North Dakota and Gary Herbert in Utah, and GOP Rep. Mike Pence in Indiana are expected to win. So are Democratic Govs. Peter Shumlin in Vermont and Jack Markell in Delaware"
+          },
+          {
+            "document_index": 1,
+            "quote": "Republican governors Jack Dalrymple in North Dakota and Gary Herbert in Utah, and GOP Rep. Mike Pence in Indiana are expected to win. So are Democratic governors Peter Shumlin in Vermont and Jack Markell in Delaware"
+          }
+        ]
+      },
+      {
+        "source": "jack_markell",
+        "target": "gubernatorial_election",
+        "relation_type": "EXPECTED_TO_WIN",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.96,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Republican Govs. Jack Dalrymple in North Dakota and Gary Herbert in Utah, and GOP Rep. Mike Pence in Indiana are expected to win. So are Democratic Govs. Peter Shumlin in Vermont and Jack Markell in Delaware"
+          },
+          {
+            "document_index": 1,
+            "quote": "Republican governors Jack Dalrymple in North Dakota and Gary Herbert in Utah, and GOP Rep. Mike Pence in Indiana are expected to win. So are Democratic governors Peter Shumlin in Vermont and Jack Markell in Delaware"
+          }
+        ]
+      },
+      {
+        "source": "peter_shumlin",
+        "target": "vermont",
+        "relation_type": "GOVERNOR_OF",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "So are Democratic Govs. Peter Shumlin in Vermont and Jack Markell in Delaware"
+          },
+          {
+            "document_index": 1,
+            "quote": "So are Democratic governors Peter Shumlin in Vermont and Jack Markell in Delaware"
+          }
+        ]
+      },
+      {
+        "source": "jack_markell",
+        "target": "delaware",
+        "relation_type": "GOVERNOR_OF",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "So are Democratic Govs. Peter Shumlin in Vermont and Jack Markell in Delaware"
+          },
+          {
+            "document_index": 1,
+            "quote": "So are Democratic governors Peter Shumlin in Vermont and Jack Markell in Delaware"
+          }
+        ]
+      },
+      {
+        "source": "jack_dalrymple",
+        "target": "north_dakota",
+        "relation_type": "GOVERNOR_OF",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Republican Govs. Jack Dalrymple in North Dakota"
+          },
+          {
+            "document_index": 1,
+            "quote": "Republican governors Jack Dalrymple in North Dakota"
+          }
+        ]
+      },
+      {
+        "source": "gary_herbert",
+        "target": "utah",
+        "relation_type": "GOVERNOR_OF",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Republican Govs. Jack Dalrymple in North Dakota and Gary Herbert in Utah, and GOP Rep. Mike Pence in Indiana are expected to win"
+          },
+          {
+            "document_index": 1,
+            "quote": "Republican governors Jack Dalrymple in North Dakota and Gary Herbert in Utah, and GOP Rep. Mike Pence in Indiana are expected to win"
+          }
+        ]
+      },
+      {
+        "source": "jay_nixon",
+        "target": "missouri",
+        "relation_type": "GOVERNOR_OF",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Democrats are also hoping to hold on to the governorship in Missouri, where Jay Nixon is running for a second term against Republican Dave Spence"
+          },
+          {
+            "document_index": 1,
+            "quote": "Democrats are also hoping to hold on to the governorship in Missouri, where Jay Nixon is running for a second term against Republican Dave Spence"
+          }
+        ]
+      },
+      {
+        "source": "earl_ray_tomblin",
+        "target": "west_virginia",
+        "relation_type": "GOVERNOR_OF",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "and in West Virginia, where Gov. Earl Ray Tomblin, former state senate president, is running for his first full term after winning a special election in 2011"
+          },
+          {
+            "document_index": 1,
+            "quote": "and in West Virginia, where Gov. Earl Ray Tomblin, former state senate president, is running for his first full term after willing a special election in 2011"
+          }
+        ]
+      },
+      {
+        "source": "jay_nixon",
+        "target": "dave_spence",
+        "relation_type": "OPPONENT_IN_RACE",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.97,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Jay Nixon is running for a second term against Republican Dave Spence"
+          },
+          {
+            "document_index": 1,
+            "quote": "Jay Nixon is running for a second term against Republican Dave Spence"
+          }
+        ]
+      },
+      {
+        "source": "jay_nixon",
+        "target": "dave_spence",
+        "relation_type": "LEADS_IN_POLL",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.96,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Nixon has been consistently outpolling Spence by an average of about 7 points in Missouri"
+          },
+          {
+            "document_index": 1,
+            "quote": "Nixon has been consistently out-polling Spence by an average of about 7 points in Missouri"
+          }
+        ]
+      },
+      {
+        "source": "earl_ray_tomblin",
+        "target": "bill_maloney",
+        "relation_type": "OPPONENT_IN_RACE",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.97,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Gov. Earl Ray Tomblin, former state senate president, is running for his first full term after winning a special election in 2011. GOP businessman Bill Maloney is his opponent"
+          },
+          {
+            "document_index": 1,
+            "quote": "Gov. Earl Ray Tomblin, former state senate president, is running for his first full term after willing a special election in 2011. GOP businessman Bill Maloney is his opponent"
+          }
+        ]
+      }
+    ]
+  },
+  "grounded_graph": null,
+  "grader_history": [
+    {
+      "issues": [
+        {
+          "issue_type": "HALLUCINATION",
+          "severity": "high",
+          "element_id": "republicans|HOLDS_GOVERNORSHIPS|rhode_island",
+          "description": "Relation asserts Republicans hold the Rhode Island governorship. Both documents state the opposite: 'Rhode Island's Gov. Lincoln Chafee is an Independent' and that Republicans hold 29 governorships nationally, not Rhode Island specifically.",
+          "suggested_fix": "Remove this edge. If a national total is needed, create a relation from Republicans to a national office count or to gubernatorial_election with attribute seats_held=29, with quote 'Republicans currently hold 29 governorships'. Do not link Republicans to Rhode Island as held."
+        },
+        {
+          "issue_type": "WEAK_EVIDENCE",
+          "severity": "high",
+          "element_id": "republicans|HOLDS_GOVERNORSHIPS|rhode_island",
+          "description": "Evidence quote for republicans|HOLDS_GOVERNORSHIPS|rhode_island does not establish that Republicans hold Rhode Island; it lists national totals and explicitly says Chafee is Independent. Quote names only one endpoint and contradicts the edge.",
+          "suggested_fix": "Replace evidence with a quote that actually asserts the relation, or remove the relation as hallucinated."
+        },
+        {
+          "issue_type": "MISSING_ENTITY",
+          "severity": "medium",
+          "element_id": "mike_pence",
+          "description": "Graph omits 7 of the 11 states whose 2012 gubernatorial elections are the cluster's main subject. Documents list the 11 as North Carolina, Montana, New Hampshire, Washington, Utah, North Dakota, Indiana, Vermont, Delaware, Missouri, West Virginia. Only the first four are present as STATE entities; Utah, North Dakota, Indiana, Vermont, Delaware, Missouri, West Virginia are missing, yet documents devote a full 'Pretty Much Sure Things' section to expected outcomes there.",
+          "suggested_fix": "Add STATE entities for Utah, North Dakota, Indiana, Vermont, Delaware, Missouri, West Virginia (each document_frequency=2) with evidence e.g., 'Republican Govs. Jack Dalrymple in North Dakota and Gary Herbert in Utah, and GOP Rep. Mike Pence in Indiana are expected to win' and 'So are Democratic Govs. Peter Shumlin in Vermont and Jack Markell in Delaware' and 'Democrats are also hoping to hold on to the governorship in Missouri... and in West Virginia'."
+        },
+        {
+          "issue_type": "MISSING_ENTITY",
+          "severity": "medium",
+          "element_id": "gary_herbert",
+          "description": "Expected winners in the 'Pretty Much Sure Things' states are omitted. Documents name Peter Shumlin (Vermont) and Jack Markell (Delaware) as Democratic governors expected to win, alongside Jack Dalrymple, Gary Herbert, Mike Pence. Shumlin and Markell have no nodes, so summary cannot name the incumbents for two of the 11 races.",
+          "suggested_fix": "Add PERSON entities for Peter Shumlin and Jack Markell with type PERSON, document_frequency 2, evidence quotes 'So are Democratic Govs. Peter Shumlin in Vermont and Jack Markell in Delaware.'"
+        },
+        {
+          "issue_type": "WRONG_TYPE",
+          "severity": "medium",
+          "element_id": "pat_mccrory|LEADS_OPPONENT_BY_14_3_POINTS|walter_dalton",
+          "description": "Relation type LEADS_OPPONENT_BY_14_3_POINTS encodes a specific numeric value in the type name, while the same semantic (poll lead) is elsewhere typed as LEADS_IN_POLL (jay_nixon->dave_spence). This creates two labels for one concept and makes the vocabulary non-reusable and inconsistent. The 14.3-point fact should be an attribute, not a type.",
+          "suggested_fix": "Retype to LEADS_IN_POLL (keep OPPONENT_IN_RACE separate) and store margin as relation attribute e.g., margin_points: 14.3. Keep LEADS_IN_POLL as the single poll-lead type for all poll leads."
+        },
+        {
+          "issue_type": "WRONG_TYPE",
+          "severity": "medium",
+          "element_id": "democrats|PARTY_CONTROLS_GOVERNORSHIP_FOR_32_YEARS|washington",
+          "description": "Relation type PARTY_CONTROLS_GOVERNORSHIP_FOR_32_YEARS encodes duration in the type name. Documents say 'The state's governorship has been in Democratic hands for 32 years' for Washington. Duration should be an attribute, not part of the type, and the type duplicates HOLDS_GOVERNORSHIPS / HOLDS_SEATS_UP_FOR_ELECTION semantics.",
+          "suggested_fix": "Retype to HOLDS_GOVERNORSHIP or PARTY_CONTROLS_GOVERNORSHIP with attribute duration_years: 32. Consolidate holding/controlling types to one label."
+        },
+        {
+          "issue_type": "WRONG_TYPE",
+          "severity": "low",
+          "element_id": "republicans|HOLDS_GOVERNORSHIPS|rhode_island",
+          "description": "Vocabulary uses three different holding/controlling types for the same underlying relationship: HOLDS_GOVERNORSHIPS, HOLDS_SEATS_UP_FOR_ELECTION, PARTY_CONTROLS_GOVERNORSHIP_FOR_32_YEARS. This overloads distinct labels for 'party holds office' and loses consistency; summarizer cannot tell they are the same predicate.",
+          "suggested_fix": "Normalize to a single type e.g., HOLDS_GOVERNORSHIP or CONTROLS_GOVERNORSHIP with attributes for count/duration/election context, and retype all three edges accordingly."
+        }
+      ],
+      "summary": "Graph is largely faithful on quotes but hallucinates a Republicans-hold-Rhode-Island edge, omits 7 of the 11 election states and their expected winners (notably Vermont/Delaware incumbents Shumlin/Markell), misses the Republican 3-seat counterpart and Inslee's 1-point lead, and uses non-reusable numeric/duration types (LEADS_OPPONENT_BY_14_3_POINTS, PARTY_CONTROLS_GOVERNORSHIP_FOR_32_YEARS) that duplicate LEADS_IN_POLL/HOLDS_GOVERNORSHIPS."
+    },
+    {
+      "issues": [
+        {
+          "issue_type": "WEAK_EVIDENCE",
+          "severity": "medium",
+          "element_id": "pat_mccrory|LEADS_IN_POLL|walter_dalton",
+          "description": "Relation pat_mccrory LEADS_IN_POLL walter_dalton cites quote that names only McCrory and does not mention Dalton. Quote 'The Real Clear Politics average for the race has McCrory maintaining a 14.3 percentage point lead' does not establish a lead over Dalton.",
+          "suggested_fix": "Replace evidence with quote that names both endpoints, e.g., add sentence 'The seat is expected to be won by McCrory, a former Charlotte mayor, who is facing Perdue's lieutenant governor, Walter Dalton' combined with poll lead, or remove LEADS_IN_POLL if no single quote supports both."
+        },
+        {
+          "issue_type": "WEAK_EVIDENCE",
+          "severity": "medium",
+          "element_id": "steve_bullock|OPPONENT_IN_RACE|rick_hill",
+          "description": "Relation steve_bullock OPPONENT_IN_RACE rick_hill evidence quote 'He's in a tough race with former two-term GOP Rep. Rick Hill' does not name Steve Bullock, only pronoun 'He's'. Fails to establish both endpoints in quote.",
+          "suggested_fix": "Provide quote that explicitly names both Bullock and Hill, e.g., include preceding sentence 'The state's Democratic Attorney General Steve Bullock is trying to keep the seat... He's in a tough race with former two-term GOP Rep. Rick Hill' as a single evidence span."
+        },
+        {
+          "issue_type": "WEAK_EVIDENCE",
+          "severity": "medium",
+          "element_id": "maggie_hassan|OPPONENT_IN_RACE|ovide_lamontagne",
+          "description": "Relation maggie_hassan OPPONENT_IN_RACE ovide_lamontagne evidence quote 'Her opponent is lawyer Ovide Lamontagne, a Tea Party conservative' does not name Maggie Hassan, only pronoun 'Her'.",
+          "suggested_fix": "Use quote that names both, e.g., 'Former Democratic state Sen. Maggie Hassan has also promised... Her opponent is lawyer Ovide Lamontagne' as combined evidence."
+        },
+        {
+          "issue_type": "WEAK_EVIDENCE",
+          "severity": "medium",
+          "element_id": "gary_herbert|GOVERNOR_OF|utah",
+          "description": "Relation gary_herbert GOVERNOR_OF utah uses truncated quote 'Gary Herbert in Utah' which does not assert governorship. Full sentence 'Republican Govs. Jack Dalrymple in North Dakota and Gary Herbert in Utah...' is needed to establish GOVERNOR_OF.",
+          "suggested_fix": "Replace evidence with full quote 'Republican Govs. Jack Dalrymple in North Dakota and Gary Herbert in Utah, and GOP Rep. Mike Pence in Indiana are expected to win' or 'Republican governors Jack Dalrymple in North Dakota and Gary Herbert in Utah...'"
+        },
+        {
+          "issue_type": "WEAK_EVIDENCE",
+          "severity": "medium",
+          "element_id": "jack_markell|GOVERNOR_OF|delaware",
+          "description": "Relation jack_markell GOVERNOR_OF delaware uses truncated quote 'Jack Markell in Delaware' which does not assert governorship.",
+          "suggested_fix": "Replace evidence with full quote 'So are Democratic Govs. Peter Shumlin in Vermont and Jack Markell in Delaware' which contains the governor assertion for both."
+        },
+        {
+          "issue_type": "WRONG_TYPE",
+          "severity": "medium",
+          "element_id": "democrats|HOLDS_GOVERNORSHIP|gubernatorial_election",
+          "description": "Relation type HOLDS_GOVERNORSHIP is overloaded: used for party->ELECTION (democrats/republicans -> gubernatorial_election, meaning seats up for grabs held by party) and party->STATE (democrats -> washington, meaning 32-year hold). Same label covers two distinct semantics (holding seats in an election vs holding a state's governorship).",
+          "suggested_fix": "Keep HOLDS_GOVERNORSHIP for party->STATE (e.g., democrats->washington). Retype party->ELECTION edges to HOLDS_SEATS_IN_ELECTION or similar, or remove and model as separate relation."
+        }
+      ],
+      "summary": "Graph is largely faithful with correct quotes, but has several WEAK_EVIDENCE edges where quotes name only one endpoint or truncate the governor assertion, an overloaded HOLDS_GOVERNORSHIP label used for both election-seats and state-governorship, and two missing salient relations (John Lynch governor of New Hampshire and Pat McCrory expected to win)."
+    },
+    {
+      "issues": [
+        {
+          "issue_type": "HALLUCINATION",
+          "severity": "medium",
+          "element_id": "gubernatorial_election",
+          "description": "Entity name asserts year '2012' not present in any document. Documents describe 'Voters in 11 states will pick their governors tonight' and mention Obama/Romney but never state the year. The year is external inference, not supported by evidence quotes.",
+          "suggested_fix": "Rename to 'Gubernatorial Elections in 11 States' or quote a document phrase that contains a date. Remove '2012' unless a quote explicitly supports it."
+        },
+        {
+          "issue_type": "WEAK_EVIDENCE",
+          "severity": "medium",
+          "element_id": "beverly_perdue|GOVERNOR_OF|north_carolina",
+          "description": "Relation GOVERNOR_OF between Beverly Perdue and North Carolina is true but evidence quote does not name North Carolina. Quote is 'One-term incumbent Democratic Gov. Beverly Perdue, the first woman to hold the state's top office' - contains only the person, not the state. Co-occurrence in section is not assertion.",
+          "suggested_fix": "Replace evidence with quote that names both endpoints, e.g., doc0: 'North Carolina: One-term incumbent Democratic Gov. Beverly Perdue, the first woman to hold the state's top office'."
+        },
+        {
+          "issue_type": "WEAK_EVIDENCE",
+          "severity": "medium",
+          "element_id": "brian_schweitzer|GOVERNOR_OF|montana",
+          "description": "Relation GOVERNOR_OF between Brian Schweitzer and Montana is true but evidence quote does not name Montana. Quote 'Popular Democratic Gov. Brian Schweitzer \u0001 he won his last election with 65 percent of the vote \u0001 has reached his two-term limit' names only the person.",
+          "suggested_fix": "Use quote that includes state heading, e.g., 'Montana: Popular Democratic Gov. Brian Schweitzer \u0001 he won his last election with 65 percent of the vote \u0001 has reached his two-term limit'."
+        },
+        {
+          "issue_type": "WEAK_EVIDENCE",
+          "severity": "medium",
+          "element_id": "jay_nixon|GOVERNOR_OF|missouri",
+          "description": "Relation GOVERNOR_OF between Jay Nixon and Missouri uses quote 'Jay Nixon is running for a second term against Republican Dave Spence' which does not mention Missouri. Relation therefore not established by quote alone.",
+          "suggested_fix": "Replace with quote that names both, e.g., doc1: 'Democrats are also hoping to hold on to the governorship in Missouri, where Jay Nixon is running for a second term against Republican Dave Spence'."
+        },
+        {
+          "issue_type": "WEAK_EVIDENCE",
+          "severity": "medium",
+          "element_id": "earl_ray_tomblin|GOVERNOR_OF|west_virginia",
+          "description": "Relation GOVERNOR_OF between Earl Ray Tomblin and West Virginia uses quote 'Gov. Earl Ray Tomblin, former state senate president, is running for his first full term' which does not mention West Virginia.",
+          "suggested_fix": "Replace with quote that names both, e.g., 'and in West Virginia, where Gov. Earl Ray Tomblin, former state senate president, is running for his first full term after winning a special election in 2011'."
+        },
+        {
+          "issue_type": "WEAK_EVIDENCE",
+          "severity": "medium",
+          "element_id": "democrats|HOLDS_GOVERNORSHIP|washington",
+          "description": "Relation HOLDS_GOVERNORSHIP between Democrats and Washington uses quote 'The state's governorship has been in Democratic hands for 32 years' which does not name Washington. The state is only inferable from section heading, not from quote itself.",
+          "suggested_fix": "Use quote that includes Washington, e.g., 'Washington: The state's governorship has been in Democratic hands for 32 years'."
+        }
+      ],
+      "summary": "Graph is largely faithful after revisions, but retains one unsupported inference (year 2012 in election name) and five relations where the evidence quote names only one endpoint, failing the quote-must-carry-fact standard."
+    },
+    {
+      "issues": [
+        {
+          "issue_type": "WEAK_EVIDENCE",
+          "severity": "medium",
+          "element_id": "peter_shumlin|EXPECTED_TO_WIN|gubernatorial_election",
+          "description": "Relation peter_shumlin EXPECTED_TO_WIN gubernatorial_election is supported only by quote 'So are Democratic Govs. Peter Shumlin in Vermont and Jack Markell in Delaware' which does not contain the predicate 'expected to win' and does not name the target election. The predicate is in the preceding sentence ('Republican Govs. ... are expected to win. So are...') which is omitted, so the quote alone does not establish the fact and does not name both endpoints.",
+          "suggested_fix": "Replace evidence with a quote that contains the predicate and links the person to the election, e.g. include the full context: 'Republican Govs. Jack Dalrymple in North Dakota and Gary Herbert in Utah, and GOP Rep. Mike Pence in Indiana are expected to win. So are Democratic Govs. Peter Shumlin in Vermont and Jack Markell in Delaware' or retype target to the state if keeping truncated quote."
+        },
+        {
+          "issue_type": "WEAK_EVIDENCE",
+          "severity": "medium",
+          "element_id": "jack_markell|EXPECTED_TO_WIN|gubernatorial_election",
+          "description": "Relation jack_markell EXPECTED_TO_WIN gubernatorial_election has same defect: evidence quote 'So are Democratic Govs. Peter Shumlin in Vermont and Jack Markell in Delaware' lacks 'expected to win' and does not name gubernatorial_election. The anaphoric 'So are' requires the prior sentence to establish EXPECTED_TO_WIN.",
+          "suggested_fix": "Provide complete evidence that establishes expected to win, e.g. 'Republican Govs. Jack Dalrymple in North Dakota and Gary Herbert in Utah, and GOP Rep. Mike Pence in Indiana are expected to win. So are Democratic Govs. Peter Shumlin in Vermont and Jack Markell in Delaware'."
+        }
+      ],
+      "summary": "Graph is otherwise faithful: all entities and most relations are correctly typed and well-evidenced with verbatim quotes appearing in both documents, no hallucinations, contradictions, or dangling references. Only the two EXPECTED_TO_WIN edges for Shumlin and Markell use a truncated 'So are...' quote that omits the predicate and target, requiring weak-evidence fix."
+    },
+    {
+      "issues": [
+        {
+          "issue_type": "WRONG_TYPE",
+          "severity": "medium",
+          "element_id": "jack_dalrymple|EXPECTED_TO_WIN|gubernatorial_election",
+          "description": "Relation type EXPECTED_TO_WIN is overloaded and used inconsistently. For pat_mccrory the target is a STATE (north_carolina) which preserves the state-specific fact from 'The seat is expected to be won by McCrory'. For 5 other persons (jack_dalrymple, gary_herbert, mike_pence, peter_shumlin, jack_markell) the target is the generic ELECTION node 'Gubernatorial Elections in 11 States'. The evidence for those 5 is state-specific ('Jack Dalrymple in North Dakota and Gary Herbert in Utah, and GOP Rep. Mike Pence in Indiana are expected to win. So are Democratic Govs. Peter Shumlin in Vermont and Jack Markell in Delaware') and the state is lost. One label is doing work of two distinct facts (expected to win a specific state's governorship vs expected to win an election).",
+          "suggested_fix": "Make usage consistent and precise. Retarget the 5 relations to their specific STATE nodes: jack_dalrymple->north_dakota, gary_herbert->utah, mike_pence->indiana, peter_shumlin->vermont, jack_markell->delaware with type EXPECTED_TO_WIN (or CANDIDATE_EXPECTED_TO_WIN_STATE), or keep ELECTION target but add separate EXPECTED_TO_WIN_STATE edges. Keep pat_mccrory|EXPECTED_TO_WIN|north_carolina as the correct pattern."
+        },
+        {
+          "issue_type": "WEAK_EVIDENCE",
+          "severity": "low",
+          "element_id": "john_lynch|GOVERNOR_OF|new_hampshire",
+          "description": "Evidence for john_lynch GOVERNOR_OF new_hampshire does not directly assert the fact. Quote is 'New Hampshire: Former Democratic state Sen. Maggie Hassan has also promised a continuation of the policies of her predecessor, retiring Democratic Gov. John Lynch'. The state name appears only as a section header 'New Hampshire:' and the governor title is not linked to the state in the same clause. Compared to other GOVERNOR_OF edges where quote contains 'X in STATE' (e.g., 'Jack Dalrymple in North Dakota'), this is weak co-occurrence, not an assertion.",
+          "suggested_fix": "Keep relation but strengthen evidence to a quote that explicitly links Lynch to New Hampshire, or add second quote 'retiring Democratic Gov. John Lynch' plus document context that the section is New Hampshire, or accept as is with lower confidence."
+        }
+      ],
+      "summary": "Graph is largely faithful with verbatim quotes and correct support_counts. Remaining defects are type consistency and completeness: EXPECTED_TO_WIN is overloaded (1 edge targets a STATE, 5 target the generic ELECTION, discarding state information), the Pence->Indiana state link is missing while all other expected winners have one, and the parallel successor link Bullock->Schweitzer is omitted though Hassan->Lynch is modeled. One GOVERNOR_OF edge relies on section-header co-occurrence rather than explicit assertion."
+    }
+  ]
+}

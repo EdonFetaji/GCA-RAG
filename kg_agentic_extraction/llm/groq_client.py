@@ -12,16 +12,18 @@ import logging
 from typing import TypeVar
 
 from langchain_core.messages import HumanMessage, SystemMessage
+from langchain_core.runnables import Runnable
 from pydantic import BaseModel
 
 from kg_agentic_extraction.llm.base import LLMStructuredOutputError
+from kg_agentic_extraction.llm.tool_calling import LangChainToolLoopMixin
 
 logger = logging.getLogger(__name__)
 
 TModel = TypeVar("TModel", bound=BaseModel)
 
 
-class GroqClient:
+class GroqClient(LangChainToolLoopMixin):
     """
     `LLMClient` implementation backed by Groq.
 
@@ -82,3 +84,7 @@ class GroqClient:
                 schema, TypeError(f"provider returned {type(result).__name__}")
             )
         return result
+
+    def _structured_runnable(self, schema: type[TModel]) -> Runnable:
+        """Same `json_schema` override for the tool loop's closing call, for the same reason."""
+        return self._llm.with_structured_output(schema, method="json_schema")

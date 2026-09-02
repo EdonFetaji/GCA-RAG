@@ -10,12 +10,11 @@ empty.
 
 from __future__ import annotations
 
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 
 from kg_agentic_extraction.agents.base_agent import Agent
 from kg_agentic_extraction.models.grading import GraderReport
 from kg_agentic_extraction.models.knowledge_graph import KnowledgeGraph
-from kg_agentic_extraction.models.ontology import OntologyConfig
 from kg_agentic_extraction.prompts.renderers import format_documents, graph_to_json
 
 
@@ -25,7 +24,6 @@ class GradingTask:
 
     graph: KnowledgeGraph
     documents: list[str]
-    ontology: OntologyConfig = field(default_factory=OntologyConfig)
     max_documents: int = 10
     iteration: int = 1
 
@@ -43,8 +41,12 @@ class GraderAgent(Agent[GradingTask, GraderReport]):
         return {
             "graph_json": graph_to_json(payload.graph),
             "documents_text": format_documents(payload.documents, limit=payload.max_documents),
-            "entity_types": payload.ontology.entity_type_names,
-            "relation_types": payload.ontology.relation_type_names,
+            # The vocabulary the extractor invented, handed back so the grader
+            # can audit it for internal consistency. There is no allowed-list to
+            # check against any more, so "are these labels used coherently?" is
+            # the question that replaces "are these labels permitted?".
+            "entity_type_vocabulary": payload.graph.entity_type_vocabulary,
+            "relation_type_vocabulary": payload.graph.relation_type_vocabulary,
             "iteration": payload.iteration,
         }
 

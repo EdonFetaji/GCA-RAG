@@ -83,7 +83,10 @@ def build_dependencies(
         if settings.grounding_enabled:
             from kg_agentic_extraction.grounding.mcp_backend import MCPGroundingBackend
 
-            backend = MCPGroundingBackend(url=settings.mcp_url)
+            backend = MCPGroundingBackend(
+                url=settings.mcp_url,
+                timeout_seconds=settings.grounding_tool_timeout_seconds,
+            )
         else:
             backend = NullGroundingBackend()
 
@@ -91,7 +94,15 @@ def build_dependencies(
     return PipelineDependencies(
         extractor=ExtractorAgent(**shared),
         grader=GraderAgent(**shared),
-        grounder=GrounderAgent(backend=backend, **shared),
+        # The grounder pins its own prompt version and needs a tool-calling
+        # client; both are why it does not simply take `**shared`.
+        grounder=GrounderAgent(
+            backend=backend,
+            max_tool_rounds=settings.grounding_max_tool_rounds,
+            llm=llm,
+            prompts=prompts,
+            prompt_version=settings.grounder_prompt_version,
+        ),
         settings=settings,
         backend=backend,
     )
@@ -115,15 +126,26 @@ def build_graph(
 
     builder = StateGraph(PipelineState)
 
+    # Only the grounder receives `cfg.ontology`. Extraction and grading run
+    # open-vocabulary: the extractor names types from the documents, and the
+    # grader audits those names for coherence rather than for membership of a
+    # list. See docs/adr/0004-open-vocabulary-extraction.md.
     builder.add_node(
         NODE_EXTRACT,
-        make_extract_node(deps.extractor, ontology=cfg.ontology, max_documents=cfg.max_documents),
+        make_extract_node(
+            deps.extractor,
+            domain_context=cfg.ontology.domain_context,
+            max_documents=cfg.max_documents,
+        ),
     )
     builder.add_node(
         NODE_GRADE,
-        make_grade_node(deps.grader, ontology=cfg.ontology, max_documents=cfg.max_documents),
+        make_grade_node(deps.grader, max_documents=cfg.max_documents),
     )
-    builder.add_node(NODE_GROUND, make_ground_node(deps.grounder, ontology=cfg.ontology))
+    builder.add_node(
+        NODE_GROUND,
+        make_ground_node(deps.grounder, ontology=cfg.ontology, backend=deps.backend),
+    )
 
     builder.add_edge(START, NODE_EXTRACT)
     builder.add_edge(NODE_EXTRACT, NODE_GRADE)

@@ -1,0 +1,16 @@
+Extract a knowledge graph from the following {{ document_count }} document(s).
+These documents are one cluster: they will be summarized together, from your
+graph alone.
+
+Work through them in order. When two documents describe the same real-world
+entity under different surface forms ("the FBI" / "Federal Bureau of
+Investigation"), emit ONE entity, pick the fullest name, and attach evidence
+from both documents — that merge is what lets the summary treat them as one
+actor and lets `document_frequency` mean anything.
+
+Before you finish, read your own graph as if it were all you had, and ask what
+a summary of this cluster written from it would say. If the answer is missing
+the thing these documents are actually about, the gap is in the graph.
+
+## SOURCE DOCUMENTS
+{{ documents_text }}

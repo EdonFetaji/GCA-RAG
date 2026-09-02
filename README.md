@@ -11,7 +11,7 @@ validator that enables targeted, closed-loop refinement.
 ```
 GCA-RAG/
 ├── kg_agentic_extraction/   ★ the extraction pipeline (LangGraph, 3 agents)
-├── mcp_servers/dbpedia/     ★ standalone MCP service backing the grounder
+├── mcp_server/              ★ standalone MCP service backing the grounder
 ├── validator/               Track 3 — GNN validator (corruption.py done, model/train pending)
 ├── extractor_agent/         standalone modular extractor, unchanged
 ├── poc/                     frozen pre-LangGraph generation — see poc/README.md
@@ -75,7 +75,7 @@ cp .env.example .env        # then set CEREBRAS_API_KEY
 
 ```bash
 # 1. start the DBpedia MCP server (needed only if grounding is on)
-uv run python -m mcp_servers.dbpedia.server
+uv run python -m mcp_server.server
 
 # 2. run the pipeline
 uv run python -m kg_agentic_extraction.runner --cluster 0 --report report.md
@@ -106,6 +106,31 @@ for i in range(100):
     run_pipeline(docs, settings=settings, graph=app)
 ```
 
+## Inspecting a run in LangGraph Studio
+
+The CLI only shows you the result. To watch the extractor↔grader loop iterate, inspect
+`PipelineState` between steps, edit state and fork a run, start the dev server:
+
+```bash
+uv run langgraph dev
+```
+
+| | |
+|---|---|
+| API | <http://127.0.0.1:2024> (docs at `/docs`) |
+| Studio UI | <https://smith.langchain.com/studio/?baseUrl=http://127.0.0.1:2024> |
+
+The UI is hosted by LangSmith and talks to the local server; it needs a (free) LangSmith
+login, and on Safari or Brave you need `uv run langgraph dev --tunnel`. Invoke the graph
+with `{"documents": ["…", "…"]}` — the same shape `state.initial_state()` builds.
+
+The graph is registered as `kg_extraction` in `langgraph.json`, pointing at
+`kg_agentic_extraction/studio.py:graph` — a one-line module that calls the same
+`build_graph()` the runner uses, kept separate so importing `graph.py` stays free of side
+effects. Settings come from `.env`, so Studio runs exactly what the CLI runs. That includes
+grounding: with `KG_GROUNDING_ENABLED` on, start the MCP server first or the run fails at
+the `ground` node.
+
 ## Extending it
 
 | To… | Do this |
@@ -129,15 +154,20 @@ run_pipeline(docs, settings=settings, graph=build_graph(deps))
 
 ## Testing without the network
 
-`mcp.Client` accepts a server *instance*, so the grounding path runs over a real
-protocol session with no port bound:
+`fastmcp.Client` accepts a server *instance*, so the grounding path runs over a
+real protocol session with no port bound:
 
 ```python
-from mcp_servers.dbpedia.server import build_server
+from mcp_server.server import build_server
 from kg_agentic_extraction.grounding import MCPGroundingBackend
 
-backend = MCPGroundingBackend(url=build_server())
+with MCPGroundingBackend(url=build_server()) as backend:
+    backend.search_class("City")
 ```
+
+`uv run pytest` is offline: `tests/conftest.py` stubs the one `httpx.get` all
+three DBpedia transports share. The live tests are opt-in — `uv run pytest -m
+live` — and are what catches a SPARQL query a stub would happily fake.
 
 ## Configuration
 
@@ -150,7 +180,9 @@ All of `PipelineSettings` is env-driven with the `KG_` prefix — see
 | `KG_MODEL` | `gpt-oss-120b` | model id |
 | `KG_MAX_ITERATIONS` | `3` | extractor↔grader rounds before giving up |
 | `KG_PROMPT_VERSION` | `v1` | which template generation to resolve |
-| `KG_MCP_URL` | `http://localhost:8931/mcp` | DBpedia MCP server |
+| `KG_MCP_URL` | `http://127.0.0.1:8931/mcp/` | DBpedia MCP server (trailing slash matters) |
+| `KG_GROUNDING_MAX_TOOL_ROUNDS` | `8` | tool-calling rounds the grounder gets |
+| `DBPEDIA_SPOTLIGHT_ENDPOINT` | `https://api.dbpedia-spotlight.org/en` | often down; point at a local container |
 
 Cerebras rotates model ids on its public endpoints — on a `model_not_found`
 404, check the [model catalog](https://inference-docs.cerebras.ai/models/overview).

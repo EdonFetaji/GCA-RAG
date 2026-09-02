@@ -1,0 +1,444 @@
+{
+  "converged": true,
+  "iterations": 2,
+  "elapsed_seconds": 175.274,
+  "errors": [],
+  "knowledge_graph": {
+    "entities": [
+      {
+        "id": "siskiyou_county_board_of_supervisors",
+        "name": "Siskiyou County Board of Supervisors",
+        "type": "GOVERNMENT_BODY",
+        "document_frequency": 2,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "The Siskiyou County Board of Supervisors voted, 4-1, on Tuesday to pursue seceding from California, the Redding Record Searchlight reported."
+          },
+          {
+            "document_index": 1,
+            "quote": "The Siskiyou County Board of Supervisors voted 4-1 on Tuesday to support the county's split from the state of California."
+          }
+        ]
+      },
+      {
+        "id": "california",
+        "name": "California",
+        "type": "STATE",
+        "document_frequency": 2,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "The Siskiyou County Board of Supervisors voted, 4-1, on Tuesday to pursue seceding from California, the Redding Record Searchlight reported."
+          },
+          {
+            "document_index": 1,
+            "quote": "The Siskiyou County Board of Supervisors voted 4-1 on Tuesday to support the county's split from the state of California."
+          }
+        ]
+      },
+      {
+        "id": "state_of_jefferson",
+        "name": "State of Jefferson",
+        "type": "PROPOSED_STATE",
+        "document_frequency": 2,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Proponents say Siskiyou should form a new state -- called Jefferson -- with other counties in Northern California and Southern Oregon they believe share similar interests."
+          },
+          {
+            "document_index": 1,
+            "quote": "It's the first in a long series of steps to form the proposed state of Jefferson, which proponents of the effort say would bring representation to rural North State counties that currently are beholden to the whims of representatives of the more heavily populated Southern California and free them from burdensome state regulations."
+          }
+        ]
+      },
+      {
+        "id": "siskiyou_county",
+        "name": "Siskiyou County",
+        "type": "COUNTY",
+        "document_frequency": 2,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Fed up by Sacramento's regulations and Southern California's political sway, residents in one rural Northern California county are taking steps to leave the state."
+          },
+          {
+            "document_index": 1,
+            "quote": "The Siskiyou County Board of Supervisors voted 4-1 on Tuesday to support the county's split from the state of California."
+          }
+        ]
+      },
+      {
+        "id": "humboldt_county",
+        "name": "Humboldt County",
+        "type": "COUNTY",
+        "document_frequency": 2,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Humboldt County Supervisor Rex Bohn told the Times-Standard that his board would probably meet to consider their options."
+          },
+          {
+            "document_index": 1,
+            "quote": "Humboldt County 1st District Supervisor Rex Bohn said he can understand the frustration in Siskiyou County and that he tends to agree with most of the issues that were brought up by the board."
+          }
+        ]
+      },
+      {
+        "id": "mark_baird",
+        "name": "Mark Baird",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "\"We have to have government that's local, understands our issues and has empathy,\" said Mark Baird, a rancher who the Searchlight said was heading the effort."
+          },
+          {
+            "document_index": 1,
+            "quote": "\u201dWe have to have government that's local, understands our issues and has empathy\u201d for those affected, said Mark Baird, a Scott Valley rancher who's also president for Scott Valley Protect Our Water and vice president of the Siskiyou Water User's Association."
+          }
+        ]
+      },
+      {
+        "id": "ed_valenzuela",
+        "name": "Ed Valenzuela",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Supervisor Ed Valenzuela, who chairs the board, was the only vote against the decision, the Searchlight said."
+          },
+          {
+            "document_index": 1,
+            "quote": "Board Chair Ed Valenzuela was the sole vote against the declaration."
+          }
+        ]
+      },
+      {
+        "id": "marcia_armstrong",
+        "name": "Marcia Armstrong",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Supervisor Marcia Armstrong cited restoration of limited government as one of the reasons she supported the declaration."
+          },
+          {
+            "document_index": 1,
+            "quote": "Supervisor Marcia Armstrong said the issues were about regulation, restriction of rights, lack of representation, regionalism and restoration of limited government."
+          }
+        ]
+      },
+      {
+        "id": "rex_bohn",
+        "name": "Rex Bohn",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Humboldt County Supervisor Rex Bohn told the Times-Standard that his board would probably meet to consider their options."
+          },
+          {
+            "document_index": 1,
+            "quote": "Humboldt County 1st District Supervisor Rex Bohn said he can understand the frustration in Siskiyou County and that he tends to agree with most of the issues that were brought up by the board."
+          }
+        ]
+      },
+      {
+        "id": "gabe_garrison",
+        "name": "Gabe Garrison",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "\"Many proposed laws are unconstitutional and deny us our God-given rights,\" said Happy Camp resident Gabe Garrison."
+          },
+          {
+            "document_index": 1,
+            "quote": "\u201dMany proposed laws are unconstitutional and deny us our God-given rights,\u201d said Gabe Garrison of Happy Camp."
+          }
+        ]
+      },
+      {
+        "id": "kayla_brown",
+        "name": "Kayla Brown",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "\"The state of Jefferson is the place I want to raise my son,\" Kayla Brown said."
+          },
+          {
+            "document_index": 1,
+            "quote": "Also there was Kayla Brown, a mother in her early 20s, who said she didn't want to raise her child in California."
+          }
+        ]
+      },
+      {
+        "id": "erin_ryan",
+        "name": "Erin Ryan",
+        "type": "PERSON",
+        "document_frequency": 1,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "Among those in attendance was Erin Ryan, field representative for Rep. Doug LaMalfa."
+          }
+        ]
+      },
+      {
+        "id": "doug_lamalfa",
+        "name": "Doug LaMalfa",
+        "type": "PERSON",
+        "document_frequency": 1,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "Among those in attendance was Erin Ryan, field representative for Rep. Doug LaMalfa."
+          }
+        ]
+      },
+      {
+        "id": "mark_lovelace",
+        "name": "Mark Lovelace",
+        "type": "PERSON",
+        "document_frequency": 1,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "Humboldt County 3rd District Supervisor Mark Lovelace said he took the talk of secession as a statement of frustration."
+          }
+        ]
+      },
+      {
+        "id": "michael_kobseff",
+        "name": "Michael Kobseff",
+        "type": "PERSON",
+        "document_frequency": 1,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "\u201dI haven't had one contact in regard to this issue, that's in opposition,\u201d Supervisor Michael Kobseff said."
+          }
+        ]
+      }
+    ],
+    "relations": [
+      {
+        "source": "siskiyou_county_board_of_supervisors",
+        "target": "california",
+        "relation_type": "VOTED_TO_SECEDE_FROM",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "The Siskiyou County Board of Supervisors voted, 4-1, on Tuesday to pursue seceding from California, the Redding Record Searchlight reported."
+          },
+          {
+            "document_index": 1,
+            "quote": "The Siskiyou County Board of Supervisors voted 4-1 on Tuesday to support the county's split from the state of California."
+          }
+        ]
+      },
+      {
+        "source": "rex_bohn",
+        "target": "humboldt_county",
+        "relation_type": "SUPERVISOR_OF",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Humboldt County Supervisor Rex Bohn told the Times-Standard that his board would probably meet to consider their options."
+          },
+          {
+            "document_index": 1,
+            "quote": "Humboldt County 1st District Supervisor Rex Bohn said he can understand the frustration in Siskiyou County and that he tends to agree with most of the issues that were brought up by the board."
+          }
+        ]
+      },
+      {
+        "source": "mark_lovelace",
+        "target": "humboldt_county",
+        "relation_type": "SUPERVISOR_OF",
+        "support_count": 1,
+        "source_documents": [
+          1
+        ],
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "Humboldt County 3rd District Supervisor Mark Lovelace said he took the talk of secession as a statement of frustration."
+          }
+        ]
+      },
+      {
+        "source": "erin_ryan",
+        "target": "doug_lamalfa",
+        "relation_type": "FIELD_REPRESENTATIVE_FOR",
+        "support_count": 1,
+        "source_documents": [
+          1
+        ],
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "Among those in attendance was Erin Ryan, field representative for Rep. Doug LaMalfa."
+          }
+        ]
+      },
+      {
+        "source": "ed_valenzuela",
+        "target": "siskiyou_county",
+        "relation_type": "SUPERVISOR_OF",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Supervisor Ed Valenzuela, who chairs the board, was the only vote against the decision, the Searchlight said."
+          },
+          {
+            "document_index": 1,
+            "quote": "Board Chair Ed Valenzuela was the sole vote against the declaration."
+          }
+        ]
+      },
+      {
+        "source": "marcia_armstrong",
+        "target": "siskiyou_county",
+        "relation_type": "SUPERVISOR_OF",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Supervisor Marcia Armstrong cited restoration of limited government as one of the reasons she supported the declaration."
+          },
+          {
+            "document_index": 1,
+            "quote": "Supervisor Marcia Armstrong said the issues were about regulation, restriction of rights, lack of representation, regionalism and restoration of limited government."
+          }
+        ]
+      },
+      {
+        "source": "michael_kobseff",
+        "target": "siskiyou_county",
+        "relation_type": "SUPERVISOR_OF",
+        "support_count": 1,
+        "source_documents": [
+          1
+        ],
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "\u201dI haven't had one contact in regard to this issue, that's in opposition,\u201d Supervisor Michael Kobseff said."
+          }
+        ]
+      },
+      {
+        "source": "mark_baird",
+        "target": "state_of_jefferson",
+        "relation_type": "LEADER_OF",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "\"We have to have government that's local, understands our issues and has empathy,\" said Mark Baird, a rancher who the Searchlight said was heading the effort."
+          },
+          {
+            "document_index": 1,
+            "quote": "Baird is leading the charge to form a new state from rural counties in Northern California and Southern Oregon, though he certainly wasn't the only voice in support of the move."
+          }
+        ]
+      }
+    ]
+  },
+  "grounded_graph": null,
+  "grader_history": [
+    {
+      "issues": [
+        {
+          "issue_type": "MISSING_RELATION",
+          "severity": "medium",
+          "element_id": "ed_valenzuela",
+          "description": "Ed Valenzuela is identified in both source documents as the Chair of the Siskiyou County Board of Supervisors, but no relation links him to Siskiyou County or its Board of Supervisors.",
+          "suggested_fix": "Add relation 'ed_valenzuela|SUPERVISOR_OF|siskiyou_county'."
+        },
+        {
+          "issue_type": "MISSING_RELATION",
+          "severity": "medium",
+          "element_id": "marcia_armstrong",
+          "description": "Marcia Armstrong is identified in both documents as a Siskiyou County Supervisor, but lacks a relation connecting her to Siskiyou County.",
+          "suggested_fix": "Add relation 'marcia_armstrong|SUPERVISOR_OF|siskiyou_county'."
+        },
+        {
+          "issue_type": "MISSING_RELATION",
+          "severity": "medium",
+          "element_id": "michael_kobseff",
+          "description": "Michael Kobseff is identified in Document 1 as a Siskiyou County Supervisor, but lacks a relation connecting him to Siskiyou County.",
+          "suggested_fix": "Add relation 'michael_kobseff|SUPERVISOR_OF|siskiyou_county'."
+        },
+        {
+          "issue_type": "MISSING_RELATION",
+          "severity": "medium",
+          "element_id": "mark_baird",
+          "description": "Mark Baird is named in both documents as leading the effort to secede and form the State of Jefferson, but has no relation connecting him to the proposed state.",
+          "suggested_fix": "Add a relation connecting mark_baird to state_of_jefferson with a suitable relation type such as LEADER_OF or PROPONENT_OF."
+        }
+      ],
+      "summary": "The knowledge graph accurately captures entities and exact evidence quotes across both source documents without hallucinating facts. However, it suffers from significant relation omissions: while Humboldt County supervisors are linked to their county via SUPERVISOR_OF, all three Siskiyou County supervisors (Ed Valenzuela, Marcia Armstrong, and Michael Kobseff) exist as isolated nodes with no relation linking them to Siskiyou County or its Board of Supervisors. Furthermore, secession movement leader Mark Baird is not connected to the State of Jefferson node. Adding these missing structural edges is required for a summary to correctly represent the political actors and their roles."
+    },
+    {
+      "issues": [],
+      "summary": "The extracted knowledge graph accurately captures the main entities and high-level structure of the secession effort covered in the documents. However, several relations suffer from weak evidence because the supporting quotes mention only one of the two relation endpoints (e.g., naming the person and their title 'Supervisor' without naming Siskiyou County, or referring to 'the effort'/'a new state' without naming the State of Jefferson). Expanding or replacing these quotes to include both endpoints will fully validate these facts for summarization."
+    }
+  ]
+}

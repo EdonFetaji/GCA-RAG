@@ -1,0 +1,27 @@
+A grader reviewed your previous knowledge graph and found problems. Produce a
+corrected graph.
+
+## YOUR PREVIOUS GRAPH
+{{ previous_graph_json }}
+
+## GRADER REPORT
+{{ grader_markdown }}
+
+## HOW TO REVISE
+- Address every issue listed above. Work the high-severity ones first.
+- Keep everything the grader did not object to. This is a revision, not a
+  re-extraction from scratch — silently dropping correct facts is itself a
+  regression.
+- Removing a hallucinated entity means also removing every relation that
+  referenced it, or the graph will fail referential integrity.
+- If you believe an issue is mistaken, keep the original fact and make sure its
+  evidence quote is verbatim and unambiguous — that is what a disagreement
+  looks like here.
+- Retyping an edge changes the sentence the summarizer will write from it, so
+  apply a suggested label only where the quote genuinely supports it. Trading
+  one vague label for a specific one that overstates the evidence is not a fix.
+
+Re-emit the COMPLETE corrected graph, not a diff.
+
+## SOURCE DOCUMENTS
+{{ documents_text }}
