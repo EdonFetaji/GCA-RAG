@@ -12,3 +12,10 @@ __pycache__/
 
 # Local state written by `langgraph dev` (in-memory server's checkpoint cache).
 .langgraph_api/
+
+# Kept local, never committed: extracted graphs, run logs, the resolved lockfile.
+kg_dataset/data/
+*.h5.tmp
+batch.log
+mcp_logs.txt
+uv.lock

@@ -22,7 +22,7 @@ dependencies = [
     "httpx>=0.28",
     "python-dotenv>=1.0",
     # ── Dataset / graph handling ──────────────────────────────────────
-    "datasets>=2.19",
+    "datasets==3.5.0",
     "networkx>=3.2",
     # ── Track 3 validator (GNN) ───────────────────────────────────────
     "torch>=2.2",
@@ -47,6 +47,7 @@ dependencies = [
     # Optional at runtime: only imported when KG_GCS_BUCKET is set. Kept a hard
     # dependency anyway so `uv sync` gives everyone the same lock.
     "google-cloud-storage>=3.13.1",
+    "huggingface-hub<1.0",
 ]
 
 [dependency-groups]
@@ -59,6 +60,21 @@ dev = [
     "grandalf>=0.8",  # graph.get_graph().draw_ascii()
     "langgraph-cli[inmem]>=0.4.31",
 ]
+
+# ── PyTorch: CPU-only build ───────────────────────────────────────────
+# torch is here for the Track 3 GNN validator, which does not need CUDA. The
+# default Linux wheel pulls the full nvidia/* + triton stack — ~4.5 GB in the
+# venv and ~5 GB more in the uv cache — on machines that have no GPU (the
+# extraction box is a c4-highcpu-8). Pinning the CPU index installs the small
+# build instead. Remove this block and re-lock if the validator ever trains on
+# a GPU.
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
+
+[tool.uv.sources]
+torch = { index = "pytorch-cpu" }
 
 [build-system]
 requires = ["hatchling"]

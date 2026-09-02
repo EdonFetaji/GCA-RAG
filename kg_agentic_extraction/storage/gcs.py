@@ -15,9 +15,13 @@ The library resolves them itself; this module never reads them.
 from __future__ import annotations
 
 import logging
+import re
 from pathlib import Path
 
 logger = logging.getLogger(__name__)
+
+#: `cluster_<i>.h5`, as written by `graph_filename`.
+_GRAPH_OBJECT_RE = re.compile(r"(?:^|/)cluster_(\d+)\.h5$")
 
 #: Correct for `.h5`. HDF5 has no registered IANA type, and the de-facto
 #: `application/x-hdf5` makes a browser download rather than try to render it.
@@ -38,6 +42,47 @@ def object_name(filename: str, prefix: str = "") -> str:
     """
     prefix = prefix.strip("/")
     return f"{prefix}/{filename}" if prefix else filename
+
+
+def list_uploaded_clusters(bucket: str, *, prefix: str = "") -> set[int]:
+    """
+    The cluster indices already present as `cluster_<i>.h5` in `gs://<bucket>/<prefix>/`.
+
+    This is the batch runner's resume signal when a bucket is configured: the
+    bucket is the source of truth, not whatever happens to be on the local disk
+    of an ephemeral VM.
+
+    Raises
+    ------
+    GCSUploadError
+        The bucket name is empty, google-cloud-storage is missing, or the list
+        call failed (auth, network, no such bucket). The caller must not silently
+        treat that as "nothing done" — that would re-run everything.
+    """
+    if not bucket:
+        raise GCSUploadError("no bucket configured (set KG_GCS_BUCKET)")
+
+    try:
+        from google.cloud import storage
+    except ImportError as exc:  # pragma: no cover - depends on the environment
+        raise GCSUploadError(
+            "google-cloud-storage is not installed; `uv sync` or `uv add google-cloud-storage`"
+        ) from exc
+
+    list_prefix = prefix.strip("/")
+    list_prefix = f"{list_prefix}/" if list_prefix else ""
+    try:
+        blobs = storage.Client().list_blobs(bucket, prefix=list_prefix)
+        found = {
+            int(match.group(1)) for blob in blobs if (match := _GRAPH_OBJECT_RE.search(blob.name))
+        }
+    except Exception as exc:
+        raise GCSUploadError(f"could not list gs://{bucket}/{list_prefix}: {exc}") from exc
+
+    logger.info(
+        "gs://%s/%s — %d cluster graph(s) already uploaded", bucket, list_prefix, len(found)
+    )
+    return found
 
 
 def upload_graph(

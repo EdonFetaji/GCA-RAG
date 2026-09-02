@@ -69,11 +69,14 @@ def _build_groq(settings: PipelineSettings) -> LLMClient:
 def _build_gemini(settings: PipelineSettings) -> LLMClient:
     from kg_agentic_extraction.llm.gemini_client import GeminiClient
 
-    if not settings.gemini_api_key:
-        raise LLMError("GEMINI_API_KEY (or GOOGLE_API_KEY) is not set (see .env.example)")
+    keys = settings.gemini_key_list()
+    if not keys:
+        raise LLMError(
+            "GEMINI_API_KEY / GEMINI_API_KEYS (or GOOGLE_API_KEY) is not set (see .env.example)"
+        )
     return GeminiClient(
         model=settings.model,
-        api_key=settings.gemini_api_key,
+        api_keys=keys,
         temperature=settings.temperature,
         max_tokens=settings.max_tokens,
     )

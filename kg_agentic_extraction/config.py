@@ -9,6 +9,7 @@ as constructor arguments.
 
 from __future__ import annotations
 
+import re
 from pathlib import Path
 
 from pydantic import AliasChoices, Field
@@ -52,12 +53,18 @@ class PipelineSettings(BaseSettings):
     gemini_api_key: str = Field(
         "", validation_alias=AliasChoices("GEMINI_API_KEY", "GOOGLE_API_KEY")
     )
+    # Extra Gemini keys for rotation during a long batch run. Comma-, space- or
+    # newline-separated. The gemini adapter moves to the next key when one hits
+    # its per-day free-tier quota and resumes where it stopped; see
+    # llm/gemini_client.py. `gemini_key_list()` merges this with the single
+    # `gemini_api_key` above, de-duplicated, order preserved.
+    gemini_api_keys: str = Field(
+        "", validation_alias=AliasChoices("GEMINI_API_KEYS", "GOOGLE_API_KEYS")
+    )
     # Meta documents the key as MODEL_API_KEY — a name generic enough to
     # already mean something else in an environment that predates it, so the
     # unambiguous META_API_KEY is accepted first and wins if both are set.
-    meta_api_key: str = Field(
-        "", validation_alias=AliasChoices("META_API_KEY", "MODEL_API_KEY")
-    )
+    meta_api_key: str = Field("", validation_alias=AliasChoices("META_API_KEY", "MODEL_API_KEY"))
     nvidia_api_key: str = Field("", validation_alias="NVIDIA_API_KEY")
     mistral_api_key: str = Field("", validation_alias="MISTRAL_API_KEY")
 
@@ -231,3 +238,37 @@ class PipelineSettings(BaseSettings):
     max_documents: int = Field(
         10, ge=1, description="Cap on documents fed to the extractor in one cluster."
     )
+
+    # ── Batch mode (kg_agentic_extraction.batch) ─────────────────────
+    # The inclusive range of Multi-News test-split clusters to extract. Both
+    # ends are read from the environment (KG_CLUSTER_START / KG_CLUSTER_END) so a
+    # run is fully described by .env; `--range START END` overrides them.
+    cluster_start: int | None = Field(
+        None, ge=0, description="First cluster index for batch mode (inclusive)."
+    )
+    cluster_end: int | None = Field(
+        None, ge=0, description="Last cluster index for batch mode (inclusive)."
+    )
+    # Threads, not processes: a run is ~all provider/DBpedia latency, so clusters
+    # overlap well on a few threads and gain nothing from more cores. The default
+    # is tuned for the target box, c4-highcpu-8 (8 vCPUs / 16 GB): 4 concurrent
+    # LangGraph runs keep the CPU busy without starving it, stay well inside
+    # 16 GB alongside torch + the cached dataset, and do not overrun the single
+    # DBpedia MCP server. Raise toward 8 with grounding off.
+    max_workers: int = Field(
+        4, ge=1, le=16, description="Parallel clusters in batch mode (KG_MAX_WORKERS)."
+    )
+
+    def gemini_key_list(self) -> list[str]:
+        """
+        Every Gemini API key, `gemini_api_key` first, de-duplicated.
+
+        `gemini_api_keys` may be comma-, space- or newline-separated. This is
+        what `llm/factory.py` hands the rotating `GeminiClient`.
+        """
+        keys: list[str] = []
+        for raw in [self.gemini_api_key, *re.split(r"[\s,]+", self.gemini_api_keys)]:
+            cleaned = raw.strip()
+            if cleaned and cleaned not in keys:
+                keys.append(cleaned)
+        return keys
