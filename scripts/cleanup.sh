@@ -58,7 +58,9 @@ if [[ -d "$HF_HOME" ]]; then
 fi
 
 # 5. Truncate the MCP server log once it gets large (it grows unbounded).
-if [[ -f mcp_logs.txt && $(stat -c%s mcp_logs.txt) -gt 1048576 ]]; then
+# `wc -c` rather than `stat`: the size flag is -c%s on GNU and -f%z on BSD/macOS,
+# and this script runs on both the dev laptop and the extraction box.
+if [[ -f mcp_logs.txt && $(wc -c < mcp_logs.txt) -gt 1048576 ]]; then
 	if (( DRY )); then log "would truncate  mcp_logs.txt ($(du -h mcp_logs.txt | cut -f1))"
 	else : > mcp_logs.txt; log "truncated  mcp_logs.txt"; fi
 fi

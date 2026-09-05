@@ -171,10 +171,7 @@ def _write_entities(f: h5py.File, entities: list[Entity]) -> None:
 
 def _write_relations(f: h5py.File, relations: list[Relation]) -> None:
     rows = np.array(
-        [
-            (r.source, r.target, r.relation_type, r.support_count, r.confidence)
-            for r in relations
-        ],
+        [(r.source, r.target, r.relation_type, r.support_count, r.confidence) for r in relations],
         dtype=_RELATION_DTYPE,
     )
     f.create_dataset("relations", data=rows, compression="gzip")

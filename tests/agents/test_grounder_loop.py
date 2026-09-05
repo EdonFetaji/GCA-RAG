@@ -328,7 +328,5 @@ def test_an_invented_type_gets_an_empty_hint_list(backend):
     assert relation_table["GOVERNOR_OF"] == []
 
     # And it still renders — an unknown type is not a prompt failure.
-    rendered = PromptRegistry(default_version="v2").render_pair(
-        "grounder", version="v2", **context
-    )
+    rendered = PromptRegistry(default_version="v2").render_pair("grounder", version="v2", **context)
     assert "GOVERNOR_OF" in rendered.system

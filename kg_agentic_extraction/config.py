@@ -9,13 +9,84 @@ as constructor arguments.
 
 from __future__ import annotations
 
+import os
 import re
 from pathlib import Path
 
-from pydantic import AliasChoices, Field
+from pydantic import AliasChoices, BaseModel, Field, model_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 from kg_agentic_extraction.models.ontology import OntologyConfig
+
+#: `KG_WORKER_<n>_GEMINI_KEYS` / `KG_WORKER_<n>_MISTRAL_KEY` — the per-worker key
+#: bundles read out of the environment by `_collect_worker_keys`.
+_WORKER_GEMINI_RE = re.compile(r"^KG_WORKER_(\d+)_GEMINI_KEYS$", re.IGNORECASE)
+_WORKER_MISTRAL_RE = re.compile(r"^KG_WORKER_(\d+)_MISTRAL_KEY$", re.IGNORECASE)
+
+
+def split_keys(raw: str) -> list[str]:
+    """Split a comma-, space- or newline-separated key list, de-duplicated, order kept."""
+    keys: list[str] = []
+    for candidate in re.split(r"[\s,]+", raw or ""):
+        cleaned = candidate.strip()
+        if cleaned and cleaned not in keys:
+            keys.append(cleaned)
+    return keys
+
+
+class WorkerKeyBundle(BaseModel):
+    """
+    The API keys one batch worker process owns exclusively.
+
+    Bundles are the unit of isolation in batch mode: no two workers share a key,
+    so one worker burning through its Gemini quota cannot retire a key another
+    worker is still using. That is only true because each worker is a separate
+    *process* — a shared, in-process rotating client would defeat it.
+
+    Two Gemini keys because the extractor sends the documents and receives a full
+    graph on every repair round, which is where the token budget goes; one
+    Mistral key because the grader's call is a single pass per round.
+    """
+
+    worker_id: int
+    gemini_keys: list[str] = Field(default_factory=list)
+    mistral_key: str = ""
+
+    @property
+    def is_complete(self) -> bool:
+        return bool(self.gemini_keys) and bool(self.mistral_key)
+
+    def missing(self) -> list[str]:
+        """The environment variables this bundle still needs, for a startup error."""
+        gaps = []
+        if not self.gemini_keys:
+            gaps.append(f"KG_WORKER_{self.worker_id}_GEMINI_KEYS")
+        if not self.mistral_key:
+            gaps.append(f"KG_WORKER_{self.worker_id}_MISTRAL_KEY")
+        return gaps
+
+
+def _collect_worker_keys() -> list[WorkerKeyBundle]:
+    """
+    Every `KG_WORKER_<n>_*` bundle in the environment, ordered by `n`.
+
+    Scanned rather than declared as fixed fields so that adding a fifth worker is
+    two more environment variables and no code change. `config.py` is the one
+    module allowed to read `os.environ` — see the module docstring — and
+    pydantic-settings offers no declarative form for an open-ended indexed group.
+    """
+    found: dict[int, WorkerKeyBundle] = {}
+
+    def bundle(index: int) -> WorkerKeyBundle:
+        return found.setdefault(index, WorkerKeyBundle(worker_id=index))
+
+    for name, value in os.environ.items():
+        if match := _WORKER_GEMINI_RE.match(name):
+            bundle(int(match.group(1))).gemini_keys = split_keys(value)
+        elif match := _WORKER_MISTRAL_RE.match(name):
+            bundle(int(match.group(1))).mistral_key = value.strip()
+
+    return [found[index] for index in sorted(found)]
 
 
 class PipelineSettings(BaseSettings):
@@ -29,6 +100,9 @@ class PipelineSettings(BaseSettings):
     )
 
     # ── LLM ───────────────────────────────────────────────────────────
+    # `llm_provider` / `model` are the *fallback* pair: what an agent uses when
+    # its role is not bound to a provider of its own below. A single-cluster
+    # `runner.py` run with no role bindings set still behaves exactly as before.
     llm_provider: str = Field("groq", description="Key registered in llm/factory.py.")
     model: str = Field("llama-3.3-70b-versatile", description="Provider-specific model id.")
     temperature: float = Field(0.0, ge=0.0, le=2.0)
@@ -67,6 +141,22 @@ class PipelineSettings(BaseSettings):
     meta_api_key: str = Field("", validation_alias=AliasChoices("META_API_KEY", "MODEL_API_KEY"))
     nvidia_api_key: str = Field("", validation_alias="NVIDIA_API_KEY")
     mistral_api_key: str = Field("", validation_alias="MISTRAL_API_KEY")
+
+    # ── Per-agent provider binding ────────────────────────────────────
+    # The extractor and the grader run on different vendors, because they are
+    # different workloads. The extractor sends the documents and receives a whole
+    # graph back on every repair round; the grader reads that graph once and
+    # answers with prose. So the extractor sits on Gemini with two rotating keys
+    # per worker, and the grader on a single Mistral key.
+    #
+    # Empty means "use `llm_provider` / `model` above" — that is what keeps a
+    # plain `runner.py` invocation working unchanged. `for_role()` below is what
+    # turns these into something `llm/factory.py` can build, and the factory
+    # itself needed no modification to support any of this.
+    extractor_provider: str = Field("", description="Provider for the extractor. '' = default.")
+    extractor_model: str = Field("", description="Model id for the extractor. '' = default.")
+    grader_provider: str = Field("", description="Provider for the grader. '' = default.")
+    grader_model: str = Field("", description="Model id for the grader. '' = default.")
 
     # ── Meta Model API ────────────────────────────────────────────────
     # Only the `meta` provider reads these; they are inert otherwise.
@@ -168,6 +258,18 @@ class PipelineSettings(BaseSettings):
             "regime for comparison."
         ),
     )
+    grader_prompt_version: str = Field(
+        "v4",
+        description=(
+            "Version the grader resolves, separately from the extractor's, for the "
+            "same reason the grounder pins its own. v4 is where the grader stopped "
+            "emitting typed issues and started writing the Markdown report itself; "
+            "the schema moved with it, from `GraderReport` to `MistralGraderReport`. "
+            "The two must move together — setting this back to v1/v2/v3 asks for "
+            "Markdown from a template written to produce typed issues, and requires "
+            "changing `GraderAgent.output_schema` back as well."
+        ),
+    )
     grounder_prompt_version: str = Field(
         "v2",
         description=(
@@ -249,15 +351,31 @@ class PipelineSettings(BaseSettings):
     cluster_end: int | None = Field(
         None, ge=0, description="Last cluster index for batch mode (inclusive)."
     )
-    # Threads, not processes: a run is ~all provider/DBpedia latency, so clusters
-    # overlap well on a few threads and gain nothing from more cores. The default
-    # is tuned for the target box, c4-highcpu-8 (8 vCPUs / 16 GB): 4 concurrent
-    # LangGraph runs keep the CPU busy without starving it, stay well inside
-    # 16 GB alongside torch + the cached dataset, and do not overrun the single
-    # DBpedia MCP server. Raise toward 8 with grounding off.
+    # Worker *processes*, one per core, each running a single-threaded graph —
+    # not threads. What is being isolated is not CPU but API-key state: each
+    # worker owns its own `WorkerKeyBundle` and its own LLM clients, so a Gemini
+    # key exhausted in one worker is invisible to the other three. Threads in one
+    # process cannot give that, because the rotating client's "this key is spent"
+    # set would be shared by all of them.
+    #
+    # The ceiling is the number of key bundles we actually hold, not the number
+    # of cores: a fifth worker with no keys of its own would have to borrow, which
+    # is the failure this design exists to prevent. Raise it alongside
+    # `KG_WORKER_4_*` and friends.
     max_workers: int = Field(
-        4, ge=1, le=16, description="Parallel clusters in batch mode (KG_MAX_WORKERS)."
+        4, ge=1, le=4, description="Batch worker processes (KG_MAX_WORKERS). One key bundle each."
     )
+
+    #: Per-worker key bundles, scanned from `KG_WORKER_<n>_*`. Populated by the
+    #: validator below rather than declared, so worker count is an env concern.
+    worker_keys: list[WorkerKeyBundle] = Field(default_factory=list)
+
+    @model_validator(mode="after")
+    def _load_worker_keys(self) -> PipelineSettings:
+        """Fill `worker_keys` from the environment unless a caller supplied them (tests)."""
+        if not self.worker_keys:
+            self.worker_keys = _collect_worker_keys()
+        return self
 
     def gemini_key_list(self) -> list[str]:
         """
@@ -266,9 +384,50 @@ class PipelineSettings(BaseSettings):
         `gemini_api_keys` may be comma-, space- or newline-separated. This is
         what `llm/factory.py` hands the rotating `GeminiClient`.
         """
-        keys: list[str] = []
-        for raw in [self.gemini_api_key, *re.split(r"[\s,]+", self.gemini_api_keys)]:
-            cleaned = raw.strip()
-            if cleaned and cleaned not in keys:
-                keys.append(cleaned)
-        return keys
+        return split_keys(" ".join([self.gemini_api_key, self.gemini_api_keys]))
+
+    # ── Scoping ───────────────────────────────────────────────────────
+    # Both of these return a *copy* with a few fields overridden rather than
+    # teaching the factory about roles or workers. `llm/factory.py` keeps reading
+    # exactly the fields it always read — `llm_provider`, `model`,
+    # `gemini_api_key(s)`, `mistral_api_key` — and every provider in its registry
+    # keeps working, unmodified, for both an extractor and a grader.
+
+    def for_role(self, role: str) -> PipelineSettings:
+        """
+        This settings object as the named agent sees it: `"extractor"` or `"grader"`.
+
+        Falls back to `llm_provider` / `model` for any role that is not bound, so
+        an unconfigured deployment behaves exactly as it did before roles existed.
+        """
+        provider = getattr(self, f"{role}_provider", "") or self.llm_provider
+        model = getattr(self, f"{role}_model", "") or self.model
+        return self.model_copy(update={"llm_provider": provider, "model": model})
+
+    def for_worker(self, worker_id: int) -> PipelineSettings:
+        """
+        This settings object as batch worker `worker_id` sees it: its keys, nobody else's.
+
+        The bundle *replaces* the process-wide keys rather than adding to them —
+        a worker must not be able to fall back onto a key another worker owns, or
+        the isolation the process model buys is gone. `worker_keys` is narrowed to
+        the one bundle for the same reason: this copy is what gets pickled across
+        to the child process, and a sibling's keys have no business travelling
+        with it.
+        """
+        bundle = self.worker_bundle(worker_id)
+        return self.model_copy(
+            update={
+                "gemini_api_key": "",
+                "gemini_api_keys": ",".join(bundle.gemini_keys),
+                "mistral_api_key": bundle.mistral_key,
+                "worker_keys": [bundle],
+            }
+        )
+
+    def worker_bundle(self, worker_id: int) -> WorkerKeyBundle:
+        """The bundle for `worker_id`. Raises `KeyError` if it was never configured."""
+        for bundle in self.worker_keys:
+            if bundle.worker_id == worker_id:
+                return bundle
+        raise KeyError(f"no key bundle for worker {worker_id} (set KG_WORKER_{worker_id}_*)")

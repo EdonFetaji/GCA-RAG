@@ -15,7 +15,7 @@ extract → grade ─┬─ issues found → extract      (loop, up to KG_MAX_IT
 uv sync
 ```
 
-Create a `.env` file in the repo root:
+Copy `.env.example` to `.env` and fill it in. The short version:
 
 ```bash
 # provider + its API key  (gemini | groq | cerebras | mistral | nvidia | meta)
@@ -23,19 +23,41 @@ KG_LLM_PROVIDER=gemini
 GEMINI_API_KEY=your-key
 KG_MODEL=gemini-2.5-flash
 
-# for a long batch: several keys, comma-separated — the run rotates
-# through them as each hits its daily quota
-GEMINI_API_KEYS=key1,key2,key3
+# the extractor and the grader run on different vendors — see "Which model
+# runs what" below
+KG_EXTRACTOR_PROVIDER=gemini
+KG_EXTRACTOR_MODEL=gemini-2.5-flash
+KG_GRADER_PROVIDER=mistral
+KG_GRADER_MODEL=mistral-large-latest
 
-# batch range (inclusive) and how many clusters run at once
+# batch range (inclusive) and how many worker processes run it
 KG_CLUSTER_START=0
 KG_CLUSTER_END=199
 KG_MAX_WORKERS=4
+
+# one key bundle per worker — 2 Gemini (extractor) + 1 Mistral (grader),
+# repeated for workers 0..3. No key may appear in two bundles.
+KG_WORKER_0_GEMINI_KEYS=key-a,key-b
+KG_WORKER_0_MISTRAL_KEY=key-m
+# ...KG_WORKER_1_*, KG_WORKER_2_*, KG_WORKER_3_*
 
 # optional: also copy each finished graph to a GCS bucket
 # (needs `gcloud auth application-default login`)
 KG_GCS_BUCKET=
 ```
+
+## Which model runs what
+
+| agent | provider | keys | why |
+|---|---|---|---|
+| extractor | Gemini | 2 per worker, rotated | sends the documents and gets a whole graph back every repair round — this is where the tokens go |
+| grader | Mistral | 1 per worker | reads the graph once and answers with prose |
+| grounder | — | — | off in batch mode; `runner.py` only |
+
+The grader writes its Markdown report itself (prompt templates `grader/v4.*`)
+rather than returning typed issues for Python to render. It reports convergence
+as an explicit flag beside that prose, which is what keeps the loop's stopping
+rule off the formatting.
 
 ## Run one cluster
 
@@ -54,33 +76,45 @@ uv run python -m mcp_server.server
 
 Extracts every cluster in the `.env` range, writes each to
 `kg_dataset/data/cluster_<i>.h5`, and uploads it if `KG_GCS_BUCKET` is set.
+Grounding is off here unconditionally.
 
 ```bash
-uv run python -m kg_agentic_extraction.batch --no-grounding
+uv run python -m kg_agentic_extraction.batch
 ```
+
+`KG_MAX_WORKERS` **processes**, one per core, each running a single-threaded
+pipeline over its own round-robin slice of the range. Processes rather than
+threads because of the keys, not the CPU: each worker owns its bundle outright,
+so a Gemini key one worker exhausts stays usable by the other three, and a worker
+that runs out of quota stops alone instead of ending the batch. Threads in one
+process would share the rotating client's "this key is spent" state.
 
 Useful flags:
 
 | flag | effect |
 |---|---|
 | `--range 0 40` | override the range from `.env` |
-| `--workers 2` | override `KG_MAX_WORKERS` |
+| `--workers 2` | override `KG_MAX_WORKERS` (capped by the number of key bundles) |
 | `--force` | re-extract clusters that are already done |
+| `--no-upload` | skip GCS even when a bucket is set |
 
 **Resumable** — a cluster that's already done is skipped, so just re-run the same
 command to continue after a crash or when the API keys hit their daily quota.
 Done-ness is read from the GCS bucket when one is configured, otherwise from
 `kg_dataset/data/`.
 
-**Exit codes:** `0` all done · `1` some clusters failed · `2` every API key is
-spent for the day — re-run after the quota resets (~24h).
+**Exit codes:** `0` all done · `1` some clusters failed · `2` at least one
+worker's Gemini keys are spent for the day — re-run after the quota resets (~24h).
 
 For a run that outlives your SSH session:
 
 ```bash
-nohup uv run python -m kg_agentic_extraction.batch --no-grounding >> batch.log 2>&1 &
+nohup uv run python -m kg_agentic_extraction.batch >> batch.log 2>&1 &
 tail -f batch.log
 ```
+
+Each worker prefixes its log lines with `[w0]`, `[w1]`, … so four interleaved
+streams stay readable.
 
 ## Tests
 

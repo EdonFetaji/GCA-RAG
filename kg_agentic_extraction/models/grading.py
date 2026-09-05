@@ -80,3 +80,37 @@ class GraderReport(BaseModel):
         for issue in self.issues:
             counts[issue.issue_type] = counts.get(issue.issue_type, 0) + 1
         return counts
+
+
+class MistralGraderReport(BaseModel):
+    """
+    The grader's contract when it writes its own Markdown — the v4 templates.
+
+    Why a second model rather than an edit to `GraderReport`: the grader now runs
+    on Mistral, whose `json_schema` mode decodes *strictly*, and `GraderReport` is
+    a list of nested objects carrying two enums. Two flat fields is the shape
+    that survives that decoder on a free tier; the prose the model would have put
+    in `description` and `suggested_fix` goes into `issues_markdown` instead,
+    which is what the extractor's repair prompt consumed all along.
+
+    Note the one real behavioural difference from `GraderReport`, whose
+    `converged` is *derived* (`not self.issues`): here it is a field the model
+    sets for itself. There is no empty list left to infer it from, so the v4
+    system prompt has to state the rule explicitly. If the model contradicts
+    itself — `converged=True` alongside a non-empty report — `converged` wins and
+    the loop ends; a grader that cannot say whether it is done is not worth
+    another full refinement round.
+
+    `GraderReport` is deliberately kept: it and `report_to_markdown` are how the
+    v1–v3 grading regime is reproduced, and swapping `GraderAgent.output_schema`
+    back to it (with `KG_GRADER_PROMPT_VERSION`) is all that takes.
+    """
+
+    converged: bool = Field(
+        ...,
+        description="True when nothing is left to fix and the graph can leave the loop.",
+    )
+    issues_markdown: str = Field(
+        "",
+        description="The Markdown issue report, written by the model. Empty when converged.",
+    )

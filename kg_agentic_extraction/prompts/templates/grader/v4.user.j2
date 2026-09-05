@@ -1,0 +1,21 @@
+Grade the knowledge graph below against the source documents.
+
+These documents are one cluster, and this graph is what a summarizer will be
+given — instead of the documents — to write a single summary covering all of
+them. Read the graph once on its own terms first, as the summarizer will, then
+check it against the sources.
+
+{% if iteration and iteration > 1 %}
+This is revision round {{ iteration }}. The extractor has already acted on
+earlier feedback — verify the previous issues were genuinely fixed rather than
+worked around, and check that fixing them did not break anything that was
+previously correct. If everything raised earlier is now resolved and you find
+nothing new, say so and set `converged: true`; do not keep the loop alive on
+findings you would not have raised in round one.
+{% endif %}
+
+## EXTRACTED KNOWLEDGE GRAPH
+{{ graph_json }}
+
+## SOURCE DOCUMENTS
+{{ documents_text }}

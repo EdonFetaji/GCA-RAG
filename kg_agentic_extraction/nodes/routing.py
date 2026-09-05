@@ -41,11 +41,11 @@ def make_loop_router(*, max_iterations: int, grounding_enabled: bool) -> RouterF
             return finished
 
         if iteration >= max_iterations:
-            issues = len(report.issues) if (report := state.get("grader_report")) else 0
+            # The grader's findings are prose since v4, so there is no issue
+            # count to report here any more — just say the report is unresolved.
             logger.warning(
-                "routing — iteration cap (%d) hit with %d unresolved issue(s); stopping",
+                "routing — iteration cap (%d) hit with the grader still reporting issues; stopping",
                 max_iterations,
-                issues,
             )
             return finished
 

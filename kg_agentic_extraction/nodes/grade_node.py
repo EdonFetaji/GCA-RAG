@@ -1,9 +1,10 @@
 """
 Grade node — adapts `GraderAgent` onto graph state.
 
-Also the place where the Markdown artifact is produced: the agent returns a
-typed report, and this node renders it once so that both the human-facing
-output and the extractor's next repair prompt read the same text.
+This node used to render the Markdown artifact, turning the agent's typed report
+into text with `report_to_markdown`. Since the v4 grader the model writes that
+Markdown itself, so the node just threads it through: one artifact, read both by
+the human and by the extractor's next repair prompt, as before.
 """
 
 from __future__ import annotations
@@ -11,7 +12,6 @@ from __future__ import annotations
 import logging
 
 from kg_agentic_extraction.agents.grader_agent import GraderAgent, GradingTask
-from kg_agentic_extraction.prompts.renderers import report_to_markdown
 from kg_agentic_extraction.state import PipelineState
 from kg_agentic_extraction.types import NodeFn
 
@@ -56,18 +56,16 @@ def make_grade_node(
                 errors=[f"grade[{iteration}]: {exc}"],
             )
 
-        markdown = report_to_markdown(report, iteration=iteration)
         logger.info(
-            "grade — iteration %d: %d issue(s)%s",
+            "grade — iteration %d: %s",
             iteration,
-            len(report.issues),
-            " — converged" if report.converged else "",
+            "converged" if report.converged else f"{len(report.issues_markdown)} chars of issues",
         )
 
         return PipelineState(
             grader_report=report,
             grader_reports=[report],
-            grader_markdown=markdown,
+            grader_markdown=report.issues_markdown,
             converged=report.converged,
         )
 
