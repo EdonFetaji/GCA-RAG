@@ -7,7 +7,7 @@ Check a batch configuration before spending any quota on it.
 
 Worth running before any long batch. A twelve-key setup has twelve ways to be
 one typo away from a run that dies forty minutes in, and the failure modes that
-matter — a key pasted into two bundles, a bundle missing its Mistral key, a key
+matter — a key pasted into two bundles, a bundle missing its grader key, a key
 that was revoked — are all invisible until the worker that owns it starts.
 
 `--check-keys` costs one trivial completion per key (12 calls for 4 workers) and
@@ -23,6 +23,7 @@ from pydantic import BaseModel
 
 from kg_agentic_extraction.batch import shard
 from kg_agentic_extraction.config import PipelineSettings
+from kg_agentic_extraction.llm.factory import available_providers, build_llm
 
 
 class Ping(BaseModel):
@@ -59,7 +60,7 @@ def check_config(settings: PipelineSettings, workers: int) -> list[str]:
         mark = "ok " if not gaps else "BAD"
         gemini = ", ".join(mask(k) for k in bundle.gemini_keys) or "(none)"
         print(f"  w{worker_id}  {mark}  gemini[{len(bundle.gemini_keys)}]: {gemini}")
-        print(f"           mistral: {mask(bundle.mistral_key) if bundle.mistral_key else '(none)'}")
+        print(f"           grader: {mask(bundle.grader_key) if bundle.grader_key else '(none)'}")
         if gaps:
             problems.append(f"worker {worker_id} is missing {', '.join(gaps)}")
         if len(bundle.gemini_keys) < 2:
@@ -70,7 +71,7 @@ def check_config(settings: PipelineSettings, workers: int) -> list[str]:
     # worker's exhaustion look like the other's.
     seen: dict[str, str] = {}
     for bundle in bundles[:workers]:
-        for key in [*bundle.gemini_keys, bundle.mistral_key]:
+        for key in [*bundle.gemini_keys, bundle.grader_key]:
             if not key:
                 continue
             owner = f"w{bundle.worker_id}"
@@ -79,11 +80,17 @@ def check_config(settings: PipelineSettings, workers: int) -> list[str]:
             seen[key] = owner
 
     print("\n── Roles " + "─" * 55)
+    known = available_providers()
     for role in ("extractor", "grader"):
         scoped = settings.for_role(role)
         print(f"  {role:<10} {scoped.llm_provider} / {scoped.model}")
         if not scoped.llm_provider:
             problems.append(f"{role} has no provider and no KG_LLM_PROVIDER fallback")
+        elif scoped.llm_provider.lower() not in known:
+            problems.append(
+                f"{role} names unknown provider {scoped.llm_provider!r}; "
+                f"registered: {', '.join(known)}"
+            )
 
     print("\n── Loop " + "─" * 56)
     print(f"  max_iterations   {settings.max_iterations}")
@@ -98,7 +105,6 @@ def check_config(settings: PipelineSettings, workers: int) -> list[str]:
 def check_keys(settings: PipelineSettings, workers: int) -> list[str]:
     """One trivial live call per key, through the real adapters."""
     from kg_agentic_extraction.llm.gemini_client import GeminiClient
-    from kg_agentic_extraction.llm.mistral_client import MistralClient
 
     problems: list[str] = []
     print("\n── Live key check " + "─" * 46)
@@ -109,7 +115,11 @@ def check_keys(settings: PipelineSettings, workers: int) -> list[str]:
         except KeyError:
             continue
 
-        scoped = settings.for_worker(worker_id)
+        try:
+            scoped = settings.for_worker(worker_id)
+        except ValueError as exc:
+            problems.append(str(exc))
+            return problems
         extractor = scoped.for_role("extractor")
         grader = scoped.for_role("grader")
 
@@ -130,17 +140,17 @@ def check_keys(settings: PipelineSettings, workers: int) -> list[str]:
                 print(f"  DEAD {label}: {type(exc).__name__}: {str(exc)[:120]}")
                 problems.append(f"{label} is not usable")
 
-        if bundle.mistral_key:
-            label = f"w{worker_id} mistral {mask(bundle.mistral_key)}"
+        if bundle.grader_key:
+            label = f"w{worker_id} grader {grader.llm_provider} {mask(bundle.grader_key)}"
             try:
-                client = MistralClient(
-                    model=grader.model,
-                    api_key=bundle.mistral_key,
-                    temperature=0.0,
-                    max_tokens=64,
-                    timeout=60,
-                )
-                client.structured(system="Reply with ok=true.", user="ping", schema=Ping)
+                # Built through the factory rather than a named adapter, so this
+                # probes whatever KG_GRADER_PROVIDER points at. `for_worker` has
+                # already put this bundle's grader key in that provider's field.
+                client = build_llm(grader.model_copy(update={"temperature": 0.0, "max_tokens": 64}))
+                # Plain completion, not `structured` — that is the call the
+                # grader actually makes, so this fails for the same reasons a
+                # run would rather than probing a path nothing uses.
+                client.complete(system="Reply with the word ok.", user="ping")
                 print(f"  ok   {label}")
             except Exception as exc:
                 print(f"  DEAD {label}: {type(exc).__name__}: {str(exc)[:120]}")

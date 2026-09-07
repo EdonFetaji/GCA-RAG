@@ -75,8 +75,9 @@ def build_dependencies(
 
     Roles are resolved through `settings.for_role()`, which hands the factory a
     settings copy with that role's provider and model swapped in. The extractor
-    and the grader therefore run on different vendors — Gemini and Mistral — with
-    no change to `llm/factory.py` and no provider-awareness anywhere below here.
+    and the grader therefore run on different vendors — whichever pair
+    `KG_EXTRACTOR_PROVIDER` and `KG_GRADER_PROVIDER` name — with no change to
+    `llm/factory.py` and no provider-awareness anywhere below here.
     """
     settings = settings or PipelineSettings()
     prompts = prompts or PromptRegistry(default_version=settings.prompt_version)

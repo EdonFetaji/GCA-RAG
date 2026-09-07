@@ -17,7 +17,7 @@ from pathlib import Path
 
 from kg_agentic_extraction.config import PipelineSettings
 from kg_agentic_extraction.graph import build_dependencies, build_graph
-from kg_agentic_extraction.models.grading import MistralGraderReport
+from kg_agentic_extraction.models.grading import SimpleSchemaGraderReport
 from kg_agentic_extraction.models.grounding import GroundedKnowledgeGraph
 from kg_agentic_extraction.models.knowledge_graph import KnowledgeGraph
 from kg_agentic_extraction.state import initial_state
@@ -37,9 +37,9 @@ class PipelineResult:
 
     knowledge_graph: KnowledgeGraph | None
     grounded_graph: GroundedKnowledgeGraph | None
-    grader_report: MistralGraderReport | None
+    grader_report: SimpleSchemaGraderReport | None
     grader_markdown: str | None
-    grader_history: list[MistralGraderReport]
+    grader_history: list[SimpleSchemaGraderReport]
     iterations: int
     converged: bool
     errors: list[str]

@@ -1,10 +1,11 @@
 """
-The tool-use loop, implemented once.
+The behaviour every LangChain-backed adapter shares — the tool-use loop, and the
+plain-text completion.
 
 Every provider adapter wraps a LangChain `BaseChatModel`, which normalises tool
-binding and tool-call parsing across vendors. So the loop belongs here, as a
-mixin, rather than once per adapter — a new adapter gets tool calling by
-inheriting it and needs no code of its own.
+binding, tool-call parsing and message content across vendors. So both belong
+here, as a mixin, rather than once per adapter — a new adapter gets tool calling
+and `complete()` by inheriting it and needs no code of its own.
 
 The loop is deliberately plain: bind, invoke, execute, repeat. What is *not*
 plain, and is the reason this file exists rather than a five-line inline loop:
@@ -31,6 +32,7 @@ from langchain_core.messages import AIMessage, HumanMessage, SystemMessage, Tool
 from pydantic import BaseModel
 
 from kg_agentic_extraction.llm.base import (
+    LLMCompletionError,
     LLMStructuredOutputError,
     ToolInvocation,
     ToolSpec,
@@ -48,6 +50,11 @@ _BUDGET_SPENT = (
     "do not guess a URI to fill the gap."
 )
 
+_EMPTY_COMPLETION_HINT = (
+    "the model returned an empty completion — usually the response budget being "
+    "spent before any visible text, so raise KG_MAX_TOKENS or turn thinking off"
+)
+
 _FINALIZE = (
     "Now produce the final answer, using only what the tool results above "
     "established. Every URI you emit must have appeared in a tool result."
@@ -56,7 +63,8 @@ _FINALIZE = (
 
 class LangChainToolLoopMixin:
     """
-    `run_tool_loop` for any adapter holding a LangChain chat model at `self._llm`.
+    `run_tool_loop` and `complete` for any adapter holding a LangChain chat
+    model at `self._llm`.
 
     Mixed into every adapter — Cerebras, Groq, Gemini, Meta, NVIDIA — each of
     which already satisfies the rest of `ToolCallingLLMClient` through
@@ -125,6 +133,27 @@ class LangChainToolLoopMixin:
         )
         return self._finalize(messages, schema)
 
+    # ── Plain text ────────────────────────────────────────────────────
+
+    def complete(self, *, system: str, user: str) -> str:
+        """Invoke the model with no schema and return its reply; see `TextLLMClient`."""
+        logger.debug("completion call — model=%s", getattr(self, "_model_name", "?"))
+        try:
+            message = self._llm.invoke([SystemMessage(content=system), HumanMessage(content=user)])
+        except Exception as exc:
+            raise LLMCompletionError(getattr(self, "_model_name", "?"), exc) from exc
+
+        text = _content_to_text(message.content)
+        if not text.strip():
+            # An empty completion is a failure, not an answer. The grader's
+            # parse rule reads a blank report as "nothing to fix", so letting
+            # this through would silently converge a run on a model that never
+            # spoke — usually a spent token budget.
+            raise LLMCompletionError(
+                getattr(self, "_model_name", "?"), ValueError(_EMPTY_COMPLETION_HINT)
+            )
+        return text
+
     # ── Internals ─────────────────────────────────────────────────────
 
     def _finalize(self, messages: list[Any], schema: type[TModel]) -> TModel:
@@ -163,6 +192,27 @@ class LangChainToolLoopMixin:
 
 
 # ── Helpers ───────────────────────────────────────────────────────────
+
+
+def _content_to_text(content: Any) -> str:
+    """
+    Flatten a LangChain message's `content` to a string.
+
+    Most providers put a plain string there, but the ones with a reasoning or
+    multi-part response shape put a list of blocks instead. Only the text blocks
+    are kept — a thinking block is not part of the answer, and concatenating it
+    would put the model's scratch work into the grader's report.
+    """
+    if isinstance(content, str):
+        return content
+    if isinstance(content, list):
+        parts = [
+            block if isinstance(block, str) else str(block.get("text", ""))
+            for block in content
+            if isinstance(block, str) or (isinstance(block, dict) and block.get("type") == "text")
+        ]
+        return "".join(parts)
+    return str(content or "")
 
 
 def _as_langchain_tool(spec: ToolSpec) -> dict[str, Any]:

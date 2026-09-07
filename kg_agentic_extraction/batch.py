@@ -14,8 +14,9 @@ Parallelism
 LangGraph pipeline over its own slice of the range. Not threads — and the reason
 is API keys, not CPU.
 
-Every worker owns a `WorkerKeyBundle`: two Gemini keys for the extractor, one
-Mistral key for the grader, shared with nobody. A rotating `GeminiClient` tracks
+Every worker owns a `WorkerKeyBundle`: two Gemini keys for the extractor, one key
+for the grader — on whatever vendor `KG_GRADER_PROVIDER` names — shared with
+nobody. A rotating `GeminiClient` tracks
 which of its keys are spent in an instance attribute, so putting several workers
 in one process would make them share that state: the first worker to exhaust a
 key would retire it for all of them, and one worker running out of quota would
@@ -187,7 +188,7 @@ def validate_bundles(settings: PipelineSettings, workers: int) -> None:
     missing_ids = [w for w in range(workers) if w not in available]
     if missing_ids:
         wanted = ", ".join(
-            f"KG_WORKER_{w}_GEMINI_KEYS / KG_WORKER_{w}_MISTRAL_KEY" for w in missing_ids
+            f"KG_WORKER_{w}_GEMINI_KEYS / KG_WORKER_{w}_GRADER_KEY" for w in missing_ids
         )
         raise SystemExit(
             f"{workers} worker(s) requested but no key bundle for worker(s) "
@@ -258,7 +259,7 @@ def _worker_main(
         settings.grounding_enabled = False
         bundle = settings.worker_bundle(worker_id)
         log.info(
-            "starting — %d cluster(s), %d Gemini key(s) + 1 Mistral key",
+            "starting — %d cluster(s), %d Gemini key(s) + 1 grader key",
             len(clusters),
             len(bundle.gemini_keys),
         )

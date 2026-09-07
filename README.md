@@ -35,10 +35,11 @@ KG_CLUSTER_START=0
 KG_CLUSTER_END=199
 KG_MAX_WORKERS=4
 
-# one key bundle per worker — 2 Gemini (extractor) + 1 Mistral (grader),
-# repeated for workers 0..3. No key may appear in two bundles.
+# one key bundle per worker — 2 Gemini (extractor) + 1 for the grader, on
+# whatever KG_GRADER_PROVIDER names. Repeated for workers 0..3; no key may
+# appear in two bundles.
 KG_WORKER_0_GEMINI_KEYS=key-a,key-b
-KG_WORKER_0_MISTRAL_KEY=key-m
+KG_WORKER_0_GRADER_KEY=key-g
 # ...KG_WORKER_1_*, KG_WORKER_2_*, KG_WORKER_3_*
 
 # optional: also copy each finished graph to a GCS bucket
@@ -115,6 +116,27 @@ tail -f batch.log
 
 Each worker prefixes its log lines with `[w0]`, `[w1]`, … so four interleaved
 streams stay readable.
+
+### Multi-day runs on a VM
+
+A few hundred clusters on free-tier keys outlasts a daily quota, so the batch
+will exit `2` partway and has to be re-entered. `scripts/run-until-done.sh` does
+that unattended — it re-runs the batch (which resumes, skipping finished
+clusters), sleeps an hour on a quota wall, and stops once the range is complete
+or three rounds pass with no new graph:
+
+```bash
+uv run python scripts/preflight.py --range 0 199 --check-keys   # validate keys first
+uv run python -m kg_agentic_extraction.batch --range 0 0        # warm the HF cache
+nohup scripts/run-until-done.sh --range 0 199 >> supervisor.log 2>&1 &
+```
+
+Set `KG_GCS_BUCKET` for a run like this: resume state then lives in the bucket
+rather than on a disk you might lose. `scripts/kg-batch.service` is the same
+thing as a systemd unit, which also survives a reboot.
+
+**[docs/vm-runbook.md](docs/vm-runbook.md)** is the full walkthrough — VM sizing,
+`.env`, preflight, systemd, monitoring, and a troubleshooting table.
 
 ## Tests
 

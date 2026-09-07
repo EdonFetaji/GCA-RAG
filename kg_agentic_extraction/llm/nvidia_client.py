@@ -8,7 +8,7 @@ rather than `ChatOpenAI` pointed at NVIDIA's OpenAI-compatible base, because
 decoding, the hosted-vs-self-hosted split, and the `chat_template_kwargs`
 channel that toggles thinking on models that have it.
 
-Three things about NIM that the other adapters do not have to think about:
+Four things about NIM that the other adapters do not have to think about:
 
 - **Structured output has no `method` to pin.** `ChatNVIDIA.with_structured_output`
   ignores the argument (it warns and drops it) and instead tries three request
@@ -26,6 +26,15 @@ Three things about NIM that the other adapters do not have to think about:
   the trap already documented on `PipelineSettings.max_tokens` applies here
   too — reasoning tokens come out of the same completion budget, and
   schema-constrained extraction wants that budget in the answer.
+- **The package's read timeout is 60 seconds**, and this pipeline's grade calls
+  do not fit in it. The grader reads a whole graph plus the source documents
+  before writing a word, and on a hosted model that runs past a minute as a
+  rule, not as an exception. The tell is the shape of the failure: every worker
+  dies at the same elapsed time to the tenth of a second, which is a clock on
+  this side of the wire, not a struggling endpoint. `ChatNVIDIA` takes the value
+  as a constructor kwarg and hands it to `requests` as the read timeout, so
+  `DEFAULT_TIMEOUT_SECONDS` below simply raises it. Unlike the siblings, NVIDIA
+  is given no `max_retries`, so this is the entire budget for one call.
 
 Expect one warning per structured call for a model NVIDIA has not yet added to
 the package's static table ("not known to support structured output"). It is a
@@ -49,6 +58,11 @@ TModel = TypeVar("TModel", bound=BaseModel)
 
 #: NVIDIA's hosted NIM catalog. Override for a self-hosted NIM container.
 DEFAULT_BASE_URL = "https://integrate.api.nvidia.com/v1"
+
+#: Read timeout, in seconds. The package default is 60, which every grade call
+#: overruns — see the module docstring. Generous on purpose: waiting is cheaper
+#: than losing the grade and saving an unaudited graph.
+DEFAULT_TIMEOUT_SECONDS = 300
 
 #: What `None` from the structured runnable almost always means, given that
 #: every fallback shape has to fail for it to be returned at all.
@@ -78,6 +92,7 @@ class NvidiaClient(LangChainToolLoopMixin):
         max_tokens: int | None = None,
         top_p: float | None = None,
         enable_thinking: bool = False,
+        timeout: int = DEFAULT_TIMEOUT_SECONDS,
     ) -> None:
         # Imported lazily so that merely importing the pipeline (to inspect the
         # graph, run unit tests with a fake client, etc.) does not require the
@@ -104,6 +119,11 @@ class NvidiaClient(LangChainToolLoopMixin):
             # The constructor keyword is `max_completion_tokens`; the field it
             # populates is `max_tokens`. Use the keyword NVIDIA documents.
             max_completion_tokens=max_tokens,
+            # Not a declared field: ChatNVIDIA pops `timeout` from kwargs and
+            # passes it to the underlying client, which uses it as the requests
+            # read timeout. Sent unconditionally — the package default of 60s is
+            # never the right answer for this pipeline.
+            timeout=timeout,
             **extra,
         )
 

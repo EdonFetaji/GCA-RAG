@@ -1,8 +1,8 @@
 """
 `PipelineSettings.for_role` / `.for_worker` — the two scoping copies.
 
-These are what let a single `PipelineSettings` serve an extractor on Gemini and
-a grader on Mistral, and what gives each batch worker keys nobody else holds,
+These are what let a single `PipelineSettings` serve an extractor on one vendor
+and a grader on another, and what gives each batch worker keys nobody else holds,
 without `llm/factory.py` knowing that either concept exists. So the properties
 worth pinning are: the right fields change, and *nothing else does*.
 """
@@ -91,18 +91,22 @@ def test_for_role_leaves_every_other_setting_alone():
 
 def _four_bundles() -> list[WorkerKeyBundle]:
     return [
-        WorkerKeyBundle(worker_id=i, gemini_keys=[f"gem-{i}a", f"gem-{i}b"], mistral_key=f"mis-{i}")
+        WorkerKeyBundle(worker_id=i, gemini_keys=[f"gem-{i}a", f"gem-{i}b"], grader_key=f"grd-{i}")
         for i in range(4)
     ]
 
 
-def test_a_worker_gets_exactly_its_own_bundle():
-    settings = PipelineSettings.model_construct(worker_keys=_four_bundles())
+def _worker_settings(**kw) -> PipelineSettings:
+    """Four bundles and an explicit grader provider — what `for_worker` routes by."""
+    kw.setdefault("grader_provider", "mistral")
+    return PipelineSettings.model_construct(worker_keys=_four_bundles(), **kw)
 
-    scoped = settings.for_worker(1)
+
+def test_a_worker_gets_exactly_its_own_bundle():
+    scoped = _worker_settings().for_worker(1)
 
     assert scoped.gemini_key_list() == ["gem-1a", "gem-1b"]
-    assert scoped.mistral_api_key == "mis-1"
+    assert scoped.mistral_api_key == "grd-1"
 
 
 def test_a_worker_cannot_see_another_workers_keys():
@@ -113,57 +117,89 @@ def test_a_worker_cannot_see_another_workers_keys():
     this object is pickled into the child process, so a sibling key surviving
     anywhere on it — `worker_keys` included — has crossed the boundary.
     """
-    settings = PipelineSettings.model_construct(worker_keys=_four_bundles())
-
-    scoped = settings.for_worker(2)
+    scoped = _worker_settings().for_worker(2)
     serialized = scoped.model_dump_json()
 
     assert scoped.gemini_key_list() == ["gem-2a", "gem-2b"]
     for other in (0, 1, 3):
-        for key in (f"gem-{other}a", f"gem-{other}b", f"mis-{other}"):
+        for key in (f"gem-{other}a", f"gem-{other}b", f"grd-{other}"):
             assert key not in serialized, f"worker 2 can see worker {other}'s {key}"
 
 
 def test_the_narrowed_copy_still_knows_its_own_bundle():
     """The child logs its key count from this, so narrowing must not orphan it."""
-    scoped = PipelineSettings.model_construct(worker_keys=_four_bundles()).for_worker(3)
+    scoped = _worker_settings().for_worker(3)
 
     assert scoped.worker_bundle(3).gemini_keys == ["gem-3a", "gem-3b"]
 
 
 def test_cli_overrides_survive_the_narrowing():
     """`--max-iterations` is applied in the parent; the child must inherit it."""
-    settings = PipelineSettings.model_construct(max_iterations=2, worker_keys=_four_bundles())
+    settings = _worker_settings(max_iterations=2)
 
     assert settings.for_worker(1).max_iterations == 2
 
 
 def test_the_bundle_replaces_the_process_wide_keys_rather_than_adding_to_them():
     """A worker must not be able to fall back onto the shared GEMINI_API_KEY."""
-    settings = PipelineSettings.model_construct(
+    settings = _worker_settings(
         gemini_api_key="shared-key",
         gemini_api_keys="shared-2,shared-3",
         mistral_api_key="shared-mistral",
-        worker_keys=_four_bundles(),
     )
 
     scoped = settings.for_worker(0)
 
     assert scoped.gemini_key_list() == ["gem-0a", "gem-0b"]
-    assert scoped.mistral_api_key == "mis-0"
+    assert scoped.mistral_api_key == "grd-0"
+
+
+# ── Where the grader key lands ────────────────────────────────────────
+# The bundle names no vendor; `KG_GRADER_PROVIDER` decides which field it fills.
+# These are the tests that would have caught the batch run failing on a
+# `KG_WORKER_0_MISTRAL_KEY` that the grader had already stopped using.
+
+
+def test_the_grader_key_follows_the_grader_provider():
+    scoped = _worker_settings(grader_provider="nvidia").for_worker(0)
+
+    assert scoped.nvidia_api_key == "grd-0"
+    assert scoped.mistral_api_key == ""
+
+
+def test_the_grader_key_falls_back_to_the_default_provider():
+    """No `grader_provider` means the grader is on `llm_provider`, and so is its key."""
+    scoped = _worker_settings(grader_provider="", llm_provider="groq").for_worker(0)
+
+    assert scoped.groq_api_key == "grd-0"
+
+
+def test_a_gemini_grader_shares_the_extractors_pool():
+    """The degenerate case: one field for both roles, so the key is merged, not dropped."""
+    scoped = _worker_settings(grader_provider="gemini").for_worker(0)
+
+    assert scoped.gemini_key_list() == ["gem-0a", "gem-0b", "grd-0"]
+
+
+def test_an_unroutable_grader_provider_is_an_error():
+    """Fails in the parent, before four processes are spawned to discover it."""
+    settings = _worker_settings(grader_provider="notaprovider")
+
+    with pytest.raises(ValueError, match="notaprovider"):
+        settings.for_worker(0)
 
 
 def test_an_unconfigured_worker_is_an_error():
-    settings = PipelineSettings.model_construct(worker_keys=_four_bundles())
+    settings = _worker_settings()
 
     with pytest.raises(KeyError, match="KG_WORKER_9"):
         settings.for_worker(9)
 
 
 def test_bundles_report_what_they_are_missing():
-    assert WorkerKeyBundle(worker_id=2, gemini_keys=["g"]).missing() == ["KG_WORKER_2_MISTRAL_KEY"]
-    assert WorkerKeyBundle(worker_id=0, mistral_key="m").missing() == ["KG_WORKER_0_GEMINI_KEYS"]
-    assert WorkerKeyBundle(worker_id=1, gemini_keys=["g"], mistral_key="m").is_complete
+    assert WorkerKeyBundle(worker_id=2, gemini_keys=["g"]).missing() == ["KG_WORKER_2_GRADER_KEY"]
+    assert WorkerKeyBundle(worker_id=0, grader_key="m").missing() == ["KG_WORKER_0_GEMINI_KEYS"]
+    assert WorkerKeyBundle(worker_id=1, gemini_keys=["g"], grader_key="m").is_complete
 
 
 # ── Environment scanning ──────────────────────────────────────────────
@@ -171,28 +207,28 @@ def test_bundles_report_what_they_are_missing():
 
 def test_worker_bundles_are_scanned_from_the_environment(monkeypatch):
     monkeypatch.setenv("KG_WORKER_0_GEMINI_KEYS", "a, b")
-    monkeypatch.setenv("KG_WORKER_0_MISTRAL_KEY", "m0")
+    monkeypatch.setenv("KG_WORKER_0_GRADER_KEY", "m0")
     monkeypatch.setenv("KG_WORKER_1_GEMINI_KEYS", "c\nd")
-    monkeypatch.setenv("KG_WORKER_1_MISTRAL_KEY", "m1")
+    monkeypatch.setenv("KG_WORKER_1_GRADER_KEY", "m1")
 
     bundles = _collect_worker_keys()
     by_id = {b.worker_id: b for b in bundles}
 
     assert by_id[0].gemini_keys == ["a", "b"]
     assert by_id[1].gemini_keys == ["c", "d"]
-    assert by_id[1].mistral_key == "m1"
+    assert by_id[1].grader_key == "m1"
 
 
 def test_bundles_come_back_ordered_by_worker_id(monkeypatch):
     for worker_id in (3, 0, 2, 1):
-        monkeypatch.setenv(f"KG_WORKER_{worker_id}_MISTRAL_KEY", f"m{worker_id}")
+        monkeypatch.setenv(f"KG_WORKER_{worker_id}_GRADER_KEY", f"m{worker_id}")
 
     assert [b.worker_id for b in _collect_worker_keys()] == [0, 1, 2, 3]
 
 
 def test_a_fifth_worker_needs_no_code_change(monkeypatch):
     monkeypatch.setenv("KG_WORKER_4_GEMINI_KEYS", "e,f")
-    monkeypatch.setenv("KG_WORKER_4_MISTRAL_KEY", "m4")
+    monkeypatch.setenv("KG_WORKER_4_GRADER_KEY", "m4")
 
     assert any(b.worker_id == 4 and b.is_complete for b in _collect_worker_keys())
 

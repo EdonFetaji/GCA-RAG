@@ -1,0 +1,38 @@
+Extract a knowledge graph from the following {{ document_count }} document(s).
+These documents are one cluster: they will be summarized together, from your
+graph alone.
+
+## HOW TO WORK THROUGH THEM
+
+**First pass — inventory.** Read each document in order and list what is in it:
+every person, organization, place, product, event, date, amount, quantity and
+outcome it names. Do not filter yet. A place or a number that looks incidental
+in one document is often the detail that makes the merged summary specific.
+
+**Second pass — connect.** Now say what each of those things did, to whom, when,
+where, and with what result. Every item from the inventory should end up in at
+least one relation, or be dropped on purpose because the documents never say
+anything about it. An item you keep but never connect is dead weight in the
+graph.
+
+**Merging as you go.** When two documents describe the same real-world entity
+under different surface forms ("the FBI" / "Federal Bureau of Investigation"),
+emit ONE entity, pick the fullest name, and attach evidence from both documents —
+that merge is what lets the summary treat them as one actor and lets
+`document_frequency` mean anything.
+
+## BEFORE YOU ANSWER
+
+Read your own graph as if it were all you had, and ask what a summary of this
+cluster written from it would say. Then check:
+
+- More relations than entities?
+- Any entity sitting there with no edges?
+- Does the graph carry the where and the when of the main event, and any figure
+  the documents attach to it?
+
+If the summary you just imagined is missing the thing these documents are
+actually about, the gap is in the graph — fix it before answering.
+
+## SOURCE DOCUMENTS
+{{ documents_text }}

@@ -33,7 +33,7 @@ def _bundles(count: int, **overrides) -> list[WorkerKeyBundle]:
         WorkerKeyBundle(
             worker_id=i,
             gemini_keys=[f"gem-{i}a", f"gem-{i}b"],
-            mistral_key=f"mis-{i}",
+            grader_key=f"grd-{i}",
         )
         for i in range(count)
     ]
@@ -168,9 +168,9 @@ def test_validate_bundles_rejects_a_missing_worker():
 
 
 def test_validate_bundles_names_the_missing_variable():
-    settings = _settings(worker_keys=_bundles(3, w2={"mistral_key": ""}))
+    settings = _settings(worker_keys=_bundles(3, w2={"grader_key": ""}))
 
-    with pytest.raises(SystemExit, match="KG_WORKER_2_MISTRAL_KEY"):
+    with pytest.raises(SystemExit, match="KG_WORKER_2_GRADER_KEY"):
         validate_bundles(settings, 3)
 
 
@@ -183,4 +183,4 @@ def test_validate_bundles_names_a_missing_gemini_list():
 
 def test_fewer_workers_than_bundles_is_fine():
     """Running 2 workers off a 4-bundle .env must not complain about the unused two."""
-    validate_bundles(_settings(worker_keys=_bundles(4, w3={"mistral_key": ""})), 2)
+    validate_bundles(_settings(worker_keys=_bundles(4, w3={"grader_key": ""})), 2)

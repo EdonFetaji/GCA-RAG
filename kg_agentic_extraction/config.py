@@ -13,15 +13,35 @@ import os
 import re
 from pathlib import Path
 
+from dotenv import load_dotenv
 from pydantic import AliasChoices, BaseModel, Field, model_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 from kg_agentic_extraction.models.ontology import OntologyConfig
 
-#: `KG_WORKER_<n>_GEMINI_KEYS` / `KG_WORKER_<n>_MISTRAL_KEY` — the per-worker key
+# `env_file` below covers the declared fields, but not `_collect_worker_keys`,
+# which scans `os.environ` for an open-ended group pydantic-settings cannot
+# declare. This is what puts `.env` there for it to find. Import-time rather
+# than call-time so every entry point gets it — nothing reads settings before
+# this module is imported.
+load_dotenv()
+
+#: `KG_WORKER_<n>_GEMINI_KEYS` / `KG_WORKER_<n>_GRADER_KEY` — the per-worker key
 #: bundles read out of the environment by `_collect_worker_keys`.
 _WORKER_GEMINI_RE = re.compile(r"^KG_WORKER_(\d+)_GEMINI_KEYS$", re.IGNORECASE)
-_WORKER_MISTRAL_RE = re.compile(r"^KG_WORKER_(\d+)_MISTRAL_KEY$", re.IGNORECASE)
+_WORKER_GRADER_RE = re.compile(r"^KG_WORKER_(\d+)_GRADER_KEY$", re.IGNORECASE)
+
+#: Which `PipelineSettings` field each provider's factory reads its key from.
+#: Mirrors the registry in `llm/factory.py` — a provider added there needs an
+#: entry here before it can be a batch worker's grader.
+_PROVIDER_KEY_FIELD = {
+    "cerebras": "cerebras_api_key",
+    "groq": "groq_api_key",
+    "gemini": "gemini_api_keys",
+    "meta": "meta_api_key",
+    "nvidia": "nvidia_api_key",
+    "mistral": "mistral_api_key",
+}
 
 
 def split_keys(raw: str) -> list[str]:
@@ -44,25 +64,30 @@ class WorkerKeyBundle(BaseModel):
     *process* — a shared, in-process rotating client would defeat it.
 
     Two Gemini keys because the extractor sends the documents and receives a full
-    graph on every repair round, which is where the token budget goes; one
-    Mistral key because the grader's call is a single pass per round.
+    graph on every repair round, which is where the token budget goes; one grader
+    key because the grader's call is a single pass per round.
+
+    `grader_key` names no vendor on purpose. Which provider it belongs to is
+    decided by `KG_GRADER_PROVIDER`, and `for_worker` below is what routes it to
+    that provider's field — so retargeting the grader is an `.env` change, not a
+    change here.
     """
 
     worker_id: int
     gemini_keys: list[str] = Field(default_factory=list)
-    mistral_key: str = ""
+    grader_key: str = ""
 
     @property
     def is_complete(self) -> bool:
-        return bool(self.gemini_keys) and bool(self.mistral_key)
+        return bool(self.gemini_keys) and bool(self.grader_key)
 
     def missing(self) -> list[str]:
         """The environment variables this bundle still needs, for a startup error."""
         gaps = []
         if not self.gemini_keys:
             gaps.append(f"KG_WORKER_{self.worker_id}_GEMINI_KEYS")
-        if not self.mistral_key:
-            gaps.append(f"KG_WORKER_{self.worker_id}_MISTRAL_KEY")
+        if not self.grader_key:
+            gaps.append(f"KG_WORKER_{self.worker_id}_GRADER_KEY")
         return gaps
 
 
@@ -83,8 +108,8 @@ def _collect_worker_keys() -> list[WorkerKeyBundle]:
     for name, value in os.environ.items():
         if match := _WORKER_GEMINI_RE.match(name):
             bundle(int(match.group(1))).gemini_keys = split_keys(value)
-        elif match := _WORKER_MISTRAL_RE.match(name):
-            bundle(int(match.group(1))).mistral_key = value.strip()
+        elif match := _WORKER_GRADER_RE.match(name):
+            bundle(int(match.group(1))).grader_key = value.strip()
 
     return [found[index] for index in sorted(found)]
 
@@ -146,8 +171,9 @@ class PipelineSettings(BaseSettings):
     # The extractor and the grader run on different vendors, because they are
     # different workloads. The extractor sends the documents and receives a whole
     # graph back on every repair round; the grader reads that graph once and
-    # answers with prose. So the extractor sits on Gemini with two rotating keys
-    # per worker, and the grader on a single Mistral key.
+    # answers with a verdict. So the extractor sits on Gemini with two rotating
+    # keys per worker, and the grader on a single key from whichever vendor
+    # `grader_provider` names.
     #
     # Empty means "use `llm_provider` / `model` above" — that is what keeps a
     # plain `runner.py` invocation working unchanged. `for_role()` below is what
@@ -216,6 +242,18 @@ class PipelineSettings(BaseSettings):
         "https://integrate.api.nvidia.com/v1",
         description="NVIDIA's hosted NIM catalog. Point at a self-hosted NIM container instead.",
     )
+    nvidia_timeout_seconds: int = Field(
+        300,
+        ge=1,
+        description=(
+            "Read timeout for one NVIDIA call. The package default is 60s, which the "
+            "grader overruns every time: it reads the whole graph plus the source "
+            "documents before it writes a word. The failure arrives as a "
+            "requests.ReadTimeout on a fixed 60s boundary — identical across workers, "
+            "which is how you tell a client-side deadline from a slow endpoint. "
+            "NVIDIA is also given no SDK retries, so this is the whole budget for a call."
+        ),
+    )
     nvidia_top_p: float | None = Field(
         None,
         ge=0.0,
@@ -246,28 +284,39 @@ class PipelineSettings(BaseSettings):
 
     # ── Prompts ───────────────────────────────────────────────────────
     prompt_version: str = Field(
-        "v3",
+        "v4",
         description=(
-            "Template version the extractor and grader resolve; see prompts/templates/. "
-            "v2 dropped the ontology from both: the extractor names its own types and the "
-            "grader audits them for aptness and consistency instead of list membership. "
-            "v3 keeps v2's rules and adds the downstream task — the graph is merged across "
-            "a cluster and summarized without the source text — so salience, canonical "
-            "entity names and label precision are judged against the summary they feed. "
-            "v1 and v2 are kept on disk, so setting this back reproduces either earlier "
-            "regime for comparison."
+            "Template version the extractor resolves; see prompts/templates/extractor/. "
+            "v2 dropped the ontology: the extractor names its own types rather than "
+            "drawing them from a list. v3 added the downstream task — the graph is merged "
+            "across a cluster and summarized without the source text — and judged salience "
+            "and label precision against the summary they feed. v4 rebalances v3 for "
+            "recall: v3 measured under 1 relation per entity and captured no dates or "
+            "figures at all, so v4 lets two verbatim quotes establish one relation (news "
+            "prose states most links across sentences), reifies dates, amounts and tallies "
+            "as entities since the schema has no attribute field, states a coverage floor, "
+            "and closes on both failure modes rather than on 'prefer a smaller graph'. "
+            "v1-v3 are kept on disk, so setting this back reproduces any earlier regime "
+            "for comparison."
         ),
     )
     grader_prompt_version: str = Field(
-        "v4",
+        "v5",
         description=(
             "Version the grader resolves, separately from the extractor's, for the "
-            "same reason the grounder pins its own. v4 is where the grader stopped "
-            "emitting typed issues and started writing the Markdown report itself; "
-            "the schema moved with it, from `GraderReport` to `MistralGraderReport`. "
-            "The two must move together — setting this back to v1/v2/v3 asks for "
-            "Markdown from a template written to produce typed issues, and requires "
-            "changing `GraderAgent.output_schema` back as well."
+            "same reason the grounder pins its own. v4 and v5 both ask for "
+            "`SimpleSchemaGraderReport` as a constrained JSON object — two flat "
+            "fields, `converged` beside the Markdown the model wrote — and the "
+            "provider is held to decoding it. v5 makes the grader a coverage "
+            "instrument rather than only a precision one: it drafts the summary the "
+            "graph would yield and reports what that draft cannot say, may ask for "
+            "an entity and its edges together, checks for isolated nodes, missing "
+            "dates and figures, and uniform salience counts, and refuses to converge "
+            "on a thin graph. v1-v3 ask for typed issues and pair with "
+            "`GraderReport`, rendered by `report_to_markdown`. The template and the "
+            "call shape in `GraderAgent` are one decision — setting this back to "
+            "v1-v3 without also changing the agent asks a prompt for one contract "
+            "and reads it as another, and the run fails at the first grade."
         ),
     )
     grounder_prompt_version: str = Field(
@@ -389,9 +438,9 @@ class PipelineSettings(BaseSettings):
     # ── Scoping ───────────────────────────────────────────────────────
     # Both of these return a *copy* with a few fields overridden rather than
     # teaching the factory about roles or workers. `llm/factory.py` keeps reading
-    # exactly the fields it always read — `llm_provider`, `model`,
-    # `gemini_api_key(s)`, `mistral_api_key` — and every provider in its registry
-    # keeps working, unmodified, for both an extractor and a grader.
+    # exactly the fields it always read — `llm_provider`, `model`, and each
+    # provider's own `*_api_key` — and every provider in its registry keeps
+    # working, unmodified, for both an extractor and a grader.
 
     def for_role(self, role: str) -> PipelineSettings:
         """
@@ -414,16 +463,37 @@ class PipelineSettings(BaseSettings):
         the one bundle for the same reason: this copy is what gets pickled across
         to the child process, and a sibling's keys have no business travelling
         with it.
+
+        `grader_key` is routed to whichever provider field the grader's factory
+        will read, resolved through `_PROVIDER_KEY_FIELD` — which is why the
+        bundle names no vendor and why retargeting the grader needs no code here.
+        Binding the grader to `gemini` is the degenerate case: its field is the
+        same `gemini_api_keys` the extractor uses, so the grader key is merged
+        into that list and the two roles share one rotating pool rather than
+        holding separate keys. Isolation between *workers* is unaffected.
         """
         bundle = self.worker_bundle(worker_id)
-        return self.model_copy(
-            update={
-                "gemini_api_key": "",
-                "gemini_api_keys": ",".join(bundle.gemini_keys),
-                "mistral_api_key": bundle.mistral_key,
-                "worker_keys": [bundle],
-            }
-        )
+        provider = (self.grader_provider or self.llm_provider).lower()
+        try:
+            grader_field = _PROVIDER_KEY_FIELD[provider]
+        except KeyError:
+            raise ValueError(
+                f"grader provider {provider!r} has no known API-key field; "
+                f"known: {', '.join(sorted(_PROVIDER_KEY_FIELD))}. Fix "
+                "KG_GRADER_PROVIDER, or add it to _PROVIDER_KEY_FIELD."
+            ) from None
+
+        gemini_keys = list(bundle.gemini_keys)
+        if grader_field == "gemini_api_keys":
+            gemini_keys = split_keys(" ".join([*gemini_keys, bundle.grader_key]))
+
+        update: dict[str, object] = {
+            "gemini_api_key": "",
+            "gemini_api_keys": ",".join(gemini_keys),
+            "worker_keys": [bundle],
+        }
+        update.setdefault(grader_field, bundle.grader_key)
+        return self.model_copy(update=update)
 
     def worker_bundle(self, worker_id: int) -> WorkerKeyBundle:
         """The bundle for `worker_id`. Raises `KeyError` if it was never configured."""

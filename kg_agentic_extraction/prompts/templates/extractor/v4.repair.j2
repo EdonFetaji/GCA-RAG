@@ -1,0 +1,38 @@
+A grader reviewed your previous knowledge graph and found problems. Produce a
+corrected graph.
+
+## YOUR PREVIOUS GRAPH
+{{ previous_graph_json }}
+
+## GRADER REPORT
+{{ grader_markdown }}
+
+## HOW TO REVISE
+- Address every issue listed above. Work the high-severity ones first.
+- Keep everything the grader did not object to. This is a revision, not a
+  re-extraction from scratch — silently dropping correct facts is itself a
+  regression.
+- **Coverage findings are instructions to grow the graph.** When the grader says
+  something is missing, the fix is new entities and new relations, not a rewording
+  of what is already there. A revision that returns the same number of facts has
+  not addressed a MISSING_ENTITY or MISSING_RELATION finding.
+- **Adding an entity means adding its edges.** An entity the grader asked for,
+  added with nothing connected to it, is not a fix — it is a new isolated node and
+  the summary still cannot say anything about it. Go back to the documents for the
+  quotes that link it.
+- Removing a hallucinated entity means also removing every relation that
+  referenced it, or the graph will fail referential integrity.
+- If you believe an issue is mistaken, keep the original fact and make sure its
+  evidence quote is verbatim and unambiguous — that is what a disagreement
+  looks like here.
+- Retyping an edge changes the sentence the summarizer will write from it, so
+  apply a suggested label only where the quote genuinely supports it. Trading
+  one vague label for a specific one that overstates the evidence is not a fix.
+
+The evidence rule is unchanged, including for everything you add: exact quotes,
+one or two per relation, from the same document.
+
+Re-emit the COMPLETE corrected graph, not a diff.
+
+## SOURCE DOCUMENTS
+{{ documents_text }}

@@ -2,8 +2,15 @@
 The agent base class.
 
 Every agent does the same three things in the same order: render its prompts,
-call the model under a schema, post-process the result. That skeleton lives
-here as a Template Method; subclasses fill in only the parts that differ.
+call the model, post-process the result. That skeleton lives here as a Template
+Method; subclasses fill in only the parts that differ.
+
+Agents call the model under a schema, which is what `run()` does.
+`run_completion()` is the same skeleton without one, for an agent whose answer is
+prose rather than an object; both share the rendering step, which is the part
+that is genuinely common. Nothing calls it today — the grader did, before its
+report went back to being decoded rather than parsed — and it is kept as the
+seam that regime needs.
 
 Agents know nothing about LangGraph. They take plain inputs, return plain
 models, and can be exercised in a unit test with a stub `LLMClient` and no
@@ -17,8 +24,8 @@ from abc import ABC, abstractmethod
 
 from pydantic import BaseModel
 
-from kg_agentic_extraction.llm.base import LLMClient
-from kg_agentic_extraction.prompts.registry import PromptRegistry
+from kg_agentic_extraction.llm.base import LLMClient, LLMError, TextLLMClient
+from kg_agentic_extraction.prompts.registry import PromptRegistry, RenderedPrompt
 
 logger = logging.getLogger(__name__)
 
@@ -54,17 +61,11 @@ class Agent[TInput, TOutput: BaseModel](ABC):
 
     def run(self, payload: TInput) -> TOutput:
         """
-        Execute the agent. Do not override — override the hooks instead.
+        Execute the agent under a schema. Override the hooks, not this.
 
         render context → render prompts → structured LLM call → post-process
         """
-        context = self.build_context(payload)
-        rendered = self._prompts.render_pair(
-            self.name,
-            user_role=self.user_role_for(payload),
-            version=self._prompt_version,
-            **context,
-        )
+        rendered = self._render(payload)
         logger.info("[%s] calling model (schema=%s)", self.name, self.output_schema.__name__)
         result = self._llm.structured(
             system=rendered.system,
@@ -73,12 +74,51 @@ class Agent[TInput, TOutput: BaseModel](ABC):
         )
         return self.post_process(result, payload)
 
+    def run_completion(self, payload: TInput) -> str:
+        """
+        Render this agent's prompts and answer with unconstrained text.
+
+        The other half of the template method, for an agent whose output is
+        prose rather than an object. It stops at the raw string: turning that
+        into `TOutput` is the caller's job, because only the caller knows what
+        its model's answer is supposed to look like.
+
+        No agent takes this path at present. It is here for the grader, whose
+        report is fed verbatim to the extractor and therefore travels as an
+        escaped JSON string under a schema — see `TextLLMClient` for when that
+        trade stops being worth making.
+        """
+        if not isinstance(self._llm, TextLLMClient):
+            raise LLMError(
+                f"[{self.name}] needs a client that can complete plain text, but "
+                f"{type(self._llm).__name__} does not implement `complete`"
+            )
+
+        rendered = self._render(payload)
+        logger.info("[%s] calling model (plain completion)", self.name)
+        return self._llm.complete(system=rendered.system, user=rendered.user)
+
+    def _render(self, payload: TInput) -> RenderedPrompt:
+        """This agent's system/user pair for one payload."""
+        return self._prompts.render_pair(
+            self.name,
+            user_role=self.user_role_for(payload),
+            version=self._prompt_version,
+            **self.build_context(payload),
+        )
+
     # ── Hooks ─────────────────────────────────────────────────────────
 
     @property
     @abstractmethod
     def output_schema(self) -> type[TOutput]:
-        """The Pydantic model the LLM is constrained to produce."""
+        """
+        The Pydantic model this agent produces.
+
+        For an agent going through `run()` it is also what the provider is
+        constrained to decode. For one going through `run_completion()` it is
+        only the shape the agent parses its way to — nothing is sent.
+        """
 
     @abstractmethod
     def build_context(self, payload: TInput) -> dict[str, object]:

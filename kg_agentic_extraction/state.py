@@ -15,7 +15,7 @@ from __future__ import annotations
 import operator
 from typing import Annotated, TypedDict
 
-from kg_agentic_extraction.models.grading import MistralGraderReport
+from kg_agentic_extraction.models.grading import SimpleSchemaGraderReport
 from kg_agentic_extraction.models.grounding import GroundedKnowledgeGraph
 from kg_agentic_extraction.models.knowledge_graph import KnowledgeGraph
 
@@ -29,8 +29,8 @@ class PipelineState(TypedDict, total=False):
 
     # ── Working values (rewritten each loop iteration) ────────────────
     knowledge_graph: KnowledgeGraph | None
-    grader_report: MistralGraderReport | None
-    #: The grader's Markdown, lifted out of `grader_report` — the artifact, and
+    grader_report: SimpleSchemaGraderReport | None
+    #: The grader's Markdown, rendered from `grader_report` — the artifact, and
     #: the text fed back into the extractor's repair prompt. Kept as its own
     #: channel because that is the half the extractor's template consumes.
     grader_markdown: str | None
@@ -41,7 +41,7 @@ class PipelineState(TypedDict, total=False):
     grounded_graph: GroundedKnowledgeGraph | None
 
     # ── History (accumulated) ─────────────────────────────────────────
-    grader_reports: Annotated[list[MistralGraderReport], operator.add]
+    grader_reports: Annotated[list[SimpleSchemaGraderReport], operator.add]
     errors: Annotated[list[str], operator.add]
 
 

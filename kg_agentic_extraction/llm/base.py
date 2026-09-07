@@ -116,6 +116,42 @@ class ToolCallingLLMClient(Protocol):
         ...
 
 
+@runtime_checkable
+class TextLLMClient(Protocol):
+    """
+    A client that can answer with unconstrained text.
+
+    A separate protocol for the same reason tool calling is one: only the
+    grader needs it, so only the grader should have to depend on a client that
+    provides it. Deliberately narrower than `LLMClient` rather than an
+    extension of it — this is the whole capability, not an addition to another.
+
+    This is not a lesser `structured()`. It is the right call for output that is
+    *inherently* prose: the grader writes a Markdown report that is fed verbatim
+    to the extractor, and wrapping that document in a JSON string field asks a
+    constrained decoder to escape every newline, quote and backtick in it. A
+    completion cut short then yields no parseable object at all, where the same
+    truncation on plain text still leaves a usable report.
+    """
+
+    def complete(self, *, system: str, user: str) -> str:
+        """
+        Invoke the model and return its reply as text.
+
+        No schema, no constrained decoding — the caller is responsible for
+        making sense of whatever comes back. Implementations normalize the
+        provider's content into a string and raise rather than return an empty
+        one, since "the model said nothing" is a failure the caller cannot
+        distinguish from a deliberate empty answer.
+
+        Raises
+        ------
+        LLMCompletionError
+            If the provider failed, or returned nothing usable.
+        """
+        ...
+
+
 class LLMError(RuntimeError):
     """Base for every failure originating in the LLM layer."""
 
@@ -126,4 +162,17 @@ class LLMStructuredOutputError(LLMError):
     def __init__(self, schema: type[BaseModel], cause: Exception) -> None:
         super().__init__(f"could not produce a valid {schema.__name__}: {cause}")
         self.schema = schema
+        self.cause = cause
+
+
+class LLMCompletionError(LLMError):
+    """A plain-text completion failed, or came back empty.
+
+    Separate from `LLMStructuredOutputError` because that one is named after a
+    schema, and here there is none to name.
+    """
+
+    def __init__(self, model: str, cause: Exception) -> None:
+        super().__init__(f"{model} could not produce a completion: {cause}")
+        self.model = model
         self.cause = cause

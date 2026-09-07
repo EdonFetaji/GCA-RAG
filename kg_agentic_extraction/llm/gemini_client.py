@@ -40,7 +40,11 @@ from langchain_core.messages import HumanMessage, SystemMessage
 from langchain_core.runnables import Runnable
 from pydantic import BaseModel
 
-from kg_agentic_extraction.llm.base import LLMError, LLMStructuredOutputError
+from kg_agentic_extraction.llm.base import (
+    LLMCompletionError,
+    LLMError,
+    LLMStructuredOutputError,
+)
 from kg_agentic_extraction.llm.tool_calling import LangChainToolLoopMixin
 
 logger = logging.getLogger(__name__)
@@ -205,6 +209,12 @@ class GeminiClient(LangChainToolLoopMixin):
 
         return self._with_rotation(once, schema)
 
+    def complete(self, *, system: str, user: str) -> str:
+        """Rotate keys around a plain completion; see `TextLLMClient` for the contract."""
+        return self._with_rotation(
+            lambda: LangChainToolLoopMixin.complete(self, system=system, user=user), None
+        )
+
     def run_tool_loop(self, **kwargs: object) -> BaseModel:
         """Rotate keys around a whole tool-calling pass; see the port for the contract."""
         schema = kwargs["schema"]  # type: ignore[assignment]
@@ -219,13 +229,17 @@ class GeminiClient(LangChainToolLoopMixin):
 
     # ── Rotation ─────────────────────────────────────────────────────
 
-    def _with_rotation(self, op, schema: type[BaseModel]):
+    def _with_rotation(self, op, schema: type[BaseModel] | None):
         """
         Run `op`, rotating the API key on any 429 and retrying.
 
         A per-day 429 marks the key spent; a rate-limit 429 just moves on. When
         every remaining key is rate-limited at once, sleep once for the server's
         `retryDelay` (bounded by `max_rotation_wait_seconds`) and cycle again.
+
+        `schema` is only ever used to name the failure when the wait budget runs
+        out; `None` means `op` was a plain completion, which has no schema to
+        name.
         """
         total_wait = 0.0
         # Consecutive rate-limit rotations with no other progress. Reset whenever
@@ -272,6 +286,8 @@ class GeminiClient(LangChainToolLoopMixin):
                             "every Gemini key still rate-limited after %.0fs; giving up",
                             total_wait,
                         )
+                        if schema is None:
+                            raise LLMCompletionError(self._model_name, exc) from exc
                         raise LLMStructuredOutputError(schema, exc) from exc
                     logger.warning(
                         "all live Gemini keys rate-limited — sleeping %.0fs before retry", delay

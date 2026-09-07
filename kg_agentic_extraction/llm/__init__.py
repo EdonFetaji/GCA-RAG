@@ -9,8 +9,10 @@ Registered providers: `cerebras`, `groq`, `gemini`, `meta`, `nvidia`,
 
 from kg_agentic_extraction.llm.base import (
     LLMClient,
+    LLMCompletionError,
     LLMError,
     LLMStructuredOutputError,
+    TextLLMClient,
 )
 from kg_agentic_extraction.llm.factory import (
     available_providers,
@@ -20,8 +22,10 @@ from kg_agentic_extraction.llm.factory import (
 
 __all__ = [
     "LLMClient",
+    "LLMCompletionError",
     "LLMError",
     "LLMStructuredOutputError",
+    "TextLLMClient",
     "available_providers",
     "build_llm",
     "register_provider",

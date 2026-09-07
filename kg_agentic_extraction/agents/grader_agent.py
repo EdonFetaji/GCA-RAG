@@ -1,22 +1,28 @@
 """
 The grader agent — knowledge graph + documents in, Markdown issue report out.
 
-The report is written by the model, not rendered from typed issues by
-`prompts/renderers.report_to_markdown`. The earlier design asked for a list of
-`GraderIssue` objects precisely so that convergence would not depend on
-formatting — it was `not report.issues`, evaluated on a Pydantic object.
+The model writes the Markdown, but it hands it back inside a schema: the v4
+templates ask for `SimpleSchemaGraderReport`, two flat fields, and the provider
+is held to decoding exactly that. So `converged` arrives as a bool the model set
+deliberately — never derived from a list, never recovered by pattern-matching
+prose that an LLM happened to format a particular way. Whether the loop runs
+another round is a field lookup, which is what makes it testable.
 
-Two things moved it. The grader now runs on Mistral, whose `json_schema` mode
-decodes strictly and handles a flat two-field object far better than a list of
-nested objects carrying enums; and the extractor's repair prompt consumed the
-rendered Markdown anyway, so the typed intermediate was being flattened one step
-later regardless. `MistralGraderReport` keeps convergence off the formatting by
-carrying an explicit `converged` flag beside the prose.
+`issues_markdown` carries the report itself, and `grade_node` passes it through
+to the extractor as repair instructions. That the document travels as an escaped
+JSON string is the cost of the arrangement; two flat fields is the shape that
+survives a strict decoder, which is why the typed `GraderReport` was retired
+from this call in the first place.
 
-`GraderReport` and its renderer are still there, unchanged. Pointing
-`output_schema` back at it, together with `KG_GRADER_PROMPT_VERSION=v3`,
-reproduces the old regime — the two have to move together, because a v1–v3
-template asks for typed issues and v4 asks for Markdown.
+Two other regimes stay reachable. The unconstrained one lives in code without a
+template: `Agent.run_completion` plus `SimpleSchemaGraderReport.from_completion`,
+which reads the same two fields out of plain text against a `CONVERGED`
+sentinel — worth reaching for if a provider's decoder starts truncating the
+report mid-string. v1-v3 remain on disk and ask for a list of typed
+`GraderIssue` objects with convergence *derived* from it (`GraderReport`,
+rendered by `report_to_markdown`). Reproducing either means changing the call
+shape here and `KG_GRADER_PROMPT_VERSION` together — the prompt and the call
+shape are one decision, not two.
 """
 
 from __future__ import annotations
@@ -25,7 +31,7 @@ import logging
 from dataclasses import dataclass
 
 from kg_agentic_extraction.agents.base_agent import Agent
-from kg_agentic_extraction.models.grading import MistralGraderReport
+from kg_agentic_extraction.models.grading import SimpleSchemaGraderReport
 from kg_agentic_extraction.models.knowledge_graph import KnowledgeGraph
 from kg_agentic_extraction.prompts.renderers import format_documents, graph_to_json
 
@@ -42,14 +48,20 @@ class GradingTask:
     iteration: int = 1
 
 
-class GraderAgent(Agent[GradingTask, MistralGraderReport]):
+class GraderAgent(Agent[GradingTask, SimpleSchemaGraderReport]):
     """Audits a candidate graph for faithfulness to its source documents."""
 
     name = "grader"
 
     @property
-    def output_schema(self) -> type[MistralGraderReport]:
-        return MistralGraderReport
+    def output_schema(self) -> type[SimpleSchemaGraderReport]:
+        """
+        The schema the provider is constrained to decode into.
+
+        Sent on every grade by the inherited `Agent.run()`, and also the
+        contract `grade_node` and `PipelineState` read afterwards.
+        """
+        return SimpleSchemaGraderReport
 
     def build_context(self, payload: GradingTask) -> dict[str, object]:
         return {
@@ -65,28 +77,25 @@ class GraderAgent(Agent[GradingTask, MistralGraderReport]):
         }
 
     def post_process(
-        self, result: MistralGraderReport, payload: GradingTask
-    ) -> MistralGraderReport:
+        self, result: SimpleSchemaGraderReport, payload: GradingTask
+    ) -> SimpleSchemaGraderReport:
         """
-        Treat "not converged, but no issues named" as converged.
+        Reconcile a report that is not converged but points at nothing.
 
-        The typed schema could not express that state — an unconverged report
-        had issues in it by definition. A free-text one can, and it is the
-        expensive failure: the extractor would be sent into a repair round whose
-        prompt contains an empty issue list, produce something arbitrary, and be
-        graded again, all the way to `max_iterations`. A grader with nothing to
-        say is done.
+        Under `GraderReport` the state was impossible, since `converged` was
+        derived from the issue list. On the flat model the decoder will hand
+        back whatever the model put in the two fields, including `false` beside
+        an empty report — which sends the extractor into a repair round with no
+        instructions, and would do so again every round to the cap.
 
-        Note what is *not* here any more: the old filter that dropped issues
-        citing element ids the graph does not contain. Prose cannot be filtered
-        that way, so `max_iterations` is now the only bound on a grader that
-        keeps re-raising something the extractor cannot find.
+        The strip is part of the check, not cosmetics: a decoder that returns a
+        field of newlines is claiming issues it did not write.
         """
         result.issues_markdown = result.issues_markdown.strip()
+
         if not result.converged and not result.issues_markdown:
             logger.warning(
-                "[grader] reported unconverged with an empty report on iteration %d; "
-                "treating as converged",
+                "[grader] empty issue report on iteration %d — treating as converged",
                 payload.iteration,
             )
             result.converged = True

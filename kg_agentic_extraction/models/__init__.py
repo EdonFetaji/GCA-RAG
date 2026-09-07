@@ -9,8 +9,8 @@ from kg_agentic_extraction.models.grading import (
     GraderIssue,
     GraderReport,
     IssueType,
-    MistralGraderReport,
     Severity,
+    SimpleSchemaGraderReport,
 )
 from kg_agentic_extraction.models.grounding import (
     GroundedEntity,
@@ -45,10 +45,10 @@ __all__ = [
     "GroundedRelation",
     "IssueType",
     "KnowledgeGraph",
-    "MistralGraderReport",
     "OntologyConfig",
     "OntologyMapping",
     "Relation",
     "RelationType",
     "Severity",
+    "SimpleSchemaGraderReport",
 ]

@@ -111,6 +111,7 @@ def _build_nvidia(settings: PipelineSettings) -> LLMClient:
         max_tokens=settings.max_tokens,
         top_p=settings.nvidia_top_p,
         enable_thinking=settings.nvidia_enable_thinking,
+        timeout=settings.nvidia_timeout_seconds,
     )
 
 

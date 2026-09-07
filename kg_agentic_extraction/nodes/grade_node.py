@@ -1,10 +1,11 @@
 """
 Grade node — adapts `GraderAgent` onto graph state.
 
-This node used to render the Markdown artifact, turning the agent's typed report
-into text with `report_to_markdown`. Since the v4 grader the model writes that
-Markdown itself, so the node just threads it through: one artifact, read both by
-the human and by the extractor's next repair prompt, as before.
+The agent answers with `SimpleSchemaGraderReport` — the model's own Markdown
+beside an explicit `converged` flag — so this node passes `issues_markdown`
+through as the single artifact read both by the human and by the extractor's
+next repair prompt. The convergence decision stays on the Pydantic object, where
+formatting cannot reach it.
 """
 
 from __future__ import annotations
@@ -16,6 +17,8 @@ from kg_agentic_extraction.state import PipelineState
 from kg_agentic_extraction.types import NodeFn
 
 logger = logging.getLogger(__name__)
+
+_CONVERGED_BODY = "**No issues.** The graph is faithful to the source documents."
 
 
 def make_grade_node(
@@ -59,13 +62,18 @@ def make_grade_node(
         logger.info(
             "grade — iteration %d: %s",
             iteration,
-            "converged" if report.converged else f"{len(report.issues_markdown)} chars of issues",
+            "converged" if report.converged else f"{len(report.issues_markdown)} char report",
         )
+
+        # A converged run leaves the model's report empty, and `--report` still
+        # writes this to disk — so say what happened rather than saving a bare
+        # heading. The extractor never reads it: the loop has already ended.
+        body = report.issues_markdown.strip() or _CONVERGED_BODY
 
         return PipelineState(
             grader_report=report,
             grader_reports=[report],
-            grader_markdown=report.issues_markdown,
+            grader_markdown=f"# Grader report — iteration {iteration}\n\n{body}",
             converged=report.converged,
         )
 
