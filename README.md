@@ -135,7 +135,7 @@ Set `KG_GCS_BUCKET` for a run like this: resume state then lives in the bucket
 rather than on a disk you might lose. `scripts/kg-batch.service` is the same
 thing as a systemd unit, which also survives a reboot.
 
-**[docs/vm-runbook.md](docs/vm-runbook.md)** is the full walkthrough — VM sizing,
+**[vm-runbook.md](vm-runbook.md)** is the full walkthrough — VM sizing,
 `.env`, preflight, systemd, monitoring, and a troubleshooting table.
 
 ## Tests

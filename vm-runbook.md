@@ -71,6 +71,7 @@ For a batch run, these are the settings that matter. Everything else in
 | `KG_EXTRACTOR_PROVIDER` / `KG_EXTRACTOR_MODEL` | the extractor pair |
 | `KG_GCS_BUCKET` | bucket for the graphs, and the resume source of truth |
 | `KG_CLUSTER_START` / `KG_CLUSTER_END` | default range; `--range` overrides |
+| `KG_MAX_ITERATIONS` | extractor↔grader rounds, 3–10; `--max-iterations` overrides. The systemd unit passes `3` |
 
 Two things that trip people up:
 
@@ -136,8 +137,14 @@ Then set your range on the `ExecStart=` line in
 `/etc/systemd/system/kg-batch.service`:
 
 ```ini
-ExecStart=/home/you/GCA-RAG/scripts/run-until-done.sh --range 0 199
+ExecStart=/home/you/GCA-RAG/scripts/run-until-done.sh --range 0 199 --max-iterations 3
 ```
+
+Everything after the script name is forwarded verbatim to the batch module.
+`--max-iterations 3` is the floor the config allows (`ge=3`) and is what the
+unit ships with: extractor↔grader rounds are where the quota goes, so capping
+at 3 covers more clusters per day than letting a stubborn graph run to 6. Raise
+it if you care more about convergence than throughput.
 
 Start it:
 

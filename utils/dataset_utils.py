@@ -3,7 +3,7 @@ from datasets import load_dataset
 _dataset_cache: dict[str, object] = {}
 
 
-def load_multi_news_split(split: str = "test"):
+def load_multi_news_split(split: str = "train"):
     """
     Load (and process-cache) a Multi-News split.
 

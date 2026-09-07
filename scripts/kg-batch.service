@@ -27,7 +27,12 @@ WorkingDirectory=/home/edon/GCA-RAG
 
 # systemd gives a service a bare PATH; uv is usually in ~/.local/bin.
 Environment=PATH=/home/edon/.local/bin:/usr/local/bin:/usr/bin:/bin
-ExecStart=/home/edon/GCA-RAG/scripts/run-until-done.sh --range 0 199
+
+# --max-iterations 3 is the floor the config allows (ge=3) and is deliberate for
+# an unattended run: extractor↔grader rounds are where the quota goes, so
+# capping at 3 buys more clusters per day than letting a stubborn one run to 6.
+# Every argument here is forwarded verbatim to the batch module.
+ExecStart=/home/edon/GCA-RAG/scripts/run-until-done.sh --range 0 199 --max-iterations 3
 
 # The supervisor exits 0 only when the whole range is done, so on-failure is
 # what distinguishes "finished" from "died". It gives up on its own after
