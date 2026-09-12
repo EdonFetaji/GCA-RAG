@@ -28,6 +28,57 @@ _GRAPH_OBJECT_RE = re.compile(r"(?:^|/)cluster_(\d+)\.h5$")
 HDF5_CONTENT_TYPE = "application/x-hdf5"
 
 
+def download_graph(
+    bucket: str,
+    cluster_index: int,
+    dest_dir: str | Path,
+    *,
+    prefix: str = "",
+    stem: str = "cluster",
+) -> Path:
+    """
+    Download `cluster_<cluster_index>.h5` from `gs://<bucket>/<prefix>/` to `dest_dir`.
+
+    Mirrors upload_graph()'s error handling (GCSUploadError on missing bucket,
+    missing dependency, or a failed call) and its "write to a tmp path then
+    replace" atomicity — a reader (Track 3's dataset sync) should never see a
+    partially-downloaded .h5 as if it were complete.
+
+    Returns
+    -------
+    Path
+        The local path the file was written to.
+    """
+    if not bucket:
+        raise GCSUploadError("no bucket configured (set KG_GCS_BUCKET)")
+
+    try:
+        from google.cloud import storage
+    except ImportError as exc:  # pragma: no cover - depends on the environment
+        raise GCSUploadError(
+            "google-cloud-storage is not installed; `uv sync` or `uv add google-cloud-storage`"
+        ) from exc
+
+    from kg_agentic_extraction.storage.hdf5 import graph_filename
+
+    filename = graph_filename(cluster_index, stem=stem)
+    name = object_name(filename, prefix)
+    dest_dir = Path(dest_dir)
+    dest_dir.mkdir(parents=True, exist_ok=True)
+    dest_path = dest_dir / filename
+    tmp_path = dest_path.with_suffix(dest_path.suffix + ".tmp")
+
+    try:
+        blob = storage.Client().bucket(bucket).blob(name)
+        blob.download_to_filename(str(tmp_path))
+    except Exception as exc:
+        tmp_path.unlink(missing_ok=True)
+        raise GCSUploadError(f"download of gs://{bucket}/{name} failed: {exc}") from exc
+
+    tmp_path.replace(dest_path)
+    return dest_path
+
+
 class GCSUploadError(RuntimeError):
     """An upload did not complete. Raised in place of the vendor exception."""
 

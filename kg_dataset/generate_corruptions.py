@@ -27,7 +27,10 @@ from kg_dataset.corruption import (
     ALL_CORRUPTION_TYPES,
     DEFAULT_CORRUPTION_TYPES,
     DEFAULT_SEVERITIES,
+    EXTENDED_CORRUPTION_TYPES,
     generate_corrupted_variants,
+    label_for,
+    label_for_extended,
 )
 
 logger = logging.getLogger("generate_corruptions")
@@ -62,9 +65,27 @@ def load_clean_kgs(clean_dir: Path) -> list[tuple[int, dict]]:
 def main():
     parser = argparse.ArgumentParser(description="Generate corrupted KG variants (Track 2.2)")
     parser.add_argument("--clean-dir", type=str, default="data/training/clean", help="Directory of clean {cluster_idx}.json files.")
-    parser.add_argument("--output-dir", type=str, default="data/training/corrupted", help="Where to write corrupted variants.")
+    parser.add_argument(
+        "--output-dir", type=str, default=None,
+        help=(
+            "Where to write corrupted variants. Defaults to data/training/corrupted for "
+            "--scheme=legacy and data/training/corrupted_extended for --scheme=extended "
+            "(kept separate since the extended 'contradictions' corruption function produces "
+            "different files than the legacy one under the same filename pattern)."
+        ),
+    )
     parser.add_argument("--severities", type=float, nargs="+", default=list(DEFAULT_SEVERITIES), help="Severity levels (default: 0.1 0.2 0.3).")
     parser.add_argument("--include-extra-types", action="store_true", help="Also generate entity_duplication/relation_type_swap/orphan_node_injection (see Track 2.3 labeling note — these aren't mapped to a SimpleGNN head yet).")
+    parser.add_argument(
+        "--scheme", choices=["legacy", "extended"], default="legacy",
+        help=(
+            "'legacy' (default): 3 corruption types (missing_entities/contradictions/fragmentation) "
+            "labeled with the 4-head label_for(). 'extended': 5 corruption types "
+            "(+ orphan_node_injection + hallucinated_relations, i.e. hallucinated/additional nodes "
+            "and edges) labeled with the 6-head label_for_extended(), for the graph-transformer validator. "
+            "--include-extra-types is ignored when --scheme=extended."
+        ),
+    )
     parser.add_argument("--seed", type=int, default=42, help="Base seed for reproducible corruption.")
     parser.add_argument("--overwrite", action="store_true", help="Regenerate variants even if the output file already exists.")
     args = parser.parse_args()
@@ -72,14 +93,22 @@ def main():
     _configure_logging()
 
     clean_dir = Path(args.clean_dir)
-    output_dir = Path(args.output_dir)
+    if args.output_dir is not None:
+        output_dir = Path(args.output_dir)
+    else:
+        output_dir = Path("data/training/corrupted_extended" if args.scheme == "extended" else "data/training/corrupted")
     output_dir.mkdir(parents=True, exist_ok=True)
 
     if not clean_dir.exists():
         logger.error("Clean KG directory not found: %s (run generate_training_data.py first)", clean_dir)
         sys.exit(1)
 
-    corruption_types = ALL_CORRUPTION_TYPES if args.include_extra_types else DEFAULT_CORRUPTION_TYPES
+    if args.scheme == "extended":
+        corruption_types = EXTENDED_CORRUPTION_TYPES
+        label_fn = label_for_extended
+    else:
+        corruption_types = ALL_CORRUPTION_TYPES if args.include_extra_types else DEFAULT_CORRUPTION_TYPES
+        label_fn = label_for
     clean_kgs = load_clean_kgs(clean_dir)
 
     if not clean_kgs:
@@ -101,6 +130,7 @@ def main():
             corruption_types=corruption_types,
             severities=tuple(args.severities),
             seed=f"{args.seed}-{cluster_idx}",
+            label_fn=label_fn,
         )
 
         for variant in variants:

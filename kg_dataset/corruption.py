@@ -110,25 +110,77 @@ def corrupt_missing_entities(kg: dict, severity: float, rng: random.Random) -> t
     }
 
 
+# Relation types where a given source realistically has *one* correct target
+# at a time (a person has one current affiliation, an entity is located in
+# one place, a company is acquired by one acquirer) — so giving the same
+# source a second target of the same type is a genuine logical contradiction,
+# not just structural noise. This is the fix noted as outstanding: the old
+# implementation (uniform random edge-direction flipping) didn't actually
+# simulate contradictory claims, just topology noise.
+FUNCTIONAL_RELATION_TYPES = {"LOCATED_IN", "AFFILIATED_WITH", "ACQUIRED"}
+
+
 def corrupt_contradictions(kg: dict, severity: float, rng: random.Random) -> tuple[dict, dict]:
-    """Reverse source/target on `severity` fraction of relations, simulating a contradictory claim."""
+    """
+    Inject `severity`-proportional logical contradictions: for a relation
+    whose type is in FUNCTIONAL_RELATION_TYPES, add a second relation with
+    the same source and relation_type but a different target — i.e. two
+    incompatible claims about the same subject ("X is LOCATED_IN Paris" and
+    "X is LOCATED_IN Tokyo"), rather than just noise in the graph topology.
+
+    Falls back to the old behavior (reversing source/target on a random
+    relation) for graphs that have no functional-relation edges to violate,
+    so this never silently no-ops on a graph that's all RELATED_TO/CAUSES/etc.
+    """
     kg = copy.deepcopy(kg)
     relations = kg["relations"]
+    entities = kg["entities"]
 
     if not relations:
         return kg, {"corruption_type": "contradictions", "severity": severity, "skipped": True, "reason": "no relations"}
 
-    num_to_flip = _n_to_affect(len(relations), severity)
-    indices = rng.sample(range(len(relations)), num_to_flip)
+    functional = [r for r in relations if r.get("relation_type") in FUNCTIONAL_RELATION_TYPES]
+    ids = [e["id"] for e in entities]
 
-    for i in indices:
-        r = relations[i]
-        r["source"], r["target"] = r["target"], r["source"]
+    if not functional or len(ids) < 2:
+        # Fallback: original edge-reversal behavior.
+        num_to_flip = _n_to_affect(len(relations), severity)
+        indices = rng.sample(range(len(relations)), num_to_flip)
+        for i in indices:
+            r = relations[i]
+            r["source"], r["target"] = r["target"], r["source"]
+        return kg, {
+            "corruption_type": "contradictions",
+            "severity": severity,
+            "flipped_relations": num_to_flip,
+            "fallback": "no_functional_relations",
+        }
+
+    num_to_violate = _n_to_affect(len(functional), severity)
+    chosen = rng.sample(functional, num_to_violate)
+
+    injected = []
+    for base in chosen:
+        candidates = [i for i in ids if i != base["source"] and i != base["target"]]
+        if not candidates:
+            continue
+        conflicting_target = rng.choice(candidates)
+        injected.append({
+            "source": base["source"],
+            "target": conflicting_target,
+            "relation_type": base["relation_type"],
+            "support_count": 1,
+            "source_documents": base.get("source_documents", []),
+            "confidence": base.get("confidence", 1.0),
+            "evidence": [],
+        })
+
+    kg["relations"] = relations + injected
 
     return kg, {
         "corruption_type": "contradictions",
         "severity": severity,
-        "flipped_relations": num_to_flip,
+        "contradictory_relations_added": len(injected),
     }
 
 
@@ -252,6 +304,73 @@ def corrupt_orphan_node_injection(kg: dict, severity: float, rng: random.Random)
     }
 
 
+def corrupt_hallucinated_relations(kg: dict, severity: float, rng: random.Random) -> tuple[dict, dict]:
+    """
+    Add `severity`-proportional fabricated relations between *existing*
+    entities that have no supporting evidence — simulating the extractor
+    inventing a relation between two real entities it never actually saw
+    connected (as opposed to orphan_node_injection, which fabricates whole
+    entities). This is the "additional / hallucinated edges" case that
+    orphan_node_injection alone doesn't cover.
+
+    The fabricated relation_type is sampled from the graph's OWN observed
+    vocabulary (falling back to a generic placeholder only if the graph has
+    no relations to draw from), not from kg_agentic_extraction's closed
+    RelationType enum. Per ADR 0004 ("Extraction is open-vocabulary"), the
+    extractor now names its own relation types per-cluster, and the ADR
+    explicitly flags this exact mistake in corrupt_relation_type_swap:
+    substituting an enum type into an open-vocabulary graph "makes the
+    corruption trivially detectable and the negative sample too easy",
+    because the injected type is foreign to the vocabulary the grader/GNN
+    would ever see this graph use. Reusing the graph's own types keeps the
+    task hard: a hallucinated edge should be a real relation the pair just
+    never had, not a type that's an instant tell on its own.
+
+    Only adds pairs that aren't already connected (either direction), so a
+    hallucinated relation is always a genuinely new edge, not a duplicate of
+    a real one.
+    """
+    kg = copy.deepcopy(kg)
+    entities = kg["entities"]
+    relations = kg["relations"]
+
+    if len(entities) < 2:
+        return kg, {"corruption_type": "hallucinated_relations", "severity": severity, "skipped": True, "reason": "too few entities"}
+
+    existing_pairs = {(r["source"], r["target"]) for r in relations} | {(r["target"], r["source"]) for r in relations}
+    ids = [e["id"] for e in entities]
+    observed_types = sorted({r["relation_type"] for r in relations if r.get("relation_type")})
+    candidate_types = observed_types or ["RELATED_TO"]
+
+    num_to_add = _n_to_affect(len(entities), severity)
+    added = []
+    attempts = 0
+    max_attempts = num_to_add * 20 + 20
+    while len(added) < num_to_add and attempts < max_attempts:
+        attempts += 1
+        source, target = rng.sample(ids, 2)
+        if (source, target) in existing_pairs:
+            continue
+        existing_pairs.add((source, target))
+        added.append({
+            "source": source,
+            "target": target,
+            "relation_type": rng.choice(candidate_types),
+            "support_count": 0,
+            "source_documents": [],
+            "confidence": 0.0,
+            "evidence": [],
+        })
+
+    kg["relations"] = relations + added
+
+    return kg, {
+        "corruption_type": "hallucinated_relations",
+        "severity": severity,
+        "injected_relations": len(added),
+    }
+
+
 CORRUPTION_FUNCS = {
     "missing_entities": corrupt_missing_entities,
     "contradictions": corrupt_contradictions,
@@ -259,7 +378,30 @@ CORRUPTION_FUNCS = {
     "entity_duplication": corrupt_entity_duplication,
     "relation_type_swap": corrupt_relation_type_swap,
     "orphan_node_injection": corrupt_orphan_node_injection,
+    "hallucinated_relations": corrupt_hallucinated_relations,
 }
+
+# The five types trained against the *extended*, 6-head validator (see
+# label_for_extended()): missing nodes, missing edges (fragmentation),
+# hallucinated/additional nodes (orphans), hallucinated/additional edges,
+# and contradictions. entity_duplication/relation_type_swap stay unmapped
+# "extra" types, same as before.
+EXTENDED_CORRUPTION_TYPES = [
+    "missing_entities",
+    "fragmentation",
+    "orphan_node_injection",
+    "hallucinated_relations",
+    "contradictions",
+]
+
+HEAD_NAMES_EXTENDED = [
+    "consistency",
+    "missing_entities",
+    "fragmentation",
+    "orphan_node_injection",
+    "hallucinated_relations",
+    "contradictions",
+]
 
 
 # ── Track 2.3 — Labeling scheme ─────────────────────────────────────────────
@@ -303,6 +445,27 @@ def label_for(corruption_type: Optional[str]) -> dict:
     }
 
 
+def label_for_extended(corruption_type: Optional[str]) -> dict:
+    """
+    6-head labeling scheme for the graph-transformer validator: the four
+    original heads plus dedicated heads for the two EXTENDED_CORRUPTION_TYPES
+    that label_for() couldn't place (orphan_node_injection, hallucinated_relations).
+
+    Kept as a separate function rather than changing label_for() in place —
+    label_for()'s 4-key dict is still what the legacy 3-corruption-type
+    dataset (data/training/corrupted/*, generated with the default scheme)
+    is labeled with, and existing tooling that reads those files expects
+    exactly those 4 keys.
+    """
+    if corruption_type is None:
+        return {name: (1.0 if name == "consistency" else 0.0) for name in HEAD_NAMES_EXTENDED}
+
+    if corruption_type not in EXTENDED_CORRUPTION_TYPES:
+        raise ValueError(f"{corruption_type!r} is not one of EXTENDED_CORRUPTION_TYPES: {EXTENDED_CORRUPTION_TYPES}")
+
+    return {name: (1.0 if name == corruption_type else 0.0) for name in HEAD_NAMES_EXTENDED}
+
+
 # ── Orchestration ────────────────────────────────────────────────────────
 
 
@@ -311,6 +474,7 @@ def generate_corrupted_variants(
     corruption_types: list[str] = None,
     severities: tuple = DEFAULT_SEVERITIES,
     seed=None,
+    label_fn=label_for,
 ) -> list[dict]:
     """
     Generate one corrupted variant per (corruption_type, severity) pair.
@@ -319,12 +483,16 @@ def generate_corrupted_variants(
     (seed, corruption_type, severity), so re-running this on the same
     clean KG with the same `seed` reproduces the exact same corruptions.
 
+    `label_fn` defaults to the legacy 4-head label_for(); pass
+    label_for_extended to label for the 6-head graph-transformer validator
+    (requires corruption_types to be a subset of EXTENDED_CORRUPTION_TYPES).
+
     Returns a list of:
         {
             "corruption_type": str,
             "severity": float,
             "kg": <corrupted KG dict>,
-            "label": <Track 2.3 label dict>,
+            "label": <label dict>,
             "corruption_metadata": <what the corruption function actually did>,
         }
     """
@@ -344,7 +512,7 @@ def generate_corrupted_variants(
                 "corruption_type": corruption_type,
                 "severity": severity,
                 "kg": corrupted_kg,
-                "label": label_for(corruption_type),
+                "label": label_fn(corruption_type),
                 "corruption_metadata": metadata,
             })
 
