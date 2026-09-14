@@ -1,0 +1,486 @@
+{
+  "cluster_idx": 3,
+  "corruption_type": "missing_entities",
+  "severity": 0.2,
+  "label": {
+    "consistency": 0.0,
+    "missing_entities": 1.0,
+    "contradictions": 0.0,
+    "fragmentation": 0.0
+  },
+  "corruption_metadata": {
+    "corruption_type": "missing_entities",
+    "severity": 0.2,
+    "removed_entities": 8,
+    "removed_relations": 7
+  },
+  "knowledge_graph": {
+    "entities": [
+      {
+        "id": "e0",
+        "name": "Wayback Machine",
+        "type": "PRODUCT",
+        "document_frequency": 1,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "The seed for this crawl was a list of every host in the Wayback Machine",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "e1",
+        "name": "WARC files",
+        "type": "OTHER",
+        "document_frequency": 1,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "The WARC files associated with this crawl are not currently available to the general public.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "e2",
+        "name": "crawl",
+        "type": "EVENT",
+        "document_frequency": 1,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "This crawl was run at a level 1 (URLs including their embeds, plus the URLs of all outbound links including their embeds)",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "e5",
+        "name": "Apple",
+        "type": "ORGANIZATION",
+        "document_frequency": 2,
+        "confidence": 0.98,
+        "evidence": [
+          {
+            "document_index": 3,
+            "quote": "Apple disrupted the market by redefining the smartphone and attracting developers to a closed, but very powerful ecosystem.",
+            "section": null
+          },
+          {
+            "document_index": 3,
+            "quote": "Apple ... own the high-end range.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "e6",
+        "name": "Google",
+        "type": "ORGANIZATION",
+        "document_frequency": 2,
+        "confidence": 0.98,
+        "evidence": [
+          {
+            "document_index": 3,
+            "quote": "Google has become a gravitational force, drawing much of the industry's innovation to its core.",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "We cannot risk having Apple or Google foreclose app innovation, integration, distribution or economics.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "e7",
+        "name": "Android",
+        "type": "PRODUCT",
+        "document_frequency": 2,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 3,
+            "quote": "Android came on the scene just over 2 years ago, and this week they took our leadership position in smartphone volumes.",
+            "section": null
+          },
+          {
+            "document_index": 3,
+            "quote": "they are now winning the mid-range",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "e9",
+        "name": "Ballmer",
+        "type": "PERSON",
+        "document_frequency": 1,
+        "confidence": 0.96,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "days after Ballmer stood down seems mighty strange.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "e11",
+        "name": "Richard Holway",
+        "type": "PERSON",
+        "document_frequency": 1,
+        "confidence": 0.97,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "Richard Holway, chairman of analyst TechMarketView, said given that Microsoft paid $8.5bn for Skype in 2011, the price it is paying for Nokia \"seems extremely reasonable\".",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "e12",
+        "name": "Charles Golvin",
+        "type": "PERSON",
+        "document_frequency": 1,
+        "confidence": 0.96,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "Forrester mobile analyst Charles Golvin said the steadily diminishing investments by other Windows Phone licensees has left Microsoft with just Nokia as its standard bearer.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "e13",
+        "name": "Carolina Milanesi",
+        "type": "PERSON",
+        "document_frequency": 1,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "Carolina Milanesi, research vice president at analyst Gartner, said by buying rather than just partnering with Nokia, Microsoft gets deeper integration, the benefit of its patents and removes any risk of Nokia either going Android or being acquired by someone else.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "e14",
+        "name": "Thomas Husson",
+        "type": "PERSON",
+        "document_frequency": 1,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "Forrester principal analyst Thomas Husson, Nokia adds to Microsoft's developing market strategy.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "e15",
+        "name": "BlackBerry",
+        "type": "PRODUCT",
+        "document_frequency": 1,
+        "confidence": 0.93,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "Providing secure emailing in a sector once occupied by BlackBerry.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "e16",
+        "name": "Surface",
+        "type": "PRODUCT",
+        "document_frequency": 1,
+        "confidence": 0.93,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "Already its move into the tablet market with Surface will have unsettled its manufacturers.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "e17",
+        "name": "Xbox",
+        "type": "PRODUCT",
+        "document_frequency": 1,
+        "confidence": 0.9,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "Windows, Nokia, Live, Surface, Xbox, Bing and more",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "e20",
+        "name": "UK",
+        "type": "LOCATION",
+        "document_frequency": 1,
+        "confidence": 0.98,
+        "evidence": [
+          {
+            "document_index": 3,
+            "quote": "In the UK, our brand preference has slipped to 20 percent, which is 8 percent lower than last year.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "e21",
+        "name": "February 11",
+        "type": "DATE",
+        "document_frequency": 1,
+        "confidence": 0.98,
+        "evidence": [
+          {
+            "document_index": 3,
+            "quote": "When we share the new strategy on February 11, it will be a huge effort to transform our company.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "e22",
+        "name": "Stephen",
+        "type": "PERSON",
+        "document_frequency": 1,
+        "confidence": 0.97,
+        "evidence": [
+          {
+            "document_index": 3,
+            "quote": "Stephen.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "e23",
+        "name": "MediaTek",
+        "type": "ORGANIZATION",
+        "document_frequency": 1,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 3,
+            "quote": "MediaTek supplied complete reference designs for phone chipsets, which enabled manufacturers in the Shenzhen region of China to produce phones at an unbelievable pace.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "e24",
+        "name": "MeeGo",
+        "type": "PRODUCT",
+        "document_frequency": 1,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 3,
+            "quote": "We thought MeeGo would be a platform for winning high-end smartphones.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "e25",
+        "name": "Symbian",
+        "type": "PRODUCT",
+        "document_frequency": 1,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 3,
+            "quote": "At the midrange, we have Symbian.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "e26",
+        "name": "high-end range",
+        "type": "CONCEPT",
+        "document_frequency": 1,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 3,
+            "quote": "Apple ... own the high-end range.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "e27",
+        "name": "mid-range market share",
+        "type": "CONCEPT",
+        "document_frequency": 1,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 3,
+            "quote": "they are now winning the mid-range",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "e28",
+        "name": "one third of the phones sold globally",
+        "type": "CONCEPT",
+        "document_frequency": 1,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 3,
+            "quote": "this ecosystem now produces more than one third of the phones sold globally",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "e30",
+        "name": "man",
+        "type": "PERSON",
+        "document_frequency": 1,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 3,
+            "quote": "There is a pertinent story about a man who was working on an oil platform in the North Sea.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "e31",
+        "name": "oil platform",
+        "type": "OTHER",
+        "document_frequency": 1,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 3,
+            "quote": "There is a pertinent story about a man who was working on an oil platform in the North Sea.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "e32",
+        "name": "North Sea",
+        "type": "LOCATION",
+        "document_frequency": 1,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 3,
+            "quote": "oil platform in the North Sea.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "e33",
+        "name": "Atlantic waters",
+        "type": "LOCATION",
+        "document_frequency": 1,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 3,
+            "quote": "dark, cold, foreboding Atlantic waters.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "e35",
+        "name": "Windows Phone",
+        "type": "PRODUCT",
+        "document_frequency": 1,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "Nokia ... the limited success of the Lumia range so far enough to keep interest in Windows Phone alive",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "e36",
+        "name": "Lumia",
+        "type": "PRODUCT",
+        "document_frequency": 1,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "the limited success of the Lumia range so far enough to keep interest in Windows Phone alive",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "e37",
+        "name": "Asha devices",
+        "type": "PRODUCT",
+        "document_frequency": 1,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "Nokia's Asha devices could play a neat role as an 'on-ramp' for consumers buying their first smartphone.",
+            "section": null
+          }
+        ]
+      }
+    ],
+    "relations": [],
+    "reasoning_paths": [
+      {
+        "path": [
+          "e4",
+          "e3",
+          "e34"
+        ],
+        "description": "Microsoft (e3) acquired Nokia (e4), and Microsoft also acquired Nokia's cell\u2011phone business (e34). This chain shows that the Nokia handset unit now sits under Microsoft, enabling Microsoft to integrate Nokia\u2019s hardware with its Windows Phone platform.",
+        "confidence": 0.95
+      },
+      {
+        "path": [
+          "e10",
+          "e3",
+          "e4"
+        ],
+        "description": "Stephen Elop (e10) is affiliated with Microsoft (e3), and Microsoft acquired Nokia (e4). The affiliation indicates that Elop, having led Microsoft\u2019s business division, moves to Nokia, which is later bought by Microsoft, linking his career moves to the broader corporate acquisition strategy.",
+        "confidence": 0.94
+      },
+      {
+        "path": [
+          "e18",
+          "e29",
+          "e19"
+        ],
+        "description": "Both Standard & Poor's (e18) and Moody's (e19) are related to the concept of a negative credit watch (e29). Their joint actions signal that the same company is under heightened financial scrutiny, reinforcing the seriousness of the credit downgrade.",
+        "confidence": 0.94
+      }
+    ]
+  }
+}

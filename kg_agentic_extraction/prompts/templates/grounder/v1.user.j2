@@ -1,0 +1,20 @@
+Ground the knowledge graph below against DBpedia.
+
+Produce one `GroundedEntity` for every entity in the graph and one
+`GroundedRelation` for every relation — including the ones you could not
+resolve, which must appear with a null mapping and an `unresolved_reason`. A
+missing element is indistinguishable from a forgotten one.
+
+## ENTITIES TO GROUND
+{{ entities_json }}
+
+## RELATIONS TO GROUND
+{{ relations_json }}
+
+{% if candidate_hints %}
+## PRE-FETCHED CANDIDATES
+Lookups already performed for you. Still verify with the tools before trusting
+any of these.
+
+{{ candidate_hints }}
+{% endif %}

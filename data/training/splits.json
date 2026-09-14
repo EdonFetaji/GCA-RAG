@@ -1,0 +1,18 @@
+{
+  "seed": 42,
+  "train_frac": 0.7,
+  "val_frac": 0.15,
+  "total_clusters": 5,
+  "splits": {
+    "train": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "val": [
+      0
+    ],
+    "test": []
+  }
+}

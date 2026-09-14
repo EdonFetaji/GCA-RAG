@@ -1,0 +1,1154 @@
+{
+  "cluster_idx": 7,
+  "num_documents": 3,
+  "reference_summary": "\u2013 A Picasso painting that was found to have vanished from a Paris museum more than a decade ago has turned up\u2014in the US, in a package shipped from Belgium. Its papers identified it as a $37 \"art craft/toy\" and also included the line \"Joyeux Noel,\" or Merry Christmas, the New York Times reports. A man named \"Robert\" attempted to send the package to a climate-controlled warehouse in Queens, New York, in December, but custom officials at the Port of Newark seized what turned out to be Picasso's 1911 La Coiffeuse (The Hairdresser). French museum officials traveled to New York last month and confirmed the find is indeed the missing Picasso work, which the Centre Georges Pompidou realized was missing from its storerooms in 2001 following a loan request; it was then valued at more than $2.5 million. Court documents don't specify whether the sender or would-be recipient have been identified, NBC News reports, but \"a lost treasure has been found,\" US attorney Loretta Lynch said in a statement. She filed a civil complaint yesterday that will have the painting returned to France. The Pompidou's director, who called the painting's rediscovery a \"true comfort,\" hopes the painting can go on display at the museum as early as May, the AP reports. (Another Picasso work was stolen days before this one was found.)",
+  "extraction": {
+    "method": "full_pipeline",
+    "cluster_index": 7,
+    "num_documents": 3,
+    "knowledge_graph": {
+      "entities": [
+        {
+          "id": "e1",
+          "name": "La Coiffeuse / The Hairdresser",
+          "type": "PRODUCT",
+          "document_frequency": 3,
+          "confidence": 0.99,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "shows a cubist painting entitled \u201cThe Hairdresser\u201d by Pablo Picasso.",
+              "section": null
+            },
+            {
+              "document_index": 1,
+              "quote": "The canvas, titled \"La Coiffeuse,\" was bequeathed to France's National Museum.",
+              "section": null
+            },
+            {
+              "document_index": 2,
+              "quote": "The 1911 painting, \u201cLa Coiffeuse,\u201d which translates to \u201cThe Hairdresser,\u201d was unearthed in December in a FedEx shipment from Belgium to Newark.",
+              "section": null
+            }
+          ]
+        },
+        {
+          "id": "e2",
+          "name": "Pablo Picasso",
+          "type": "PERSON",
+          "document_frequency": 3,
+          "confidence": 0.99,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "shows a cubist painting entitled \u201cThe Hairdresser\u201d by Pablo Picasso.",
+              "section": null
+            },
+            {
+              "document_index": 1,
+              "quote": "The canvas, titled \"La Coiffeuse,\" was bequeathed to France's National Museum.",
+              "section": null
+            },
+            {
+              "document_index": 2,
+              "quote": "The 1911 painting, \u201cLa Coiffeuse,\u201d \u2026 painted by Picasso in 1911.",
+              "section": null
+            }
+          ]
+        },
+        {
+          "id": "e3",
+          "name": "Centre Georges Pompidou",
+          "type": "ORGANIZATION",
+          "document_frequency": 3,
+          "confidence": 0.99,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "The Pompidou Centre in Paris hopes to display a long\u2011vanished Picasso painting in May.",
+              "section": null
+            },
+            {
+              "document_index": 2,
+              "quote": "the Centre Georges Pompidou, the Paris museum and arts center",
+              "section": null
+            },
+            {
+              "document_index": 2,
+              "quote": "The canvas \u2026 was placed in storage at the Centre Georges Pompidou",
+              "section": null
+            }
+          ]
+        },
+        {
+          "id": "e4",
+          "name": "Paris",
+          "type": "LOCATION",
+          "document_frequency": 3,
+          "confidence": 0.99,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "The Pompidou Centre in Paris hopes to display a long\u2011vanished Picasso painting in May",
+              "section": null
+            },
+            {
+              "document_index": 2,
+              "quote": "the Centre Georges Pompidou, the Paris museum and arts center",
+              "section": null
+            }
+          ]
+        },
+        {
+          "id": "e5",
+          "name": "Alain Seban",
+          "type": "PERSON",
+          "document_frequency": 1,
+          "confidence": 0.99,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "Pompidou director Alain Seban said the discovery comes as a \"true comfort\"",
+              "section": null
+            }
+          ]
+        },
+        {
+          "id": "e6",
+          "name": "Islamic State",
+          "type": "ORGANIZATION",
+          "document_frequency": 1,
+          "confidence": 0.99,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "reeling from an Islamic State video showing the destruction of statues in Iraq.",
+              "section": null
+            }
+          ]
+        },
+        {
+          "id": "e7",
+          "name": "Iraq",
+          "type": "LOCATION",
+          "document_frequency": 1,
+          "confidence": 0.99,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "destruction of statues in Iraq.",
+              "section": null
+            }
+          ]
+        },
+        {
+          "id": "e8",
+          "name": "Belgium",
+          "type": "LOCATION",
+          "document_frequency": 3,
+          "confidence": 0.99,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "It was smuggled into the U.S. in December from Belgium.",
+              "section": null
+            },
+            {
+              "document_index": 1,
+              "quote": "It was shipped by Federal Express from Belgium",
+              "section": null
+            },
+            {
+              "document_index": 2,
+              "quote": "the FedEx shipment from Belgium to Newark",
+              "section": null
+            }
+          ]
+        },
+        {
+          "id": "e9",
+          "name": "Federal Express",
+          "type": "ORGANIZATION",
+          "document_frequency": 1,
+          "confidence": 0.99,
+          "evidence": [
+            {
+              "document_index": 1,
+              "quote": "It was shipped by Federal Express from Belgium",
+              "section": null
+            }
+          ]
+        },
+        {
+          "id": "e10",
+          "name": "Port of Newark",
+          "type": "LOCATION",
+          "document_frequency": 2,
+          "confidence": 0.99,
+          "evidence": [
+            {
+              "document_index": 1,
+              "quote": "seized at the Port of Newark",
+              "section": null
+            },
+            {
+              "document_index": 2,
+              "quote": "the painting arrived at the Port of Newark and was seized",
+              "section": null
+            }
+          ]
+        },
+        {
+          "id": "e11",
+          "name": "Queens",
+          "type": "LOCATION",
+          "document_frequency": 2,
+          "confidence": 0.99,
+          "evidence": [
+            {
+              "document_index": 1,
+              "quote": "the destination was a climate\u2011controlled storage facility in Queens",
+              "section": null
+            },
+            {
+              "document_index": 2,
+              "quote": "Department of Homeland Security officials working from Long Island City, Queens",
+              "section": null
+            }
+          ]
+        },
+        {
+          "id": "e12",
+          "name": "Long Island City",
+          "type": "LOCATION",
+          "document_frequency": 1,
+          "confidence": 0.99,
+          "evidence": [
+            {
+              "document_index": 2,
+              "quote": "Long Island City, Queens",
+              "section": null
+            }
+          ]
+        },
+        {
+          "id": "e13",
+          "name": "Robert",
+          "type": "PERSON",
+          "document_frequency": 2,
+          "confidence": 0.98,
+          "evidence": [
+            {
+              "document_index": 1,
+              "quote": "shipper was identified only as \"Robert\"",
+              "section": null
+            },
+            {
+              "document_index": 2,
+              "quote": "someone going by \u201cRobert\u201d with an address in Belgium shipped the painting",
+              "section": null
+            }
+          ]
+        },
+        {
+          "id": "e14",
+          "name": "Federal prosecutors",
+          "type": "ORGANIZATION",
+          "document_frequency": 1,
+          "confidence": 0.98,
+          "evidence": [
+            {
+              "document_index": 1,
+              "quote": "Federal prosecutors in Brooklyn filed papers Thursday to forfeit the century\u2011old cubist painting",
+              "section": null
+            }
+          ]
+        },
+        {
+          "id": "e15",
+          "name": "Brooklyn",
+          "type": "LOCATION",
+          "document_frequency": 1,
+          "confidence": 0.97,
+          "evidence": [
+            {
+              "document_index": 1,
+              "quote": "Federal prosecutors in Brooklyn filed papers Thursday",
+              "section": null
+            }
+          ]
+        },
+        {
+          "id": "e16",
+          "name": "U.S. Department of Justice",
+          "type": "ORGANIZATION",
+          "document_frequency": 1,
+          "confidence": 0.97,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "photo provided by the United States Department of Justice",
+              "section": null
+            }
+          ]
+        },
+        {
+          "id": "e17",
+          "name": "Loretta Lynch",
+          "type": "PERSON",
+          "document_frequency": 2,
+          "confidence": 0.99,
+          "evidence": [
+            {
+              "document_index": 1,
+              "quote": "\"A lost treasure has been found,\" U.S. Attorney Loretta Lynch said in a statement.",
+              "section": null
+            },
+            {
+              "document_index": 2,
+              "quote": "On Thursday, Loretta E. Lynch, the United States attorney for the Eastern District of New York, filed a civil complaint",
+              "section": null
+            }
+          ]
+        },
+        {
+          "id": "e18",
+          "name": "Eastern District of New York",
+          "type": "ORGANIZATION",
+          "document_frequency": 1,
+          "confidence": 0.96,
+          "evidence": [
+            {
+              "document_index": 2,
+              "quote": "United States attorney for the Eastern District of New York",
+              "section": null
+            }
+          ]
+        },
+        {
+          "id": "e19",
+          "name": "U.S. Customs and Border Protection",
+          "type": "ORGANIZATION",
+          "document_frequency": 2,
+          "confidence": 0.99,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "now that it has been recovered by U.S. customs authorities.",
+              "section": null
+            },
+            {
+              "document_index": 2,
+              "quote": "When federal Customs and Border Protection officials examined the shipment, though, they found the master artist\u2019s work.",
+              "section": null
+            }
+          ]
+        },
+        {
+          "id": "e20",
+          "name": "Department of Homeland Security",
+          "type": "ORGANIZATION",
+          "document_frequency": 1,
+          "confidence": 0.97,
+          "evidence": [
+            {
+              "document_index": 2,
+              "quote": "Department of Homeland Security officials working from Long Island City, Queens",
+              "section": null
+            }
+          ]
+        },
+        {
+          "id": "e21",
+          "name": "Anthony Scandiffio",
+          "type": "PERSON",
+          "document_frequency": 1,
+          "confidence": 0.97,
+          "evidence": [
+            {
+              "document_index": 2,
+              "quote": "\u201cThe market to sell stolen antiquities in the United States is drying up,\u201d Anthony Scandiffio, deputy special agent in charge of Homeland Security Investigations",
+              "section": null
+            }
+          ]
+        },
+        {
+          "id": "e22",
+          "name": "Homeland Security Investigations",
+          "type": "ORGANIZATION",
+          "document_frequency": 1,
+          "confidence": 0.96,
+          "evidence": [
+            {
+              "document_index": 2,
+              "quote": "Homeland Security Investigations, which seized the painting after border officials flagged it",
+              "section": null
+            }
+          ]
+        },
+        {
+          "id": "e23",
+          "name": "French government",
+          "type": "ORGANIZATION",
+          "document_frequency": 1,
+          "confidence": 0.96,
+          "evidence": [
+            {
+              "document_index": 2,
+              "quote": "The oil painting is owned by the French government",
+              "section": null
+            }
+          ]
+        },
+        {
+          "id": "e24",
+          "name": "National Museums of France",
+          "type": "ORGANIZATION",
+          "document_frequency": 1,
+          "confidence": 0.96,
+          "evidence": [
+            {
+              "document_index": 2,
+              "quote": "had been bequeathed to the National Museums of France",
+              "section": null
+            }
+          ]
+        },
+        {
+          "id": "e25",
+          "name": "Munich",
+          "type": "LOCATION",
+          "document_frequency": 1,
+          "confidence": 0.95,
+          "evidence": [
+            {
+              "document_index": 2,
+              "quote": "It was last exhibited in Munich in 1998",
+              "section": null
+            }
+          ]
+        },
+        {
+          "id": "e26",
+          "name": "1998",
+          "type": "DATE",
+          "document_frequency": 1,
+          "confidence": 0.95,
+          "evidence": [
+            {
+              "document_index": 2,
+              "quote": "It was last exhibited in Munich in 1998",
+              "section": null
+            }
+          ]
+        },
+        {
+          "id": "e27",
+          "name": "2001",
+          "type": "DATE",
+          "document_frequency": 1,
+          "confidence": 0.95,
+          "evidence": [
+            {
+              "document_index": 2,
+              "quote": "loan request for it in 2001, searched the storerooms and could not find it",
+              "section": null
+            }
+          ]
+        },
+        {
+          "id": "e28",
+          "name": "December",
+          "type": "DATE",
+          "document_frequency": 3,
+          "confidence": 0.95,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "It was smuggled into the U.S. in December from Belgium",
+              "section": null
+            },
+            {
+              "document_index": 2,
+              "quote": "was unearthed in December in a FedEx shipment from Belgium to Newark",
+              "section": null
+            }
+          ]
+        },
+        {
+          "id": "e29",
+          "name": "Dec. 17",
+          "type": "DATE",
+          "document_frequency": 1,
+          "confidence": 0.94,
+          "evidence": [
+            {
+              "document_index": 2,
+              "quote": "On Dec. 17, someone going by \u201cRobert\u201d with an address in Belgium shipped the painting",
+              "section": null
+            }
+          ]
+        },
+        {
+          "id": "e30",
+          "name": "May",
+          "type": "DATE",
+          "document_frequency": 1,
+          "confidence": 0.94,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "hopes to display a long\u2011vanished Picasso painting in May",
+              "section": null
+            }
+          ]
+        },
+        {
+          "id": "e31",
+          "name": "1911",
+          "type": "DATE",
+          "document_frequency": 3,
+          "confidence": 0.96,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "The 1911 cubist painting \"The Hairdresser\"",
+              "section": null
+            },
+            {
+              "document_index": 2,
+              "quote": "The 1911 painting, \u201cLa Coiffeuse,\u201d",
+              "section": null
+            }
+          ]
+        }
+      ],
+      "relations": [
+        {
+          "source": "e1",
+          "target": "e2",
+          "relation_type": "AFFILIATED_WITH",
+          "support_count": 2,
+          "source_documents": [
+            0,
+            2
+          ],
+          "confidence": 0.96,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "shows a cubist painting entitled \u201cThe Hairdresser\u201d by Pablo Picasso.",
+              "section": null
+            },
+            {
+              "document_index": 2,
+              "quote": "The 1911 painting, \u201cLa Coiffeuse,\u201d \u2026 painted by Picasso in 1911.",
+              "section": null
+            }
+          ]
+        },
+        {
+          "source": "e1",
+          "target": "e3",
+          "relation_type": "LOCATED_IN",
+          "support_count": 1,
+          "source_documents": [
+            2
+          ],
+          "confidence": 0.95,
+          "evidence": [
+            {
+              "document_index": 2,
+              "quote": "The canvas \u2026 was placed in storage at the Centre Georges Pompidou",
+              "section": null
+            }
+          ]
+        },
+        {
+          "source": "e3",
+          "target": "e4",
+          "relation_type": "LOCATED_IN",
+          "support_count": 1,
+          "source_documents": [
+            2
+          ],
+          "confidence": 0.95,
+          "evidence": [
+            {
+              "document_index": 2,
+              "quote": "the Centre Georges Pompidou, the Paris museum and arts center",
+              "section": null
+            }
+          ]
+        },
+        {
+          "source": "e1",
+          "target": "e19",
+          "relation_type": "ACQUIRED",
+          "support_count": 2,
+          "source_documents": [
+            0,
+            2
+          ],
+          "confidence": 0.96,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "now that it has been recovered by U.S. customs authorities.",
+              "section": null
+            },
+            {
+              "document_index": 2,
+              "quote": "When federal Customs and Border Protection officials examined the shipment, though, they found the master artist\u2019s work.",
+              "section": null
+            }
+          ]
+        },
+        {
+          "source": "e1",
+          "target": "e10",
+          "relation_type": "RESULTED_IN",
+          "support_count": 2,
+          "source_documents": [
+            1,
+            2
+          ],
+          "confidence": 0.95,
+          "evidence": [
+            {
+              "document_index": 1,
+              "quote": "seized at the Port of Newark",
+              "section": null
+            },
+            {
+              "document_index": 2,
+              "quote": "the painting arrived at the Port of Newark and was seized",
+              "section": null
+            }
+          ]
+        },
+        {
+          "source": "e14",
+          "target": "e1",
+          "relation_type": "ANNOUNCED",
+          "support_count": 1,
+          "source_documents": [
+            1
+          ],
+          "confidence": 0.94,
+          "evidence": [
+            {
+              "document_index": 1,
+              "quote": "Federal prosecutors in Brooklyn filed papers Thursday to forfeit the century\u2011old cubist painting",
+              "section": null
+            }
+          ]
+        },
+        {
+          "source": "e17",
+          "target": "e1",
+          "relation_type": "ANNOUNCED",
+          "support_count": 2,
+          "source_documents": [
+            1,
+            2
+          ],
+          "confidence": 0.96,
+          "evidence": [
+            {
+              "document_index": 1,
+              "quote": "\"A lost treasure has been found,\" U.S. Attorney Loretta Lynch said in a statement.",
+              "section": null
+            },
+            {
+              "document_index": 2,
+              "quote": "On Thursday, Loretta E. Lynch, the United States attorney for the Eastern District of New York, filed a civil complaint",
+              "section": null
+            }
+          ]
+        },
+        {
+          "source": "e17",
+          "target": "e18",
+          "relation_type": "AFFILIATED_WITH",
+          "support_count": 1,
+          "source_documents": [
+            2
+          ],
+          "confidence": 0.94,
+          "evidence": [
+            {
+              "document_index": 2,
+              "quote": "Loretta E. Lynch, the United States attorney for the Eastern District of New York",
+              "section": null
+            }
+          ]
+        },
+        {
+          "source": "e20",
+          "target": "e1",
+          "relation_type": "PARTICIPATED_IN",
+          "support_count": 1,
+          "source_documents": [
+            2
+          ],
+          "confidence": 0.94,
+          "evidence": [
+            {
+              "document_index": 2,
+              "quote": "Department of Homeland Security officials\u2026 then took over",
+              "section": null
+            }
+          ]
+        },
+        {
+          "source": "e21",
+          "target": "e22",
+          "relation_type": "AFFILIATED_WITH",
+          "support_count": 1,
+          "source_documents": [
+            2
+          ],
+          "confidence": 0.95,
+          "evidence": [
+            {
+              "document_index": 2,
+              "quote": "Anthony Scandiffio, deputy special agent in charge of Homeland Security Investigations",
+              "section": null
+            }
+          ]
+        },
+        {
+          "source": "e1",
+          "target": "e23",
+          "relation_type": "AFFILIATED_WITH",
+          "support_count": 1,
+          "source_documents": [
+            2
+          ],
+          "confidence": 0.96,
+          "evidence": [
+            {
+              "document_index": 2,
+              "quote": "The oil painting is owned by the French government",
+              "section": null
+            }
+          ]
+        },
+        {
+          "source": "e1",
+          "target": "e24",
+          "relation_type": "AFFILIATED_WITH",
+          "support_count": 1,
+          "source_documents": [
+            2
+          ],
+          "confidence": 0.96,
+          "evidence": [
+            {
+              "document_index": 2,
+              "quote": "had been bequeathed to the National Museums of France",
+              "section": null
+            }
+          ]
+        },
+        {
+          "source": "e1",
+          "target": "e9",
+          "relation_type": "RELATED_TO",
+          "support_count": 1,
+          "source_documents": [
+            1
+          ],
+          "confidence": 0.94,
+          "evidence": [
+            {
+              "document_index": 1,
+              "quote": "It was shipped by Federal Express from Belgium",
+              "section": null
+            }
+          ]
+        },
+        {
+          "source": "e1",
+          "target": "e8",
+          "relation_type": "RELATED_TO",
+          "support_count": 2,
+          "source_documents": [
+            0,
+            2
+          ],
+          "confidence": 0.95,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "It was smuggled into the U.S. in December from Belgium",
+              "section": null
+            },
+            {
+              "document_index": 2,
+              "quote": "FedEx shipment from Belgium to Newark",
+              "section": null
+            }
+          ]
+        },
+        {
+          "source": "e1",
+          "target": "e28",
+          "relation_type": "RELATED_TO",
+          "support_count": 2,
+          "source_documents": [
+            0,
+            2
+          ],
+          "confidence": 0.95,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "It was smuggled into the U.S. in December",
+              "section": null
+            },
+            {
+              "document_index": 2,
+              "quote": "was unearthed in December",
+              "section": null
+            }
+          ]
+        },
+        {
+          "source": "e1",
+          "target": "e30",
+          "relation_type": "RELATED_TO",
+          "support_count": 1,
+          "source_documents": [
+            0
+          ],
+          "confidence": 0.94,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "hopes to display a long\u2011vanished Picasso painting in May",
+              "section": null
+            }
+          ]
+        },
+        {
+          "source": "e1",
+          "target": "e31",
+          "relation_type": "RELATED_TO",
+          "support_count": 2,
+          "source_documents": [
+            0,
+            2
+          ],
+          "confidence": 0.96,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "The 1911 cubist painting \"The Hairdresser\"",
+              "section": null
+            },
+            {
+              "document_index": 2,
+              "quote": "The 1911 painting, \u201cLa Coiffeuse,\u201d",
+              "section": null
+            }
+          ]
+        },
+        {
+          "source": "e1",
+          "target": "e26",
+          "relation_type": "RELATED_TO",
+          "support_count": 1,
+          "source_documents": [
+            2
+          ],
+          "confidence": 0.94,
+          "evidence": [
+            {
+              "document_index": 2,
+              "quote": "It was last exhibited in Munich in 1998",
+              "section": null
+            }
+          ]
+        },
+        {
+          "source": "e1",
+          "target": "e27",
+          "relation_type": "RELATED_TO",
+          "support_count": 1,
+          "source_documents": [
+            2
+          ],
+          "confidence": 0.94,
+          "evidence": [
+            {
+              "document_index": 2,
+              "quote": "loan request for it in 2001",
+              "section": null
+            }
+          ]
+        },
+        {
+          "source": "e1",
+          "target": "e29",
+          "relation_type": "RELATED_TO",
+          "support_count": 1,
+          "source_documents": [
+            2
+          ],
+          "confidence": 0.94,
+          "evidence": [
+            {
+              "document_index": 2,
+              "quote": "On Dec. 17, someone going by \u201cRobert\u201d \u2026 shipped the painting",
+              "section": null
+            }
+          ]
+        },
+        {
+          "source": "e6",
+          "target": "e7",
+          "relation_type": "RELATED_TO",
+          "support_count": 1,
+          "source_documents": [
+            0
+          ],
+          "confidence": 0.93,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "reeling from an Islamic State video showing the destruction of statues in Iraq.",
+              "section": null
+            }
+          ]
+        },
+        {
+          "source": "e13",
+          "target": "e1",
+          "relation_type": "AFFILIATED_WITH",
+          "support_count": 1,
+          "source_documents": [
+            1
+          ],
+          "confidence": 0.93,
+          "evidence": [
+            {
+              "document_index": 1,
+              "quote": "shipper was identified only as \"Robert\"",
+              "section": null
+            }
+          ]
+        }
+      ],
+      "reasoning_paths": [
+        {
+          "path": [
+            "e2",
+            "e1",
+            "e31"
+          ],
+          "description": "Pablo Picasso (e2) is the artist of the painting La Coiffeuse (e1). The painting is dated to 1911 (e31). Therefore, Picasso created the artwork in 1911, linking the artist to the year of creation.",
+          "confidence": 0.96
+        },
+        {
+          "path": [
+            "e1",
+            "e3",
+            "e4"
+          ],
+          "description": "The painting (e1) is stored at the Centre Georges Pompidou (e3), which itself is located in Paris (e4). This chain shows that the artwork currently resides within a Parisian museum.",
+          "confidence": 0.95
+        },
+        {
+          "path": [
+            "e17",
+            "e1",
+            "e30"
+          ],
+          "description": "U.S. Attorney Loretta Lynch (e17) announced the recovery of the painting (e1). The museum plans to display the painting in May (e30). Hence, the announcement connects directly to an upcoming public exhibition in May.",
+          "confidence": 0.94
+        },
+        {
+          "path": [
+            "e14",
+            "e1",
+            "e19"
+          ],
+          "description": "Federal prosecutors in Brooklyn (e14) announced the forfeiture of the painting (e1). The painting was acquired by U.S. Customs and Border Protection (e19). This chain indicates that legal action led to the customs seizure of the artwork.",
+          "confidence": 0.94
+        }
+      ]
+    },
+    "grader_reports": [
+      {
+        "overall_score": 0.42,
+        "issues": [
+          {
+            "issue_type": "WRONG_TYPE",
+            "element_id": "entity_2 (first occurrence)",
+            "description": "The ID **entity_2** is used for two different entities \u2013 the location *Paris* and the product *La Coiffeuse*. IDs must be unique. Rename one of them (e.g.,\u202fentity_20 for *La Coiffeuse*) and update all relations that refer to it.",
+            "severity": "high"
+          },
+          {
+            "issue_type": "WRONG_TYPE",
+            "element_id": "entity_3 (first occurrence)",
+            "description": "The ID **entity_3** is reused for *The Hairdresser* (a painting) and later for *Loretta Lynch* (a person). IDs must be unique. Assign a new ID to one of the entities and adjust the relations accordingly.",
+            "severity": "high"
+          },
+          {
+            "issue_type": "WRONG_TYPE",
+            "element_id": "entity_4 (first occurrence)",
+            "description": "The ID **entity_4** is used for both *Pablo Picasso* and *Federal prosecutors*. Duplicate IDs cause ambiguity. Give each distinct entity a separate ID.",
+            "severity": "high"
+          },
+          {
+            "issue_type": "WRONG_TYPE",
+            "element_id": "entity_5 (first occurrence)",
+            "description": "The ID **entity_5** appears for both *United States Department of Justice* and *National Museums of France*. Duplicate IDs violate the schema; rename one of them.",
+            "severity": "high"
+          },
+          {
+            "issue_type": "WRONG_TYPE",
+            "element_id": "entity_6 (first occurrence)",
+            "description": "The ID **entity_6** is used for *U.S. customs authorities* and later for *Loretta E. Lynch*. Duplicate IDs must be fixed.",
+            "severity": "high"
+          },
+          {
+            "issue_type": "WRONG_TYPE",
+            "element_id": "entity_2 (second occurrence)",
+            "description": "The entity named **La Coiffeuse** is typed as **PRODUCT**. While PRODUCT is an allowed type, the more appropriate type would be **CONCEPT** or a dedicated art\u2011work type; using PRODUCT can mislead downstream consumers.",
+            "severity": "medium"
+          },
+          {
+            "issue_type": "WRONG_TYPE",
+            "element_id": "entity_3 (second occurrence)",
+            "description": "The entity named **Loretta Lynch** is typed as **PERSON**, which is correct, but it shares the same ID as the painting *The Hairdresser* (see earlier duplicate\u2011ID issue).",
+            "severity": "high"
+          },
+          {
+            "issue_type": "CONTRADICTION",
+            "element_id": null,
+            "description": "Relation **entity_1 \u2192 entity_2** appears twice with different types: *LOCATED_IN* (Pompidou Centre located in Paris) and *RELATED_TO* (Pompidou Centre related to Paris). The *RELATED_TO* edge is redundant and conflicts with the more precise *LOCATED_IN* edge. Remove the duplicate or change its type to a non\u2011conflicting one.",
+            "severity": "medium"
+          },
+          {
+            "issue_type": "CONTRADICTION",
+            "element_id": null,
+            "description": "Relation **entity_1 \u2192 entity_3** is labeled *LOCATED_IN* linking the Pompidou Centre to the painting *The Hairdresser*. A painting cannot be a location, so the relation type is incorrect and contradicts the semantic meaning of *LOCATED_IN*.",
+            "severity": "high"
+          },
+          {
+            "issue_type": "WRONG_TYPE",
+            "element_id": null,
+            "description": "Relation **entity_3 \u2192 entity_4** uses *AFFILIATED_WITH* to express that the painting *The Hairdresser* was created by Pablo Picasso. The allowed schema does not include a creator relation; a more suitable type would be *RELATED_TO* (or a new type such as *CREATED_BY* if allowed). The current type misrepresents the nature of the relationship.",
+            "severity": "medium"
+          },
+          {
+            "issue_type": "WEAK_EVIDENCE",
+            "element_id": null,
+            "description": "Many relations rely on quotes that describe the painting but do not explicitly state the relationship. For example, the *ACQUIRED* relation between *The Hairdresser* and *U.S. customs authorities* uses the sentence \"now that it has been recovered by U.S. customs authorities\" which implies acquisition but does not state it directly. Clarify the evidence or add a more explicit source sentence.",
+            "severity": "low"
+          },
+          {
+            "issue_type": "MISSING_RELATION",
+            "element_id": null,
+            "description": "The graph does not contain a relation showing that the painting *La Coiffeuse* (entity_2 \u2013 second occurrence) was **bequeathed to** France's National Museum (entity_6). Adding a relation (e.g., *RELATED_TO* or a custom *BEQUEATHED_TO* if allowed) would capture a key fact from the source.",
+            "severity": "medium"
+          },
+          {
+            "issue_type": "MISSING_RELATION",
+            "element_id": null,
+            "description": "The fact that *Federal Express* shipped the painting from Belgium to the United States is captured, but a relation indicating that the shipment was **processed by** *Federal Customs and Border Protection* (entity_8) is missing. Adding that relation would reflect the chain of custody described in the documents.",
+            "severity": "low"
+          },
+          {
+            "issue_type": "WRONG_TYPE",
+            "element_id": "relation entity_1 \u2192 entity_5 (AFFILIATED_WITH)",
+            "description": "The relation claims the oil painting is owned by the French government (entity_5) and uses *AFFILIATED_WITH*. Ownership is not the same as affiliation; the allowed relation types do not include an ownership predicate, so this edge is semantically inaccurate.",
+            "severity": "medium"
+          },
+          {
+            "issue_type": "WRONG_TYPE",
+            "element_id": "relation entity_6 \u2192 entity_1 (ANNOUNCED)",
+            "description": "The source entity is *U.S. customs authorities* (entity_6) and the target is the Pompidou Centre (entity_1) with the relation type *ANNOUNCED*. The evidence sentence is about filing a civil complaint, not an announcement from customs authorities; the relation type is inappropriate.",
+            "severity": "low"
+          }
+        ],
+        "passes_threshold": false,
+        "feedback_summary": "The graph suffers from severe ID duplication (multiple entities share the same ID), several incorrect relation types (e.g., using LOCATED_IN for a painting, AFFILIATED_WITH for ownership/creation), and contradictory edges. Fix the duplicate IDs, replace inaccurate relation types with semantically appropriate ones, add missing crucial relations about bequeathal and customs handling, and tighten evidence to directly support each relation. Once these issues are resolved the KG will be much more reliable."
+      },
+      {
+        "overall_score": 0.78,
+        "issues": [
+          {
+            "issue_type": "WRONG_TYPE",
+            "element_id": "e1->e2",
+            "description": "The relation \"AFFILIATED_WITH\" is used between the painting (PRODUCT) and its creator (PERSON). The allowed schema does not include a creator\u2011type relation; \"RELATED_TO\" or a custom \"CREATED_BY\" would be more appropriate.",
+            "severity": "high"
+          },
+          {
+            "issue_type": "WRONG_TYPE",
+            "element_id": "e1->e23",
+            "description": "The painting is linked to the French government with \"AFFILIATED_WITH\". This implies ownership, which is not an affiliation. Use \"RELATED_TO\" or a dedicated ownership relation if available.",
+            "severity": "medium"
+          },
+          {
+            "issue_type": "WRONG_TYPE",
+            "element_id": "e1->e24",
+            "description": "The painting is linked to the National Museums of France with \"AFFILIATED_WITH\". As above, this should be a \"RELATED_TO\" (or ownership) relation, not affiliation.",
+            "severity": "medium"
+          },
+          {
+            "issue_type": "WRONG_TYPE",
+            "element_id": "e13->e1",
+            "description": "The entity \"Robert\" (PERSON) is linked to the painting with \"AFFILIATED_WITH\". The evidence shows he was the shipper, so the correct relation type would be \"RELATED_TO\" or a more specific \"SHIPPED_BY\" (not in the allowed list).",
+            "severity": "high"
+          },
+          {
+            "issue_type": "MISSING_RELATION",
+            "element_id": null,
+            "description": "The United States Department of Justice (e16) provided the photo of the painting, but no relation is recorded. Add a \"RELATED_TO\" relation between e16 and e1 (e.g., \"provided photo of\").",
+            "severity": "low"
+          },
+          {
+            "issue_type": "WEAK_EVIDENCE",
+            "element_id": "e1->e10",
+            "description": "The \"RESULTED_IN\" relation is justified only by the phrase \"seized at the Port of Newark\", which indicates an event but does not explicitly state a causal result. Consider re\u2011classifying this as a \"RELATED_TO\" or adding supporting context.",
+            "severity": "low"
+          }
+        ],
+        "passes_threshold": false,
+        "feedback_summary": "Several relations misuse the \"AFFILIATED_WITH\" type where a creator, owner, or shipper relationship is intended; replace them with \"RELATED_TO\" or a more suitable custom type. Add a missing link between the Department of Justice and the painting, and reconsider the causal \"RESULTED_IN\" relation which is only weakly supported. Address these issues to improve schema compliance and evidential strength."
+      }
+    ],
+    "iterations_used": 2,
+    "final_score": 0.78,
+    "metadata": {
+      "ontology_entity_types": [
+        "PERSON",
+        "ORGANIZATION",
+        "LOCATION",
+        "EVENT",
+        "CONCEPT",
+        "DATE",
+        "PRODUCT",
+        "OTHER"
+      ],
+      "ontology_relation_types": [
+        "LOCATED_IN",
+        "AFFILIATED_WITH",
+        "ANNOUNCED",
+        "ACQUIRED",
+        "PARTICIPATED_IN",
+        "RESULTED_IN",
+        "CAUSES",
+        "CONTRADICTS",
+        "SUPPORTS",
+        "RELATED_TO"
+      ],
+      "domain_context": "general news articles"
+    }
+  },
+  "generated_at": "2026-08-13T06:17:50.025851+00:00"
+}

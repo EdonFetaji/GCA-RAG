@@ -1,0 +1,148 @@
+{
+  "clean_count": 13,
+  "split_sizes": {
+    "train": 4,
+    "val": 1,
+    "test": 0
+  },
+  "class_balance": {
+    "contradictions": 39,
+    "fragmentation": 39,
+    "missing_entities": 39
+  },
+  "split_x_type": {
+    "val": {
+      "contradictions": 3,
+      "fragmentation": 3,
+      "missing_entities": 3
+    },
+    "UNASSIGNED": {
+      "contradictions": 24,
+      "fragmentation": 24,
+      "missing_entities": 24
+    },
+    "train": {
+      "contradictions": 12,
+      "fragmentation": 12,
+      "missing_entities": 12
+    }
+  },
+  "problem_count": 0,
+  "problems": [],
+  "spot_check": [
+    {
+      "cluster_idx": 6,
+      "corruption_type": "contradictions",
+      "severity": 0.1,
+      "clean_entities": 30,
+      "clean_relations": 10,
+      "corrupted_entities": 30,
+      "corrupted_relations": 10,
+      "corruption_metadata": {
+        "corruption_type": "contradictions",
+        "severity": 0.1,
+        "flipped_relations": 1
+      }
+    },
+    {
+      "cluster_idx": 11,
+      "corruption_type": "fragmentation",
+      "severity": 0.3,
+      "clean_entities": 30,
+      "clean_relations": 22,
+      "corrupted_entities": 30,
+      "corrupted_relations": 15,
+      "corruption_metadata": {
+        "corruption_type": "fragmentation",
+        "severity": 0.3,
+        "removed_relations": 7
+      }
+    },
+    {
+      "cluster_idx": 0,
+      "corruption_type": "fragmentation",
+      "severity": 0.1,
+      "clean_entities": 47,
+      "clean_relations": 48,
+      "corrupted_entities": 47,
+      "corrupted_relations": 43,
+      "corruption_metadata": {
+        "corruption_type": "fragmentation",
+        "severity": 0.1,
+        "removed_relations": 5
+      }
+    },
+    {
+      "cluster_idx": 7,
+      "corruption_type": "fragmentation",
+      "severity": 0.2,
+      "clean_entities": 31,
+      "clean_relations": 22,
+      "corrupted_entities": 31,
+      "corrupted_relations": 18,
+      "corruption_metadata": {
+        "corruption_type": "fragmentation",
+        "severity": 0.2,
+        "removed_relations": 4
+      }
+    },
+    {
+      "cluster_idx": 13,
+      "corruption_type": "missing_entities",
+      "severity": 0.3,
+      "clean_entities": 11,
+      "clean_relations": 5,
+      "corrupted_entities": 8,
+      "corrupted_relations": 0,
+      "corruption_metadata": {
+        "corruption_type": "missing_entities",
+        "severity": 0.3,
+        "removed_entities": 3,
+        "removed_relations": 5
+      }
+    },
+    {
+      "cluster_idx": 13,
+      "corruption_type": "fragmentation",
+      "severity": 0.2,
+      "clean_entities": 11,
+      "clean_relations": 5,
+      "corrupted_entities": 11,
+      "corrupted_relations": 4,
+      "corruption_metadata": {
+        "corruption_type": "fragmentation",
+        "severity": 0.2,
+        "removed_relations": 1
+      }
+    },
+    {
+      "cluster_idx": 13,
+      "corruption_type": "contradictions",
+      "severity": 0.2,
+      "clean_entities": 11,
+      "clean_relations": 5,
+      "corrupted_entities": 11,
+      "corrupted_relations": 5,
+      "corruption_metadata": {
+        "corruption_type": "contradictions",
+        "severity": 0.2,
+        "flipped_relations": 1
+      }
+    },
+    {
+      "cluster_idx": 11,
+      "corruption_type": "missing_entities",
+      "severity": 0.3,
+      "clean_entities": 30,
+      "clean_relations": 22,
+      "corrupted_entities": 21,
+      "corrupted_relations": 4,
+      "corruption_metadata": {
+        "corruption_type": "missing_entities",
+        "severity": 0.3,
+        "removed_entities": 9,
+        "removed_relations": 18
+      }
+    }
+  ]
+}

@@ -1,0 +1,2563 @@
+{
+  "converged": true,
+  "iterations": 2,
+  "errors": [],
+  "knowledge_graph": {
+    "entities": [
+      {
+        "id": "beverly_perdue",
+        "name": "Beverly Perdue",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "One-term incumbent Democratic Gov. Beverly Perdue, the first woman to hold the state's top office"
+          },
+          {
+            "document_index": 1,
+            "quote": "One-term incumbent Democratic Gov. Beverly Perdue, the first woman to hold the state's top office"
+          }
+        ]
+      },
+      {
+        "id": "north_carolina",
+        "name": "North Carolina",
+        "type": "STATE",
+        "document_frequency": 2,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "North Carolina: One-term incumbent Democratic Gov. Beverly Perdue"
+          },
+          {
+            "document_index": 1,
+            "quote": "North Carolina: One-term incumbent Democratic Gov. Beverly Perdue"
+          }
+        ]
+      },
+      {
+        "id": "brian_schweitzer",
+        "name": "Brian Schweitzer",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Popular Democratic Gov. Brian Schweitzer \u0000 he won his last election with 65 percent of the vote"
+          },
+          {
+            "document_index": 1,
+            "quote": "Popular Democratic Gov. Brian Schweitzer \u0000 he won his last election with 65 percent of the vote"
+          }
+        ]
+      },
+      {
+        "id": "montana",
+        "name": "Montana",
+        "type": "STATE",
+        "document_frequency": 2,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Montana: Popular Democratic Gov. Brian Schweitzer"
+          },
+          {
+            "document_index": 1,
+            "quote": "Montana: Popular Democratic Gov. Brian Schweitzer"
+          }
+        ]
+      },
+      {
+        "id": "steve_bullock",
+        "name": "Steve Bullock",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 0.98,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "The state's Democratic Attorney General Steve Bullock is trying to keep the seat"
+          },
+          {
+            "document_index": 1,
+            "quote": "The state's Democratic Attorney General Steve Bullock is trying to keep the seat"
+          }
+        ]
+      },
+      {
+        "id": "john_lynch",
+        "name": "John Lynch",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 0.98,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "retiring Democratic Gov. John Lynch. Her opponent is lawyer Ovide Lamontagne"
+          },
+          {
+            "document_index": 1,
+            "quote": "retiring Democratic Gov. John Lynch. Her opponent is lawyer Ovide Lamontagne"
+          }
+        ]
+      },
+      {
+        "id": "new_hampshire",
+        "name": "New Hampshire",
+        "type": "STATE",
+        "document_frequency": 2,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "New Hampshire: Former Democratic state Sen. Maggie Hassan"
+          },
+          {
+            "document_index": 1,
+            "quote": "New Hampshire: Former Democratic state Sen. Maggie Hassan"
+          }
+        ]
+      },
+      {
+        "id": "rob_mckenna",
+        "name": "Rob McKenna",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 0.98,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "His opponent is the state's Republican Attorney General Rob McKenna"
+          },
+          {
+            "document_index": 1,
+            "quote": "His opponent is the state's Republican Attorney General Rob McKenna"
+          }
+        ]
+      },
+      {
+        "id": "washington",
+        "name": "Washington",
+        "type": "STATE",
+        "document_frequency": 2,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Washington: The state's governorship has been in Democratic hands for 32 years, and former U.S. Rep. Jay Inslee"
+          },
+          {
+            "document_index": 1,
+            "quote": "Washington: The state's governorship has been in Democratic hands for 32 years, and former Rep. Jay Inslee"
+          }
+        ]
+      },
+      {
+        "id": "jay_inslee",
+        "name": "Jay Inslee",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 0.98,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "former U.S. Rep. Jay Inslee is in a dead-heat battle"
+          },
+          {
+            "document_index": 1,
+            "quote": "former Rep. Jay Inslee is in a dead-heat battle"
+          }
+        ]
+      },
+      {
+        "id": "jack_dalrymple",
+        "name": "Jack Dalrymple",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Republican Govs. Jack Dalrymple in North Dakota and Gary Herbert in Utah"
+          },
+          {
+            "document_index": 1,
+            "quote": "Republican governors Jack Dalrymple in North Dakota and Gary Herbert in Utah"
+          }
+        ]
+      },
+      {
+        "id": "north_dakota",
+        "name": "North Dakota",
+        "type": "STATE",
+        "document_frequency": 2,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Jack Dalrymple in North Dakota"
+          },
+          {
+            "document_index": 1,
+            "quote": "Jack Dalrymple in North Dakota"
+          }
+        ]
+      },
+      {
+        "id": "utah",
+        "name": "Utah",
+        "type": "STATE",
+        "document_frequency": 2,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Gary Herbert in Utah"
+          },
+          {
+            "document_index": 1,
+            "quote": "Gary Herbert in Utah"
+          }
+        ]
+      },
+      {
+        "id": "gary_herbert",
+        "name": "Gary Herbert",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Gary Herbert in Utah"
+          },
+          {
+            "document_index": 1,
+            "quote": "Gary Herbert in Utah"
+          }
+        ]
+      },
+      {
+        "id": "peter_shumlin",
+        "name": "Peter Shumlin",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Democratic Govs. Peter Shumlin in Vermont"
+          },
+          {
+            "document_index": 1,
+            "quote": "Democratic governors Peter Shumlin in Vermont"
+          }
+        ]
+      },
+      {
+        "id": "vermont",
+        "name": "Vermont",
+        "type": "STATE",
+        "document_frequency": 2,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Peter Shumlin in Vermont"
+          },
+          {
+            "document_index": 1,
+            "quote": "Peter Shumlin in Vermont"
+          }
+        ]
+      },
+      {
+        "id": "delaware",
+        "name": "Delaware",
+        "type": "STATE",
+        "document_frequency": 2,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Jack Markell in Delaware"
+          },
+          {
+            "document_index": 1,
+            "quote": "Jack Markell in Delaware"
+          }
+        ]
+      },
+      {
+        "id": "jack_markell",
+        "name": "Jack Markell",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "So are Democratic Govs. Peter Shumlin in Vermont and Jack Markell in Delaware."
+          },
+          {
+            "document_index": 1,
+            "quote": "So are Democratic governors Peter Shumlin in Vermont and Jack Markell in Delaware."
+          }
+        ]
+      },
+      {
+        "id": "earl_ray_tomblin",
+        "name": "Earl Ray Tomblin",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "in West Virginia, where Gov. Earl Ray Tomblin"
+          },
+          {
+            "document_index": 1,
+            "quote": "in West Virginia, where Gov. Earl Ray Tomblin"
+          }
+        ]
+      },
+      {
+        "id": "west_virginia",
+        "name": "West Virginia",
+        "type": "STATE",
+        "document_frequency": 2,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "in West Virginia, where Gov. Earl Ray Tomblin"
+          },
+          {
+            "document_index": 1,
+            "quote": "in West Virginia, where Gov. Earl Ray Tomblin"
+          }
+        ]
+      },
+      {
+        "id": "lincoln_chafee",
+        "name": "Lincoln Chafee",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Rhode Island's Gov. Lincoln Chafee is an Independent"
+          },
+          {
+            "document_index": 1,
+            "quote": "Rhode Island's Gov. Lincoln Chafee is an Independent"
+          }
+        ]
+      },
+      {
+        "id": "rhode_island",
+        "name": "Rhode Island",
+        "type": "STATE",
+        "document_frequency": 2,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Rhode Island's Gov. Lincoln Chafee is an Independent"
+          },
+          {
+            "document_index": 1,
+            "quote": "Rhode Island's Gov. Lincoln Chafee is an Independent"
+          }
+        ]
+      },
+      {
+        "id": "rick_scott",
+        "name": "Rick Scott",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Three Republican governors, including Rick Scott of Florida and Scott Walker of Wisconsin, rejected a share of the money"
+          },
+          {
+            "document_index": 1,
+            "quote": "Three Republican governors, including Rick Scott of Florida and Scott Walker of Wisconsin, rejected a share of the money"
+          }
+        ]
+      },
+      {
+        "id": "florida",
+        "name": "Florida",
+        "type": "STATE",
+        "document_frequency": 2,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Rick Scott of Florida"
+          },
+          {
+            "document_index": 1,
+            "quote": "Rick Scott of Florida"
+          }
+        ]
+      },
+      {
+        "id": "scott_walker",
+        "name": "Scott Walker",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Three Republican governors, including Rick Scott of Florida and Scott Walker of Wisconsin, rejected a share of the money"
+          },
+          {
+            "document_index": 1,
+            "quote": "Three Republican governors, including Rick Scott of Florida and Scott Walker of Wisconsin, rejected a share of the money"
+          }
+        ]
+      },
+      {
+        "id": "wisconsin",
+        "name": "Wisconsin",
+        "type": "STATE",
+        "document_frequency": 2,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Scott Walker of Wisconsin"
+          },
+          {
+            "document_index": 1,
+            "quote": "Scott Walker of Wisconsin"
+          }
+        ]
+      },
+      {
+        "id": "walter_dalton",
+        "name": "Walter Dalton",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 0.98,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "who is facing Perdue's lieutenant governor, Walter Dalton"
+          },
+          {
+            "document_index": 1,
+            "quote": "who is facing Perdue's lieutenant governor, Walter Dalton"
+          }
+        ]
+      },
+      {
+        "id": "indiana",
+        "name": "Indiana",
+        "type": "STATE",
+        "document_frequency": 2,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "GOP Rep. Mike Pence in Indiana are expected to win."
+          },
+          {
+            "document_index": 1,
+            "quote": "GOP Rep. Mike Pence in Indiana are expected to win."
+          }
+        ]
+      },
+      {
+        "id": "missouri",
+        "name": "Missouri",
+        "type": "STATE",
+        "document_frequency": 2,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Democrats are likely to hold on to their seats in West Virginia and Missouri, and are expected to notch safe wins"
+          },
+          {
+            "document_index": 1,
+            "quote": "Democrats are likely hold on to their seats in West Virginia and Missouri; and expected to notch safe wins"
+          }
+        ]
+      },
+      {
+        "id": "mike_pence",
+        "name": "Mike Pence",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 0.98,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "GOP Rep. Mike Pence in Indiana are expected to win."
+          },
+          {
+            "document_index": 1,
+            "quote": "GOP Rep. Mike Pence in Indiana are expected to win."
+          }
+        ]
+      },
+      {
+        "id": "jay_nixon",
+        "name": "Jay Nixon",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 0.98,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "where Jay Nixon is running for a second term against Republican Dave Spence"
+          },
+          {
+            "document_index": 1,
+            "quote": "where Jay Nixon is running for a second term against Republican Dave Spence"
+          }
+        ]
+      },
+      {
+        "id": "pat_mccrory",
+        "name": "Pat McCrory",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 0.98,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "trailing Republican candidate Pat McCrory."
+          },
+          {
+            "document_index": 1,
+            "quote": "trailing Republican candidate Pat McCrory."
+          }
+        ]
+      },
+      {
+        "id": "maggie_hassan",
+        "name": "Maggie Hassan",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 0.98,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Former Democratic state Sen. Maggie Hassan has also promised a continuation of the policies of her predecessor"
+          },
+          {
+            "document_index": 1,
+            "quote": "Former Democratic state Sen. Maggie Hassan has also promised a continuation of the policies of her predecessor"
+          }
+        ]
+      }
+    ],
+    "relations": [
+      {
+        "source": "beverly_perdue",
+        "target": "north_carolina",
+        "relation_type": "GOVERNOR_OF",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "North Carolina: One-term incumbent Democratic Gov. Beverly Perdue, the first woman to hold the state's top office"
+          },
+          {
+            "document_index": 1,
+            "quote": "North Carolina: One-term incumbent Democratic Gov. Beverly Perdue, the first woman to hold the state's top office"
+          }
+        ]
+      },
+      {
+        "source": "brian_schweitzer",
+        "target": "montana",
+        "relation_type": "GOVERNOR_OF",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Montana: Popular Democratic Gov. Brian Schweitzer \u0000 he won his last election with 65 percent of the vote"
+          },
+          {
+            "document_index": 1,
+            "quote": "Montana: Popular Democratic Gov. Brian Schweitzer \u0000 he won his last election with 65 percent of the vote"
+          }
+        ]
+      },
+      {
+        "source": "john_lynch",
+        "target": "new_hampshire",
+        "relation_type": "GOVERNOR_OF",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.97,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "New Hampshire: Former Democratic state Sen. Maggie Hassan has also promised a continuation of the policies of her predecessor, retiring Democratic Gov. John Lynch"
+          },
+          {
+            "document_index": 1,
+            "quote": "New Hampshire: Former Democratic state Sen. Maggie Hassan has also promised a continuation of the policies of her predecessor, retiring Democratic Gov. John Lynch"
+          }
+        ]
+      },
+      {
+        "source": "jack_dalrymple",
+        "target": "north_dakota",
+        "relation_type": "GOVERNOR_OF",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.98,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Republican Govs. Jack Dalrymple in North Dakota and Gary Herbert in Utah"
+          },
+          {
+            "document_index": 1,
+            "quote": "Republican governors Jack Dalrymple in North Dakota and Gary Herbert in Utah"
+          }
+        ]
+      },
+      {
+        "source": "gary_herbert",
+        "target": "utah",
+        "relation_type": "GOVERNOR_OF",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.98,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Republican Govs. Jack Dalrymple in North Dakota and Gary Herbert in Utah"
+          },
+          {
+            "document_index": 1,
+            "quote": "Republican governors Jack Dalrymple in North Dakota and Gary Herbert in Utah"
+          }
+        ]
+      },
+      {
+        "source": "peter_shumlin",
+        "target": "vermont",
+        "relation_type": "GOVERNOR_OF",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.98,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "So are Democratic Govs. Peter Shumlin in Vermont and Jack Markell in Delaware."
+          },
+          {
+            "document_index": 1,
+            "quote": "So are Democratic governors Peter Shumlin in Vermont and Jack Markell in Delaware."
+          }
+        ]
+      },
+      {
+        "source": "jack_markell",
+        "target": "delaware",
+        "relation_type": "GOVERNOR_OF",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.98,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "So are Democratic Govs. Peter Shumlin in Vermont and Jack Markell in Delaware."
+          },
+          {
+            "document_index": 1,
+            "quote": "So are Democratic governors Peter Shumlin in Vermont and Jack Markell in Delaware."
+          }
+        ]
+      },
+      {
+        "source": "earl_ray_tomblin",
+        "target": "west_virginia",
+        "relation_type": "GOVERNOR_OF",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.98,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "in West Virginia, where Gov. Earl Ray Tomblin"
+          },
+          {
+            "document_index": 1,
+            "quote": "in West Virginia, where Gov. Earl Ray Tomblin"
+          }
+        ]
+      },
+      {
+        "source": "lincoln_chafee",
+        "target": "rhode_island",
+        "relation_type": "GOVERNOR_OF",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Rhode Island's Gov. Lincoln Chafee is an Independent"
+          },
+          {
+            "document_index": 1,
+            "quote": "Rhode Island's Gov. Lincoln Chafee is an Independent"
+          }
+        ]
+      },
+      {
+        "source": "steve_bullock",
+        "target": "montana",
+        "relation_type": "ATTORNEY_GENERAL_OF",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.96,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Montana: Popular Democratic Gov. Brian Schweitzer \u0000 he won his last election with 65 percent of the vote \u0000 has reached his two-term limit. The state's Democratic Attorney General Steve Bullock"
+          },
+          {
+            "document_index": 1,
+            "quote": "Montana: Popular Democratic Gov. Brian Schweitzer \u0000 he won his last election with 65 percent of the vote \u0000 has reached his two-term limit. The state's Democratic Attorney General Steve Bullock"
+          }
+        ]
+      },
+      {
+        "source": "rob_mckenna",
+        "target": "washington",
+        "relation_type": "ATTORNEY_GENERAL_OF",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.96,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Washington: The state's governorship has been in Democratic hands for 32 years, and former U.S. Rep. Jay Inslee is in a dead-heat battle to keep it that way. His opponent is the state's Republican Attorney General Rob McKenna"
+          },
+          {
+            "document_index": 1,
+            "quote": "Washington: The state's governorship has been in Democratic hands for 32 years, and former Rep. Jay Inslee is in a dead-heat battle to keep it that way. His opponent is the state's Republican Attorney General Rob McKenna"
+          }
+        ]
+      },
+      {
+        "source": "jay_inslee",
+        "target": "washington",
+        "relation_type": "CANDIDATE_FOR",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Washington: The state's governorship has been in Democratic hands for 32 years, and former U.S. Rep. Jay Inslee is in a dead-heat battle"
+          },
+          {
+            "document_index": 1,
+            "quote": "Washington: The state's governorship has been in Democratic hands for 32 years, and former Rep. Jay Inslee is in a dead-heat battle"
+          }
+        ]
+      },
+      {
+        "source": "rick_scott",
+        "target": "florida",
+        "relation_type": "GOVERNOR_OF",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.97,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Three Republican governors, including Rick Scott of Florida and Scott Walker of Wisconsin, rejected a share of the money"
+          },
+          {
+            "document_index": 1,
+            "quote": "Three Republican governors, including Rick Scott of Florida and Scott Walker of Wisconsin, rejected a share of the money"
+          }
+        ]
+      },
+      {
+        "source": "scott_walker",
+        "target": "wisconsin",
+        "relation_type": "GOVERNOR_OF",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.97,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Three Republican governors, including Rick Scott of Florida and Scott Walker of Wisconsin, rejected a share of the money"
+          },
+          {
+            "document_index": 1,
+            "quote": "Three Republican governors, including Rick Scott of Florida and Scott Walker of Wisconsin, rejected a share of the money"
+          }
+        ]
+      },
+      {
+        "source": "walter_dalton",
+        "target": "north_carolina",
+        "relation_type": "LIEUTENANT_GOVERNOR_OF",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.92,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "North Carolina: One-term incumbent Democratic Gov. Beverly Perdue, the first woman to hold the state's top office, announced in January that she would not seek re-election after polls showed her with high disapproval ratings and trailing Republican candidate Pat McCrory. \n \n The seat is expected to be won by McCrory, a former Charlotte mayor, who is facing Perdue's lieutenant governor, Walter Dalton"
+          },
+          {
+            "document_index": 1,
+            "quote": "North Carolina: One-term incumbent Democratic Gov. Beverly Perdue, the first woman to hold the state's top office, announced in January she would not seek re-election after polls showed her with high disapproval ratings and trailing Republican candidate Pat McCrory. \n \n The seat is expected to be won by McCrory, a former Charlotte mayor, who is facing Perdue's lieutenant governor, Walter Dalton"
+          }
+        ]
+      },
+      {
+        "source": "steve_bullock",
+        "target": "montana",
+        "relation_type": "CANDIDATE_FOR",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.94,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Montana: Popular Democratic Gov. Brian Schweitzer \u0000 he won his last election with 65 percent of the vote \u0000 has reached his two-term limit. The state's Democratic Attorney General Steve Bullock is trying to keep the seat"
+          },
+          {
+            "document_index": 1,
+            "quote": "Montana: Popular Democratic Gov. Brian Schweitzer \u0000 he won his last election with 65 percent of the vote \u0000 has reached his two-term limit. The state's Democratic Attorney General Steve Bullock is trying to keep the seat"
+          }
+        ]
+      },
+      {
+        "source": "rob_mckenna",
+        "target": "washington",
+        "relation_type": "CANDIDATE_FOR",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.94,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Washington: The state's governorship has been in Democratic hands for 32 years, and former U.S. Rep. Jay Inslee is in a dead-heat battle to keep it that way. His opponent is the state's Republican Attorney General Rob McKenna"
+          },
+          {
+            "document_index": 1,
+            "quote": "Washington: The state's governorship has been in Democratic hands for 32 years, and former Rep. Jay Inslee is in a dead-heat battle to keep it that way. His opponent is the state's Republican Attorney General Rob McKenna"
+          }
+        ]
+      },
+      {
+        "source": "pat_mccrory",
+        "target": "north_carolina",
+        "relation_type": "CANDIDATE_FOR",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.96,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "North Carolina: One-term incumbent Democratic Gov. Beverly Perdue, the first woman to hold the state's top office, announced in January that she would not seek re-election after polls showed her with high disapproval ratings and trailing Republican candidate Pat McCrory."
+          },
+          {
+            "document_index": 1,
+            "quote": "North Carolina: One-term incumbent Democratic Gov. Beverly Perdue, the first woman to hold the state's top office, announced in January she would not seek re-election after polls showed her with high disapproval ratings and trailing Republican candidate Pat McCrory."
+          }
+        ]
+      },
+      {
+        "source": "maggie_hassan",
+        "target": "new_hampshire",
+        "relation_type": "CANDIDATE_FOR",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.96,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "New Hampshire: Former Democratic state Sen. Maggie Hassan has also promised a continuation of the policies of her predecessor, retiring Democratic Gov. John Lynch."
+          },
+          {
+            "document_index": 1,
+            "quote": "New Hampshire: Former Democratic state Sen. Maggie Hassan has also promised a continuation of the policies of her predecessor, retiring Democratic Gov. John Lynch."
+          }
+        ]
+      },
+      {
+        "source": "mike_pence",
+        "target": "indiana",
+        "relation_type": "CANDIDATE_FOR",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Republican Govs. Jack Dalrymple in North Dakota and Gary Herbert in Utah, and GOP Rep. Mike Pence in Indiana are expected to win."
+          },
+          {
+            "document_index": 1,
+            "quote": "Republican governors Jack Dalrymple in North Dakota and Gary Herbert in Utah, and GOP Rep. Mike Pence in Indiana are expected to win."
+          }
+        ]
+      },
+      {
+        "source": "jay_nixon",
+        "target": "missouri",
+        "relation_type": "GOVERNOR_OF",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.96,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Democrats are also hoping to hold on to the governorship in Missouri, where Jay Nixon is running for a second term against Republican Dave Spence"
+          },
+          {
+            "document_index": 1,
+            "quote": "Democrats are also hoping to hold on to the governorship in Missouri, where Jay Nixon is running for a second term against Republican Dave Spence"
+          }
+        ]
+      }
+    ]
+  },
+  "grounded_graph": {
+    "graph": {
+      "entities": [
+        {
+          "id": "beverly_perdue",
+          "name": "Beverly Perdue",
+          "type": "PERSON",
+          "document_frequency": 2,
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "One-term incumbent Democratic Gov. Beverly Perdue, the first woman to hold the state's top office"
+            },
+            {
+              "document_index": 1,
+              "quote": "One-term incumbent Democratic Gov. Beverly Perdue, the first woman to hold the state's top office"
+            }
+          ]
+        },
+        {
+          "id": "north_carolina",
+          "name": "North Carolina",
+          "type": "STATE",
+          "document_frequency": 2,
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "North Carolina: One-term incumbent Democratic Gov. Beverly Perdue"
+            },
+            {
+              "document_index": 1,
+              "quote": "North Carolina: One-term incumbent Democratic Gov. Beverly Perdue"
+            }
+          ]
+        },
+        {
+          "id": "brian_schweitzer",
+          "name": "Brian Schweitzer",
+          "type": "PERSON",
+          "document_frequency": 2,
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "Popular Democratic Gov. Brian Schweitzer \u0000 he won his last election with 65 percent of the vote"
+            },
+            {
+              "document_index": 1,
+              "quote": "Popular Democratic Gov. Brian Schweitzer \u0000 he won his last election with 65 percent of the vote"
+            }
+          ]
+        },
+        {
+          "id": "montana",
+          "name": "Montana",
+          "type": "STATE",
+          "document_frequency": 2,
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "Montana: Popular Democratic Gov. Brian Schweitzer"
+            },
+            {
+              "document_index": 1,
+              "quote": "Montana: Popular Democratic Gov. Brian Schweitzer"
+            }
+          ]
+        },
+        {
+          "id": "steve_bullock",
+          "name": "Steve Bullock",
+          "type": "PERSON",
+          "document_frequency": 2,
+          "confidence": 0.98,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "The state's Democratic Attorney General Steve Bullock is trying to keep the seat"
+            },
+            {
+              "document_index": 1,
+              "quote": "The state's Democratic Attorney General Steve Bullock is trying to keep the seat"
+            }
+          ]
+        },
+        {
+          "id": "john_lynch",
+          "name": "John Lynch",
+          "type": "PERSON",
+          "document_frequency": 2,
+          "confidence": 0.98,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "retiring Democratic Gov. John Lynch. Her opponent is lawyer Ovide Lamontagne"
+            },
+            {
+              "document_index": 1,
+              "quote": "retiring Democratic Gov. John Lynch. Her opponent is lawyer Ovide Lamontagne"
+            }
+          ]
+        },
+        {
+          "id": "new_hampshire",
+          "name": "New Hampshire",
+          "type": "STATE",
+          "document_frequency": 2,
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "New Hampshire: Former Democratic state Sen. Maggie Hassan"
+            },
+            {
+              "document_index": 1,
+              "quote": "New Hampshire: Former Democratic state Sen. Maggie Hassan"
+            }
+          ]
+        },
+        {
+          "id": "rob_mckenna",
+          "name": "Rob McKenna",
+          "type": "PERSON",
+          "document_frequency": 2,
+          "confidence": 0.98,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "His opponent is the state's Republican Attorney General Rob McKenna"
+            },
+            {
+              "document_index": 1,
+              "quote": "His opponent is the state's Republican Attorney General Rob McKenna"
+            }
+          ]
+        },
+        {
+          "id": "washington",
+          "name": "Washington",
+          "type": "STATE",
+          "document_frequency": 2,
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "Washington: The state's governorship has been in Democratic hands for 32 years, and former U.S. Rep. Jay Inslee"
+            },
+            {
+              "document_index": 1,
+              "quote": "Washington: The state's governorship has been in Democratic hands for 32 years, and former Rep. Jay Inslee"
+            }
+          ]
+        },
+        {
+          "id": "jay_inslee",
+          "name": "Jay Inslee",
+          "type": "PERSON",
+          "document_frequency": 2,
+          "confidence": 0.98,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "former U.S. Rep. Jay Inslee is in a dead-heat battle"
+            },
+            {
+              "document_index": 1,
+              "quote": "former Rep. Jay Inslee is in a dead-heat battle"
+            }
+          ]
+        },
+        {
+          "id": "jack_dalrymple",
+          "name": "Jack Dalrymple",
+          "type": "PERSON",
+          "document_frequency": 2,
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "Republican Govs. Jack Dalrymple in North Dakota and Gary Herbert in Utah"
+            },
+            {
+              "document_index": 1,
+              "quote": "Republican governors Jack Dalrymple in North Dakota and Gary Herbert in Utah"
+            }
+          ]
+        },
+        {
+          "id": "north_dakota",
+          "name": "North Dakota",
+          "type": "STATE",
+          "document_frequency": 2,
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "Jack Dalrymple in North Dakota"
+            },
+            {
+              "document_index": 1,
+              "quote": "Jack Dalrymple in North Dakota"
+            }
+          ]
+        },
+        {
+          "id": "utah",
+          "name": "Utah",
+          "type": "STATE",
+          "document_frequency": 2,
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "Gary Herbert in Utah"
+            },
+            {
+              "document_index": 1,
+              "quote": "Gary Herbert in Utah"
+            }
+          ]
+        },
+        {
+          "id": "gary_herbert",
+          "name": "Gary Herbert",
+          "type": "PERSON",
+          "document_frequency": 2,
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "Gary Herbert in Utah"
+            },
+            {
+              "document_index": 1,
+              "quote": "Gary Herbert in Utah"
+            }
+          ]
+        },
+        {
+          "id": "peter_shumlin",
+          "name": "Peter Shumlin",
+          "type": "PERSON",
+          "document_frequency": 2,
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "Democratic Govs. Peter Shumlin in Vermont"
+            },
+            {
+              "document_index": 1,
+              "quote": "Democratic governors Peter Shumlin in Vermont"
+            }
+          ]
+        },
+        {
+          "id": "vermont",
+          "name": "Vermont",
+          "type": "STATE",
+          "document_frequency": 2,
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "Peter Shumlin in Vermont"
+            },
+            {
+              "document_index": 1,
+              "quote": "Peter Shumlin in Vermont"
+            }
+          ]
+        },
+        {
+          "id": "delaware",
+          "name": "Delaware",
+          "type": "STATE",
+          "document_frequency": 2,
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "Jack Markell in Delaware"
+            },
+            {
+              "document_index": 1,
+              "quote": "Jack Markell in Delaware"
+            }
+          ]
+        },
+        {
+          "id": "jack_markell",
+          "name": "Jack Markell",
+          "type": "PERSON",
+          "document_frequency": 2,
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "So are Democratic Govs. Peter Shumlin in Vermont and Jack Markell in Delaware."
+            },
+            {
+              "document_index": 1,
+              "quote": "So are Democratic governors Peter Shumlin in Vermont and Jack Markell in Delaware."
+            }
+          ]
+        },
+        {
+          "id": "earl_ray_tomblin",
+          "name": "Earl Ray Tomblin",
+          "type": "PERSON",
+          "document_frequency": 2,
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "in West Virginia, where Gov. Earl Ray Tomblin"
+            },
+            {
+              "document_index": 1,
+              "quote": "in West Virginia, where Gov. Earl Ray Tomblin"
+            }
+          ]
+        },
+        {
+          "id": "west_virginia",
+          "name": "West Virginia",
+          "type": "STATE",
+          "document_frequency": 2,
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "in West Virginia, where Gov. Earl Ray Tomblin"
+            },
+            {
+              "document_index": 1,
+              "quote": "in West Virginia, where Gov. Earl Ray Tomblin"
+            }
+          ]
+        },
+        {
+          "id": "lincoln_chafee",
+          "name": "Lincoln Chafee",
+          "type": "PERSON",
+          "document_frequency": 2,
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "Rhode Island's Gov. Lincoln Chafee is an Independent"
+            },
+            {
+              "document_index": 1,
+              "quote": "Rhode Island's Gov. Lincoln Chafee is an Independent"
+            }
+          ]
+        },
+        {
+          "id": "rhode_island",
+          "name": "Rhode Island",
+          "type": "STATE",
+          "document_frequency": 2,
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "Rhode Island's Gov. Lincoln Chafee is an Independent"
+            },
+            {
+              "document_index": 1,
+              "quote": "Rhode Island's Gov. Lincoln Chafee is an Independent"
+            }
+          ]
+        },
+        {
+          "id": "rick_scott",
+          "name": "Rick Scott",
+          "type": "PERSON",
+          "document_frequency": 2,
+          "confidence": 0.99,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "Three Republican governors, including Rick Scott of Florida and Scott Walker of Wisconsin, rejected a share of the money"
+            },
+            {
+              "document_index": 1,
+              "quote": "Three Republican governors, including Rick Scott of Florida and Scott Walker of Wisconsin, rejected a share of the money"
+            }
+          ]
+        },
+        {
+          "id": "florida",
+          "name": "Florida",
+          "type": "STATE",
+          "document_frequency": 2,
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "Rick Scott of Florida"
+            },
+            {
+              "document_index": 1,
+              "quote": "Rick Scott of Florida"
+            }
+          ]
+        },
+        {
+          "id": "scott_walker",
+          "name": "Scott Walker",
+          "type": "PERSON",
+          "document_frequency": 2,
+          "confidence": 0.99,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "Three Republican governors, including Rick Scott of Florida and Scott Walker of Wisconsin, rejected a share of the money"
+            },
+            {
+              "document_index": 1,
+              "quote": "Three Republican governors, including Rick Scott of Florida and Scott Walker of Wisconsin, rejected a share of the money"
+            }
+          ]
+        },
+        {
+          "id": "wisconsin",
+          "name": "Wisconsin",
+          "type": "STATE",
+          "document_frequency": 2,
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "Scott Walker of Wisconsin"
+            },
+            {
+              "document_index": 1,
+              "quote": "Scott Walker of Wisconsin"
+            }
+          ]
+        },
+        {
+          "id": "walter_dalton",
+          "name": "Walter Dalton",
+          "type": "PERSON",
+          "document_frequency": 2,
+          "confidence": 0.98,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "who is facing Perdue's lieutenant governor, Walter Dalton"
+            },
+            {
+              "document_index": 1,
+              "quote": "who is facing Perdue's lieutenant governor, Walter Dalton"
+            }
+          ]
+        },
+        {
+          "id": "indiana",
+          "name": "Indiana",
+          "type": "STATE",
+          "document_frequency": 2,
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "GOP Rep. Mike Pence in Indiana are expected to win."
+            },
+            {
+              "document_index": 1,
+              "quote": "GOP Rep. Mike Pence in Indiana are expected to win."
+            }
+          ]
+        },
+        {
+          "id": "missouri",
+          "name": "Missouri",
+          "type": "STATE",
+          "document_frequency": 2,
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "Democrats are likely to hold on to their seats in West Virginia and Missouri, and are expected to notch safe wins"
+            },
+            {
+              "document_index": 1,
+              "quote": "Democrats are likely hold on to their seats in West Virginia and Missouri; and expected to notch safe wins"
+            }
+          ]
+        },
+        {
+          "id": "mike_pence",
+          "name": "Mike Pence",
+          "type": "PERSON",
+          "document_frequency": 2,
+          "confidence": 0.98,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "GOP Rep. Mike Pence in Indiana are expected to win."
+            },
+            {
+              "document_index": 1,
+              "quote": "GOP Rep. Mike Pence in Indiana are expected to win."
+            }
+          ]
+        },
+        {
+          "id": "jay_nixon",
+          "name": "Jay Nixon",
+          "type": "PERSON",
+          "document_frequency": 2,
+          "confidence": 0.98,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "where Jay Nixon is running for a second term against Republican Dave Spence"
+            },
+            {
+              "document_index": 1,
+              "quote": "where Jay Nixon is running for a second term against Republican Dave Spence"
+            }
+          ]
+        },
+        {
+          "id": "pat_mccrory",
+          "name": "Pat McCrory",
+          "type": "PERSON",
+          "document_frequency": 2,
+          "confidence": 0.98,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "trailing Republican candidate Pat McCrory."
+            },
+            {
+              "document_index": 1,
+              "quote": "trailing Republican candidate Pat McCrory."
+            }
+          ]
+        },
+        {
+          "id": "maggie_hassan",
+          "name": "Maggie Hassan",
+          "type": "PERSON",
+          "document_frequency": 2,
+          "confidence": 0.98,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "Former Democratic state Sen. Maggie Hassan has also promised a continuation of the policies of her predecessor"
+            },
+            {
+              "document_index": 1,
+              "quote": "Former Democratic state Sen. Maggie Hassan has also promised a continuation of the policies of her predecessor"
+            }
+          ]
+        }
+      ],
+      "relations": [
+        {
+          "source": "beverly_perdue",
+          "target": "north_carolina",
+          "relation_type": "GOVERNOR_OF",
+          "support_count": 2,
+          "source_documents": [
+            0,
+            1
+          ],
+          "confidence": 0.99,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "North Carolina: One-term incumbent Democratic Gov. Beverly Perdue, the first woman to hold the state's top office"
+            },
+            {
+              "document_index": 1,
+              "quote": "North Carolina: One-term incumbent Democratic Gov. Beverly Perdue, the first woman to hold the state's top office"
+            }
+          ]
+        },
+        {
+          "source": "brian_schweitzer",
+          "target": "montana",
+          "relation_type": "GOVERNOR_OF",
+          "support_count": 2,
+          "source_documents": [
+            0,
+            1
+          ],
+          "confidence": 0.99,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "Montana: Popular Democratic Gov. Brian Schweitzer \u0000 he won his last election with 65 percent of the vote"
+            },
+            {
+              "document_index": 1,
+              "quote": "Montana: Popular Democratic Gov. Brian Schweitzer \u0000 he won his last election with 65 percent of the vote"
+            }
+          ]
+        },
+        {
+          "source": "john_lynch",
+          "target": "new_hampshire",
+          "relation_type": "GOVERNOR_OF",
+          "support_count": 2,
+          "source_documents": [
+            0,
+            1
+          ],
+          "confidence": 0.97,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "New Hampshire: Former Democratic state Sen. Maggie Hassan has also promised a continuation of the policies of her predecessor, retiring Democratic Gov. John Lynch"
+            },
+            {
+              "document_index": 1,
+              "quote": "New Hampshire: Former Democratic state Sen. Maggie Hassan has also promised a continuation of the policies of her predecessor, retiring Democratic Gov. John Lynch"
+            }
+          ]
+        },
+        {
+          "source": "jack_dalrymple",
+          "target": "north_dakota",
+          "relation_type": "GOVERNOR_OF",
+          "support_count": 2,
+          "source_documents": [
+            0,
+            1
+          ],
+          "confidence": 0.98,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "Republican Govs. Jack Dalrymple in North Dakota and Gary Herbert in Utah"
+            },
+            {
+              "document_index": 1,
+              "quote": "Republican governors Jack Dalrymple in North Dakota and Gary Herbert in Utah"
+            }
+          ]
+        },
+        {
+          "source": "gary_herbert",
+          "target": "utah",
+          "relation_type": "GOVERNOR_OF",
+          "support_count": 2,
+          "source_documents": [
+            0,
+            1
+          ],
+          "confidence": 0.98,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "Republican Govs. Jack Dalrymple in North Dakota and Gary Herbert in Utah"
+            },
+            {
+              "document_index": 1,
+              "quote": "Republican governors Jack Dalrymple in North Dakota and Gary Herbert in Utah"
+            }
+          ]
+        },
+        {
+          "source": "peter_shumlin",
+          "target": "vermont",
+          "relation_type": "GOVERNOR_OF",
+          "support_count": 2,
+          "source_documents": [
+            0,
+            1
+          ],
+          "confidence": 0.98,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "So are Democratic Govs. Peter Shumlin in Vermont and Jack Markell in Delaware."
+            },
+            {
+              "document_index": 1,
+              "quote": "So are Democratic governors Peter Shumlin in Vermont and Jack Markell in Delaware."
+            }
+          ]
+        },
+        {
+          "source": "jack_markell",
+          "target": "delaware",
+          "relation_type": "GOVERNOR_OF",
+          "support_count": 2,
+          "source_documents": [
+            0,
+            1
+          ],
+          "confidence": 0.98,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "So are Democratic Govs. Peter Shumlin in Vermont and Jack Markell in Delaware."
+            },
+            {
+              "document_index": 1,
+              "quote": "So are Democratic governors Peter Shumlin in Vermont and Jack Markell in Delaware."
+            }
+          ]
+        },
+        {
+          "source": "earl_ray_tomblin",
+          "target": "west_virginia",
+          "relation_type": "GOVERNOR_OF",
+          "support_count": 2,
+          "source_documents": [
+            0,
+            1
+          ],
+          "confidence": 0.98,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "in West Virginia, where Gov. Earl Ray Tomblin"
+            },
+            {
+              "document_index": 1,
+              "quote": "in West Virginia, where Gov. Earl Ray Tomblin"
+            }
+          ]
+        },
+        {
+          "source": "lincoln_chafee",
+          "target": "rhode_island",
+          "relation_type": "GOVERNOR_OF",
+          "support_count": 2,
+          "source_documents": [
+            0,
+            1
+          ],
+          "confidence": 0.99,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "Rhode Island's Gov. Lincoln Chafee is an Independent"
+            },
+            {
+              "document_index": 1,
+              "quote": "Rhode Island's Gov. Lincoln Chafee is an Independent"
+            }
+          ]
+        },
+        {
+          "source": "steve_bullock",
+          "target": "montana",
+          "relation_type": "ATTORNEY_GENERAL_OF",
+          "support_count": 2,
+          "source_documents": [
+            0,
+            1
+          ],
+          "confidence": 0.96,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "Montana: Popular Democratic Gov. Brian Schweitzer \u0000 he won his last election with 65 percent of the vote \u0000 has reached his two-term limit. The state's Democratic Attorney General Steve Bullock"
+            },
+            {
+              "document_index": 1,
+              "quote": "Montana: Popular Democratic Gov. Brian Schweitzer \u0000 he won his last election with 65 percent of the vote \u0000 has reached his two-term limit. The state's Democratic Attorney General Steve Bullock"
+            }
+          ]
+        },
+        {
+          "source": "rob_mckenna",
+          "target": "washington",
+          "relation_type": "ATTORNEY_GENERAL_OF",
+          "support_count": 2,
+          "source_documents": [
+            0,
+            1
+          ],
+          "confidence": 0.96,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "Washington: The state's governorship has been in Democratic hands for 32 years, and former U.S. Rep. Jay Inslee is in a dead-heat battle to keep it that way. His opponent is the state's Republican Attorney General Rob McKenna"
+            },
+            {
+              "document_index": 1,
+              "quote": "Washington: The state's governorship has been in Democratic hands for 32 years, and former Rep. Jay Inslee is in a dead-heat battle to keep it that way. His opponent is the state's Republican Attorney General Rob McKenna"
+            }
+          ]
+        },
+        {
+          "source": "jay_inslee",
+          "target": "washington",
+          "relation_type": "CANDIDATE_FOR",
+          "support_count": 2,
+          "source_documents": [
+            0,
+            1
+          ],
+          "confidence": 0.95,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "Washington: The state's governorship has been in Democratic hands for 32 years, and former U.S. Rep. Jay Inslee is in a dead-heat battle"
+            },
+            {
+              "document_index": 1,
+              "quote": "Washington: The state's governorship has been in Democratic hands for 32 years, and former Rep. Jay Inslee is in a dead-heat battle"
+            }
+          ]
+        },
+        {
+          "source": "rick_scott",
+          "target": "florida",
+          "relation_type": "GOVERNOR_OF",
+          "support_count": 2,
+          "source_documents": [
+            0,
+            1
+          ],
+          "confidence": 0.97,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "Three Republican governors, including Rick Scott of Florida and Scott Walker of Wisconsin, rejected a share of the money"
+            },
+            {
+              "document_index": 1,
+              "quote": "Three Republican governors, including Rick Scott of Florida and Scott Walker of Wisconsin, rejected a share of the money"
+            }
+          ]
+        },
+        {
+          "source": "scott_walker",
+          "target": "wisconsin",
+          "relation_type": "GOVERNOR_OF",
+          "support_count": 2,
+          "source_documents": [
+            0,
+            1
+          ],
+          "confidence": 0.97,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "Three Republican governors, including Rick Scott of Florida and Scott Walker of Wisconsin, rejected a share of the money"
+            },
+            {
+              "document_index": 1,
+              "quote": "Three Republican governors, including Rick Scott of Florida and Scott Walker of Wisconsin, rejected a share of the money"
+            }
+          ]
+        },
+        {
+          "source": "walter_dalton",
+          "target": "north_carolina",
+          "relation_type": "LIEUTENANT_GOVERNOR_OF",
+          "support_count": 2,
+          "source_documents": [
+            0,
+            1
+          ],
+          "confidence": 0.92,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "North Carolina: One-term incumbent Democratic Gov. Beverly Perdue, the first woman to hold the state's top office, announced in January that she would not seek re-election after polls showed her with high disapproval ratings and trailing Republican candidate Pat McCrory. \n \n The seat is expected to be won by McCrory, a former Charlotte mayor, who is facing Perdue's lieutenant governor, Walter Dalton"
+            },
+            {
+              "document_index": 1,
+              "quote": "North Carolina: One-term incumbent Democratic Gov. Beverly Perdue, the first woman to hold the state's top office, announced in January she would not seek re-election after polls showed her with high disapproval ratings and trailing Republican candidate Pat McCrory. \n \n The seat is expected to be won by McCrory, a former Charlotte mayor, who is facing Perdue's lieutenant governor, Walter Dalton"
+            }
+          ]
+        },
+        {
+          "source": "steve_bullock",
+          "target": "montana",
+          "relation_type": "CANDIDATE_FOR",
+          "support_count": 2,
+          "source_documents": [
+            0,
+            1
+          ],
+          "confidence": 0.94,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "Montana: Popular Democratic Gov. Brian Schweitzer \u0000 he won his last election with 65 percent of the vote \u0000 has reached his two-term limit. The state's Democratic Attorney General Steve Bullock is trying to keep the seat"
+            },
+            {
+              "document_index": 1,
+              "quote": "Montana: Popular Democratic Gov. Brian Schweitzer \u0000 he won his last election with 65 percent of the vote \u0000 has reached his two-term limit. The state's Democratic Attorney General Steve Bullock is trying to keep the seat"
+            }
+          ]
+        },
+        {
+          "source": "rob_mckenna",
+          "target": "washington",
+          "relation_type": "CANDIDATE_FOR",
+          "support_count": 2,
+          "source_documents": [
+            0,
+            1
+          ],
+          "confidence": 0.94,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "Washington: The state's governorship has been in Democratic hands for 32 years, and former U.S. Rep. Jay Inslee is in a dead-heat battle to keep it that way. His opponent is the state's Republican Attorney General Rob McKenna"
+            },
+            {
+              "document_index": 1,
+              "quote": "Washington: The state's governorship has been in Democratic hands for 32 years, and former Rep. Jay Inslee is in a dead-heat battle to keep it that way. His opponent is the state's Republican Attorney General Rob McKenna"
+            }
+          ]
+        },
+        {
+          "source": "pat_mccrory",
+          "target": "north_carolina",
+          "relation_type": "CANDIDATE_FOR",
+          "support_count": 2,
+          "source_documents": [
+            0,
+            1
+          ],
+          "confidence": 0.96,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "North Carolina: One-term incumbent Democratic Gov. Beverly Perdue, the first woman to hold the state's top office, announced in January that she would not seek re-election after polls showed her with high disapproval ratings and trailing Republican candidate Pat McCrory."
+            },
+            {
+              "document_index": 1,
+              "quote": "North Carolina: One-term incumbent Democratic Gov. Beverly Perdue, the first woman to hold the state's top office, announced in January she would not seek re-election after polls showed her with high disapproval ratings and trailing Republican candidate Pat McCrory."
+            }
+          ]
+        },
+        {
+          "source": "maggie_hassan",
+          "target": "new_hampshire",
+          "relation_type": "CANDIDATE_FOR",
+          "support_count": 2,
+          "source_documents": [
+            0,
+            1
+          ],
+          "confidence": 0.96,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "New Hampshire: Former Democratic state Sen. Maggie Hassan has also promised a continuation of the policies of her predecessor, retiring Democratic Gov. John Lynch."
+            },
+            {
+              "document_index": 1,
+              "quote": "New Hampshire: Former Democratic state Sen. Maggie Hassan has also promised a continuation of the policies of her predecessor, retiring Democratic Gov. John Lynch."
+            }
+          ]
+        },
+        {
+          "source": "mike_pence",
+          "target": "indiana",
+          "relation_type": "CANDIDATE_FOR",
+          "support_count": 2,
+          "source_documents": [
+            0,
+            1
+          ],
+          "confidence": 0.95,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "Republican Govs. Jack Dalrymple in North Dakota and Gary Herbert in Utah, and GOP Rep. Mike Pence in Indiana are expected to win."
+            },
+            {
+              "document_index": 1,
+              "quote": "Republican governors Jack Dalrymple in North Dakota and Gary Herbert in Utah, and GOP Rep. Mike Pence in Indiana are expected to win."
+            }
+          ]
+        },
+        {
+          "source": "jay_nixon",
+          "target": "missouri",
+          "relation_type": "GOVERNOR_OF",
+          "support_count": 2,
+          "source_documents": [
+            0,
+            1
+          ],
+          "confidence": 0.96,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "Democrats are also hoping to hold on to the governorship in Missouri, where Jay Nixon is running for a second term against Republican Dave Spence"
+            },
+            {
+              "document_index": 1,
+              "quote": "Democrats are also hoping to hold on to the governorship in Missouri, where Jay Nixon is running for a second term against Republican Dave Spence"
+            }
+          ]
+        }
+      ]
+    },
+    "entities": [
+      {
+        "entity_id": "beverly_perdue",
+        "mapping": {
+          "uri": "http://dbpedia.org/resource/Bev_Perdue",
+          "label": "Bev Perdue",
+          "ontology_class": "dbo:Person",
+          "abstract": "Beverly Eaves Perdue (born Beverly Marlene Moore; January 14, 1947) is an American businesswoman",
+          "confidence": 0.95
+        },
+        "candidates": [],
+        "unresolved_reason": null
+      },
+      {
+        "entity_id": "north_carolina",
+        "mapping": {
+          "uri": "http://dbpedia.org/resource/North_Carolina",
+          "label": "North Carolina",
+          "ontology_class": null,
+          "abstract": "North Carolina ( ()) is a U.S. state located in the southeastern region of the United States. North",
+          "confidence": 0.98
+        },
+        "candidates": [],
+        "unresolved_reason": null
+      },
+      {
+        "entity_id": "brian_schweitzer",
+        "mapping": {
+          "uri": "http://dbpedia.org/resource/Brian_Schweitzer",
+          "label": "Brian Schweitzer",
+          "ontology_class": "dbo:Person",
+          "abstract": "Brian David Schweitzer (born September 4, 1955) is an American politician who served as the 23rd",
+          "confidence": 0.98
+        },
+        "candidates": [],
+        "unresolved_reason": null
+      },
+      {
+        "entity_id": "montana",
+        "mapping": {
+          "uri": "http://dbpedia.org/resource/Montana",
+          "label": "Montana",
+          "ontology_class": null,
+          "abstract": "Montana ( ()) is a state in the Northwestern United States. Montana has several nicknames, although",
+          "confidence": 0.98
+        },
+        "candidates": [],
+        "unresolved_reason": null
+      },
+      {
+        "entity_id": "steve_bullock",
+        "mapping": {
+          "uri": "http://dbpedia.org/resource/Steve_Bullock_(American_politician)",
+          "label": "Steve Bullock (American politician)",
+          "ontology_class": "dbo:Person",
+          "abstract": "Stephen Clark Bullock (born April 11, 1966) is an American politician, attorney and former",
+          "confidence": 0.95
+        },
+        "candidates": [],
+        "unresolved_reason": null
+      },
+      {
+        "entity_id": "john_lynch",
+        "mapping": null,
+        "candidates": [],
+        "unresolved_reason": "DBpedia resource http://dbpedia.org/resource/John_Lynch is a disambiguation page and specific URIs http://dbpedia.org/resource/John_Lynch_(American_politician) and http://dbpedia.org/resource/John_Lynch_(New_Hampshire_politician) returned no triples / not found. No verified non-disambiguation resource established within tool budget."
+      },
+      {
+        "entity_id": "new_hampshire",
+        "mapping": {
+          "uri": "http://dbpedia.org/resource/New_Hampshire",
+          "label": "New Hampshire",
+          "ontology_class": null,
+          "abstract": "New Hampshire () is a state in the New England region of the northeastern United States. It is",
+          "confidence": 0.98
+        },
+        "candidates": [],
+        "unresolved_reason": null
+      },
+      {
+        "entity_id": "rob_mckenna",
+        "mapping": {
+          "uri": "http://dbpedia.org/resource/Rob_McKenna",
+          "label": "Rob McKenna",
+          "ontology_class": "dbo:Person",
+          "abstract": "Robert Marion \"Rob\" McKenna (born October 1, 1962) is an American attorney who served two terms as",
+          "confidence": 0.98
+        },
+        "candidates": [],
+        "unresolved_reason": null
+      },
+      {
+        "entity_id": "washington",
+        "mapping": {
+          "uri": "http://dbpedia.org/resource/Washington_(state)",
+          "label": "Washington (state)",
+          "ontology_class": null,
+          "abstract": "the United States. Named for George Washington, the first U.S. president, the state was made out of",
+          "confidence": 0.97
+        },
+        "candidates": [],
+        "unresolved_reason": null
+      },
+      {
+        "entity_id": "jay_inslee",
+        "mapping": {
+          "uri": "http://dbpedia.org/resource/Jay_Inslee",
+          "label": "Jay Inslee",
+          "ontology_class": "dbo:Person",
+          "abstract": "Jay Robert Inslee (; born February 9, 1951) is an American politician, environmentalist, author",
+          "confidence": 0.98
+        },
+        "candidates": [],
+        "unresolved_reason": null
+      },
+      {
+        "entity_id": "jack_dalrymple",
+        "mapping": {
+          "uri": "http://dbpedia.org/resource/Jack_Dalrymple",
+          "label": "Jack Dalrymple",
+          "ontology_class": "dbo:Person",
+          "abstract": "John Stewart Dalrymple III (born October 16, 1948) is an American politician and businessman who",
+          "confidence": 0.98
+        },
+        "candidates": [],
+        "unresolved_reason": null
+      },
+      {
+        "entity_id": "north_dakota",
+        "mapping": {
+          "uri": "http://dbpedia.org/resource/North_Dakota",
+          "label": "North Dakota",
+          "ontology_class": null,
+          "abstract": "North Dakota (  ()) is a U.S. state in the midwestern and northern regions of the United States. It",
+          "confidence": 0.98
+        },
+        "candidates": [],
+        "unresolved_reason": null
+      },
+      {
+        "entity_id": "utah",
+        "mapping": {
+          "uri": "http://dbpedia.org/resource/Utah",
+          "label": "Utah",
+          "ontology_class": null,
+          "abstract": "Utah ( YOO-tah,  () YOO-taw) is a state in the western United States. It became the 45th state",
+          "confidence": 0.98
+        },
+        "candidates": [],
+        "unresolved_reason": null
+      },
+      {
+        "entity_id": "gary_herbert",
+        "mapping": {
+          "uri": "http://dbpedia.org/resource/Gary_Herbert",
+          "label": "Gary Herbert",
+          "ontology_class": "dbo:Person",
+          "abstract": "Gary Richard Herbert (born May 7, 1947) is an American politician serving as the 17th and current",
+          "confidence": 0.98
+        },
+        "candidates": [],
+        "unresolved_reason": null
+      },
+      {
+        "entity_id": "peter_shumlin",
+        "mapping": {
+          "uri": "http://dbpedia.org/resource/Peter_Shumlin",
+          "label": "Peter Shumlin",
+          "ontology_class": "dbo:Person",
+          "abstract": "Peter Elliott Shumlin (born March 24, 1956) is an American politician from Vermont. A member of the",
+          "confidence": 0.98
+        },
+        "candidates": [],
+        "unresolved_reason": null
+      },
+      {
+        "entity_id": "vermont",
+        "mapping": {
+          "uri": "http://dbpedia.org/resource/Vermont",
+          "label": "Vermont",
+          "ontology_class": null,
+          "abstract": "Vermont ( ()) is a northeastern U.S. state in the New England region. It borders the states of",
+          "confidence": 0.98
+        },
+        "candidates": [],
+        "unresolved_reason": null
+      },
+      {
+        "entity_id": "delaware",
+        "mapping": {
+          "uri": "http://dbpedia.org/resource/Delaware",
+          "label": "Delaware",
+          "ontology_class": null,
+          "abstract": "Delaware ( ()) is one of the 50 states of the United States, in the Mid Atlantic region. It is",
+          "confidence": 0.98
+        },
+        "candidates": [],
+        "unresolved_reason": null
+      },
+      {
+        "entity_id": "jack_markell",
+        "mapping": {
+          "uri": "http://dbpedia.org/resource/Jack_Markell",
+          "label": "Jack Markell",
+          "ontology_class": "dbo:Person",
+          "abstract": "Jack Alan Markell (born November 26, 1960) is an American former businessman and politician who",
+          "confidence": 0.98
+        },
+        "candidates": [],
+        "unresolved_reason": null
+      },
+      {
+        "entity_id": "earl_ray_tomblin",
+        "mapping": {
+          "uri": "http://dbpedia.org/resource/Earl_Ray_Tomblin",
+          "label": "Earl Ray Tomblin",
+          "ontology_class": "dbo:Person",
+          "abstract": "Earl Ray Tomblin (born March 15, 1952) is an American politician who served as the 35th Governor of",
+          "confidence": 0.98
+        },
+        "candidates": [],
+        "unresolved_reason": null
+      },
+      {
+        "entity_id": "west_virginia",
+        "mapping": {
+          "uri": "http://dbpedia.org/resource/West_Virginia",
+          "label": "West Virginia",
+          "ontology_class": null,
+          "abstract": "West Virginia ( ()) is a state located in the Appalachian region of the Southern United States",
+          "confidence": 0.98
+        },
+        "candidates": [],
+        "unresolved_reason": null
+      },
+      {
+        "entity_id": "lincoln_chafee",
+        "mapping": {
+          "uri": "http://dbpedia.org/resource/Lincoln_Chafee",
+          "label": "Lincoln Chafee",
+          "ontology_class": "dbo:Person",
+          "abstract": "Lincoln Davenport Chafee (; born March 26, 1953) is an American politician. He was mayor of Warwick",
+          "confidence": 0.98
+        },
+        "candidates": [],
+        "unresolved_reason": null
+      },
+      {
+        "entity_id": "rhode_island",
+        "mapping": {
+          "uri": "http://dbpedia.org/resource/Rhode_Island",
+          "label": "Rhode Island",
+          "ontology_class": null,
+          "abstract": "Rhode Island ( (), like road), officially the State of Rhode Island and Providence Plantations, is",
+          "confidence": 0.98
+        },
+        "candidates": [],
+        "unresolved_reason": null
+      },
+      {
+        "entity_id": "rick_scott",
+        "mapping": {
+          "uri": "http://dbpedia.org/resource/Rick_Scott",
+          "label": "Rick Scott",
+          "ontology_class": "dbo:Person",
+          "abstract": "Richard Lynn Scott (n\u0000e9 Myers, December 1, 1952) is an American politician serving as the junior",
+          "confidence": 0.98
+        },
+        "candidates": [],
+        "unresolved_reason": null
+      },
+      {
+        "entity_id": "florida",
+        "mapping": {
+          "uri": "http://dbpedia.org/resource/Florida",
+          "label": "Florida",
+          "ontology_class": null,
+          "abstract": "Florida ( (), Spanish pronunciation: [flo\u0002c8\u00027ei\u0000f0a]) is the southernmost contiguous state in the United",
+          "confidence": 0.98
+        },
+        "candidates": [],
+        "unresolved_reason": null
+      },
+      {
+        "entity_id": "scott_walker",
+        "mapping": {
+          "uri": "http://dbpedia.org/resource/Scott_Walker_(politician)",
+          "label": "Scott Walker (politician)",
+          "ontology_class": "dbo:Person",
+          "abstract": "Scott Kevin Walker (born November 2, 1967) is an American politician who served as the 45th",
+          "confidence": 0.97
+        },
+        "candidates": [],
+        "unresolved_reason": null
+      },
+      {
+        "entity_id": "wisconsin",
+        "mapping": {
+          "uri": "http://dbpedia.org/resource/Wisconsin",
+          "label": "Wisconsin",
+          "ontology_class": null,
+          "abstract": "Wisconsin ( ()) is a U.S. state located in the north-central, Midwest and Great Lakes regions of",
+          "confidence": 0.98
+        },
+        "candidates": [],
+        "unresolved_reason": null
+      },
+      {
+        "entity_id": "walter_dalton",
+        "mapping": {
+          "uri": "http://dbpedia.org/resource/Walter_H._Dalton",
+          "label": "Walter H. Dalton",
+          "ontology_class": "dbo:Person",
+          "abstract": "Walter H. Dalton (born May 21, 1949) is an American attorney and politician who served as the 33rd Lieutenant Governor of North Carolina. A member of the Democratic Party, he served six terms in the state senate before his election to the office of lieutenant governor in 2008. Dalton was the Democratic nominee for Governor of North Carolina in 2012. He lost the general election to former Charlotte Mayor Pat McCrory.",
+          "confidence": 0.97
+        },
+        "candidates": [],
+        "unresolved_reason": null
+      },
+      {
+        "entity_id": "indiana",
+        "mapping": {
+          "uri": "http://dbpedia.org/resource/Indiana",
+          "label": "Indiana",
+          "ontology_class": null,
+          "abstract": "city is Indianapolis. Indiana was admitted to the United States as the 19th U.S. state on December",
+          "confidence": 0.98
+        },
+        "candidates": [],
+        "unresolved_reason": null
+      },
+      {
+        "entity_id": "missouri",
+        "mapping": {
+          "uri": "http://dbpedia.org/resource/Missouri",
+          "label": "Missouri",
+          "ontology_class": null,
+          "abstract": "Missouri is a state in the Midwestern United States. With more than six million residents, it is",
+          "confidence": 0.98
+        },
+        "candidates": [],
+        "unresolved_reason": null
+      },
+      {
+        "entity_id": "mike_pence",
+        "mapping": {
+          "uri": "http://dbpedia.org/resource/Mike_Pence",
+          "label": "Mike Pence",
+          "ontology_class": "dbo:Person",
+          "abstract": "Michael Richard Pence (born June 7, 1959) is an American politician and lawyer serving as the 48th",
+          "confidence": 0.98
+        },
+        "candidates": [],
+        "unresolved_reason": null
+      },
+      {
+        "entity_id": "jay_nixon",
+        "mapping": {
+          "uri": "http://dbpedia.org/resource/Jay_Nixon",
+          "label": "Jay Nixon",
+          "ontology_class": "dbo:Person",
+          "abstract": "Jeremiah Wilson \"Jay\" Nixon (born February 13, 1956) is an American politician and lawyer who",
+          "confidence": 0.98
+        },
+        "candidates": [],
+        "unresolved_reason": null
+      },
+      {
+        "entity_id": "pat_mccrory",
+        "mapping": null,
+        "candidates": [],
+        "unresolved_reason": "No DBpedia resource profile was returned for Pat McCrory within the tool budget; search_resource and spotlight were unavailable/timed out and no get_resource_profile was obtained, so URI cannot be verified without guessing."
+      },
+      {
+        "entity_id": "maggie_hassan",
+        "mapping": null,
+        "candidates": [],
+        "unresolved_reason": "No DBpedia resource profile was returned for Maggie Hassan within the tool budget; search_resource and spotlight were unavailable/timed out and no get_resource_profile was obtained, so URI cannot be verified without guessing."
+      }
+    ],
+    "relations": [
+      {
+        "relation_key": "beverly_perdue|GOVERNOR_OF|north_carolina",
+        "property_uri": null,
+        "confidence": 0.0,
+        "unresolved_reason": "Tool budget exhausted before relation grounding; no get_predicates_between or find_object_properties result returned for this pair, and no dbo: property URI appeared in tool results to verify GOVERNOR_OF mapping without guessing."
+      },
+      {
+        "relation_key": "brian_schweitzer|GOVERNOR_OF|montana",
+        "property_uri": null,
+        "confidence": 0.0,
+        "unresolved_reason": "Tool budget exhausted before relation grounding; no get_predicates_between or find_object_properties result returned, and no verified dbo: property for GOVERNOR_OF appeared in tool results."
+      },
+      {
+        "relation_key": "john_lynch|GOVERNOR_OF|new_hampshire",
+        "property_uri": null,
+        "confidence": 0.0,
+        "unresolved_reason": "Subject entity John Lynch unresolved (disambiguation with no verified specific resource), and no predicate edge was retrieved within tool budget; cannot ground relation without verified endpoints and property URI."
+      },
+      {
+        "relation_key": "jack_dalrymple|GOVERNOR_OF|north_dakota",
+        "property_uri": null,
+        "confidence": 0.0,
+        "unresolved_reason": "Tool budget exhausted; no get_predicates_between or find_object_properties result returned for this pair, and no dbo: property URI for GOVERNOR_OF was established in tool outputs."
+      },
+      {
+        "relation_key": "gary_herbert|GOVERNOR_OF|utah",
+        "property_uri": null,
+        "confidence": 0.0,
+        "unresolved_reason": "Tool budget exhausted; no predicate verification performed for this pair and no property URI appeared in tool results."
+      },
+      {
+        "relation_key": "peter_shumlin|GOVERNOR_OF|vermont",
+        "property_uri": null,
+        "confidence": 0.0,
+        "unresolved_reason": "Tool budget exhausted; no get_predicates_between or find_object_properties result returned, no verified property URI available."
+      },
+      {
+        "relation_key": "jack_markell|GOVERNOR_OF|delaware",
+        "property_uri": null,
+        "confidence": 0.0,
+        "unresolved_reason": "Tool budget exhausted; no predicate verification performed and no dbo: property for GOVERNOR_OF appeared in tool results."
+      },
+      {
+        "relation_key": "earl_ray_tomblin|GOVERNOR_OF|west_virginia",
+        "property_uri": null,
+        "confidence": 0.0,
+        "unresolved_reason": "Tool budget exhausted; no get_predicates_between or find_object_properties result returned for this pair."
+      },
+      {
+        "relation_key": "lincoln_chafee|GOVERNOR_OF|rhode_island",
+        "property_uri": null,
+        "confidence": 0.0,
+        "unresolved_reason": "Tool budget exhausted; no predicate edge verified and no property URI for GOVERNOR_OF established in tool outputs."
+      },
+      {
+        "relation_key": "steve_bullock|ATTORNEY_GENERAL_OF|montana",
+        "property_uri": null,
+        "confidence": 0.0,
+        "unresolved_reason": "Tool budget exhausted; no get_predicates_between or find_object_properties result for ATTORNEY_GENERAL_OF, and no dbo: property URI appeared in tool results."
+      },
+      {
+        "relation_key": "rob_mckenna|ATTORNEY_GENERAL_OF|washington",
+        "property_uri": null,
+        "confidence": 0.0,
+        "unresolved_reason": "Tool budget exhausted; no predicate verification performed for ATTORNEY_GENERAL_OF and no property URI verified."
+      },
+      {
+        "relation_key": "jay_inslee|CANDIDATE_FOR|washington",
+        "property_uri": null,
+        "confidence": 0.0,
+        "unresolved_reason": "Tool budget exhausted; no get_predicates_between or find_object_properties result for CANDIDATE_FOR and no verified property URI in tool outputs."
+      },
+      {
+        "relation_key": "rick_scott|GOVERNOR_OF|florida",
+        "property_uri": null,
+        "confidence": 0.0,
+        "unresolved_reason": "Tool budget exhausted; no predicate edge retrieved for this pair and no dbo: property for GOVERNOR_OF appeared in tool results."
+      },
+      {
+        "relation_key": "scott_walker|GOVERNOR_OF|wisconsin",
+        "property_uri": null,
+        "confidence": 0.0,
+        "unresolved_reason": "Tool budget exhausted; no get_predicates_between or find_object_properties result returned."
+      },
+      {
+        "relation_key": "walter_dalton|LIEUTENANT_GOVERNOR_OF|north_carolina",
+        "property_uri": null,
+        "confidence": 0.0,
+        "unresolved_reason": "Tool budget exhausted; no predicate verification for LIEUTENANT_GOVERNOR_OF and no property URI appeared in tool results."
+      },
+      {
+        "relation_key": "steve_bullock|CANDIDATE_FOR|montana",
+        "property_uri": null,
+        "confidence": 0.0,
+        "unresolved_reason": "Tool budget exhausted; no get_predicates_between or find_object_properties result for CANDIDATE_FOR."
+      },
+      {
+        "relation_key": "rob_mckenna|CANDIDATE_FOR|washington",
+        "property_uri": null,
+        "confidence": 0.0,
+        "unresolved_reason": "Tool budget exhausted; no predicate verification performed for CANDIDATE_FOR."
+      },
+      {
+        "relation_key": "pat_mccrory|CANDIDATE_FOR|north_carolina",
+        "property_uri": null,
+        "confidence": 0.0,
+        "unresolved_reason": "Subject entity Pat McCrory unresolved (no verified DBpedia resource within budget) and no predicate edge retrieved; cannot ground relation without verified endpoints and property URI."
+      },
+      {
+        "relation_key": "maggie_hassan|CANDIDATE_FOR|new_hampshire",
+        "property_uri": null,
+        "confidence": 0.0,
+        "unresolved_reason": "Subject entity Maggie Hassan unresolved (no verified DBpedia resource within budget) and no predicate verification performed."
+      },
+      {
+        "relation_key": "mike_pence|CANDIDATE_FOR|indiana",
+        "property_uri": null,
+        "confidence": 0.0,
+        "unresolved_reason": "Tool budget exhausted; no get_predicates_between or find_object_properties result for CANDIDATE_FOR and no verified property URI in tool outputs."
+      },
+      {
+        "relation_key": "jay_nixon|GOVERNOR_OF|missouri",
+        "property_uri": null,
+        "confidence": 0.0,
+        "unresolved_reason": "Tool budget exhausted; no predicate edge verified for this pair and no dbo: property for GOVERNOR_OF appeared in tool results."
+      }
+    ]
+  },
+  "grader_history": [
+    {
+      "issues": [
+        {
+          "issue_type": "WEAK_EVIDENCE",
+          "severity": "medium",
+          "element_id": "rick_scott|GOVERNOR_OF|florida",
+          "description": "Relation rick_scott -> florida GOVERNOR_OF is supported only by quote 'including Rick Scott of Florida' which does not contain the word 'governor' or any office assertion. The document establishes the governorship in the preceding clause 'Three Republican governors, including Rick Scott of Florida and Scott Walker of Wisconsin' which is omitted from the evidence.",
+          "suggested_fix": "Replace evidence with full sentence from documents: 'Three Republican governors, including Rick Scott of Florida and Scott Walker of Wisconsin, rejected a share of the money' or remove relation if full quote not used."
+        },
+        {
+          "issue_type": "WEAK_EVIDENCE",
+          "severity": "medium",
+          "element_id": "scott_walker|GOVERNOR_OF|wisconsin",
+          "description": "Relation scott_walker -> wisconsin GOVERNOR_OF is supported only by quote 'Scott Walker of Wisconsin' which does not assert governorship. The governorship is established only in the full sentence 'Three Republican governors, including Rick Scott of Florida and Scott Walker of Wisconsin, rejected...'",
+          "suggested_fix": "Replace evidence with full sentence containing 'Three Republican governors, including ... Scott Walker of Wisconsin' or remove relation."
+        },
+        {
+          "issue_type": "WEAK_EVIDENCE",
+          "severity": "medium",
+          "element_id": "jack_markell|GOVERNOR_OF|delaware",
+          "description": "Relation jack_markell -> delaware GOVERNOR_OF is supported only by quote 'Jack Markell in Delaware' which does not assert governorship. The document asserts it as 'So are Democratic Govs. Peter Shumlin in Vermont and Jack Markell in Delaware.' The truncated quote discards the type information.",
+          "suggested_fix": "Replace evidence with full quote 'So are Democratic Govs. Peter Shumlin in Vermont and Jack Markell in Delaware.' or 'Democratic Govs. Peter Shumlin in Vermont and Jack Markell in Delaware'."
+        }
+      ],
+      "summary": "Graph is largely faithful with no hallucinations, but has 3 WEAK_EVIDENCE relations where truncated quotes discard the 'governor' assertion (Rick Scott, Scott Walker, Jack Markell), omits 2 of the 11 election states (Indiana, Missouri) and key candidates (Pat McCrory, Maggie Hassan, etc.), and omits CANDIDATE_FOR relations for Steve Bullock and Rob McKenna that are stated between entities already in the graph."
+    },
+    {
+      "issues": [],
+      "summary": "Graph is substantially faithful after revision: type vocabulary (GOVERNOR_OF, CANDIDATE_FOR, ATTORNEY_GENERAL_OF, LIEUTENANT_GOVERNOR_OF) is now distinct, apt, and consistently applied; evidence quotes are verbatim and support their facts; no hallucinations, contradictions, or dangling references found. Remaining defects are omissions: two materially important candidates in the three competitive races (Rick Hill - Montana, Ovide Lamontagne - New Hampshire) are missing as entities, and the existing entity Walter Dalton lacks the CANDIDATE_FOR North Carolina relation explicitly stated in the documents."
+    }
+  ]
+}

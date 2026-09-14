@@ -1,0 +1,828 @@
+{
+  "cluster_idx": 5,
+  "corruption_type": "fragmentation",
+  "severity": 0.3,
+  "label": {
+    "consistency": 0.0,
+    "missing_entities": 0.0,
+    "contradictions": 0.0,
+    "fragmentation": 1.0
+  },
+  "corruption_metadata": {
+    "corruption_type": "fragmentation",
+    "severity": 0.3,
+    "removed_relations": 6
+  },
+  "knowledge_graph": {
+    "entities": [
+      {
+        "id": "entity_1",
+        "name": "Adam Woodward",
+        "type": "PERSON",
+        "document_frequency": 3,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Preservationist Adam Woodward discovered a cellar that he believes could be the foundation of the Revolutionary War-era Bull\u2019s Head Tavern.",
+            "section": null
+          },
+          {
+            "document_index": 0,
+            "quote": "\u201cAfter the English had marched up the Bowery and out of the city (in 1783), George Washington and Governor (George) Clinton stopped at the Bull\u2019s Head (tavern),\u201d preservationist Adam Woodward told WCBS 880\u2019s Alex Silverman.",
+            "section": null
+          },
+          {
+            "document_index": 2,
+            "quote": "Photographer Adam Woodward first documented the ancient, hand-planed wood joists and stone foundation in the basement of 50 Bowery last week.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_2",
+        "name": "Bull\u2019s Head Tavern",
+        "type": "OTHER",
+        "document_frequency": 5,
+        "confidence": 0.97,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Preservationist Adam Woodward discovered a cellar that he believes could be the foundation of the Revolutionary War-era Bull\u2019s Head Tavern.",
+            "section": null
+          },
+          {
+            "document_index": 0,
+            "quote": "\u201cAfter the English had marched up the Bowery and out of the city (in 1783), George Washington and Governor (George) Clinton stopped at the Bull\u2019s Head (tavern),\u201d",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "Maybe George Washington slept there, or maybe he only watered his horse and ordered stronger stuff for himself.",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "The whole issue of whether the Bull\u2019s Head was buried inside the Atlantic Garden was one of the great mysteries of New York.",
+            "section": null
+          },
+          {
+            "document_index": 2,
+            "quote": "Elected officials and the Landmarks Preservation Commission are both doing their best to launch a thorough investigation of what may very well be the famed 18th century saloon the Bull's Head Tavern.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_3",
+        "name": "George Washington",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 0.97,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "\u201cAfter the English had marched up the Bowery and out of the city (in 1783), George Washington and Governor (George) Clinton stopped at the Bull\u2019s Head (tavern),\u201d",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "Maybe George Washington slept there, or maybe he only watered his horse and ordered stronger stuff for himself.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_4",
+        "name": "Governor George Clinton",
+        "type": "PERSON",
+        "document_frequency": 1,
+        "confidence": 0.94,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "\u201cAfter the English had marched up the Bowery and out of the city (in 1783), George Washington and Governor (George) Clinton stopped at the Bull\u2019s Head (tavern),\u201d",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_5",
+        "name": "50 Bowery",
+        "type": "LOCATION",
+        "document_frequency": 4,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "The building at 50 Bowery, which has had many faces since, is being prepared for demolition so a hotel can be built at the site.",
+            "section": null
+          },
+          {
+            "document_index": 2,
+            "quote": "Photographer Adam Woodward first documented the ancient, hand-planed wood joists and stone foundation in the basement of 50 Bowery last week.",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "I followed that wall and found myself at the front of the building, under the sidewalk at the Bowery...",
+            "section": null
+          },
+          {
+            "document_index": 2,
+            "quote": "No Jurisdiction to Mandate Historic Site Survey at 50 Bowery",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_6",
+        "name": "WCBS 880",
+        "type": "ORGANIZATION",
+        "document_frequency": 1,
+        "confidence": 0.94,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "preservationist Adam Woodward told WCBS 880\u2019s Alex Silverman.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_7",
+        "name": "Alex Silverman",
+        "type": "PERSON",
+        "document_frequency": 1,
+        "confidence": 0.93,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "preservationist Adam Woodward told WCBS 880\u2019s Alex Silverman.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_8",
+        "name": "David Freeland",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 0.98,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Historian and author David Freeland told Silverman that the find \u201cwould make it very likely the oldest building remaining in Manhattan.\u201d",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "David Freeland sounded excited as he crossed the threshold where a famous Colonial-era tavern, the Bull\u2019s Head...",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_9",
+        "name": "Manhattan",
+        "type": "LOCATION",
+        "document_frequency": 2,
+        "confidence": 0.98,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "the oldest building remaining in Manhattan.",
+            "section": null
+          },
+          {
+            "document_index": 0,
+            "quote": "the building that is perhaps Manhattan\u2019s oldest",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_10",
+        "name": "American Revolution",
+        "type": "EVENT",
+        "document_frequency": 1,
+        "confidence": 0.92,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "during the American Revolution.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_11",
+        "name": "Atlantic Garden",
+        "type": "OTHER",
+        "document_frequency": 3,
+        "confidence": 0.96,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "once housed a chain drugstore and the Atlantic Garden beer garden",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "It reigned as \u201cone of the show places of New York\u201d from 1858 on, The New York Times said when it finally shut down in 1911.",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "Later still, the Atlantic Garden became \u201ca place where Tin Pan Alley songwriters would go to plug their songs,\u201d",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_12",
+        "name": "1783",
+        "type": "DATE",
+        "document_frequency": 1,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "(in 1783)",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_13",
+        "name": "1750s",
+        "type": "DATE",
+        "document_frequency": 1,
+        "confidence": 0.92,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Found myself in what I am pretty certain is the 1750s historic tavern",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_14",
+        "name": "October 15, 2013",
+        "type": "DATE",
+        "document_frequency": 1,
+        "confidence": 0.98,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "October 15, 2013 5:39 PM",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_15",
+        "name": "Bowery",
+        "type": "LOCATION",
+        "document_frequency": 2,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "After the English had marched up the Bowery and out of the city",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "under the sidewalk at the Bowery",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_16",
+        "name": "The New York Times",
+        "type": "ORGANIZATION",
+        "document_frequency": 1,
+        "confidence": 0.94,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "The New York Times said when it finally shut down in 1911.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_17",
+        "name": "Kerri Culhane",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "Kerri Culhane, a historian who wrote the application that won the Bowery a place on the National Register of Historic Places.",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "Washington and his troops marched down the Bowery and stopped there in 1783 before making \u201ctheir official entrance into the city proper,\u201d said Kerri Culhane",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_18",
+        "name": "National Register of Historic Places",
+        "type": "ORGANIZATION",
+        "document_frequency": 1,
+        "confidence": 0.94,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "won the Bowery a place on the National Register of Historic Places",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_19",
+        "name": "The Astors",
+        "type": "ORGANIZATION",
+        "document_frequency": 1,
+        "confidence": 0.93,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "They even owned the Bull\u2019s Head site.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_20",
+        "name": "Daisy Bell",
+        "type": "CONCEPT",
+        "document_frequency": 1,
+        "confidence": 0.92,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "One tune that apparently got its start there in the 1890s was \u201cDaisy Bell,\u201d",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_21",
+        "name": "Tin Pan Alley",
+        "type": "CONCEPT",
+        "document_frequency": 1,
+        "confidence": 0.92,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "a place where Tin Pan Alley songwriters would go to plug their songs",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_22",
+        "name": "1750",
+        "type": "DATE",
+        "document_frequency": 1,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "The Bull\u2019s Head opened around 1750",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_23",
+        "name": "1858",
+        "type": "DATE",
+        "document_frequency": 1,
+        "confidence": 0.94,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "It reigned as \u201cone of the show places of New York\u201d from 1858 on",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_24",
+        "name": "1911",
+        "type": "DATE",
+        "document_frequency": 1,
+        "confidence": 0.94,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "when it finally shut down in 1911.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_25",
+        "name": "1870s",
+        "type": "DATE",
+        "document_frequency": 1,
+        "confidence": 0.91,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "in the 1870s and 1880s, the Atlantic Garden was raided repeatedly",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_26",
+        "name": "1880s",
+        "type": "DATE",
+        "document_frequency": 1,
+        "confidence": 0.91,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "in the 1870s and 1880s, the Atlantic Garden was raided repeatedly",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_27",
+        "name": "1890s",
+        "type": "DATE",
+        "document_frequency": 1,
+        "confidence": 0.91,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "One tune that apparently got its start there in the 1890s was \u201cDaisy Bell,\u201d",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_28",
+        "name": "Alex Chu",
+        "type": "PERSON",
+        "document_frequency": 1,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 2,
+            "quote": "the fate of the site depends on the current owner, Alex Chu, who is demolishing the site to make way for a new hotel.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_29",
+        "name": "new hotel",
+        "type": "CONCEPT",
+        "document_frequency": 2,
+        "confidence": 0.97,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "The building at 50 Bowery, which has had many faces since, is being prepared for demolition so a hotel can be built at the site.",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "The site is to be cleared for a hotel.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_30",
+        "name": "Landmarks Preservation Commission",
+        "type": "ORGANIZATION",
+        "document_frequency": 2,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 2,
+            "quote": "Elected officials and the Landmarks Preservation Commission are both doing their best to launch a thorough investigation of what may very well be the famed 18th century saloon the Bull's Head Tavern",
+            "section": null
+          },
+          {
+            "document_index": 2,
+            "quote": "The Landmarks Commission tells The Lo-Down that they're \"aware of the situation,\" but \"cannot require the owner to conduct archaeology.\"",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_31",
+        "name": "The Lo-Down",
+        "type": "ORGANIZATION",
+        "document_frequency": 1,
+        "confidence": 0.96,
+        "evidence": [
+          {
+            "document_index": 2,
+            "quote": "The Landmarks Commission tells The Lo-Down that they're \"aware of the situation,\" but \"cannot require the owner to conduct archaeology.\"",
+            "section": null
+          }
+        ]
+      }
+    ],
+    "relations": [
+      {
+        "source": "entity_1",
+        "target": "entity_2",
+        "relation_type": "RELATED_TO",
+        "support_count": 1,
+        "source_documents": [
+          0
+        ],
+        "confidence": 0.9,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Preservationist Adam Woodward discovered a cellar that he believes could be the foundation of the Revolutionary War-era Bull\u2019s Head Tavern.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_3",
+        "target": "entity_2",
+        "relation_type": "RELATED_TO",
+        "support_count": 1,
+        "source_documents": [
+          0
+        ],
+        "confidence": 0.88,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "\u201cAfter the English had marched up the Bowery and out of the city (in 1783), George Washington and Governor (George) Clinton stopped at the Bull\u2019s Head (tavern),\u201d",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_4",
+        "target": "entity_2",
+        "relation_type": "RELATED_TO",
+        "support_count": 1,
+        "source_documents": [
+          0
+        ],
+        "confidence": 0.86,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "George Washington and Governor (George) Clinton stopped at the Bull\u2019s Head (tavern)",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_29",
+        "target": "entity_5",
+        "relation_type": "LOCATED_IN",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "The building at 50 Bowery, which has had many faces since, is being prepared for demolition so a hotel can be built at the site.",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "The site is to be cleared for a hotel.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_1",
+        "target": "entity_5",
+        "relation_type": "RELATED_TO",
+        "support_count": 1,
+        "source_documents": [
+          2
+        ],
+        "confidence": 0.91,
+        "evidence": [
+          {
+            "document_index": 2,
+            "quote": "Photographer Adam Woodward first documented the ancient, hand-planed wood joists and stone foundation in the basement of 50 Bowery last week.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_17",
+        "target": "entity_2",
+        "relation_type": "RELATED_TO",
+        "support_count": 1,
+        "source_documents": [
+          1
+        ],
+        "confidence": 0.86,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "Kerri Culhane, a historian who wrote the application that won the Bowery a place on the National Register of Historic Places.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_19",
+        "target": "entity_2",
+        "relation_type": "RELATED_TO",
+        "support_count": 1,
+        "source_documents": [
+          1
+        ],
+        "confidence": 0.84,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "They even owned the Bull\u2019s Head site.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_11",
+        "target": "entity_24",
+        "relation_type": "RESULTED_IN",
+        "support_count": 1,
+        "source_documents": [
+          1
+        ],
+        "confidence": 0.91,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "when it finally shut down in 1911.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_11",
+        "target": "entity_26",
+        "relation_type": "RELATED_TO",
+        "support_count": 1,
+        "source_documents": [
+          1
+        ],
+        "confidence": 0.87,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "in the 1870s and 1880s, the Atlantic Garden was raided repeatedly",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_11",
+        "target": "entity_21",
+        "relation_type": "RELATED_TO",
+        "support_count": 1,
+        "source_documents": [
+          1
+        ],
+        "confidence": 0.88,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "a place where Tin Pan Alley songwriters would go to plug their songs",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_11",
+        "target": "entity_20",
+        "relation_type": "RELATED_TO",
+        "support_count": 1,
+        "source_documents": [
+          1
+        ],
+        "confidence": 0.88,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "One tune that apparently got its start there in the 1890s was \u201cDaisy Bell,\u201d",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_28",
+        "target": "entity_29",
+        "relation_type": "CAUSES",
+        "support_count": 1,
+        "source_documents": [
+          2
+        ],
+        "confidence": 0.89,
+        "evidence": [
+          {
+            "document_index": 2,
+            "quote": "the fate of the site depends on the current owner, Alex Chu, who is demolishing the site to make way for a new hotel.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_28",
+        "target": "entity_5",
+        "relation_type": "RELATED_TO",
+        "support_count": 1,
+        "source_documents": [
+          2
+        ],
+        "confidence": 0.84,
+        "evidence": [
+          {
+            "document_index": 2,
+            "quote": "the fate of the site depends on the current owner, Alex Chu",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_2",
+        "target": "entity_5",
+        "relation_type": "LOCATED_IN",
+        "support_count": 2,
+        "source_documents": [
+          1,
+          2
+        ],
+        "confidence": 0.92,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "I followed that wall and found myself at the front of the building, under the sidewalk at the Bowery, and looked up and saw what looked to me like 18th-century hand-hewn and hand-planed joists and beams",
+            "section": null
+          },
+          {
+            "document_index": 2,
+            "quote": "the famed 18th century saloon the Bull's Head Tavern",
+            "section": null
+          }
+        ]
+      }
+    ],
+    "reasoning_paths": [
+      {
+        "path": [
+          "entity_1",
+          "entity_2",
+          "entity_5"
+        ],
+        "description": "Preservationist Adam Woodward (entity_1) reported discovering a cellar he believes is the foundation of the Revolutionary\u2011War\u2011era Bull\u2019s Head Tavern (entity_2). The KG records that the Bull\u2019s Head Tavern is LOCATED_IN the building at 50 Bowery (entity_5). Hence Woodward\u2019s find directly ties him to the historic tavern and to its physical location at 50 Bowery.",
+        "confidence": 0.88
+      },
+      {
+        "path": [
+          "entity_3",
+          "entity_2",
+          "entity_5",
+          "entity_29"
+        ],
+        "description": "George Washington (entity_3) is documented as having stopped at the Bull\u2019s Head Tavern (entity_2). The tavern is LOCATED_IN 50 Bowery (entity_5), a site that is slated to be cleared for a new hotel (entity_29). This chain shows that a place once visited by a founding father is now threatened by modern development.",
+        "confidence": 0.88
+      },
+      {
+        "path": [
+          "entity_30",
+          "entity_2",
+          "entity_5",
+          "entity_28",
+          "entity_29"
+        ],
+        "description": "The Landmarks Preservation Commission (entity_30) is actively investigating the possible remains of the 18th\u2011century Bull\u2019s Head Tavern (entity_2) at 50 Bowery (entity_5). The current owner, Alex Chu (entity_28), is demolishing the building, which will result in the construction of a new hotel (entity_29). This chain highlights the tension between historic\u2011preservation authorities and private development actions.",
+        "confidence": 0.84
+      }
+    ]
+  }
+}

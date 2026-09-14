@@ -1,0 +1,667 @@
+{
+  "cluster_idx": 6,
+  "corruption_type": "contradictions",
+  "severity": 0.3,
+  "label": {
+    "consistency": 0.0,
+    "missing_entities": 0.0,
+    "contradictions": 1.0,
+    "fragmentation": 0.0
+  },
+  "corruption_metadata": {
+    "corruption_type": "contradictions",
+    "severity": 0.3,
+    "flipped_relations": 3
+  },
+  "knowledge_graph": {
+    "entities": [
+      {
+        "id": "entity_1",
+        "name": "Israeli Defence Forces",
+        "type": "ORGANIZATION",
+        "document_frequency": 1,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "A still image taken from Israeli Defence Forces (IDF) video footage shows what they say is a small unidentified aircraft shot down in a mid-air interception after it crossed into southern Israel October 6, 2012.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_2",
+        "name": "Israeli air force",
+        "type": "ORGANIZATION",
+        "document_frequency": 1,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "The Israeli air force shot down a drone on Saturday after it crossed into southern Israel, the military said, but it remained unclear where the aircraft had come from.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_3",
+        "name": "Jamaluddin Aberoumand",
+        "type": "PERSON",
+        "document_frequency": 1,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Jamaluddin Aberoumand, deputy coordinator for Iran's Islamic Revolutionary Guard Corps, said the incident indicated that Israel's Iron Dome anti-missile defense system \"does not work and lacks the necessary capacity\"",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_4",
+        "name": "Iran's Islamic Revolutionary Guard Corps",
+        "type": "ORGANIZATION",
+        "document_frequency": 1,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Jamaluddin Aberoumand, deputy coordinator for Iran's Islamic Revolutionary Guard Corps, said the incident indicated that Israel's Iron Dome anti-missile defense system ...",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_5",
+        "name": "United States",
+        "type": "ORGANIZATION",
+        "document_frequency": 1,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "The Iron Dome system, jointly funded with the United States, is designed to shoot down short-range guerrilla rockets, not slow-flying aircraft.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_6",
+        "name": "Iron Dome",
+        "type": "CONCEPT",
+        "document_frequency": 1,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Jamaluddin Aberoumand, deputy coordinator for Iran's Islamic Revolutionary Guard Corps, said the incident indicated that Israel's Iron Dome anti-missile defense system \"does not work and lacks the necessary capacity\"",
+            "section": null
+          },
+          {
+            "document_index": 0,
+            "quote": "The Iron Dome system, jointly funded with the United States, is designed to shoot down short-range guerrilla rockets, not slow-flying aircraft.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_7",
+        "name": "Avital Leibovich",
+        "type": "PERSON",
+        "document_frequency": 1,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "The drone was first spotted above the Mediterranean near the Hamas-ruled Gaza Strip to the west of Israel, said military spokeswoman Avital Leibovich.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_8",
+        "name": "Miri Regev",
+        "type": "PERSON",
+        "document_frequency": 1,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Israeli parliament member Miri Regev, a former chief spokesman of the military, wrote on Twitter it was an \"Iranian drone launched by Hezbollah\"",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_9",
+        "name": "Hezbollah",
+        "type": "ORGANIZATION",
+        "document_frequency": 1,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "On at least one occasion, Iranian-backed Hezbollah has sent a drone into Israeli airspace.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_10",
+        "name": "Hamas",
+        "type": "ORGANIZATION",
+        "document_frequency": 2,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "The drone was first spotted above the Mediterranean near the Hamas-ruled Gaza Strip to the west of Israel, said military spokeswoman Avital Leibovich.",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "The armed wing of Hamas, the Islamists who control the Gaza Strip, said it had joined in Monday's rocket attack along with the smaller Islamic Jihad group.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_11",
+        "name": "Gaza Strip",
+        "type": "LOCATION",
+        "document_frequency": 2,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "The drone was first spotted above the Mediterranean near the Hamas-ruled Gaza Strip to the west of Israel, said military spokeswoman Avital Leibovich.",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "Israel said it struck targets in the Gaza Strip on Monday",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_12",
+        "name": "West Bank",
+        "type": "LOCATION",
+        "document_frequency": 1,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "An Israeli warplane shot it down above a forest near the occupied West Bank.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_13",
+        "name": "Negev",
+        "type": "LOCATION",
+        "document_frequency": 1,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "In 2010, an Israeli warplane shot down an apparently unmanned balloon in the Negev near the country's Dimona nuclear reactor.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_14",
+        "name": "Dimona nuclear reactor",
+        "type": "LOCATION",
+        "document_frequency": 1,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "In 2010, an Israeli warplane shot down an apparently unmanned balloon in the Negev near the country's Dimona nuclear reactor.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_15",
+        "name": "Iran",
+        "type": "LOCATION",
+        "document_frequency": 1,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Iran has responded with threats to attack U.S. military bases in the region and retaliate against Israel if attacked.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_16",
+        "name": "U.S. military bases",
+        "type": "LOCATION",
+        "document_frequency": 1,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Iran has responded with threats to attack U.S. military bases in the region and retaliate against Israel if attacked.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_17",
+        "name": "Drone",
+        "type": "PRODUCT",
+        "document_frequency": 2,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "The Israeli air force shot down a drone on Saturday after it crossed into southern Israel, the military said, but it remained unclear where the aircraft had come from.",
+            "section": null
+          },
+          {
+            "document_index": 0,
+            "quote": "The drone was first spotted above the Mediterranean near the Hamas-ruled Gaza Strip to the west of Israel, said military spokeswoman Avital Leibovich.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_18",
+        "name": "Mid-air interception (Oct 6 2012)",
+        "type": "EVENT",
+        "document_frequency": 1,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "A still image taken from Israeli Defence Forces (IDF) video footage shows what they say is a small unidentified aircraft shot down in a mid-air interception after it crossed into southern Israel October 6, 2012.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_19",
+        "name": "October 6, 2012",
+        "type": "DATE",
+        "document_frequency": 1,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "A still image taken from Israeli Defence Forces (IDF) video footage shows what they say is a small unidentified aircraft shot down in a mid-air interception after it crossed into southern Israel October 6, 2012.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_20",
+        "name": "Israel",
+        "type": "LOCATION",
+        "document_frequency": 2,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "Israel said it struck targets in the Gaza Strip on Monday",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "Israel said its air raid targeted 25-year-old Mohammed Makawi...",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_21",
+        "name": "Mohammed Makawi",
+        "type": "PERSON",
+        "document_frequency": 1,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "Israel said its air raid targeted 25-year-old Mohammed Makawi whom it linked to a radical group involved in a recent Sinai border attack.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_22",
+        "name": "Sinai",
+        "type": "LOCATION",
+        "document_frequency": 1,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "Israel said its air raid targeted 25-year-old Mohammed Makawi whom it linked to a radical group involved in a recent Sinai border attack.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_23",
+        "name": "Islamic Jihad",
+        "type": "ORGANIZATION",
+        "document_frequency": 1,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "the armed wing of Hamas, the Islamists who control the Gaza Strip, said it had joined in Monday's rocket attack along with the smaller Islamic Jihad group.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_24",
+        "name": "Khan Younis",
+        "type": "LOCATION",
+        "document_frequency": 1,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "Residents of Khan Younis in southern Gaza said an Israeli tank fired at the suspected launch area, slightly wounding four children and damaging a minaret and a water tower.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_25",
+        "name": "Rafah",
+        "type": "LOCATION",
+        "document_frequency": 1,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "one Islamic Jihad militant thought to have been involved in the rocket attack had been wounded by Israeli tank fire east of the town of Rafah.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_26",
+        "name": "Abu Ubaida",
+        "type": "PERSON",
+        "document_frequency": 1,
+        "confidence": 0.97,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "Abu Ubaida, spokesman of the Hamas armed wing Izz El-Deen Al-Qassam Brigades, said the rocket firing was a message to Israel",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_27",
+        "name": "Izz El-Deen Al-Qassam Brigades",
+        "type": "ORGANIZATION",
+        "document_frequency": 1,
+        "confidence": 0.98,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "Abu Ubaida, spokesman of the Hamas armed wing Izz El-Deen Al-Qassam Brigades, said the rocket firing was a message to Israel",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_28",
+        "name": "Ilan Yosef",
+        "type": "PERSON",
+        "document_frequency": 1,
+        "confidence": 0.96,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "\"It was a very powerful barrage,\" Ilan Yosef of Kibbutz Nir Yitzhak near the Gaza border told Israel radio.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_29",
+        "name": "Kibbutz Nir Yitzhak",
+        "type": "ORGANIZATION",
+        "document_frequency": 1,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "\"It was a very powerful barrage,\" Ilan Yosef of Kibbutz Nir Yitzhak near the Gaza border told Israel radio.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_30",
+        "name": "Rocket attack on southern Israel (Monday)",
+        "type": "EVENT",
+        "document_frequency": 1,
+        "confidence": 0.94,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "the armed wing of Hamas, the Islamists who control the Gaza Strip, said it had joined in Monday's rocket attack along with the smaller Islamic Jihad group.",
+            "section": null
+          }
+        ]
+      }
+    ],
+    "relations": [
+      {
+        "source": "entity_3",
+        "target": "entity_4",
+        "relation_type": "AFFILIATED_WITH",
+        "support_count": 1,
+        "source_documents": [
+          0
+        ],
+        "confidence": 0.98,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Jamaluddin Aberoumand, deputy coordinator for Iran's Islamic Revolutionary Guard Corps, said the incident indicated that Israel's Iron Dome anti-missile defense system \"does not work and lacks the necessary capacity\"",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_6",
+        "target": "entity_5",
+        "relation_type": "RELATED_TO",
+        "support_count": 1,
+        "source_documents": [
+          0
+        ],
+        "confidence": 0.97,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "The Iron Dome system, jointly funded with the United States, is designed to shoot down short-range guerrilla rockets, not slow-flying aircraft.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_18",
+        "target": "entity_2",
+        "relation_type": "PARTICIPATED_IN",
+        "support_count": 1,
+        "source_documents": [
+          0
+        ],
+        "confidence": 0.96,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "The Israeli air force shot down a drone on Saturday after it crossed into southern Israel, the military said, but it remained unclear where the aircraft had come from.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_1",
+        "target": "entity_18",
+        "relation_type": "PARTICIPATED_IN",
+        "support_count": 1,
+        "source_documents": [
+          0
+        ],
+        "confidence": 0.96,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "A still image taken from Israeli Defence Forces (IDF) video footage shows what they say is a small unidentified aircraft shot down in a mid-air interception after it crossed into southern Israel October 6, 2012.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_8",
+        "target": "entity_9",
+        "relation_type": "RELATED_TO",
+        "support_count": 1,
+        "source_documents": [
+          0
+        ],
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Israeli parliament member Miri Regev, a former chief spokesman of the military, wrote on Twitter it was an \"Iranian drone launched by Hezbollah\"",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_23",
+        "target": "entity_30",
+        "relation_type": "PARTICIPATED_IN",
+        "support_count": 1,
+        "source_documents": [
+          1
+        ],
+        "confidence": 0.94,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "the armed wing of Hamas, the Islamists who control the Gaza Strip, said it had joined in Monday's rocket attack along with the smaller Islamic Jihad group.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_10",
+        "target": "entity_30",
+        "relation_type": "PARTICIPATED_IN",
+        "support_count": 1,
+        "source_documents": [
+          1
+        ],
+        "confidence": 0.94,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "the armed wing of Hamas, the Islamists who control the Gaza Strip, said it had joined in Monday's rocket attack along with the smaller Islamic Jihad group.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_27",
+        "target": "entity_26",
+        "relation_type": "AFFILIATED_WITH",
+        "support_count": 1,
+        "source_documents": [
+          1
+        ],
+        "confidence": 0.96,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "Abu Ubaida, spokesman of the Hamas armed wing Izz El-Deen Al-Qassam Brigades, said the rocket firing was a message to Israel",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_29",
+        "target": "entity_28",
+        "relation_type": "AFFILIATED_WITH",
+        "support_count": 1,
+        "source_documents": [
+          1
+        ],
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "\"It was a very powerful barrage,\" Ilan Yosef of Kibbutz Nir Yitzhak near the Gaza border told Israel radio.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_15",
+        "target": "entity_16",
+        "relation_type": "RELATED_TO",
+        "support_count": 1,
+        "source_documents": [
+          0
+        ],
+        "confidence": 0.93,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Iran has responded with threats to attack U.S. military bases in the region and retaliate against Israel if attacked.",
+            "section": null
+          }
+        ]
+      }
+    ],
+    "reasoning_paths": [
+      {
+        "path": [
+          "entity_1",
+          "entity_18",
+          "entity_2"
+        ],
+        "description": "The Israeli Defence Forces recorded a mid\u2011air interception on 6\u202fOct\u202f2012, and the same interception event is also listed as being carried out by the Israeli Air Force, indicating that both military branches jointly participated in shooting down the unidentified aircraft.",
+        "confidence": 0.9
+      },
+      {
+        "path": [
+          "entity_23",
+          "entity_30",
+          "entity_10"
+        ],
+        "description": "Islamic Jihad is recorded as having participated in the \"Rocket attack on southern Israel (Monday)\" event, which was also joined by Hamas, showing coordinated action between the two militant organisations in the same attack.",
+        "confidence": 0.88
+      },
+      {
+        "path": [
+          "entity_3",
+          "entity_4",
+          "entity_6",
+          "entity_5"
+        ],
+        "description": "Jamaluddin Aberoumand, a deputy coordinator of Iran's Islamic Revolutionary Guard Corps, publicly asserted that Israel's Iron Dome \"does not work\"; this links the IRGC (entity_4) to criticism of Iron Dome (entity_6), a system that is jointly funded by the United States (entity_5), highlighting Iran's opposition to a US\u2011backed defence technology.",
+        "confidence": 0.79
+      }
+    ]
+  }
+}

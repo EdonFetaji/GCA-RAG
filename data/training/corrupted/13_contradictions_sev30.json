@@ -1,0 +1,357 @@
+{
+  "cluster_idx": 13,
+  "corruption_type": "contradictions",
+  "severity": 0.3,
+  "label": {
+    "consistency": 0.0,
+    "missing_entities": 0.0,
+    "contradictions": 1.0,
+    "fragmentation": 0.0
+  },
+  "corruption_metadata": {
+    "corruption_type": "contradictions",
+    "severity": 0.3,
+    "flipped_relations": 2
+  },
+  "knowledge_graph": {
+    "entities": [
+      {
+        "id": "entity_1",
+        "name": "WASHINGTON",
+        "type": "LOCATION",
+        "document_frequency": 2,
+        "confidence": 0.96,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "WASHINGTON\u2014Behind the political showdown over the deadly U.S. consulate attack in Benghazi, Libya, are a few dozen heavily edited words.",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "WASHINGTON\u2014Behind the political showdown over the deadly U.S. consulate attack in Benghazi, Libya, are a few dozen heavily edited words.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_2",
+        "name": "U.S.",
+        "type": "LOCATION",
+        "document_frequency": 2,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "WASHINGTON\u2014Behind the political showdown over the deadly U.S. consulate attack in Benghazi, Libya, are a few dozen heavily edited words.",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "WASHINGTON\u2014Behind the political showdown over the deadly U.S. consulate attack in Benghazi, Libya, are a few dozen heavily edited words.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_3",
+        "name": "Benghazi",
+        "type": "LOCATION",
+        "document_frequency": 2,
+        "confidence": 0.97,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "WASHINGTON\u2014Behind the political showdown over the deadly U.S. consulate attack in Benghazi, Libya, are a few dozen heavily edited words.",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "WASHINGTON\u2014Behind the political showdown over the deadly U.S. consulate attack in Benghazi, Libya, are a few dozen heavily edited words.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_4",
+        "name": "Libya",
+        "type": "LOCATION",
+        "document_frequency": 2,
+        "confidence": 0.97,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "WASHINGTON\u2014Behind the political showdown over the deadly U.S. consulate attack in Benghazi, Libya, are a few dozen heavily edited words.",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "WASHINGTON\u2014Behind the political showdown over the deadly U.S. consulate attack in Benghazi, Libya, are a few dozen heavily edited words.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_5",
+        "name": "Susan Rice",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 0.98,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Now famous as \"the talking points,\" the 94 words were used by United Nations Ambassador Susan Rice on Sunday talk shows days after the attack.",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "Now famous as \"the talking points,\" the 94 words were used by United Nations Ambassador Susan Rice on Sunday talk shows days after the attack.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_6",
+        "name": "United Nations",
+        "type": "ORGANIZATION",
+        "document_frequency": 2,
+        "confidence": 0.96,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Now famous as \"the talking points,\" the 94 words were used by United Nations Ambassador Susan Rice on Sunday talk shows days after the attack.",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "Now famous as \"the talking points,\" the 94 words were used by United Nations Ambassador Susan Rice on Sunday talk shows days after the attack.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_7",
+        "name": "U.S. consulate attack in Benghazi",
+        "type": "EVENT",
+        "document_frequency": 2,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "WASHINGTON\u2014Behind the political showdown over the deadly U.S. consulate attack in Benghazi, Libya, are a few dozen heavily edited words.",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "WASHINGTON\u2014Behind the political showdown over the deadly U.S. consulate attack in Benghazi, Libya, are a few dozen heavily edited words.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_8",
+        "name": "94-word intelligence summary",
+        "type": "CONCEPT",
+        "document_frequency": 2,
+        "confidence": 0.94,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "The 94-word intelligence summary emerged from a daylong email debate between more than two dozen intelligence officials, in which they contested and whittled the available evidence into a bland summary with no reference to al Qaeda, an assessment the administration now acknowledges was wide of the mark.",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "The 94-word intelligence summary emerged from a daylong email debate between more than two dozen intelligence officials, in which they contested and whittled the available evidence into a bland summary with no reference to al Qaeda, an assessment the administration now acknowledges was wide of the mark.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_9",
+        "name": "Sunday",
+        "type": "DATE",
+        "document_frequency": 2,
+        "confidence": 0.93,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Now famous as \"the talking points,\" the 94 words were used by United Nations Ambassador Susan Rice on Sunday talk shows days after the attack.",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "Now famous as \"the talking points,\" the 94 words were used by United Nations Ambassador Susan Rice on Sunday talk shows days after the attack.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_10",
+        "name": "al Qaeda",
+        "type": "ORGANIZATION",
+        "document_frequency": 2,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "no reference to al Qaeda",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "no reference to al Qaeda",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_11",
+        "name": "\"the talking points\"",
+        "type": "OTHER",
+        "document_frequency": 2,
+        "confidence": 0.93,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Now famous as \"the talking points,\" the 94 words were used by United Nations Ambassador Susan Rice on Sunday talk shows days after the attack.",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "Now famous as \"the talking points,\" the 94 words were used by United Nations Ambassador Susan Rice on Sunday talk shows days after the attack.",
+            "section": null
+          }
+        ]
+      }
+    ],
+    "relations": [
+      {
+        "source": "entity_5",
+        "target": "entity_6",
+        "relation_type": "AFFILIATED_WITH",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.9,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "United Nations Ambassador Susan Rice",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "United Nations Ambassador Susan Rice",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_8",
+        "target": "entity_5",
+        "relation_type": "RELATED_TO",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.88,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "the 94 words were used by United Nations Ambassador Susan Rice",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "the 94 words were used by United Nations Ambassador Susan Rice",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_7",
+        "target": "entity_3",
+        "relation_type": "LOCATED_IN",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.88,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "U.S. consulate attack in Benghazi, Libya",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "U.S. consulate attack in Benghazi, Libya",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_4",
+        "target": "entity_7",
+        "relation_type": "LOCATED_IN",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.88,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "U.S. consulate attack in Benghazi, Libya",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "U.S. consulate attack in Benghazi, Libya",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_8",
+        "target": "entity_10",
+        "relation_type": "CONTRADICTS",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.85,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "no reference to al Qaeda",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "no reference to al Qaeda",
+            "section": null
+          }
+        ]
+      }
+    ],
+    "reasoning_paths": [
+      {
+        "path": [
+          "entity_5",
+          "entity_8",
+          "entity_10"
+        ],
+        "description": "Susan Rice (entity_5) used the 94\u2011word intelligence summary (entity_8) in public statements. The summary explicitly omits any reference to al Qaeda (entity_10), i.e., it contradicts the claim that al Qaeda was involved in the Benghazi attack. Therefore, Rice's reliance on that summary suggests a down\u2011playing or denial of al Qaeda's role.",
+        "confidence": 0.86
+      }
+    ]
+  }
+}

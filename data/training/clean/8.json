@@ -1,0 +1,436 @@
+{
+  "cluster_idx": 8,
+  "num_documents": 2,
+  "reference_summary": "\u2013 A dispute over the freshness of Wendy\u2019s fries leaves a 25-year-old Minnesota woman facing criminal charges. According to CBS Minnesota, Wendy's employees claim that Eiram Chanel Amir Dixson became argumentative during a drive-thru transaction just after noon Thursday after the woman asked specifically for fresh French fries. Reports don't specify the condition of the fries, or whether she even received them, but do make clear that an argument followed. Employees allege Dixson reached through the drive-thru window and, after an employee threw a soft drink at her, proceeded to spray them with Mace. The restaurant manager was hit directly in the face while two more employees were also in the line of the spray, per the police report. All three employees provided similar accounts of the incident, according to ABC News 5. Dixson is being charged with felony use of tear gas to immobilize. If found guilty, she\u2019ll face a maximum sentence of up to five years in prison and/or a $3,000 to $10,000 fine. Wendy\u2019s drive-thrus see their share of action: last year, a worker was allegedly bit over a wrong order in Virginia, while a Florida man reportedly threw an alligator through a drive-thru window as a prank.",
+  "extraction": {
+    "method": "full_pipeline",
+    "cluster_index": 8,
+    "num_documents": 2,
+    "knowledge_graph": {
+      "entities": [
+        {
+          "id": "entity_1",
+          "name": "Alexa Internet",
+          "type": "ORGANIZATION",
+          "document_frequency": 1,
+          "confidence": 0.97,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "Starting in 1996, Alexa Internet has been donating their crawl data to the Internet Archive.",
+              "section": null
+            }
+          ]
+        },
+        {
+          "id": "entity_2",
+          "name": "Internet Archive",
+          "type": "ORGANIZATION",
+          "document_frequency": 1,
+          "confidence": 0.97,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "Starting in 1996, Alexa Internet has been donating their crawl data to the Internet Archive.",
+              "section": null
+            }
+          ]
+        },
+        {
+          "id": "entity_3",
+          "name": "Wayback Machine",
+          "type": "PRODUCT",
+          "document_frequency": 1,
+          "confidence": 0.96,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "these data are added to the Wayback Machine after an embargo period.",
+              "section": null
+            }
+          ]
+        },
+        {
+          "id": "entity_4",
+          "name": "1996",
+          "type": "DATE",
+          "document_frequency": 1,
+          "confidence": 0.95,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "Starting in 1996, Alexa Internet has been donating their crawl data to the Internet Archive.",
+              "section": null
+            }
+          ]
+        },
+        {
+          "id": "entity_5",
+          "name": "crawl data",
+          "type": "CONCEPT",
+          "document_frequency": 1,
+          "confidence": 0.94,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "Starting in 1996, Alexa Internet has been donating their crawl data to the Internet Archive.",
+              "section": null
+            }
+          ]
+        },
+        {
+          "id": "entity_6",
+          "name": "St. Paul",
+          "type": "LOCATION",
+          "document_frequency": 1,
+          "confidence": 0.98,
+          "evidence": [
+            {
+              "document_index": 1,
+              "quote": "St. Paul's Top 3 Dive Bars",
+              "section": null
+            },
+            {
+              "document_index": 1,
+              "quote": "Artsy Deals Worth Seeking Out In St. Paul This Week",
+              "section": null
+            }
+          ]
+        },
+        {
+          "id": "entity_7",
+          "name": "Minneapolis",
+          "type": "LOCATION",
+          "document_frequency": 1,
+          "confidence": 0.98,
+          "evidence": [
+            {
+              "document_index": 1,
+              "quote": "Minneapolis Moonshine: 5 Of The City's Top Distilleries",
+              "section": null
+            },
+            {
+              "document_index": 1,
+              "quote": "northeast Minneapolis called Que Viet",
+              "section": null
+            }
+          ]
+        },
+        {
+          "id": "entity_8",
+          "name": "WCCO",
+          "type": "ORGANIZATION",
+          "document_frequency": 1,
+          "confidence": 0.97,
+          "evidence": [
+            {
+              "document_index": 1,
+              "quote": "WCCO Viewers' Choice For Best Egg Roll In Minnesota",
+              "section": null
+            }
+          ]
+        },
+        {
+          "id": "entity_9",
+          "name": "Que Viet",
+          "type": "ORGANIZATION",
+          "document_frequency": 1,
+          "confidence": 0.96,
+          "evidence": [
+            {
+              "document_index": 1,
+              "quote": "northeast Minneapolis called Que Viet",
+              "section": null
+            }
+          ]
+        },
+        {
+          "id": "entity_10",
+          "name": "The Sunshine Factory",
+          "type": "ORGANIZATION",
+          "document_frequency": 1,
+          "confidence": 0.96,
+          "evidence": [
+            {
+              "document_index": 1,
+              "quote": "The Sunshine Factory opened in New Hope in 1976",
+              "section": null
+            },
+            {
+              "document_index": 1,
+              "quote": "The Sunshine Factory Burns Bright In Plymouth",
+              "section": null
+            }
+          ]
+        },
+        {
+          "id": "entity_11",
+          "name": "Plymouth",
+          "type": "LOCATION",
+          "document_frequency": 1,
+          "confidence": 0.95,
+          "evidence": [
+            {
+              "document_index": 1,
+              "quote": "The Sunshine Factory Burns Bright In Plymouth",
+              "section": null
+            }
+          ]
+        },
+        {
+          "id": "entity_12",
+          "name": "New Hope",
+          "type": "LOCATION",
+          "document_frequency": 1,
+          "confidence": 0.95,
+          "evidence": [
+            {
+              "document_index": 1,
+              "quote": "The Sunshine Factory opened in New Hope in 1976",
+              "section": null
+            }
+          ]
+        },
+        {
+          "id": "entity_13",
+          "name": "1976",
+          "type": "DATE",
+          "document_frequency": 1,
+          "confidence": 0.94,
+          "evidence": [
+            {
+              "document_index": 1,
+              "quote": "The Sunshine Factory opened in New Hope in 1976",
+              "section": null
+            }
+          ]
+        }
+      ],
+      "relations": [
+        {
+          "source": "entity_1",
+          "target": "entity_2",
+          "relation_type": "RELATED_TO",
+          "support_count": 1,
+          "source_documents": [
+            0
+          ],
+          "confidence": 0.9,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "donating their crawl data to the Internet Archive.",
+              "section": null
+            }
+          ]
+        },
+        {
+          "source": "entity_5",
+          "target": "entity_3",
+          "relation_type": "RELATED_TO",
+          "support_count": 1,
+          "source_documents": [
+            0
+          ],
+          "confidence": 0.88,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "these data are added to the Wayback Machine after an embargo period.",
+              "section": null
+            }
+          ]
+        },
+        {
+          "source": "entity_9",
+          "target": "entity_7",
+          "relation_type": "LOCATED_IN",
+          "support_count": 1,
+          "source_documents": [
+            1
+          ],
+          "confidence": 0.95,
+          "evidence": [
+            {
+              "document_index": 1,
+              "quote": "northeast Minneapolis called Que Viet",
+              "section": null
+            }
+          ]
+        },
+        {
+          "source": "entity_10",
+          "target": "entity_12",
+          "relation_type": "LOCATED_IN",
+          "support_count": 1,
+          "source_documents": [
+            1
+          ],
+          "confidence": 0.94,
+          "evidence": [
+            {
+              "document_index": 1,
+              "quote": "The Sunshine Factory opened in New Hope in 1976",
+              "section": null
+            }
+          ]
+        },
+        {
+          "source": "entity_10",
+          "target": "entity_11",
+          "relation_type": "LOCATED_IN",
+          "support_count": 1,
+          "source_documents": [
+            1
+          ],
+          "confidence": 0.94,
+          "evidence": [
+            {
+              "document_index": 1,
+              "quote": "The Sunshine Factory Burns Bright In Plymouth",
+              "section": null
+            }
+          ]
+        },
+        {
+          "source": "entity_10",
+          "target": "entity_13",
+          "relation_type": "ANNOUNCED",
+          "support_count": 1,
+          "source_documents": [
+            1
+          ],
+          "confidence": 0.93,
+          "evidence": [
+            {
+              "document_index": 1,
+              "quote": "The Sunshine Factory opened in New Hope in 1976",
+              "section": null
+            }
+          ]
+        }
+      ],
+      "reasoning_paths": [
+        {
+          "path": [
+            "entity_1",
+            "entity_5",
+            "entity_3"
+          ],
+          "description": "Alexa Internet (entity_1) generates crawl data (entity_5); that crawl data is later added to the Wayback Machine (entity_3). Therefore, the web\u2011archive content supplied by Alexa eventually appears in the Wayback Machine.",
+          "confidence": 0.84
+        },
+        {
+          "path": [
+            "entity_1",
+            "entity_2",
+            "entity_3"
+          ],
+          "description": "Alexa Internet (entity_1) donates its crawl data to the Internet Archive (entity_2), and the Internet Archive operates the Wayback Machine (entity_3). Hence, Alexa\u2019s contributions flow through the Internet Archive and become accessible via the Wayback Machine.",
+          "confidence": 0.8
+        },
+        {
+          "path": [
+            "entity_10",
+            "entity_12",
+            "entity_13"
+          ],
+          "description": "The Sunshine Factory (entity_10) opened in New Hope (entity_12) in the year 1976 (entity_13). This links the company\u2019s establishment date directly to its New Hope location.",
+          "confidence": 0.92
+        }
+      ]
+    },
+    "grader_reports": [
+      {
+        "overall_score": 0.55,
+        "issues": [
+          {
+            "issue_type": "WRONG_TYPE",
+            "element_id": "entity_1",
+            "description": "The identifier **entity_1** is used for two different entities \u2013 \u201cAlexa Internet\u201d (ORGANIZATION) and \u201cSt. Paul\u201d (LOCATION). IDs must be unique; create separate IDs for each entity.",
+            "severity": "high"
+          },
+          {
+            "issue_type": "WRONG_TYPE",
+            "element_id": "entity_2",
+            "description": "The identifier **entity_2** is reused for both \u201cInternet Archive\u201d (ORGANIZATION) and \u201cMinneapolis\u201d (LOCATION). This duplication breaks the graph\u2019s integrity \u2013 assign distinct IDs.",
+            "severity": "high"
+          },
+          {
+            "issue_type": "HALLUCINATION",
+            "element_id": null,
+            "description": "The relation **entity_4 \u2192 entity_2** (Que Viet\u202fLOCATED_IN\u202fInternet Archive) is not supported by the evidence. The quote only says \u201cnortheast Minneapolis called Que Viet\u201d, indicating Que Viet is located in Minneapolis, not the Internet Archive. Replace the target with the Minneapolis location entity (using the correct ID) or remove the relation.",
+            "severity": "high"
+          },
+          {
+            "issue_type": "MISSING_RELATION",
+            "element_id": null,
+            "description": "A needed LOCATED_IN relation between **Que Viet** and **Minneapolis** is missing because of the duplicate ID issue. Add a relation Que Viet\u202fLOCATED_IN\u202fMinneapolis (using the proper Minneapolis entity ID).",
+            "severity": "medium"
+          }
+        ],
+        "passes_threshold": false,
+        "feedback_summary": "The graph suffers from duplicate entity IDs (entity_1 and entity_2) that merge unrelated entities, causing an incorrect LOCATED_IN relation that points to the wrong target. Fix the ID collisions, adjust the Que Viet\u202fLOCATED_IN relation to reference the proper Minneapolis entity, and add the missing Que Viet\u202fLOCATED_IN\u202fMinneapolis relation. Once these corrections are made, the graph will be consistent and better reflect the source texts."
+      },
+      {
+        "overall_score": 0.78,
+        "issues": [
+          {
+            "issue_type": "WEAK_EVIDENCE",
+            "element_id": "relation_5",
+            "description": "The evidence quote \"The Sunshine Factory Burns Bright In Plymouth\" does not clearly state that the Sunshine Factory is located in Plymouth; it could simply be an article title. Replace with a more explicit statement such as \"The Sunshine Factory is located in Plymouth\" or remove the LOCATED_IN relation.",
+            "severity": "medium"
+          },
+          {
+            "issue_type": "WEAK_EVIDENCE",
+            "element_id": "relation_6",
+            "description": "The relation type ANNOUNCED is used, but the evidence \"The Sunshine Factory opened in New Hope in 1976\" describes an event (opening) rather than an announcement. Change the relation type to a more appropriate one like \"RESULTED_IN\" or \"ESTABLISHED\" or clarify the evidence.",
+            "severity": "low"
+          },
+          {
+            "issue_type": "MISSING_RELATION",
+            "element_id": null,
+            "description": "The documents state that Alexa Internet donates crawl data to the Internet Archive, and that those data are later added to the Wayback Machine. A relation linking Alexa Internet (entity_1) directly to the Wayback Machine (entity_3) \u2013 e.g., RESULTED_IN or RELATED_TO \u2013 is missing. Adding this relation will complete the causal chain.",
+            "severity": "medium"
+          },
+          {
+            "issue_type": "MISSING_RELATION",
+            "element_id": null,
+            "description": "While the text shows that crawl data (entity_5) is donated to the Internet Archive (entity_2), there is no relation capturing this. Introduce a relation such as RELATED_TO or AFFILIATED_WITH from entity_5 to entity_2 with the evidence \"donating their crawl data to the Internet Archive.\"",
+            "severity": "medium"
+          }
+        ],
+        "passes_threshold": false,
+        "feedback_summary": "Most entities and evidence are correct, but a few relations suffer from vague or mismatched evidence, and two logical connections present in the source texts are absent. Strengthen the evidence for the Sunshine Factory\u2019s location and adjust the relation type for its opening date. Add the missing links between Alexa Internet, the Internet Archive, and the Wayback Machine, as well as between crawl data and the Internet Archive, to fully represent the information."
+      }
+    ],
+    "iterations_used": 2,
+    "final_score": 0.78,
+    "metadata": {
+      "ontology_entity_types": [
+        "PERSON",
+        "ORGANIZATION",
+        "LOCATION",
+        "EVENT",
+        "CONCEPT",
+        "DATE",
+        "PRODUCT",
+        "OTHER"
+      ],
+      "ontology_relation_types": [
+        "LOCATED_IN",
+        "AFFILIATED_WITH",
+        "ANNOUNCED",
+        "ACQUIRED",
+        "PARTICIPATED_IN",
+        "RESULTED_IN",
+        "CAUSES",
+        "CONTRADICTS",
+        "SUPPORTS",
+        "RELATED_TO"
+      ],
+      "domain_context": "general news articles"
+    }
+  },
+  "generated_at": "2026-08-13T06:20:03.874116+00:00"
+}

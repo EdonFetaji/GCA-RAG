@@ -1,0 +1,542 @@
+{
+  "cluster_idx": 7,
+  "corruption_type": "missing_entities",
+  "severity": 0.1,
+  "label": {
+    "consistency": 0.0,
+    "missing_entities": 1.0,
+    "contradictions": 0.0,
+    "fragmentation": 0.0
+  },
+  "corruption_metadata": {
+    "corruption_type": "missing_entities",
+    "severity": 0.1,
+    "removed_entities": 3,
+    "removed_relations": 20
+  },
+  "knowledge_graph": {
+    "entities": [
+      {
+        "id": "e2",
+        "name": "Pablo Picasso",
+        "type": "PERSON",
+        "document_frequency": 3,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "shows a cubist painting entitled \u201cThe Hairdresser\u201d by Pablo Picasso.",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "The canvas, titled \"La Coiffeuse,\" was bequeathed to France's National Museum.",
+            "section": null
+          },
+          {
+            "document_index": 2,
+            "quote": "The 1911 painting, \u201cLa Coiffeuse,\u201d \u2026 painted by Picasso in 1911.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "e4",
+        "name": "Paris",
+        "type": "LOCATION",
+        "document_frequency": 3,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "The Pompidou Centre in Paris hopes to display a long\u2011vanished Picasso painting in May",
+            "section": null
+          },
+          {
+            "document_index": 2,
+            "quote": "the Centre Georges Pompidou, the Paris museum and arts center",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "e5",
+        "name": "Alain Seban",
+        "type": "PERSON",
+        "document_frequency": 1,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Pompidou director Alain Seban said the discovery comes as a \"true comfort\"",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "e6",
+        "name": "Islamic State",
+        "type": "ORGANIZATION",
+        "document_frequency": 1,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "reeling from an Islamic State video showing the destruction of statues in Iraq.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "e7",
+        "name": "Iraq",
+        "type": "LOCATION",
+        "document_frequency": 1,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "destruction of statues in Iraq.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "e8",
+        "name": "Belgium",
+        "type": "LOCATION",
+        "document_frequency": 3,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "It was smuggled into the U.S. in December from Belgium.",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "It was shipped by Federal Express from Belgium",
+            "section": null
+          },
+          {
+            "document_index": 2,
+            "quote": "the FedEx shipment from Belgium to Newark",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "e9",
+        "name": "Federal Express",
+        "type": "ORGANIZATION",
+        "document_frequency": 1,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "It was shipped by Federal Express from Belgium",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "e10",
+        "name": "Port of Newark",
+        "type": "LOCATION",
+        "document_frequency": 2,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "seized at the Port of Newark",
+            "section": null
+          },
+          {
+            "document_index": 2,
+            "quote": "the painting arrived at the Port of Newark and was seized",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "e11",
+        "name": "Queens",
+        "type": "LOCATION",
+        "document_frequency": 2,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "the destination was a climate\u2011controlled storage facility in Queens",
+            "section": null
+          },
+          {
+            "document_index": 2,
+            "quote": "Department of Homeland Security officials working from Long Island City, Queens",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "e12",
+        "name": "Long Island City",
+        "type": "LOCATION",
+        "document_frequency": 1,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 2,
+            "quote": "Long Island City, Queens",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "e13",
+        "name": "Robert",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 0.98,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "shipper was identified only as \"Robert\"",
+            "section": null
+          },
+          {
+            "document_index": 2,
+            "quote": "someone going by \u201cRobert\u201d with an address in Belgium shipped the painting",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "e14",
+        "name": "Federal prosecutors",
+        "type": "ORGANIZATION",
+        "document_frequency": 1,
+        "confidence": 0.98,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "Federal prosecutors in Brooklyn filed papers Thursday to forfeit the century\u2011old cubist painting",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "e15",
+        "name": "Brooklyn",
+        "type": "LOCATION",
+        "document_frequency": 1,
+        "confidence": 0.97,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "Federal prosecutors in Brooklyn filed papers Thursday",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "e16",
+        "name": "U.S. Department of Justice",
+        "type": "ORGANIZATION",
+        "document_frequency": 1,
+        "confidence": 0.97,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "photo provided by the United States Department of Justice",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "e18",
+        "name": "Eastern District of New York",
+        "type": "ORGANIZATION",
+        "document_frequency": 1,
+        "confidence": 0.96,
+        "evidence": [
+          {
+            "document_index": 2,
+            "quote": "United States attorney for the Eastern District of New York",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "e19",
+        "name": "U.S. Customs and Border Protection",
+        "type": "ORGANIZATION",
+        "document_frequency": 2,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "now that it has been recovered by U.S. customs authorities.",
+            "section": null
+          },
+          {
+            "document_index": 2,
+            "quote": "When federal Customs and Border Protection officials examined the shipment, though, they found the master artist\u2019s work.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "e20",
+        "name": "Department of Homeland Security",
+        "type": "ORGANIZATION",
+        "document_frequency": 1,
+        "confidence": 0.97,
+        "evidence": [
+          {
+            "document_index": 2,
+            "quote": "Department of Homeland Security officials working from Long Island City, Queens",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "e21",
+        "name": "Anthony Scandiffio",
+        "type": "PERSON",
+        "document_frequency": 1,
+        "confidence": 0.97,
+        "evidence": [
+          {
+            "document_index": 2,
+            "quote": "\u201cThe market to sell stolen antiquities in the United States is drying up,\u201d Anthony Scandiffio, deputy special agent in charge of Homeland Security Investigations",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "e22",
+        "name": "Homeland Security Investigations",
+        "type": "ORGANIZATION",
+        "document_frequency": 1,
+        "confidence": 0.96,
+        "evidence": [
+          {
+            "document_index": 2,
+            "quote": "Homeland Security Investigations, which seized the painting after border officials flagged it",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "e23",
+        "name": "French government",
+        "type": "ORGANIZATION",
+        "document_frequency": 1,
+        "confidence": 0.96,
+        "evidence": [
+          {
+            "document_index": 2,
+            "quote": "The oil painting is owned by the French government",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "e24",
+        "name": "National Museums of France",
+        "type": "ORGANIZATION",
+        "document_frequency": 1,
+        "confidence": 0.96,
+        "evidence": [
+          {
+            "document_index": 2,
+            "quote": "had been bequeathed to the National Museums of France",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "e25",
+        "name": "Munich",
+        "type": "LOCATION",
+        "document_frequency": 1,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 2,
+            "quote": "It was last exhibited in Munich in 1998",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "e26",
+        "name": "1998",
+        "type": "DATE",
+        "document_frequency": 1,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 2,
+            "quote": "It was last exhibited in Munich in 1998",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "e27",
+        "name": "2001",
+        "type": "DATE",
+        "document_frequency": 1,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 2,
+            "quote": "loan request for it in 2001, searched the storerooms and could not find it",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "e28",
+        "name": "December",
+        "type": "DATE",
+        "document_frequency": 3,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "It was smuggled into the U.S. in December from Belgium",
+            "section": null
+          },
+          {
+            "document_index": 2,
+            "quote": "was unearthed in December in a FedEx shipment from Belgium to Newark",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "e29",
+        "name": "Dec. 17",
+        "type": "DATE",
+        "document_frequency": 1,
+        "confidence": 0.94,
+        "evidence": [
+          {
+            "document_index": 2,
+            "quote": "On Dec. 17, someone going by \u201cRobert\u201d with an address in Belgium shipped the painting",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "e30",
+        "name": "May",
+        "type": "DATE",
+        "document_frequency": 1,
+        "confidence": 0.94,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "hopes to display a long\u2011vanished Picasso painting in May",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "e31",
+        "name": "1911",
+        "type": "DATE",
+        "document_frequency": 3,
+        "confidence": 0.96,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "The 1911 cubist painting \"The Hairdresser\"",
+            "section": null
+          },
+          {
+            "document_index": 2,
+            "quote": "The 1911 painting, \u201cLa Coiffeuse,\u201d",
+            "section": null
+          }
+        ]
+      }
+    ],
+    "relations": [
+      {
+        "source": "e21",
+        "target": "e22",
+        "relation_type": "AFFILIATED_WITH",
+        "support_count": 1,
+        "source_documents": [
+          2
+        ],
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 2,
+            "quote": "Anthony Scandiffio, deputy special agent in charge of Homeland Security Investigations",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "e6",
+        "target": "e7",
+        "relation_type": "RELATED_TO",
+        "support_count": 1,
+        "source_documents": [
+          0
+        ],
+        "confidence": 0.93,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "reeling from an Islamic State video showing the destruction of statues in Iraq.",
+            "section": null
+          }
+        ]
+      }
+    ],
+    "reasoning_paths": [
+      {
+        "path": [
+          "e2",
+          "e1",
+          "e31"
+        ],
+        "description": "Pablo Picasso (e2) is the artist of the painting La Coiffeuse (e1). The painting is dated to 1911 (e31). Therefore, Picasso created the artwork in 1911, linking the artist to the year of creation.",
+        "confidence": 0.96
+      },
+      {
+        "path": [
+          "e1",
+          "e3",
+          "e4"
+        ],
+        "description": "The painting (e1) is stored at the Centre Georges Pompidou (e3), which itself is located in Paris (e4). This chain shows that the artwork currently resides within a Parisian museum.",
+        "confidence": 0.95
+      },
+      {
+        "path": [
+          "e17",
+          "e1",
+          "e30"
+        ],
+        "description": "U.S. Attorney Loretta Lynch (e17) announced the recovery of the painting (e1). The museum plans to display the painting in May (e30). Hence, the announcement connects directly to an upcoming public exhibition in May.",
+        "confidence": 0.94
+      },
+      {
+        "path": [
+          "e14",
+          "e1",
+          "e19"
+        ],
+        "description": "Federal prosecutors in Brooklyn (e14) announced the forfeiture of the painting (e1). The painting was acquired by U.S. Customs and Border Protection (e19). This chain indicates that legal action led to the customs seizure of the artwork.",
+        "confidence": 0.94
+      }
+    ]
+  }
+}

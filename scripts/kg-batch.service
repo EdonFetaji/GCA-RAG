@@ -1,0 +1,57 @@
+# systemd unit for a multi-day batch extraction on a VM.
+#
+# Preferred over `nohup` + tmux for a run measured in days: it survives a
+# reboot, restarts the supervisor if it dies, and `journalctl` keeps the
+# history. The supervisor itself handles the daily quota wall — see
+# scripts/run-until-done.sh.
+#
+# Install (edit USER, the two paths, and the --range first):
+#
+#   sudo cp scripts/kg-batch.service /etc/systemd/system/
+#   sudo systemctl daemon-reload
+#   sudo systemctl enable --now kg-batch
+#
+# Watch:   journalctl -u kg-batch -f        # supervisor rounds
+#          tail -f ~/GCA-RAG/batch.log      # per-cluster worker output
+# Stop:    sudo systemctl stop kg-batch     # safe — resume picks it up
+
+[Unit]
+Description=GCA-RAG batch KG extraction (resumable, multi-day)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=edon
+WorkingDirectory=/home/edon/GCA-RAG
+
+# systemd gives a service a bare PATH; uv is usually in ~/.local/bin.
+Environment=PATH=/home/edon/.local/bin:/usr/local/bin:/usr/bin:/bin
+
+# --max-iterations 3 is the floor the config allows (ge=3) and is deliberate for
+# an unattended run: extractor↔grader rounds are where the quota goes, so
+# capping at 3 buys more clusters per day than letting a stubborn one run to 6.
+# Every argument here is forwarded verbatim to the batch module.
+ExecStart=/home/edon/GCA-RAG/scripts/run-until-done.sh --range 0 199 --max-iterations 3
+
+# The supervisor exits 0 only when the whole range is done, so on-failure is
+# what distinguishes "finished" from "died". It gives up on its own after
+# MAX_STALLS fruitless rounds; this restart is for the supervisor process
+# itself being killed (OOM, a bad shutdown), not for extraction failures.
+Restart=on-failure
+RestartSec=300
+
+# Stop with SIGINT, not the default SIGTERM: `run_batch` catches
+# KeyboardInterrupt to terminate its worker processes and join them, and SIGTERM
+# would bypass that and leave systemd to SIGKILL the whole cgroup. The signal
+# goes to every process in the group (supervisor + batch + workers), so an
+# in-flight cluster is abandoned — safe, because the .h5 is written via an
+# atomic rename and cleanup.sh sweeps the stale .tmp.
+KillSignal=SIGINT
+TimeoutStopSec=120
+
+# The supervisor exits 130 when signalled; that is a clean stop, not a fault.
+SuccessExitStatus=130
+
+[Install]
+WantedBy=multi-user.target

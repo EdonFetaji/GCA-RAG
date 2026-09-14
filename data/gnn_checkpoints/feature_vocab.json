@@ -1,0 +1,25 @@
+{
+  "entity_types": [
+    "PERSON",
+    "ORGANIZATION",
+    "LOCATION",
+    "EVENT",
+    "CONCEPT",
+    "DATE",
+    "PRODUCT",
+    "OTHER"
+  ],
+  "relation_types": [
+    "LOCATED_IN",
+    "AFFILIATED_WITH",
+    "ANNOUNCED",
+    "ACQUIRED",
+    "PARTICIPATED_IN",
+    "RESULTED_IN",
+    "CAUSES",
+    "CONTRADICTS",
+    "SUPPORTS",
+    "RELATED_TO",
+    "__UNKNOWN_RELATION__"
+  ]
+}

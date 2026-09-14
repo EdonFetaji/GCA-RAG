@@ -1,0 +1,286 @@
+{
+  "converged": true,
+  "iterations": 1,
+  "elapsed_seconds": 249.459,
+  "errors": [
+    "grade[1]: could not produce a valid GraderReport: HTTPSConnectionPool(host='integrate.api.nvidia.com', port=443): Read timed out. (read timeout=60)"
+  ],
+  "knowledge_graph": {
+    "entities": [
+      {
+        "id": "microsoft",
+        "name": "Microsoft",
+        "type": "COMPANY",
+        "document_frequency": 2,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "Microsoft's acquisition of Nokia is aimed at building a devices and services strategy, but the joint company won't take the same form as Apple."
+          },
+          {
+            "document_index": 2,
+            "quote": "Microsoft is buying Nokia's cell phone business and licensing its patent portfolio, according to both companies."
+          }
+        ]
+      },
+      {
+        "id": "nokia",
+        "name": "Nokia",
+        "type": "COMPANY",
+        "document_frequency": 3,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "Microsoft's acquisition of Nokia is aimed at building a devices and services strategy, but the joint company won't take the same form as Apple."
+          },
+          {
+            "document_index": 2,
+            "quote": "Microsoft is buying Nokia's cell phone business and licensing its patent portfolio, according to both companies."
+          },
+          {
+            "document_index": 3,
+            "quote": "While competitors poured flames on our market share, what happened at Nokia?"
+          }
+        ]
+      },
+      {
+        "id": "apple",
+        "name": "Apple",
+        "type": "COMPANY",
+        "document_frequency": 3,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "Microsoft's acquisition of Nokia is aimed at building a devices and services strategy, but the joint company won't take the same form as Apple."
+          },
+          {
+            "document_index": 2,
+            "quote": "But it was blindsided by Apple, then deprived of a chance to regain its footing by an even more aggressive Google, which followed close behind."
+          },
+          {
+            "document_index": 3,
+            "quote": "Apple disrupted the market by redefining the smartphone and attracting developers to a closed, but very powerful ecosystem."
+          }
+        ]
+      },
+      {
+        "id": "google",
+        "name": "Google",
+        "type": "COMPANY",
+        "document_frequency": 3,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "We cannot risk having Apple or Google foreclose app innovation, integration, distribution or economics."
+          },
+          {
+            "document_index": 2,
+            "quote": "But it was blindsided by Apple, then deprived of a chance to regain its footing by an even more aggressive Google, which followed close behind."
+          },
+          {
+            "document_index": 3,
+            "quote": "Google has become a gravitational force, drawing much of the industry's innovation to its core."
+          }
+        ]
+      },
+      {
+        "id": "stephen_elop",
+        "name": "Stephen Elop",
+        "type": "PERSON",
+        "document_frequency": 3,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "Elop drops Nokia CEO role to lead devices team under Microsoft deal"
+          },
+          {
+            "document_index": 2,
+            "quote": "Stephen Elop's time at Nokia would be spent grooming the company for purchase"
+          },
+          {
+            "document_index": 3,
+            "quote": "Stephen."
+          }
+        ]
+      },
+      {
+        "id": "windows_phone",
+        "name": "Windows Phone",
+        "type": "OPERATING_SYSTEM",
+        "document_frequency": 2,
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "with the limited success of the Lumia range so far enough to keep interest in Windows Phone alive"
+          },
+          {
+            "document_index": 2,
+            "quote": "During the next two years, while Microsoft readied Windows Phone 7 and Nokia floundered on, the seeds of Sunday's deal were sewn."
+          }
+        ]
+      },
+      {
+        "id": "skype",
+        "name": "Skype",
+        "type": "COMPANY",
+        "document_frequency": 1,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "Richard Holway, chairman of analyst TechMarketView, said given that Microsoft paid $8.5bn for Skype in 2011, the price it is paying for Nokia \"seems extremely reasonable\"."
+          }
+        ]
+      },
+      {
+        "id": "richard_holway",
+        "name": "Richard Holway",
+        "type": "PERSON",
+        "document_frequency": 1,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "Richard Holway, chairman of analyst TechMarketView, said given that Microsoft paid $8.5bn for Skype in 2011, the price it is paying for Nokia \"seems extremely reasonable\"."
+          }
+        ]
+      },
+      {
+        "id": "carolina_milanesi",
+        "name": "Carolina Milanesi",
+        "type": "PERSON",
+        "document_frequency": 1,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "Carolina Milanesi, research vice president at analyst Gartner, said by buying rather than just partnering with Nokia, Microsoft gets deeper integration, the benefit of its patents and removes any risk of Nokia either going Android or being acquired by someone else."
+          }
+        ]
+      },
+      {
+        "id": "standard_and_poors",
+        "name": "Standard & Poor's",
+        "type": "ORGANIZATION",
+        "document_frequency": 1,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 3,
+            "quote": "On Tuesday, Standard & Poor's informed that they will put our A long term and A-1 short term ratings on negative credit watch."
+          }
+        ]
+      }
+    ],
+    "relations": [
+      {
+        "source": "microsoft",
+        "target": "nokia",
+        "relation_type": "ACQUIRED",
+        "support_count": 2,
+        "source_documents": [
+          1,
+          2
+        ],
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "Microsoft's acquisition of Nokia is aimed at building a devices and services strategy, but the joint company won't take the same form as Apple."
+          },
+          {
+            "document_index": 2,
+            "quote": "Microsoft is buying Nokia's cell phone business and licensing its patent portfolio, according to both companies."
+          }
+        ]
+      },
+      {
+        "source": "microsoft",
+        "target": "skype",
+        "relation_type": "ACQUIRED",
+        "support_count": 1,
+        "source_documents": [
+          1
+        ],
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "Richard Holway, chairman of analyst TechMarketView, said given that Microsoft paid $8.5bn for Skype in 2011, the price it is paying for Nokia \"seems extremely reasonable\"."
+          }
+        ]
+      },
+      {
+        "source": "stephen_elop",
+        "target": "nokia",
+        "relation_type": "CEO_OF",
+        "support_count": 2,
+        "source_documents": [
+          1,
+          2
+        ],
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "Elop drops Nokia CEO role to lead devices team under Microsoft deal"
+          },
+          {
+            "document_index": 2,
+            "quote": "Many at the time wondered if Stephen Elop's time at Nokia would be spent grooming the company for purchase \u2014 a foreigner in all possible ways, he began his time at the company with a memo rightly but offensively declaring Nokia's proud platform a failure, and quickly pledged the company's commitment to the still-tiny Windows Phone."
+          }
+        ]
+      },
+      {
+        "source": "stephen_elop",
+        "target": "microsoft",
+        "relation_type": "EMPLOYED_BY",
+        "support_count": 2,
+        "source_documents": [
+          1,
+          2
+        ],
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "Elop drops Nokia CEO role to lead devices team under Microsoft deal"
+          },
+          {
+            "document_index": 2,
+            "quote": "Now, with Elop returning to Microsoft after a job well done \u2014 well, a job, done \u2014that plan has come to fruition."
+          }
+        ]
+      },
+      {
+        "source": "nokia",
+        "target": "windows_phone",
+        "relation_type": "ADOPTED",
+        "support_count": 2,
+        "source_documents": [
+          1,
+          2
+        ],
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "Nokia lashed itself to Microsoft's mast after losing out to iOS and Android in the smartphone market share stakes and with the limited success of the Lumia range so far enough to keep interest in Windows Phone alive, most analysts are seeing a certain amount of inevitability to the acquisition, even if they are split on what its biggest implications are."
+          },
+          {
+            "document_index": 2,
+            "quote": "Many at the time wondered if Stephen Elop's time at Nokia would be spent grooming the company for purchase \u2014 a foreigner in all possible ways, he began his time at the company with a memo rightly but offensively declaring Nokia's proud platform a failure, and quickly pledged the company's commitment to the still-tiny Windows Phone."
+          }
+        ]
+      }
+    ]
+  },
+  "grounded_graph": null,
+  "grader_history": []
+}

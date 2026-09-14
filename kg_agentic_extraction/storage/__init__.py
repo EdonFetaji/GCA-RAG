@@ -1,0 +1,31 @@
+"""
+storage — persistence for extracted graphs.
+
+Depends only on `models/`, never on agents or the graph, so a saved file can be
+read back by anything (Track 3's GNN training, analysis notebooks) without
+importing the pipeline.
+"""
+
+from kg_agentic_extraction.storage.gcs import (
+    GCSUploadError,
+    list_uploaded_clusters,
+    object_name,
+    upload_graph,
+)
+from kg_agentic_extraction.storage.hdf5 import (
+    SCHEMA_VERSION,
+    graph_filename,
+    load_knowledge_graph,
+    save_knowledge_graph,
+)
+
+__all__ = [
+    "SCHEMA_VERSION",
+    "GCSUploadError",
+    "graph_filename",
+    "list_uploaded_clusters",
+    "load_knowledge_graph",
+    "object_name",
+    "save_knowledge_graph",
+    "upload_graph",
+]

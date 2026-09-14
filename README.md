@@ -1,178 +1,163 @@
-# Graph-Consistency-Aware RAG Research Implementation
+# Graph-Consistency-Aware RAG
 
-Building on CoKG (Lim et al., 2025): A learned GNN-based consistency validator inside a closed-loop RAG summarization pipeline.
-
-## Project Structure
+Agentic knowledge-graph extraction over the Multi-News dataset: an **extractor**
+and a **grader** loop until the graph is clean, then an optional **grounder**
+maps entities and relations to DBpedia.
 
 ```
-graph_rag_research/
-├── data/                      # Generated data, graphs, results
-├── extraction/                # KG extraction logic (later)
-├── validator/                 # GNN model, training, inference (later)
-├── refinement/                # Loop orchestration, actions (later)
-├── generation/                # Summary generation (later)
-├── evaluation/                # Metrics, experiments (later)
-├── notebooks/                 # Jupyter experiments (later)
-├── poc_extraction.py          # POC 1: Basic KG extraction
-├── poc_validator.py           # POC 2: GNN validator concept
-├── poc_pipeline.py            # POC 3: End-to-end pipeline
-└── requirements-core.txt      # Core dependencies
+extract → grade ─┬─ issues found → extract      (loop, up to KG_MAX_ITERATIONS)
+                 └─ clean        → ground → done
 ```
 
-## Quick Start
-
-### 1. Setup Environment
+## Setup
 
 ```bash
-# Create virtual environment
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-
-# Install dependencies
-pip install -r requirements-core.txt
-
-# Configure API keys
-cp .env.example .env
-# Edit .env and add your API keys
+uv sync
 ```
 
-### 2. Run POC Scripts (In Order)
+Copy `.env.example` to `.env` and fill it in. The short version:
 
-> set your CEREBRAS_API_KEY= **(your api key)**
-
-> default model : **llama-3.1-70b** (`extractor_agent/` uses **llama-3.1-8b**)
-
-**POC 1: Extraction** - Proves KG extraction works
 ```bash
-python poc_extraction.py
-```
-- Loads one Multi-News cluster
-- Extracts entities and relations via LLM
-- Converts JSON to NetworkX graph
-- Visualizes the result
-- Saves graph to `data/extracted_graph.pkl`
+# provider + its API key  (gemini | groq | cerebras | mistral | nvidia | meta)
+KG_LLM_PROVIDER=gemini
+GEMINI_API_KEY=your-key
+KG_MODEL=gemini-2.5-flash
 
-**POC 2: Validator** - Proves GNN forward pass works
+# the extractor and the grader run on different vendors — see "Which model
+# runs what" below
+KG_EXTRACTOR_PROVIDER=gemini
+KG_EXTRACTOR_MODEL=gemini-2.5-flash
+KG_GRADER_PROVIDER=mistral
+KG_GRADER_MODEL=mistral-large-latest
+
+# batch range (inclusive) and how many worker processes run it
+KG_CLUSTER_START=0
+KG_CLUSTER_END=199
+KG_MAX_WORKERS=4
+
+# one key bundle per worker — 2 Gemini (extractor) + 1 for the grader, on
+# whatever KG_GRADER_PROVIDER names. Repeated for workers 0..3; no key may
+# appear in two bundles.
+KG_WORKER_0_GEMINI_KEYS=key-a,key-b
+KG_WORKER_0_GRADER_KEY=key-g
+# ...KG_WORKER_1_*, KG_WORKER_2_*, KG_WORKER_3_*
+
+# optional: also copy each finished graph to a GCS bucket
+# (needs `gcloud auth application-default login`)
+KG_GCS_BUCKET=
+```
+
+## Which model runs what
+
+| agent | provider | keys | why |
+|---|---|---|---|
+| extractor | Gemini | 2 per worker, rotated | sends the documents and gets a whole graph back every repair round — this is where the tokens go |
+| grader | Mistral | 1 per worker | reads the graph once and answers with prose |
+| grounder | — | — | off in batch mode; `runner.py` only |
+
+The grader writes its Markdown report itself (prompt templates `grader/v4.*`)
+rather than returning typed issues for Python to render. It reports convergence
+as an explicit flag beside that prose, which is what keeps the loop's stopping
+rule off the formatting.
+
+## Run one cluster
+
 ```bash
-python poc_validator.py
+uv run python -m kg_agentic_extraction.runner --cluster 0 --no-grounding
 ```
-- Loads extracted graph from POC 1
-- Creates corrupted variants (missing entities, contradictions, fragmentation)
-- Converts to PyTorch Geometric format
-- Passes through simple GNN (random weights, no training)
-- Shows that tensor conversion works
 
-**POC 3: End-to-End** - Proves complete pipeline works
+Remove `--no-grounding` to also map the graph to DBpedia — that needs the MCP
+server running in a second terminal:
+
 ```bash
-python poc_pipeline.py
+uv run python -m mcp_server.server
 ```
-- Extraction → Validation → Refinement (simulated) → Generation
-- Shows the full data flow
-- Generates actual summary
-- Saves results to `data/pipeline_results.json`
 
-## What Each POC Proves
+## Run a batch
 
-| POC | What It Tests | Success Criteria |
-|-----|---------------|------------------|
-| **1: Extraction** | LLM prompt engineering, JSON parsing, graph building | Valid NetworkX graph with entities and relations |
-| **2: Validator** | Graph corruption, PyG conversion, GNN forward pass | Tensor shapes correct, no runtime errors |
-| **3: Pipeline** | Full flow from docs to summary | Generated summary looks reasonable |
+Extracts every cluster in the `.env` range, writes each to
+`kg_dataset/data/cluster_<i>.h5`, and uploads it if `KG_GCS_BUCKET` is set.
+Grounding is off here unconditionally.
 
-## After POCs Work
+```bash
+uv run python -m kg_agentic_extraction.batch
+```
 
-Once all three POCs run successfully, you're ready to build the full system:
+`KG_MAX_WORKERS` **processes**, one per core, each running a single-threaded
+pipeline over its own round-robin slice of the range. Processes rather than
+threads because of the keys, not the CPU: each worker owns its bundle outright,
+so a Gemini key one worker exhausts stays usable by the other three, and a worker
+that runs out of quota stops alone instead of ending the batch. Threads in one
+process would share the rotating client's "this key is spent" state.
 
-1. **Generate Training Data** (Phase 3 from roadmap)
-   - Extract 200-300 clean KGs
-   - Apply corruption functions
-   - Create train/val/test splits
+Useful flags:
 
-2. **Train GNN Validator** (Phase 4)
-   - Move to GPU environment (Colab/cloud)
-   - Train with contrastive loss
-   - Save model weights
+| flag | effect |
+|---|---|
+| `--range 0 40` | override the range from `.env` |
+| `--workers 2` | override `KG_MAX_WORKERS` (capped by the number of key bundles) |
+| `--force` | re-extract clusters that are already done |
+| `--no-upload` | skip GCS even when a bucket is set |
 
-3. **Implement Real Refinement** (Phase 5)
-   - Wire validator scores to actual LLM calls
-   - Implement retrieval expansion
-   - Implement contradiction resolution
+**Resumable** — a cluster that's already done is skipped, so just re-run the same
+command to continue after a crash or when the API keys hit their daily quota.
+Done-ness is read from the GCS bucket when one is configured, otherwise from
+`kg_dataset/data/`.
 
-4. **Full Evaluation** (Phase 6)
-   - ROUGE scores on 100 clusters
-   - Graph diagnostic metrics
-   - Noise robustness tests
+**Exit codes:** `0` all done · `1` some clusters failed · `2` at least one
+worker's Gemini keys are spent for the day — re-run after the quota resets (~24h).
 
-## Dependencies
+For a run that outlives your SSH session:
 
-Core libraries:
-- `cerebras-cloud-sdk` - LLM API access
-- `datasets` - HuggingFace Multi-News
-- `networkx` - Graph manipulation
-- `torch` + `torch-geometric` - GNN implementation
-- `rouge-score` - Evaluation metric
+```bash
+nohup uv run python -m kg_agentic_extraction.batch >> batch.log 2>&1 &
+tail -f batch.log
+```
 
-See `requirements.txt` for complete list with pinned versions.
+Each worker prefixes its log lines with `[w0]`, `[w1]`, … so four interleaved
+streams stay readable.
 
-## Configuration
+### Multi-day runs on a VM
 
-Edit `.env` to configure:
-- `CEREBRAS_API_KEY`: Your Cerebras key (required — every script in this repo, POCs and `extractor_agent/`, calls Cerebras and only Cerebras)
-- `CEREBRAS_MODEL`: Model for the POC scripts / `utils/llm_utils.py` (default `llama-3.1-70b`). `extractor_agent/` currently hardcodes `llama-3.1-8b` in `extract_entities.py`/`extract_relations.py`.
+A few hundred clusters on free-tier keys outlasts a daily quota, so the batch
+will exit `2` partway and has to be re-entered. `scripts/run-until-done.sh` does
+that unattended — it re-runs the batch (which resumes, skipping finished
+clusters), sleeps an hour on a quota wall, and stops once the range is complete
+or three rounds pass with no new graph:
 
-The repo previously supported Anthropic/OpenAI/Gemini/Groq as alternate providers; that's been dropped in favor of standardizing on Cerebras everywhere (`utils/llm_utils.py` and `extractor_agent/` were already Cerebras-only, so this just brings `poc_extraction.py` in line with them). If you want multi-provider support back, restore the Anthropic/OpenAI/Gemini/Groq branches removed from `poc_extraction.py`'s `call_llm()`, plus the corresponding branches in `utils/llm_utils.py`.
+```bash
+uv run python scripts/preflight.py --range 0 199 --check-keys   # validate keys first
+uv run python -m kg_agentic_extraction.batch --range 0 0        # warm the HF cache
+nohup scripts/run-until-done.sh --range 0 199 >> supervisor.log 2>&1 &
+```
 
-## Troubleshooting
+Set `KG_GCS_BUCKET` for a run like this: resume state then lives in the bucket
+rather than on a disk you might lose. `scripts/kg-batch.service` is the same
+thing as a systemd unit, which also survives a reboot.
 
-**"Missing API key"**
-- Make sure `.env` file exists and has `CEREBRAS_API_KEY` set
+**[vm-runbook.md](vm-runbook.md)** is the full walkthrough — VM sizing,
+`.env`, preflight, systemd, monitoring, and a troubleshooting table.
 
-**"Graph validation failed"**
-- LLM didn't output valid JSON
-- Check `data/raw_extraction_response.json` to see raw output
-- Adjust prompt if needed
+## Tests
 
-**PyTorch Geometric install issues**
-- Follow official install guide: https://pytorch-geometric.readthedocs.io/
-- Match your CUDA version if using GPU
-- For CPU: `pip install torch-scatter torch-sparse -f https://data.pyg.org/whl/torch-2.2.1+cpu.html`
+```bash
+uv run pytest
+```
 
-**"Dataset not found"**
-- First run downloads Multi-News from HuggingFace
-- Requires ~500MB download
-- Subsequent runs use cached version
+## Layout
 
-## Cost Estimates
+| path | what |
+|---|---|
+| `kg_agentic_extraction/` | the pipeline — LangGraph graph, 3 agents, config |
+| `mcp_server/` | standalone DBpedia service the grounder calls |
+| `validator/`, `data/training/` | Track 3 GNN consistency validator + its dataset |
+| `scripts/cleanup.sh` | clears caches / stale temp files (runs after each batch) |
 
-Per document cluster:
-- Extraction: ~$0.01-0.05 (depends on cluster size)
-- Generation: ~$0.005-0.02
-- Evaluation (G-Eval): ~$0.001-0.01
+All settings are `KG_`-prefixed environment variables read into
+`PipelineSettings` (`kg_agentic_extraction/config.py`).
 
-For 100 test clusters:
-- Full experiment: ~$3-7 in API costs
-- Validator training: ~$5-20 one-time GPU cost
+## Research context
 
-## Next Steps
-
-After POCs work:
-1. Review the interactive roadmap (`roadmap.jsx`)
-2. Review the architecture diagram (`architecture.jsx`)
-3. Start Phase 3: Generate training data
-4. Move to GPU environment for validator training
-
-## Research Context
-
-This implementation builds on:
-- **CoKG** (Lim et al., 2025) - Chain of Knowledge Graph for multi-doc summarization
-- **CoD** (Adams et al., 2023) - Chain of Density prompting
-- **CoE** (Bao et al., 2024) - Chain of Event prompting
-
-Our contribution: Replace CoKG's static quality check with a learned GNN validator that enables targeted, closed-loop refinement.
-
-## Questions?
-
-Check:
-1. The roadmap artifact for phase-by-phase breakdown
-2. The architecture artifact for system design
-3. Code comments in POC scripts for inline documentation
+- **CoKG** (Lim et al., 2025) — Chain of Knowledge Graph for multi-doc summarization
+- **CoD** (Adams et al., 2023) — Chain of Density prompting
+- **CoE** (Bao et al., 2024) — Chain of Event prompting

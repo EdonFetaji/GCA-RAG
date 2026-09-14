@@ -1,0 +1,1545 @@
+{
+  "cluster_idx": 0,
+  "corruption_type": "fragmentation",
+  "severity": 0.3,
+  "label": {
+    "consistency": 0.0,
+    "missing_entities": 0.0,
+    "contradictions": 0.0,
+    "fragmentation": 1.0
+  },
+  "corruption_metadata": {
+    "corruption_type": "fragmentation",
+    "severity": 0.3,
+    "removed_relations": 14
+  },
+  "knowledge_graph": {
+    "entities": [
+      {
+        "id": "entity_1",
+        "name": "Lincoln Chafee",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Rhode Island's Gov. Lincoln Chafee is an Independent.",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "Rhode Island's Gov. Lincoln Chafee is an Independent.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_2",
+        "name": "Independent",
+        "type": "CONCEPT",
+        "document_frequency": 2,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Rhode Island's Gov. Lincoln Chafee is an Independent.",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "Rhode Island's Gov. Lincoln Chafee is an Independent.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_3",
+        "name": "Rhode Island",
+        "type": "LOCATION",
+        "document_frequency": 2,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Rhode Island's Gov. Lincoln Chafee is an Independent.",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "Rhode Island's Gov. Lincoln Chafee is an Independent.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_4",
+        "name": "Thad Kousser",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "And that's health care, says political scientist Thad Kousser, co-author of The Power of American Governors.",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "And that's health care, says political scientist Thad Kousser, co-author of The Power of American Governors.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_5",
+        "name": "University of California, San Diego",
+        "type": "ORGANIZATION",
+        "document_frequency": 1,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "\"No matter who wins the presidency, national politics is going to be stalemated on the Affordable Care Act,\" says Kousser, of the University of California, San Diego.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_6",
+        "name": "University of California-Berkeley",
+        "type": "ORGANIZATION",
+        "document_frequency": 1,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "\"No matter who wins the presidency, national politics is going to be stalemated on the Affordable Care Act,\" says Kousser, of the University of California-Berkeley.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_7",
+        "name": "Rick Scott",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Three Republican governors, including Rick Scott of Florida...",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "Three Republican governors, including Rick Scott of Florida...",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_8",
+        "name": "Scott Walker",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Three Republican governors, including ... Scott Walker of Wisconsin...",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "Three Republican governors, including ... Scott Walker of Wisconsin...",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_9",
+        "name": "Florida",
+        "type": "LOCATION",
+        "document_frequency": 2,
+        "confidence": 0.98,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "including Rick Scott of Florida",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "including Rick Scott of Florida",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_10",
+        "name": "Wisconsin",
+        "type": "LOCATION",
+        "document_frequency": 2,
+        "confidence": 0.98,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Scott Walker of Wisconsin",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "Scott Walker of Wisconsin",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_11",
+        "name": "Republican",
+        "type": "CONCEPT",
+        "document_frequency": 2,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Three Republican governors, including Rick Scott of Florida...",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "Three Republican governors, including Rick Scott of Florida...",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_12",
+        "name": "Democratic",
+        "type": "CONCEPT",
+        "document_frequency": 2,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Eight of the gubernatorial seats up for grabs are now held by Democrats",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "Eight of the gubernatorial seats up for grabs are now held by Democrats",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_13",
+        "name": "Beverly Perdue",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "North Carolina: One-term incumbent Democratic Gov. Beverly Perdue, the first woman to hold the state's top office, announced in January that she would not seek re-election...",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "North Carolina: One-term incumbent Democratic Gov. Beverly Perdue, the first woman to hold the state's top office, announced in January she would not seek re-election...",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_14",
+        "name": "North Carolina",
+        "type": "LOCATION",
+        "document_frequency": 2,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "North Carolina: One-term incumbent Democratic Gov. Beverly Perdue...",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "North Carolina: One-term incumbent Democratic Gov. Beverly Perdue...",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_15",
+        "name": "January",
+        "type": "DATE",
+        "document_frequency": 2,
+        "confidence": 0.98,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "announced in January that she would not seek re-election",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "announced in January she would not seek re-election",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_16",
+        "name": "Pat McCrory",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Republican candidate Pat McCrory.",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "Republican candidate Pat McCrory.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_17",
+        "name": "Charlotte",
+        "type": "LOCATION",
+        "document_frequency": 2,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "the seat is expected to be won by McCrory, a former Charlotte mayor",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "the seat is expected to be won by McCrory, a former Charlotte mayor",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_18",
+        "name": "Brian Schweitzer",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Montana: Popular Democratic Gov. Brian Schweitzer",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "Montana: Popular Democratic Gov. Brian Schweitzer",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_19",
+        "name": "Montana",
+        "type": "LOCATION",
+        "document_frequency": 2,
+        "confidence": 0.98,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Montana: Popular Democratic Gov. Brian Schweitzer",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "Montana: Popular Democratic Gov. Brian Schweitzer",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_20",
+        "name": "Steve Bullock",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 0.97,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Democratic Attorney General Steve Bullock",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "Democratic Attorney General Steve Bullock",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_21",
+        "name": "Rick Hill",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 0.96,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "former two-term GOP Rep. Rick Hill",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "former two-term GOP Rep. Rick Hill",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_22",
+        "name": "Maggie Hassan",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 0.97,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Former Democratic state Sen. Maggie Hassan",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "Former Democratic state Sen. Maggie Hassan",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_23",
+        "name": "New Hampshire",
+        "type": "LOCATION",
+        "document_frequency": 2,
+        "confidence": 0.98,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "New Hampshire: Former Democratic state Sen. Maggie Hassan",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "New Hampshire: Former Democratic state Sen. Maggie Hassan",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_24",
+        "name": "John Lynch",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 0.96,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "retiring Democratic Gov. John Lynch",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "retiring Democratic Gov. John Lynch",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_25",
+        "name": "Ovide Lamontagne",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "lawyer Ovide Lamontagne, a Tea Party conservative",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "lawyer Ovide Lamontagne, a Tea Party conservative",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_26",
+        "name": "Jay Inslee",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 0.96,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "the state's governorship has been in Democratic hands ... former U.S. Rep. Jay Inslee",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "the state's governorship has been in Democratic hands ... former Rep. Jay Inslee",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_27",
+        "name": "Washington",
+        "type": "LOCATION",
+        "document_frequency": 2,
+        "confidence": 0.98,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Washington: the state's governorship has been in Democratic hands...",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "Washington: the state's governorship has been in Democratic hands...",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_28",
+        "name": "Rob McKenna",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 0.96,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Republican Attorney General Rob McKenna",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "Republican Attorney General Rob McKenna",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_29",
+        "name": "Jack Dalrymple",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Republican governors Jack Dalrymple in North Dakota",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "Republican governors Jack Dalrymple in North Dakota",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_30",
+        "name": "North Dakota",
+        "type": "LOCATION",
+        "document_frequency": 2,
+        "confidence": 0.98,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Jack Dalrymple in North Dakota",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "Jack Dalrymple in North Dakota",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_31",
+        "name": "Gary Herbert",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Gary Herbert in Utah",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "Gary Herbert in Utah",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_32",
+        "name": "Utah",
+        "type": "LOCATION",
+        "document_frequency": 2,
+        "confidence": 0.98,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Gary Herbert in Utah",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "Gary Herbert in Utah",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_33",
+        "name": "Mike Pence",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "GOP Rep. Mike Pence in Indiana",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "GOP Rep. Mike Pence in Indiana",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_34",
+        "name": "Indiana",
+        "type": "LOCATION",
+        "document_frequency": 2,
+        "confidence": 0.98,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Mike Pence in Indiana",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "Mike Pence in Indiana",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_35",
+        "name": "Peter Shumlin",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Democratic governors Peter Shumlin in Vermont",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "Democratic governors Peter Shumlin in Vermont",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_36",
+        "name": "Vermont",
+        "type": "LOCATION",
+        "document_frequency": 2,
+        "confidence": 0.98,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Peter Shumlin in Vermont",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "Peter Shumlin in Vermont",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_37",
+        "name": "Jack Markell",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Jack Markell in Delaware",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "Jack Markell in Delaware",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_38",
+        "name": "Delaware",
+        "type": "LOCATION",
+        "document_frequency": 2,
+        "confidence": 0.98,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Jack Markell in Delaware",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "Jack Markell in Delaware",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_39",
+        "name": "Jay Nixon",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Democrats ... Jay Nixon is running for a second term in Missouri",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "Democrats ... Jay Nixon is running for a second term in Missouri",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_40",
+        "name": "Missouri",
+        "type": "LOCATION",
+        "document_frequency": 2,
+        "confidence": 0.98,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Jay Nixon is running for a second term ... in Missouri",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "Jay Nixon is running for a second term ... in Missouri",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_41",
+        "name": "Dave Spence",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 0.96,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Republican Dave Spence",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "Republican Dave Spence",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_42",
+        "name": "Earl Ray Tomblin",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 0.96,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Gov. Earl Ray Tomblin, former state senate president, is running for his first full term",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "Gov. Earl Ray Tomblin, former state senate president, is running for his first full term",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_43",
+        "name": "West Virginia",
+        "type": "LOCATION",
+        "document_frequency": 2,
+        "confidence": 0.98,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "in West Virginia, where Gov. Earl Ray Tomblin",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "in West Virginia, where Gov. Earl Ray Tomblin",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_44",
+        "name": "Bill Maloney",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 0.96,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "GOP businessman Bill Maloney is his opponent",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "GOP businessman Bill Maloney is his opponent",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_45",
+        "name": "Affordable Care Act",
+        "type": "CONCEPT",
+        "document_frequency": 2,
+        "confidence": 0.97,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "\"No matter who wins the presidency, national politics is going to be stalemated on the Affordable Care Act,\" says Kousser",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "\"No matter who wins the presidency, national politics is going to be stalemated on the Affordable Care Act,\" says Kousser",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_46",
+        "name": "U.S. Supreme Court",
+        "type": "ORGANIZATION",
+        "document_frequency": 2,
+        "confidence": 0.96,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "A recent U.S. Supreme Court decision giving states the ability to opt out of the law's expansion of Medicaid",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "A recent U.S. Supreme Court decision giving states the ability to opt out of the law's expansion of Medicaid",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_47",
+        "name": "Mitt Romney",
+        "type": "PERSON",
+        "document_frequency": 2,
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "\"A [Mitt] Romney victory would dramatically empower Republican governors,\" Kousser says.",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "\"A [Mitt] Romney victory would dramatically empower Republican governors,\" Kousser says.",
+            "section": null
+          }
+        ]
+      }
+    ],
+    "relations": [
+      {
+        "source": "entity_1",
+        "target": "entity_3",
+        "relation_type": "LOCATED_IN",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Rhode Island's Gov. Lincoln Chafee is an Independent.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_4",
+        "target": "entity_6",
+        "relation_type": "AFFILIATED_WITH",
+        "support_count": 1,
+        "source_documents": [
+          1
+        ],
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "\"No matter who wins the presidency, national politics is going to be stalemated on the Affordable Care Act,\" says Kousser, of the University of California-Berkeley.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_4",
+        "target": "entity_45",
+        "relation_type": "RELATED_TO",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.94,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "A recent U.S. Supreme Court decision giving states the ability to opt out of the law's expansion of Medicaid",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_4",
+        "target": "entity_45",
+        "relation_type": "RELATED_TO",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.94,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "A recent U.S. Supreme Court decision giving states the ability to opt out of the law's expansion of Medicaid",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_4",
+        "target": "entity_45",
+        "relation_type": "RELATED_TO",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.94,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "A recent U.S. Supreme Court decision giving states the ability to opt out of the law's expansion of Medicaid",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_4",
+        "target": "entity_45",
+        "relation_type": "RELATED_TO",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.94,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "A recent U.S. Supreme Court decision giving states the ability to opt out of the law's expansion of Medicaid",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_4",
+        "target": "entity_45",
+        "relation_type": "RELATED_TO",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.94,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "A recent U.S. Supreme Court decision giving states the ability to opt out of the law's expansion of Medicaid",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_4",
+        "target": "entity_45",
+        "relation_type": "RELATED_TO",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.94,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "A recent U.S. Supreme Court decision giving states the ability to opt out of the law's expansion of Medicaid",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_4",
+        "target": "entity_45",
+        "relation_type": "RELATED_TO",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.94,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "A recent U.S. Supreme Court decision giving states the ability to opt out of the law's expansion of Medicaid",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_4",
+        "target": "entity_45",
+        "relation_type": "RELATED_TO",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.94,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "A recent U.S. Supreme Court decision giving states the ability to opt out of the law's expansion of Medicaid",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_4",
+        "target": "entity_45",
+        "relation_type": "RELATED_TO",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.94,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "A recent U.S. Supreme Court decision giving states the ability to opt out of the law's expansion of Medicaid",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_7",
+        "target": "entity_11",
+        "relation_type": "AFFILIATED_WITH",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.96,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Three Republican governors, including Rick Scott of Florida...",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_8",
+        "target": "entity_11",
+        "relation_type": "AFFILIATED_WITH",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.96,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Three Republican governors, including ... Scott Walker of Wisconsin...",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_8",
+        "target": "entity_10",
+        "relation_type": "LOCATED_IN",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Scott Walker of Wisconsin",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_13",
+        "target": "entity_14",
+        "relation_type": "LOCATED_IN",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.96,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "North Carolina: One-term incumbent Democratic Gov. Beverly Perdue",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_16",
+        "target": "entity_11",
+        "relation_type": "AFFILIATED_WITH",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.96,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Republican candidate Pat McCrory.",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_16",
+        "target": "entity_17",
+        "relation_type": "LOCATED_IN",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.94,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "former Charlotte mayor",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_18",
+        "target": "entity_12",
+        "relation_type": "AFFILIATED_WITH",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "\"A [Mitt] Romney victory would dramatically empower Republican governors,\"",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_18",
+        "target": "entity_11",
+        "relation_type": "AFFILIATED_WITH",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "\"A [Mitt] Romney victory would dramatically empower Republican governors,\"",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_18",
+        "target": "entity_45",
+        "relation_type": "RELATED_TO",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.94,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "\"A [Mitt] Romney victory would dramatically empower Republican governors,\"",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_19",
+        "target": "entity_30",
+        "relation_type": "LOCATED_IN",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Jack Dalrymple in North Dakota",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_21",
+        "target": "entity_32",
+        "relation_type": "LOCATED_IN",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Gary Herbert in Utah",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_33",
+        "target": "entity_11",
+        "relation_type": "AFFILIATED_WITH",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.96,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "GOP Rep. Mike Pence in Indiana",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_35",
+        "target": "entity_12",
+        "relation_type": "AFFILIATED_WITH",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.97,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Democratic Attorney General Steve Bullock",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_35",
+        "target": "entity_19",
+        "relation_type": "LOCATED_IN",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Montana: Popular Democratic Gov. Brian Schweitzer",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_36",
+        "target": "entity_12",
+        "relation_type": "AFFILIATED_WITH",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.97,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Democratic Gov. Brian Schweitzer",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_37",
+        "target": "entity_12",
+        "relation_type": "AFFILIATED_WITH",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.97,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Former Democratic state Sen. Maggie Hassan",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_37",
+        "target": "entity_23",
+        "relation_type": "LOCATED_IN",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "New Hampshire: Former Democratic state Sen. Maggie Hassan",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_38",
+        "target": "entity_12",
+        "relation_type": "AFFILIATED_WITH",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.97,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "the state's governorship has been in Democratic hands ... former U.S. Rep. Jay Inslee",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_40",
+        "target": "entity_27",
+        "relation_type": "LOCATED_IN",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Washington: the state's governorship has been in Democratic hands...",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_42",
+        "target": "entity_12",
+        "relation_type": "AFFILIATED_WITH",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.97,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Democrats ... Jay Nixon is running for a second term",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_42",
+        "target": "entity_40",
+        "relation_type": "LOCATED_IN",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Jay Nixon is running for a second term ... in Missouri",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_43",
+        "target": "entity_11",
+        "relation_type": "AFFILIATED_WITH",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.96,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Republican businessman Bill Maloney",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_43",
+        "target": "entity_43",
+        "relation_type": "LOCATED_IN",
+        "support_count": 2,
+        "source_documents": [
+          0,
+          1
+        ],
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "GOP businessman Bill Maloney is his opponent",
+            "section": null
+          }
+        ]
+      }
+    ],
+    "reasoning_paths": [
+      {
+        "path": [
+          "entity_7",
+          "entity_11",
+          "entity_9"
+        ],
+        "description": "Rick Scott (entity_7) is a Republican governor (entity_11) and he governs the state of Florida (entity_9). Thus, the Republican affiliation links Scott directly to Florida.",
+        "confidence": 0.95
+      },
+      {
+        "path": [
+          "entity_16",
+          "entity_11",
+          "entity_17"
+        ],
+        "description": "Pat\u202fMcCrory (entity_16) is a Republican candidate (entity_11) and is a former mayor of Charlotte (entity_17). The Republican affiliation therefore ties McCrory to the city of Charlotte.",
+        "confidence": 0.94
+      },
+      {
+        "path": [
+          "entity_4",
+          "entity_45",
+          "entity_18"
+        ],
+        "description": "Political scientist Thad\u202fKousser (entity_4) discusses the Affordable Care Act (entity_45). The ACA is also a key policy issue for Democratic Governor Brian\u202fSchweitzer of Montana (entity_18). Hence, Kousser\u2019s analysis of the ACA connects to Schweitzer\u2019s governance.",
+        "confidence": 0.94
+      }
+    ]
+  }
+}

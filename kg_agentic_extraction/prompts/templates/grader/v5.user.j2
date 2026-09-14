@@ -1,0 +1,38 @@
+Grade the knowledge graph below against the source documents.
+
+These documents are one cluster, and this graph is what a summarizer will be
+given — instead of the documents — to write a single summary covering all of
+them. Draft that summary from the graph first, as the instructions describe, then
+read the documents and find what it could not say.
+
+{% if iteration and iteration > 1 %}
+This is revision round {{ iteration }}. The extractor has already acted on
+earlier feedback — verify the previous issues were genuinely fixed rather than
+worked around, and check that fixing them did not break anything that was
+previously correct. In particular, check that entities added in response to a
+coverage finding actually came with edges; a new isolated node is not a fix.
+
+{% if iteration >= 3 %}
+This is a late round, so the graph should already be broadly complete. Confirm
+the coverage checks now pass, then spend your remaining attention on label
+precision and consistency. If everything raised earlier is resolved and you find
+nothing new, say so and set `converged: true`; do not keep the loop alive on
+findings you would not have raised in round one.
+{% else %}
+Coverage still leads at this stage. If the graph is missing entities, edges,
+dates or figures the documents supply, those findings come first — there is
+still a round left to fix them, and there will not be later.
+{% endif %}
+{% else %}
+This is the first round, and it is the one that matters most for coverage: what
+is missing now is what later rounds have to notice and add back, and there are
+only a few rounds. Be exhaustive about omissions here — every participant the
+documents name, every link between them, every date and figure attached to the
+main event.
+{% endif %}
+
+## EXTRACTED KNOWLEDGE GRAPH
+{{ graph_json }}
+
+## SOURCE DOCUMENTS
+{{ documents_text }}

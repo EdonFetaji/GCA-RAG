@@ -1,0 +1,449 @@
+{
+  "cluster_idx": 13,
+  "num_documents": 2,
+  "reference_summary": "\u2013 The Wall Street Journal today takes a look at the life and death of 94 little words: the heavily edited and ultimately faulty Benghazi talking points compiled by the CIA in the wake of the consulate attack. Just a day after the attack, the CIA's reports were already referencing al-Qaeda in the Islamic Mahgreb. The following day, David Petraeus appeared before House and Senate groups; he, too, mentioned the terrorists, and was asked to compile unclassified talking points that Congress could use. By noon on Sept. 14, a draft was circulating\u2014and it referenced al-Qaeda. But an exhausting process of editing followed, with more than two dozen CIA officials weighing in on the copy over email\u2014and battling about the inclusion of al-Qaeda. Those opposed argued it should be removed because the intel was shaky (sourced from intercepted phone calls) and over fears it could alert al-Qaeda members to the fact that they were being watched. The opponents won out, though the term \"extremists\" remained; the FBI agreed with the call. It also contained this line: \"The demonstrations in Benghazi were spontaneously inspired by the protests at the US Embassy in Cairo.\" On Sept. 15, the CIA station chief in Tripoli began to voice his concern with the assertions that the attack was both spontaneous and that demonstrations were occurring. He sent the CIA an email summarizing his thoughts the next day\u2014but Susan Rice had already been hand-delivered the 94 fateful words the night before, so that she could prep for her news show appearances. Click for the Journal's full take, which charts the ultimate change in the CIA's assessment.",
+  "extraction": {
+    "method": "full_pipeline",
+    "cluster_index": 13,
+    "num_documents": 2,
+    "knowledge_graph": {
+      "entities": [
+        {
+          "id": "entity_1",
+          "name": "WASHINGTON",
+          "type": "LOCATION",
+          "document_frequency": 2,
+          "confidence": 0.96,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "WASHINGTON\u2014Behind the political showdown over the deadly U.S. consulate attack in Benghazi, Libya, are a few dozen heavily edited words.",
+              "section": null
+            },
+            {
+              "document_index": 1,
+              "quote": "WASHINGTON\u2014Behind the political showdown over the deadly U.S. consulate attack in Benghazi, Libya, are a few dozen heavily edited words.",
+              "section": null
+            }
+          ]
+        },
+        {
+          "id": "entity_2",
+          "name": "U.S.",
+          "type": "LOCATION",
+          "document_frequency": 2,
+          "confidence": 0.95,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "WASHINGTON\u2014Behind the political showdown over the deadly U.S. consulate attack in Benghazi, Libya, are a few dozen heavily edited words.",
+              "section": null
+            },
+            {
+              "document_index": 1,
+              "quote": "WASHINGTON\u2014Behind the political showdown over the deadly U.S. consulate attack in Benghazi, Libya, are a few dozen heavily edited words.",
+              "section": null
+            }
+          ]
+        },
+        {
+          "id": "entity_3",
+          "name": "Benghazi",
+          "type": "LOCATION",
+          "document_frequency": 2,
+          "confidence": 0.97,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "WASHINGTON\u2014Behind the political showdown over the deadly U.S. consulate attack in Benghazi, Libya, are a few dozen heavily edited words.",
+              "section": null
+            },
+            {
+              "document_index": 1,
+              "quote": "WASHINGTON\u2014Behind the political showdown over the deadly U.S. consulate attack in Benghazi, Libya, are a few dozen heavily edited words.",
+              "section": null
+            }
+          ]
+        },
+        {
+          "id": "entity_4",
+          "name": "Libya",
+          "type": "LOCATION",
+          "document_frequency": 2,
+          "confidence": 0.97,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "WASHINGTON\u2014Behind the political showdown over the deadly U.S. consulate attack in Benghazi, Libya, are a few dozen heavily edited words.",
+              "section": null
+            },
+            {
+              "document_index": 1,
+              "quote": "WASHINGTON\u2014Behind the political showdown over the deadly U.S. consulate attack in Benghazi, Libya, are a few dozen heavily edited words.",
+              "section": null
+            }
+          ]
+        },
+        {
+          "id": "entity_5",
+          "name": "Susan Rice",
+          "type": "PERSON",
+          "document_frequency": 2,
+          "confidence": 0.98,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "Now famous as \"the talking points,\" the 94 words were used by United Nations Ambassador Susan Rice on Sunday talk shows days after the attack.",
+              "section": null
+            },
+            {
+              "document_index": 1,
+              "quote": "Now famous as \"the talking points,\" the 94 words were used by United Nations Ambassador Susan Rice on Sunday talk shows days after the attack.",
+              "section": null
+            }
+          ]
+        },
+        {
+          "id": "entity_6",
+          "name": "United Nations",
+          "type": "ORGANIZATION",
+          "document_frequency": 2,
+          "confidence": 0.96,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "Now famous as \"the talking points,\" the 94 words were used by United Nations Ambassador Susan Rice on Sunday talk shows days after the attack.",
+              "section": null
+            },
+            {
+              "document_index": 1,
+              "quote": "Now famous as \"the talking points,\" the 94 words were used by United Nations Ambassador Susan Rice on Sunday talk shows days after the attack.",
+              "section": null
+            }
+          ]
+        },
+        {
+          "id": "entity_7",
+          "name": "U.S. consulate attack in Benghazi",
+          "type": "EVENT",
+          "document_frequency": 2,
+          "confidence": 0.95,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "WASHINGTON\u2014Behind the political showdown over the deadly U.S. consulate attack in Benghazi, Libya, are a few dozen heavily edited words.",
+              "section": null
+            },
+            {
+              "document_index": 1,
+              "quote": "WASHINGTON\u2014Behind the political showdown over the deadly U.S. consulate attack in Benghazi, Libya, are a few dozen heavily edited words.",
+              "section": null
+            }
+          ]
+        },
+        {
+          "id": "entity_8",
+          "name": "94-word intelligence summary",
+          "type": "CONCEPT",
+          "document_frequency": 2,
+          "confidence": 0.94,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "The 94-word intelligence summary emerged from a daylong email debate between more than two dozen intelligence officials, in which they contested and whittled the available evidence into a bland summary with no reference to al Qaeda, an assessment the administration now acknowledges was wide of the mark.",
+              "section": null
+            },
+            {
+              "document_index": 1,
+              "quote": "The 94-word intelligence summary emerged from a daylong email debate between more than two dozen intelligence officials, in which they contested and whittled the available evidence into a bland summary with no reference to al Qaeda, an assessment the administration now acknowledges was wide of the mark.",
+              "section": null
+            }
+          ]
+        },
+        {
+          "id": "entity_9",
+          "name": "Sunday",
+          "type": "DATE",
+          "document_frequency": 2,
+          "confidence": 0.93,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "Now famous as \"the talking points,\" the 94 words were used by United Nations Ambassador Susan Rice on Sunday talk shows days after the attack.",
+              "section": null
+            },
+            {
+              "document_index": 1,
+              "quote": "Now famous as \"the talking points,\" the 94 words were used by United Nations Ambassador Susan Rice on Sunday talk shows days after the attack.",
+              "section": null
+            }
+          ]
+        },
+        {
+          "id": "entity_10",
+          "name": "al Qaeda",
+          "type": "ORGANIZATION",
+          "document_frequency": 2,
+          "confidence": 0.95,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "no reference to al Qaeda",
+              "section": null
+            },
+            {
+              "document_index": 1,
+              "quote": "no reference to al Qaeda",
+              "section": null
+            }
+          ]
+        },
+        {
+          "id": "entity_11",
+          "name": "\"the talking points\"",
+          "type": "OTHER",
+          "document_frequency": 2,
+          "confidence": 0.93,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "Now famous as \"the talking points,\" the 94 words were used by United Nations Ambassador Susan Rice on Sunday talk shows days after the attack.",
+              "section": null
+            },
+            {
+              "document_index": 1,
+              "quote": "Now famous as \"the talking points,\" the 94 words were used by United Nations Ambassador Susan Rice on Sunday talk shows days after the attack.",
+              "section": null
+            }
+          ]
+        }
+      ],
+      "relations": [
+        {
+          "source": "entity_5",
+          "target": "entity_6",
+          "relation_type": "AFFILIATED_WITH",
+          "support_count": 2,
+          "source_documents": [
+            0,
+            1
+          ],
+          "confidence": 0.9,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "United Nations Ambassador Susan Rice",
+              "section": null
+            },
+            {
+              "document_index": 1,
+              "quote": "United Nations Ambassador Susan Rice",
+              "section": null
+            }
+          ]
+        },
+        {
+          "source": "entity_5",
+          "target": "entity_8",
+          "relation_type": "RELATED_TO",
+          "support_count": 2,
+          "source_documents": [
+            0,
+            1
+          ],
+          "confidence": 0.88,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "the 94 words were used by United Nations Ambassador Susan Rice",
+              "section": null
+            },
+            {
+              "document_index": 1,
+              "quote": "the 94 words were used by United Nations Ambassador Susan Rice",
+              "section": null
+            }
+          ]
+        },
+        {
+          "source": "entity_7",
+          "target": "entity_3",
+          "relation_type": "LOCATED_IN",
+          "support_count": 2,
+          "source_documents": [
+            0,
+            1
+          ],
+          "confidence": 0.88,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "U.S. consulate attack in Benghazi, Libya",
+              "section": null
+            },
+            {
+              "document_index": 1,
+              "quote": "U.S. consulate attack in Benghazi, Libya",
+              "section": null
+            }
+          ]
+        },
+        {
+          "source": "entity_7",
+          "target": "entity_4",
+          "relation_type": "LOCATED_IN",
+          "support_count": 2,
+          "source_documents": [
+            0,
+            1
+          ],
+          "confidence": 0.88,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "U.S. consulate attack in Benghazi, Libya",
+              "section": null
+            },
+            {
+              "document_index": 1,
+              "quote": "U.S. consulate attack in Benghazi, Libya",
+              "section": null
+            }
+          ]
+        },
+        {
+          "source": "entity_8",
+          "target": "entity_10",
+          "relation_type": "CONTRADICTS",
+          "support_count": 2,
+          "source_documents": [
+            0,
+            1
+          ],
+          "confidence": 0.85,
+          "evidence": [
+            {
+              "document_index": 0,
+              "quote": "no reference to al Qaeda",
+              "section": null
+            },
+            {
+              "document_index": 1,
+              "quote": "no reference to al Qaeda",
+              "section": null
+            }
+          ]
+        }
+      ],
+      "reasoning_paths": [
+        {
+          "path": [
+            "entity_5",
+            "entity_8",
+            "entity_10"
+          ],
+          "description": "Susan Rice (entity_5) used the 94\u2011word intelligence summary (entity_8) in public statements. The summary explicitly omits any reference to al Qaeda (entity_10), i.e., it contradicts the claim that al Qaeda was involved in the Benghazi attack. Therefore, Rice's reliance on that summary suggests a down\u2011playing or denial of al Qaeda's role.",
+          "confidence": 0.86
+        }
+      ]
+    },
+    "grader_reports": [
+      {
+        "overall_score": 0.52,
+        "issues": [
+          {
+            "issue_type": "WRONG_TYPE",
+            "element_id": "entity_5",
+            "description": "The identifier **entity_5** is used for two different entities: \"Susan Rice\" (PERSON) and \"U.S. consulate attack in Benghazi, Libya\" (EVENT). Each entity must have a unique ID. Split them into separate IDs (e.g., entity_5 for Susan Rice and a new entity_10 for the event).",
+            "severity": "high"
+          },
+          {
+            "issue_type": "WRONG_TYPE",
+            "element_id": "entity_6",
+            "description": "The identifier **entity_6** is also reused for two distinct entities: \"United Nations\" (ORGANIZATION) and \"al Qaeda\" (ORGANIZATION). Duplicate IDs cause ambiguity. Assign a new unique ID to one of them.",
+            "severity": "high"
+          },
+          {
+            "issue_type": "HALLUCINATION",
+            "element_id": "relation_4",
+            "description": "Relation **entity_1 \u2192 entity_2** (AFFILIATED_WITH) claims Washington is affiliated with the United States, but the quoted evidence is about \"United Nations Ambassador Susan Rice\" and does not mention any affiliation between Washington and the U.S. This relation is unsupported.",
+            "severity": "medium"
+          },
+          {
+            "issue_type": "HALLUCINATION",
+            "element_id": "relation_5",
+            "description": "Relation **entity_1 \u2192 entity_7** (ANNOUNCED) states that Washington announced the consulate attack, yet the evidence provided only discusses the 94\u2011word talking points, not an announcement from Washington. The relation is not grounded in the source text.",
+            "severity": "medium"
+          },
+          {
+            "issue_type": "CONTRADICTION",
+            "element_id": "relation_9",
+            "description": "Relation **entity_7 \u2192 entity_6** (CONTRADICTS) asserts that the Benghazi attack contradicts al\u202fQaeda, but the source says the intelligence summary simply *lacked* any reference to al\u202fQaeda. This is not a contradiction; the correct relation would be something like \"NOT_MENTIONED\" or \"RELATED_TO\" with a qualifier.",
+            "severity": "medium"
+          },
+          {
+            "issue_type": "WEAK_EVIDENCE",
+            "element_id": "relation_6",
+            "description": "Relation **entity_8 \u2192 entity_5** (RELATED_TO) uses the quote \"the 94 words were used by United Nations Ambassador Susan Rice\" to link the 94\u2011word intelligence summary to Susan Rice. While the sentence mentions the summary and Rice, it does not explicitly state a formal relationship (e.g., \"authored\" or \"presented\"). The evidence is vague for the chosen relation type.",
+            "severity": "low"
+          },
+          {
+            "issue_type": "WRONG_TYPE",
+            "element_id": "entity_2",
+            "description": "\"U.S.\" is typed as LOCATION, but it refers to a country/government. While LOCATION is allowed, the more precise type would be ORGANIZATION or COUNTRY. Consider re\u2011typing it to ORGANIZATION for clarity.",
+            "severity": "low"
+          }
+        ],
+        "passes_threshold": false,
+        "feedback_summary": "The graph has critical identifier collisions (entity_5 and entity_6 are duplicated) and several relations that are either unsupported or incorrectly typed. Fix the duplicate IDs, remove or correct the hallucinated relations (Washington \u2192 U.S., Washington \u2192 attack), adjust the contradictory relation about al\u202fQaeda, and tighten evidence for the Susan Rice\u2011summary link. After these changes the knowledge graph will meet the quality standards."
+      },
+      {
+        "overall_score": 0.85,
+        "issues": [
+          {
+            "issue_type": "WEAK_EVIDENCE",
+            "element_id": "relation_2",
+            "description": "The relation linking Susan Rice (entity_5) to the \"94-word intelligence summary\" (entity_8) is recorded as RELATED_TO, but the evidence only states that she *used* the 94 words. The verb \"used\" suggests a more specific relation such as USED_IN or SPOKE_ABOUT, which is not captured in the allowed relation types. Replace the relation with a more appropriate type (e.g., RELATED_TO is acceptable but should be justified with a broader context) or provide additional evidence that explicitly connects Rice to the content of the summary beyond mere usage.",
+            "severity": "medium"
+          },
+          {
+            "issue_type": "WEAK_EVIDENCE",
+            "element_id": "relation_1",
+            "description": "The AFFILIATED_WITH relation between Susan Rice (entity_5) and the United Nations (entity_6) is based solely on the phrase \"United Nations Ambassador Susan Rice\". While this indicates her role as an ambassador, it does not definitively prove a formal affiliation (e.g., employment or membership). Consider adding clarifying evidence that confirms her affiliation with the UN, or change the relation to a more accurate type such as REPRESENTS or SERVES_AS.",
+            "severity": "low"
+          }
+        ],
+        "passes_threshold": true,
+        "feedback_summary": "The graph is generally well\u2011extracted, but two relations suffer from weak evidence. The connection between Susan Rice and the 94\u2011word summary should be supported with a clearer relation type or broader context, and the affiliation between Rice and the United Nations needs additional confirmation or a more precise relation label."
+      }
+    ],
+    "iterations_used": 2,
+    "final_score": 0.85,
+    "metadata": {
+      "ontology_entity_types": [
+        "PERSON",
+        "ORGANIZATION",
+        "LOCATION",
+        "EVENT",
+        "CONCEPT",
+        "DATE",
+        "PRODUCT",
+        "OTHER"
+      ],
+      "ontology_relation_types": [
+        "LOCATED_IN",
+        "AFFILIATED_WITH",
+        "ANNOUNCED",
+        "ACQUIRED",
+        "PARTICIPATED_IN",
+        "RESULTED_IN",
+        "CAUSES",
+        "CONTRADICTS",
+        "SUPPORTS",
+        "RELATED_TO"
+      ],
+      "domain_context": "general news articles"
+    }
+  },
+  "generated_at": "2026-08-13T06:36:34.106951+00:00"
+}

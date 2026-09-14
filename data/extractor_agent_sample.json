@@ -1,0 +1,240 @@
+{
+  "nodes": [
+    {
+      "id": "industrial robot",
+      "label": "industrial robot",
+      "type": "CONCEPT"
+    },
+    {
+      "id": "merger",
+      "label": "merger",
+      "type": "CONCEPT"
+    },
+    {
+      "id": "consolidation",
+      "label": "consolidation",
+      "type": "CONCEPT"
+    },
+    {
+      "id": "regulatory approval",
+      "label": "regulatory approval",
+      "type": "CONCEPT"
+    },
+    {
+      "id": "March 14, 2024",
+      "label": "March 14, 2024",
+      "type": "DATE"
+    },
+    {
+      "id": "2021",
+      "label": "2021",
+      "type": "DATE"
+    },
+    {
+      "id": "June 2024",
+      "label": "June 2024",
+      "type": "DATE"
+    },
+    {
+      "id": "press conference",
+      "label": "press conference",
+      "type": "EVENT"
+    },
+    {
+      "id": "acquisition",
+      "label": "acquisition",
+      "type": "EVENT"
+    },
+    {
+      "id": "announcement",
+      "label": "announcement",
+      "type": "EVENT"
+    },
+    {
+      "id": "merger",
+      "label": "merger",
+      "type": "EVENT"
+    },
+    {
+      "id": "Austin, Texas",
+      "label": "Austin, Texas",
+      "type": "LOCATION"
+    },
+    {
+      "id": "Seattle",
+      "label": "Seattle",
+      "type": "LOCATION"
+    },
+    {
+      "id": "Boston",
+      "label": "Boston",
+      "type": "LOCATION"
+    },
+    {
+      "id": "Meridian Robotics",
+      "label": "Meridian Robotics",
+      "type": "ORGANIZATION"
+    },
+    {
+      "id": "Northfield Automation",
+      "label": "Northfield Automation",
+      "type": "ORGANIZATION"
+    },
+    {
+      "id": "Global Robotics Alliance",
+      "label": "Global Robotics Alliance",
+      "type": "ORGANIZATION"
+    },
+    {
+      "id": "Sento Dynamics",
+      "label": "Sento Dynamics",
+      "type": "ORGANIZATION"
+    },
+    {
+      "id": "CEO",
+      "label": "CEO",
+      "type": "OTHER"
+    },
+    {
+      "id": "Vice President of Engineering",
+      "label": "Vice President of Engineering",
+      "type": "OTHER"
+    },
+    {
+      "id": "Elena Voss",
+      "label": "Elena Voss",
+      "type": "PERSON"
+    },
+    {
+      "id": "Marcus Chen",
+      "label": "Marcus Chen",
+      "type": "PERSON"
+    },
+    {
+      "id": "AtlasArm industrial robot",
+      "label": "AtlasArm industrial robot",
+      "type": "PRODUCT"
+    }
+  ],
+  "edges": [
+    {
+      "id": "rel_0",
+      "source": "Meridian Robotics",
+      "target": "Northfield Automation",
+      "label": "acquired",
+      "type": "acquired"
+    },
+    {
+      "id": "rel_1",
+      "source": "Meridian Robotics",
+      "target": "March 14, 2024",
+      "label": "announced",
+      "type": "announced"
+    },
+    {
+      "id": "rel_2",
+      "source": "press conference",
+      "target": "Seattle",
+      "label": "held_at",
+      "type": "held_at"
+    },
+    {
+      "id": "rel_3",
+      "source": "acquisition",
+      "target": "AtlasArm industrial robot",
+      "label": "accelerates_development_of",
+      "type": "accelerates_development_of"
+    },
+    {
+      "id": "rel_4",
+      "source": "Marcus Chen",
+      "target": "Meridian Robotics",
+      "label": "joined",
+      "type": "joined"
+    },
+    {
+      "id": "rel_5",
+      "source": "Marcus Chen",
+      "target": "Vice President of Engineering",
+      "label": "holds_role",
+      "type": "holds_role"
+    },
+    {
+      "id": "rel_6",
+      "source": "Elena Voss",
+      "target": "CEO",
+      "label": "holds_role",
+      "type": "holds_role"
+    },
+    {
+      "id": "rel_7",
+      "source": "Elena Voss",
+      "target": "Meridian Robotics",
+      "label": "CEO_of",
+      "type": "CEO_of"
+    },
+    {
+      "id": "rel_8",
+      "source": "Northfield Automation",
+      "target": "Austin, Texas",
+      "label": "based_in",
+      "type": "based_in"
+    },
+    {
+      "id": "rel_9",
+      "source": "Meridian Robotics",
+      "target": "Seattle",
+      "label": "headquartered_in",
+      "type": "headquartered_in"
+    },
+    {
+      "id": "rel_10",
+      "source": "AtlasArm industrial robot",
+      "target": "2021",
+      "label": "launched_in",
+      "type": "launched_in"
+    },
+    {
+      "id": "rel_11",
+      "source": "Sento Dynamics",
+      "target": "Boston",
+      "label": "headquartered_in",
+      "type": "headquartered_in"
+    },
+    {
+      "id": "rel_12",
+      "source": "Global Robotics Alliance",
+      "target": "merger",
+      "label": "praised",
+      "type": "praised"
+    },
+    {
+      "id": "rel_13",
+      "source": "Meridian Robotics",
+      "target": "June 2024",
+      "label": "close_acquisition_by",
+      "type": "close_acquisition_by"
+    },
+    {
+      "id": "rel_14",
+      "source": "Meridian Robotics",
+      "target": "regulatory approval",
+      "label": "pending",
+      "type": "pending"
+    }
+  ],
+  "metadata": {
+    "node_count": 23,
+    "edge_count": 15,
+    "entity_types": [
+      "CONCEPT",
+      "DATE",
+      "EVENT",
+      "LOCATION",
+      "ORGANIZATION",
+      "OTHER",
+      "PERSON",
+      "PRODUCT"
+    ]
+  }
+}

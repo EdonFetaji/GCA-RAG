@@ -1,0 +1,18 @@
+Ground the knowledge graph below against DBpedia, using the tools.
+
+Produce one `GroundedEntity` for every entity and one `GroundedRelation` for
+every relation — including the ones you could not resolve, which must appear
+with a null mapping and an `unresolved_reason`. A missing element is
+indistinguishable from a forgotten one.
+
+Use `id` for `entity_id` and `key` for `relation_key`, exactly as written below.
+Do not invent entities or relations that are not in these lists.
+
+## ENTITIES TO GROUND
+{{ entities_json }}
+
+## RELATIONS TO GROUND
+{{ relations_json }}
+
+Begin by linking the entities. Ground the relations once their endpoints are
+resolved, so you can check the edges with `get_predicates_between`.

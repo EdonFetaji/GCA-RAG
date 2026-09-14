@@ -1,0 +1,1064 @@
+2026-08-13 07:20:24,742 [ERROR] `trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'multi_news' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+2026-08-13 07:20:26,315 [WARNING] Using the latest cached version of the dataset since multi_news couldn't be found on the Hugging Face Hub
+2026-08-13 07:20:26,316 [WARNING] Found the latest cached dataset configuration 'default' at C:\Users\ncvet\.cache\huggingface\datasets\multi_news\default\1.0.0\2f1f69a2bedc8ad1c5d8ae5148e4755ee7095f465c1c01ae8f85454342065a72 (last modified on Thu Aug 13 07:09:06 2026).
+2026-08-13 07:20:26,367 [INFO] Processing 5 clusters (0-4) into data\training\clean
+2026-08-13 07:20:26,369 [INFO] Full pipeline — accumulation phase …
+2026-08-13 07:20:26,369 [INFO] Accumulation — extracting from document 0 …
+2026-08-13 07:20:26,983 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 07:20:30,134 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 07:20:30,148 [INFO] Accumulation — extracting from document 1 …
+2026-08-13 07:20:30,533 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 07:20:32,870 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 07:20:32,877 [INFO] Calling LLM (Grader) …
+2026-08-13 07:20:33,255 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 07:20:33,429 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 07:20:33,430 [INFO] Retrying request to /v1/chat/completions in 60.000000 seconds
+2026-08-13 07:21:35,971 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 07:21:35,972 [INFO] Full pipeline grader iteration 1 — score 0.52
+2026-08-13 07:21:35,973 [INFO] Calling LLM (Finder — refinement) …
+2026-08-13 07:21:36,345 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 07:21:36,597 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 07:21:36,597 [INFO] Retrying request to /v1/chat/completions in 60.000000 seconds
+2026-08-13 07:22:42,550 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 07:22:42,573 [WARNING] LLM returned invalid JSON (attempt 0): Expecting value: line 1 column 1 (char 0)
+2026-08-13 07:22:42,573 [INFO] JSON repair attempt 1 / 3 …
+2026-08-13 07:22:42,955 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 07:22:43,142 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 07:22:43,181 [INFO] Retrying request to /v1/chat/completions in 60.000000 seconds
+2026-08-13 07:23:46,541 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 07:23:46,552 [INFO] Calling LLM (Grader) …
+2026-08-13 07:23:46,960 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 07:23:47,150 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 07:23:47,150 [INFO] Retrying request to /v1/chat/completions in 60.000000 seconds
+2026-08-13 07:24:49,048 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 07:24:49,050 [INFO] Full pipeline grader iteration 2 — score 0.32
+2026-08-13 07:24:49,050 [INFO] Calling LLM (Finder — refinement) …
+2026-08-13 07:24:49,462 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 07:24:49,744 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 07:24:49,745 [INFO] Retrying request to /v1/chat/completions in 60.000000 seconds
+2026-08-13 07:26:00,255 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 07:26:00,262 [INFO] Full pipeline — reasoning paths …
+2026-08-13 07:26:00,642 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 07:26:00,825 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 07:26:00,867 [INFO] Retrying request to /v1/chat/completions in 60.000000 seconds
+2026-08-13 07:27:03,257 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 07:27:03,262 [INFO] Cluster 0 — done. 47 entities, 48 relations, score=0.32
+2026-08-13 07:27:04,264 [INFO] Full pipeline — accumulation phase …
+2026-08-13 07:27:04,264 [INFO] Accumulation — extracting from document 0 …
+2026-08-13 07:27:04,650 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 07:27:07,513 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 07:27:07,520 [INFO] Accumulation — extracting from document 1 …
+2026-08-13 07:27:07,932 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 07:27:08,084 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 07:27:08,085 [INFO] Retrying request to /v1/chat/completions in 60.000000 seconds
+2026-08-13 07:28:09,830 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 07:28:09,832 [INFO] Calling LLM (Grader) …
+2026-08-13 07:28:10,293 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 07:28:12,459 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 07:28:12,461 [INFO] Full pipeline grader iteration 1 — score 0.44
+2026-08-13 07:28:12,461 [INFO] Calling LLM (Finder — refinement) …
+2026-08-13 07:28:12,914 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 07:28:13,090 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 07:28:13,091 [INFO] Retrying request to /v1/chat/completions in 60.000000 seconds
+2026-08-13 07:29:15,757 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 07:29:15,769 [INFO] Calling LLM (Grader) …
+2026-08-13 07:29:16,156 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 07:29:16,319 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 07:29:16,320 [INFO] Retrying request to /v1/chat/completions in 60.000000 seconds
+2026-08-13 07:30:18,455 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 07:30:18,461 [INFO] Full pipeline grader iteration 2 — score 0.62
+2026-08-13 07:30:18,461 [INFO] Calling LLM (Finder — refinement) …
+2026-08-13 07:30:18,838 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 07:30:22,928 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 07:30:22,941 [INFO] Full pipeline — reasoning paths …
+2026-08-13 07:30:23,327 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 07:30:23,501 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 07:30:23,502 [INFO] Retrying request to /v1/chat/completions in 60.000000 seconds
+2026-08-13 07:31:25,006 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 07:31:25,009 [INFO] Cluster 1 — done. 21 entities, 16 relations, score=0.62
+2026-08-13 07:31:26,011 [INFO] Full pipeline — accumulation phase …
+2026-08-13 07:31:26,011 [INFO] Accumulation — extracting from document 0 …
+2026-08-13 07:31:26,385 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 07:31:28,430 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 07:31:28,435 [INFO] Accumulation — extracting from document 1 …
+2026-08-13 07:31:28,842 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 07:31:31,096 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 07:31:31,109 [INFO] Calling LLM (Grader) …
+2026-08-13 07:31:31,496 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 07:31:31,675 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 07:31:31,676 [INFO] Retrying request to /v1/chat/completions in 60.000000 seconds
+2026-08-13 07:32:34,274 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 07:32:34,282 [INFO] Full pipeline grader iteration 1 — score 0.34
+2026-08-13 07:32:34,282 [INFO] Calling LLM (Finder — refinement) …
+2026-08-13 07:32:34,676 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 07:32:34,891 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 07:32:34,892 [INFO] Retrying request to /v1/chat/completions in 60.000000 seconds
+2026-08-13 07:33:38,214 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 07:33:38,226 [INFO] Calling LLM (Grader) …
+2026-08-13 07:33:38,576 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 07:33:38,769 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 07:33:38,769 [INFO] Retrying request to /v1/chat/completions in 60.000000 seconds
+2026-08-13 07:34:40,827 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 07:34:40,828 [INFO] Full pipeline grader iteration 2 — score 0.78
+2026-08-13 07:34:40,828 [INFO] Full pipeline — reasoning paths …
+2026-08-13 07:34:41,219 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 07:34:41,381 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 07:34:41,382 [INFO] Retrying request to /v1/chat/completions in 60.000000 seconds
+2026-08-13 07:35:43,372 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 07:35:43,380 [INFO] Cluster 2 — done. 30 entities, 18 relations, score=0.78
+2026-08-13 07:35:44,382 [INFO] Full pipeline — accumulation phase …
+2026-08-13 07:35:44,382 [INFO] Accumulation — extracting from document 0 …
+2026-08-13 07:35:44,763 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 07:35:45,577 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 07:35:45,579 [INFO] Accumulation — extracting from document 1 …
+2026-08-13 07:35:45,990 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 07:35:47,671 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 07:35:47,675 [INFO] Accumulation — extracting from document 2 …
+2026-08-13 07:35:48,052 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 07:35:49,468 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 07:35:49,470 [INFO] Accumulation — extracting from document 3 …
+2026-08-13 07:35:49,849 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 07:35:50,002 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 07:35:50,002 [INFO] Retrying request to /v1/chat/completions in 60.000000 seconds
+2026-08-13 07:36:51,997 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 07:36:52,000 [INFO] Calling LLM (Grader) …
+2026-08-13 07:36:52,381 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 07:36:52,576 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 07:36:52,577 [INFO] Retrying request to /v1/chat/completions in 60.000000 seconds
+2026-08-13 07:37:54,528 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 07:37:54,529 [INFO] Full pipeline grader iteration 1 — score 0.40
+2026-08-13 07:37:54,529 [INFO] Calling LLM (Finder — refinement) …
+2026-08-13 07:37:54,940 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 07:37:55,131 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 07:37:55,132 [INFO] Retrying request to /v1/chat/completions in 60.000000 seconds
+2026-08-13 07:38:58,814 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 07:38:58,821 [INFO] Calling LLM (Grader) …
+2026-08-13 07:38:59,202 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 07:38:59,385 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 07:38:59,386 [INFO] Retrying request to /v1/chat/completions in 60.000000 seconds
+2026-08-13 07:40:01,106 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 07:40:01,107 [INFO] Full pipeline grader iteration 2 — score 0.68
+2026-08-13 07:40:01,107 [INFO] Calling LLM (Finder — refinement) …
+2026-08-13 07:40:01,473 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 07:40:01,662 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 07:40:01,708 [INFO] Retrying request to /v1/chat/completions in 60.000000 seconds
+2026-08-13 07:41:04,910 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 07:41:04,921 [INFO] Full pipeline — reasoning paths …
+2026-08-13 07:41:05,285 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 07:41:05,446 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 07:41:05,447 [INFO] Retrying request to /v1/chat/completions in 60.000000 seconds
+2026-08-13 07:42:06,827 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 07:42:06,832 [INFO] Cluster 3 — done. 38 entities, 7 relations, score=0.68
+2026-08-13 07:42:07,834 [INFO] Full pipeline — accumulation phase …
+2026-08-13 07:42:07,834 [INFO] Accumulation — extracting from document 0 …
+2026-08-13 07:42:08,232 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 07:42:14,374 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 07:42:14,388 [INFO] Accumulation — extracting from document 1 …
+2026-08-13 07:42:14,761 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 07:42:14,926 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 07:42:14,926 [INFO] Retrying request to /v1/chat/completions in 60.000000 seconds
+2026-08-13 07:43:18,536 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 07:43:18,544 [INFO] Accumulation — extracting from document 2 …
+2026-08-13 07:43:18,956 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 07:43:20,711 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 07:43:20,721 [INFO] Calling LLM (Grader) …
+2026-08-13 07:43:21,130 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 07:43:21,305 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 07:43:21,306 [INFO] Retrying request to /v1/chat/completions in 60.000000 seconds
+2026-08-13 07:44:23,376 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 07:44:23,377 [INFO] Full pipeline grader iteration 1 — score 0.43
+2026-08-13 07:44:23,377 [INFO] Calling LLM (Finder — refinement) …
+2026-08-13 07:44:23,770 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 07:44:23,962 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 07:44:23,963 [INFO] Retrying request to /v1/chat/completions in 60.000000 seconds
+2026-08-13 07:45:29,179 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 07:45:29,188 [WARNING] LLM returned invalid JSON (attempt 0): Expecting value: line 181 column 20 (char 4905)
+2026-08-13 07:45:29,188 [INFO] JSON repair attempt 1 / 3 …
+2026-08-13 07:45:29,564 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 07:45:29,786 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 07:45:29,786 [INFO] Retrying request to /v1/chat/completions in 60.000000 seconds
+2026-08-13 07:46:32,999 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 07:46:33,009 [INFO] Calling LLM (Grader) …
+2026-08-13 07:46:33,389 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 07:46:33,584 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 07:46:33,584 [INFO] Retrying request to /v1/chat/completions in 60.000000 seconds
+2026-08-13 07:47:35,903 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 07:47:35,907 [INFO] Full pipeline grader iteration 2 — score 0.55
+2026-08-13 07:47:35,907 [INFO] Calling LLM (Finder — refinement) …
+2026-08-13 07:47:36,291 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 07:47:36,488 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 07:47:36,489 [INFO] Retrying request to /v1/chat/completions in 60.000000 seconds
+2026-08-13 07:48:40,004 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 07:48:40,023 [INFO] Full pipeline — reasoning paths …
+2026-08-13 07:48:40,403 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 07:48:40,583 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 07:48:40,583 [INFO] Retrying request to /v1/chat/completions in 60.000000 seconds
+2026-08-13 07:49:42,504 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 07:49:42,505 [WARNING] LLM returned invalid JSON (attempt 0): Expecting ',' delimiter: line 6 column 22 (char 406)
+2026-08-13 07:49:42,505 [INFO] JSON repair attempt 1 / 3 …
+2026-08-13 07:49:42,897 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 07:49:44,037 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 07:49:44,042 [INFO] Cluster 4 — done. 45 entities, 26 relations, score=0.55
+2026-08-13 07:49:44,042 [INFO] 
+================================================================================
+Done in 1757.7s — 5 newly extracted, 0 already done (skipped), 0 failed (see data\training\clean\_failures.jsonl)
+================================================================================
+2026-08-13 07:58:58,480 [ERROR] `trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'multi_news' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+2026-08-13 07:58:59,085 [WARNING] Using the latest cached version of the dataset since multi_news couldn't be found on the Hugging Face Hub
+2026-08-13 07:58:59,086 [WARNING] Found the latest cached dataset configuration 'default' at C:\Users\ncvet\.cache\huggingface\datasets\multi_news\default\1.0.0\2f1f69a2bedc8ad1c5d8ae5148e4755ee7095f465c1c01ae8f85454342065a72 (last modified on Thu Aug 13 07:09:06 2026).
+2026-08-13 07:58:59,102 [INFO] Processing 250 clusters (0-249) into data\training\clean
+2026-08-13 07:58:59,102 [INFO] Cluster 0 — already done, skipping.
+2026-08-13 07:58:59,103 [INFO] Cluster 1 — already done, skipping.
+2026-08-13 07:58:59,103 [INFO] Cluster 2 — already done, skipping.
+2026-08-13 07:58:59,103 [INFO] Cluster 3 — already done, skipping.
+2026-08-13 07:58:59,103 [INFO] Cluster 4 — already done, skipping.
+2026-08-13 07:58:59,104 [INFO] Full pipeline — accumulation phase …
+2026-08-13 07:58:59,105 [INFO] Accumulation — extracting from document 0 …
+2026-08-13 07:58:59,591 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 07:59:01,127 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 07:59:01,139 [INFO] Accumulation — extracting from document 1 …
+2026-08-13 07:59:01,498 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 07:59:03,648 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 07:59:03,656 [INFO] Accumulation — extracting from document 2 …
+2026-08-13 07:59:04,010 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 07:59:05,901 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 07:59:05,902 [INFO] Calling LLM (Grader) …
+2026-08-13 07:59:06,289 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 07:59:06,475 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 07:59:06,475 [INFO] Retrying request to /v1/chat/completions in 60.000000 seconds
+2026-08-13 08:01:26,438 [ERROR] `trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'multi_news' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+2026-08-13 08:01:27,086 [WARNING] Using the latest cached version of the dataset since multi_news couldn't be found on the Hugging Face Hub
+2026-08-13 08:01:27,088 [WARNING] Found the latest cached dataset configuration 'default' at C:\Users\ncvet\.cache\huggingface\datasets\multi_news\default\1.0.0\2f1f69a2bedc8ad1c5d8ae5148e4755ee7095f465c1c01ae8f85454342065a72 (last modified on Thu Aug 13 07:09:06 2026).
+2026-08-13 08:01:27,103 [INFO] Processing 250 clusters (0-249) into data\training\clean
+2026-08-13 08:01:27,104 [INFO] Cluster 0 — already done, skipping.
+2026-08-13 08:01:27,104 [INFO] Cluster 1 — already done, skipping.
+2026-08-13 08:01:27,105 [INFO] Cluster 2 — already done, skipping.
+2026-08-13 08:01:27,105 [INFO] Cluster 3 — already done, skipping.
+2026-08-13 08:01:27,105 [INFO] Cluster 4 — already done, skipping.
+2026-08-13 08:01:27,106 [INFO] Full pipeline — accumulation phase …
+2026-08-13 08:01:27,107 [INFO] Accumulation — extracting from document 0 …
+2026-08-13 08:01:27,566 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 08:01:29,498 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 08:01:29,507 [INFO] Accumulation — extracting from document 1 …
+2026-08-13 08:01:29,903 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 08:01:33,209 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 08:01:33,262 [INFO] Accumulation — extracting from document 2 …
+2026-08-13 08:01:34,402 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 08:01:36,940 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 08:01:36,942 [INFO] Calling LLM (Grader) …
+2026-08-13 08:01:37,323 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 08:01:37,510 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 08:01:37,511 [INFO] Retrying request to /v1/chat/completions in 60.000000 seconds
+2026-08-13 08:02:40,711 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 08:02:40,712 [INFO] Full pipeline grader iteration 1 — score 0.32
+2026-08-13 08:02:40,712 [INFO] Calling LLM (Finder — refinement) …
+2026-08-13 08:02:41,080 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 08:02:41,261 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 08:02:41,262 [INFO] Retrying request to /v1/chat/completions in 60.000000 seconds
+2026-08-13 08:03:41,484 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 08:03:41,485 [WARNING] Cerebras API error (attempt 1/4): Error code: 429 - {'message': "We're experiencing high traffic right now! Please try again soon.", 'type': 'too_many_requests_error', 'param': 'queue', 'code': 'queue_exceeded'} — backing off 2.0s
+2026-08-13 08:03:43,485 [INFO] Full pipeline — accumulation phase …
+2026-08-13 08:03:43,485 [INFO] Accumulation — extracting from document 0 …
+2026-08-13 08:03:43,876 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 08:03:44,038 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 08:03:44,039 [INFO] Retrying request to /v1/chat/completions in 60.000000 seconds
+2026-08-13 08:04:45,683 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 08:04:45,690 [INFO] Accumulation — extracting from document 1 …
+2026-08-13 08:04:46,074 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 08:04:48,264 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 08:04:48,270 [INFO] Accumulation — extracting from document 2 …
+2026-08-13 08:04:48,636 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 08:04:50,636 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 08:04:50,638 [INFO] Calling LLM (Grader) …
+2026-08-13 08:04:51,011 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 08:04:51,193 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 08:04:51,194 [INFO] Retrying request to /v1/chat/completions in 60.000000 seconds
+2026-08-13 08:05:54,073 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 08:05:54,075 [INFO] Full pipeline grader iteration 1 — score 0.28
+2026-08-13 08:05:54,075 [INFO] Calling LLM (Finder — refinement) …
+2026-08-13 08:05:54,449 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 08:05:55,035 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 08:05:55,036 [INFO] Retrying request to /v1/chat/completions in 60.000000 seconds
+2026-08-13 08:06:59,745 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 08:06:59,757 [INFO] Calling LLM (Grader) …
+2026-08-13 08:07:00,137 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 08:07:00,313 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 08:07:00,313 [INFO] Retrying request to /v1/chat/completions in 60.000000 seconds
+2026-08-13 08:08:03,591 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 08:08:03,592 [INFO] Full pipeline grader iteration 2 — score 0.65
+2026-08-13 08:08:03,592 [INFO] Calling LLM (Finder — refinement) …
+2026-08-13 08:08:03,960 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 08:08:04,134 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 08:08:04,135 [INFO] Retrying request to /v1/chat/completions in 60.000000 seconds
+2026-08-13 08:09:06,885 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 08:09:06,895 [INFO] Full pipeline — reasoning paths …
+2026-08-13 08:09:07,292 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 08:09:07,462 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 08:09:07,462 [INFO] Retrying request to /v1/chat/completions in 60.000000 seconds
+2026-08-13 08:10:09,911 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 08:10:09,959 [INFO] Cluster 5 — done. 31 entities, 20 relations, score=0.65
+2026-08-13 08:10:10,961 [INFO] Full pipeline — accumulation phase …
+2026-08-13 08:10:10,961 [INFO] Accumulation — extracting from document 0 …
+2026-08-13 08:10:11,339 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 08:10:13,415 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 08:10:13,417 [INFO] Accumulation — extracting from document 1 …
+2026-08-13 08:10:13,800 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 08:10:15,385 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 08:10:15,388 [INFO] Calling LLM (Grader) …
+2026-08-13 08:10:15,768 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 08:10:15,944 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 08:10:15,944 [INFO] Retrying request to /v1/chat/completions in 60.000000 seconds
+2026-08-13 08:11:17,979 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 08:11:17,980 [INFO] Full pipeline grader iteration 1 — score 0.38
+2026-08-13 08:11:17,980 [INFO] Calling LLM (Finder — refinement) …
+2026-08-13 08:11:18,354 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 08:11:18,534 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 08:11:18,535 [INFO] Retrying request to /v1/chat/completions in 60.000000 seconds
+2026-08-13 08:12:23,069 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 08:12:23,085 [INFO] Calling LLM (Grader) …
+2026-08-13 08:12:23,476 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 08:12:23,690 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 08:12:23,690 [INFO] Retrying request to /v1/chat/completions in 60.000000 seconds
+2026-08-13 08:13:25,802 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 08:13:25,802 [INFO] Full pipeline grader iteration 2 — score 0.78
+2026-08-13 08:13:25,803 [INFO] Full pipeline — reasoning paths …
+2026-08-13 08:13:26,180 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 08:13:27,633 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 08:13:27,636 [INFO] Cluster 6 — done. 30 entities, 10 relations, score=0.78
+2026-08-13 08:13:28,638 [INFO] Full pipeline — accumulation phase …
+2026-08-13 08:13:28,638 [INFO] Accumulation — extracting from document 0 …
+2026-08-13 08:13:29,053 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 08:13:29,207 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 08:13:29,207 [INFO] Retrying request to /v1/chat/completions in 60.000000 seconds
+2026-08-13 08:14:30,642 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 08:14:30,643 [INFO] Accumulation — extracting from document 1 …
+2026-08-13 08:14:31,005 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 08:14:32,896 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 08:14:32,897 [INFO] Accumulation — extracting from document 2 …
+2026-08-13 08:14:33,295 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 08:14:37,164 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 08:14:37,171 [INFO] Calling LLM (Grader) …
+2026-08-13 08:14:37,541 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 08:14:37,712 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 08:14:37,713 [INFO] Retrying request to /v1/chat/completions in 60.000000 seconds
+2026-08-13 08:15:39,494 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 08:15:39,502 [INFO] Full pipeline grader iteration 1 — score 0.42
+2026-08-13 08:15:39,502 [INFO] Calling LLM (Finder — refinement) …
+2026-08-13 08:15:39,871 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 08:15:40,054 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 08:15:40,054 [INFO] Retrying request to /v1/chat/completions in 60.000000 seconds
+2026-08-13 08:16:43,710 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 08:16:43,723 [INFO] Calling LLM (Grader) …
+2026-08-13 08:16:44,103 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 08:16:44,282 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 08:16:44,282 [INFO] Retrying request to /v1/chat/completions in 60.000000 seconds
+2026-08-13 08:17:47,441 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 08:17:47,442 [INFO] Full pipeline grader iteration 2 — score 0.78
+2026-08-13 08:17:47,442 [INFO] Full pipeline — reasoning paths …
+2026-08-13 08:17:47,810 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 08:17:50,024 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 08:17:50,027 [INFO] Cluster 7 — done. 31 entities, 22 relations, score=0.78
+2026-08-13 08:17:51,029 [INFO] Full pipeline — accumulation phase …
+2026-08-13 08:17:51,029 [INFO] Accumulation — extracting from document 0 …
+2026-08-13 08:17:51,390 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 08:17:51,539 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 08:17:51,539 [INFO] Retrying request to /v1/chat/completions in 60.000000 seconds
+2026-08-13 08:18:52,878 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 08:18:52,879 [INFO] Accumulation — extracting from document 1 …
+2026-08-13 08:18:53,248 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 08:18:55,570 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 08:18:55,571 [INFO] Calling LLM (Grader) …
+2026-08-13 08:18:55,945 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 08:18:57,865 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 08:18:57,866 [INFO] Full pipeline grader iteration 1 — score 0.55
+2026-08-13 08:18:57,866 [INFO] Calling LLM (Finder — refinement) …
+2026-08-13 08:18:58,242 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 08:18:59,880 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 08:18:59,881 [INFO] Calling LLM (Grader) …
+2026-08-13 08:19:00,256 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 08:19:00,411 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 08:19:00,448 [INFO] Retrying request to /v1/chat/completions in 60.000000 seconds
+2026-08-13 08:20:01,771 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 08:20:01,773 [INFO] Full pipeline grader iteration 2 — score 0.78
+2026-08-13 08:20:01,773 [INFO] Full pipeline — reasoning paths …
+2026-08-13 08:20:02,138 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 08:20:03,873 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 08:20:03,875 [INFO] Cluster 8 — done. 13 entities, 6 relations, score=0.78
+2026-08-13 08:20:04,883 [INFO] Full pipeline — accumulation phase …
+2026-08-13 08:20:04,883 [INFO] Accumulation — extracting from document 0 …
+2026-08-13 08:20:05,267 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 08:20:06,994 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 08:20:06,995 [INFO] Accumulation — extracting from document 1 …
+2026-08-13 08:20:07,367 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 08:20:10,179 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 08:20:10,198 [INFO] Accumulation — extracting from document 2 …
+2026-08-13 08:20:10,581 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 08:20:10,759 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 08:20:10,760 [INFO] Retrying request to /v1/chat/completions in 60.000000 seconds
+2026-08-13 08:21:12,971 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 08:21:12,978 [INFO] Calling LLM (Grader) …
+2026-08-13 08:21:13,384 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 08:21:13,579 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 08:21:13,579 [INFO] Retrying request to /v1/chat/completions in 60.000000 seconds
+2026-08-13 08:22:16,137 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 08:22:16,138 [INFO] Full pipeline grader iteration 1 — score 0.32
+2026-08-13 08:22:16,138 [INFO] Calling LLM (Finder — refinement) …
+2026-08-13 08:22:16,540 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 08:22:16,731 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 08:22:16,777 [INFO] Retrying request to /v1/chat/completions in 60.000000 seconds
+2026-08-13 08:23:20,304 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 08:23:20,315 [INFO] Calling LLM (Grader) …
+2026-08-13 08:23:20,717 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 08:23:20,896 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 08:23:20,896 [INFO] Retrying request to /v1/chat/completions in 60.000000 seconds
+2026-08-13 08:24:24,786 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 08:24:24,787 [INFO] Full pipeline grader iteration 2 — score 0.73
+2026-08-13 08:24:24,788 [INFO] Full pipeline — reasoning paths …
+2026-08-13 08:24:25,281 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 08:24:25,486 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 08:24:25,487 [INFO] Retrying request to /v1/chat/completions in 60.000000 seconds
+2026-08-13 08:25:26,628 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 08:25:26,631 [INFO] Cluster 9 — done. 23 entities, 14 relations, score=0.73
+2026-08-13 08:25:27,633 [INFO] Full pipeline — accumulation phase …
+2026-08-13 08:25:27,633 [INFO] Accumulation — extracting from document 0 …
+2026-08-13 08:25:28,024 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 08:25:28,943 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 08:25:28,947 [INFO] Accumulation — extracting from document 1 …
+2026-08-13 08:25:29,334 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 08:25:30,690 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 08:25:30,691 [INFO] Calling LLM (Grader) …
+2026-08-13 08:25:31,071 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 08:25:32,405 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 08:25:32,406 [INFO] Full pipeline grader iteration 1 — score 0.62
+2026-08-13 08:25:32,406 [INFO] Calling LLM (Finder — refinement) …
+2026-08-13 08:25:32,759 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 08:25:32,919 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 08:25:32,919 [INFO] Retrying request to /v1/chat/completions in 60.000000 seconds
+2026-08-13 08:26:36,092 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 08:26:36,105 [ERROR] Cluster 10 — extraction failed: KeyError: 'relation_type'
+2026-08-13 08:26:36,107 [INFO] Full pipeline — accumulation phase …
+2026-08-13 08:26:36,108 [INFO] Accumulation — extracting from document 0 …
+2026-08-13 08:26:36,519 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 08:26:38,987 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 08:26:38,996 [INFO] Accumulation — extracting from document 1 …
+2026-08-13 08:26:39,422 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 08:26:39,580 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 08:26:39,621 [INFO] Retrying request to /v1/chat/completions in 60.000000 seconds
+2026-08-13 08:27:40,867 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 08:27:40,868 [INFO] Calling LLM (Grader) …
+2026-08-13 08:27:41,246 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 08:27:43,136 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 08:27:43,137 [INFO] Full pipeline grader iteration 1 — score 0.58
+2026-08-13 08:27:43,137 [INFO] Calling LLM (Finder — refinement) …
+2026-08-13 08:27:43,579 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 08:27:43,758 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 08:27:43,759 [INFO] Retrying request to /v1/chat/completions in 60.000000 seconds
+2026-08-13 08:28:46,678 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 08:28:46,691 [INFO] Calling LLM (Grader) …
+2026-08-13 08:28:47,064 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 08:28:47,252 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 08:28:47,252 [INFO] Retrying request to /v1/chat/completions in 60.000000 seconds
+2026-08-13 08:29:49,549 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 08:29:49,550 [INFO] Full pipeline grader iteration 2 — score 0.68
+2026-08-13 08:29:49,550 [INFO] Calling LLM (Finder — refinement) …
+2026-08-13 08:29:49,937 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 08:29:50,112 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 08:29:50,112 [INFO] Retrying request to /v1/chat/completions in 60.000000 seconds
+2026-08-13 08:30:54,282 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 08:30:54,292 [INFO] Full pipeline — reasoning paths …
+2026-08-13 08:30:54,695 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 08:30:54,918 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 08:30:54,919 [INFO] Retrying request to /v1/chat/completions in 60.000000 seconds
+2026-08-13 08:31:57,544 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 08:31:57,547 [INFO] Cluster 11 — done. 30 entities, 22 relations, score=0.68
+2026-08-13 08:31:58,548 [INFO] Full pipeline — accumulation phase …
+2026-08-13 08:31:58,548 [INFO] Accumulation — extracting from document 0 …
+2026-08-13 08:31:58,917 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 08:32:02,966 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 08:32:02,967 [INFO] Accumulation — extracting from document 1 …
+2026-08-13 08:32:03,325 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 08:32:06,826 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 08:32:06,827 [INFO] Accumulation — extracting from document 2 …
+2026-08-13 08:32:07,224 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 08:32:07,383 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 08:32:07,384 [INFO] Retrying request to /v1/chat/completions in 60.000000 seconds
+2026-08-13 08:33:08,559 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 08:33:08,560 [INFO] Calling LLM (Grader) …
+2026-08-13 08:33:08,917 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 08:33:11,471 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 08:33:11,472 [INFO] Full pipeline grader iteration 1 — score 0.42
+2026-08-13 08:33:11,473 [INFO] Calling LLM (Finder — refinement) …
+2026-08-13 08:33:11,861 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 08:33:14,794 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 08:33:14,803 [INFO] Calling LLM (Grader) …
+2026-08-13 08:33:15,212 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 08:33:15,383 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 08:33:15,383 [INFO] Retrying request to /v1/chat/completions in 60.000000 seconds
+2026-08-13 08:34:17,033 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 08:34:17,034 [INFO] Full pipeline grader iteration 2 — score 0.68
+2026-08-13 08:34:17,034 [INFO] Calling LLM (Finder — refinement) …
+2026-08-13 08:34:17,398 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 08:34:20,159 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 08:34:20,167 [INFO] Full pipeline — reasoning paths …
+2026-08-13 08:34:20,537 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 08:34:20,708 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 08:34:20,709 [INFO] Retrying request to /v1/chat/completions in 60.000000 seconds
+2026-08-13 08:35:21,898 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 08:35:21,901 [INFO] Cluster 12 — done. 21 entities, 10 relations, score=0.68
+2026-08-13 08:35:22,903 [INFO] Full pipeline — accumulation phase …
+2026-08-13 08:35:22,903 [INFO] Accumulation — extracting from document 0 …
+2026-08-13 08:35:23,269 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 08:35:24,868 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 08:35:24,869 [INFO] Accumulation — extracting from document 1 …
+2026-08-13 08:35:25,264 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 08:35:26,426 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 08:35:26,427 [INFO] Calling LLM (Grader) …
+2026-08-13 08:35:26,792 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 08:35:28,217 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 08:35:28,218 [INFO] Full pipeline grader iteration 1 — score 0.52
+2026-08-13 08:35:28,218 [INFO] Calling LLM (Finder — refinement) …
+2026-08-13 08:35:28,748 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 08:35:28,902 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 08:35:28,903 [INFO] Retrying request to /v1/chat/completions in 60.000000 seconds
+2026-08-13 08:36:31,086 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 08:36:31,088 [INFO] Calling LLM (Grader) …
+2026-08-13 08:36:31,457 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 08:36:32,777 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 08:36:32,778 [INFO] Full pipeline grader iteration 2 — score 0.85
+2026-08-13 08:36:32,778 [INFO] Full pipeline — reasoning paths …
+2026-08-13 08:36:33,154 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 08:36:34,106 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 08:36:34,108 [INFO] Cluster 13 — done. 11 entities, 5 relations, score=0.85
+2026-08-13 08:36:35,116 [INFO] Full pipeline — accumulation phase …
+2026-08-13 08:36:35,116 [INFO] Accumulation — extracting from document 0 …
+2026-08-13 08:36:35,500 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 08:36:37,835 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 08:36:37,836 [INFO] Accumulation — extracting from document 1 …
+2026-08-13 08:36:38,205 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 08:36:38,359 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 08:36:38,359 [INFO] Retrying request to /v1/chat/completions in 60.000000 seconds
+2026-08-13 08:37:38,551 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 08:37:38,552 [INFO] Retrying request to /v1/chat/completions in 0.808455 seconds
+2026-08-13 08:37:39,518 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 08:37:39,519 [WARNING] Cerebras API error (attempt 1/4): Error code: 429 - {'message': 'Tokens per day limit exceeded - too many tokens processed.', 'type': 'too_many_tokens_error', 'param': 'quota', 'code': 'token_quota_exceeded'} — backing off 2.0s
+2026-08-13 08:37:41,519 [INFO] Full pipeline — accumulation phase …
+2026-08-13 08:37:41,520 [INFO] Accumulation — extracting from document 0 …
+2026-08-13 08:37:41,900 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 08:37:42,057 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 08:37:42,058 [INFO] Retrying request to /v1/chat/completions in 0.424904 seconds
+2026-08-13 08:37:42,631 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 08:37:42,631 [INFO] Retrying request to /v1/chat/completions in 0.849275 seconds
+2026-08-13 08:37:43,651 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 08:37:43,652 [WARNING] Cerebras API error (attempt 2/4): Error code: 429 - {'message': 'Tokens per day limit exceeded - too many tokens processed.', 'type': 'too_many_tokens_error', 'param': 'quota', 'code': 'token_quota_exceeded'} — backing off 4.0s
+2026-08-13 08:37:47,653 [INFO] Full pipeline — accumulation phase …
+2026-08-13 08:37:47,653 [INFO] Accumulation — extracting from document 0 …
+2026-08-13 08:37:48,028 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 08:37:48,196 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 08:37:48,196 [INFO] Retrying request to /v1/chat/completions in 0.497243 seconds
+2026-08-13 08:37:48,851 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 08:37:48,852 [INFO] Retrying request to /v1/chat/completions in 0.845635 seconds
+2026-08-13 08:37:49,889 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 08:37:49,890 [WARNING] Cerebras API error (attempt 3/4): Error code: 429 - {'message': 'Tokens per day limit exceeded - too many tokens processed.', 'type': 'too_many_tokens_error', 'param': 'quota', 'code': 'token_quota_exceeded'} — backing off 8.0s
+2026-08-13 08:37:57,891 [INFO] Full pipeline — accumulation phase …
+2026-08-13 08:37:57,891 [INFO] Accumulation — extracting from document 0 …
+2026-08-13 08:37:58,270 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 08:37:58,434 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 08:37:58,435 [INFO] Retrying request to /v1/chat/completions in 0.411332 seconds
+2026-08-13 08:37:59,031 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 08:37:59,032 [INFO] Retrying request to /v1/chat/completions in 0.929521 seconds
+2026-08-13 08:38:00,119 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 08:38:00,119 [WARNING] Cerebras API error (attempt 4/4): Error code: 429 - {'message': 'Tokens per day limit exceeded - too many tokens processed.', 'type': 'too_many_tokens_error', 'param': 'quota', 'code': 'token_quota_exceeded'} — backing off 16.0s
+2026-08-13 08:38:16,120 [INFO] Full pipeline — accumulation phase …
+2026-08-13 08:38:16,121 [INFO] Accumulation — extracting from document 0 …
+2026-08-13 08:38:16,496 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 08:38:16,672 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 08:38:16,672 [INFO] Retrying request to /v1/chat/completions in 0.431590 seconds
+2026-08-13 08:38:17,262 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 08:38:17,262 [INFO] Retrying request to /v1/chat/completions in 0.847880 seconds
+2026-08-13 08:38:18,293 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 08:38:18,293 [ERROR] Cluster 14 — extraction failed: RateLimitError: Error code: 429 - {'message': 'Tokens per day limit exceeded - too many tokens processed.', 'type': 'too_many_tokens_error', 'param': 'quota', 'code': 'token_quota_exceeded'}
+2026-08-13 08:38:18,295 [INFO] Full pipeline — accumulation phase …
+2026-08-13 08:38:18,295 [INFO] Accumulation — extracting from document 0 …
+2026-08-13 08:38:18,766 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 08:38:19,055 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 08:38:19,056 [INFO] Retrying request to /v1/chat/completions in 0.452949 seconds
+2026-08-13 08:38:19,659 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 08:38:19,660 [INFO] Retrying request to /v1/chat/completions in 0.817214 seconds
+2026-08-13 08:38:20,665 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 08:38:20,666 [WARNING] Cerebras API error (attempt 1/4): Error code: 429 - {'message': 'Tokens per day limit exceeded - too many tokens processed.', 'type': 'too_many_tokens_error', 'param': 'quota', 'code': 'token_quota_exceeded'} — backing off 2.0s
+2026-08-13 08:38:22,667 [INFO] Full pipeline — accumulation phase …
+2026-08-13 08:38:22,667 [INFO] Accumulation — extracting from document 0 …
+2026-08-13 08:38:23,031 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 08:38:23,194 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 08:38:23,195 [INFO] Retrying request to /v1/chat/completions in 0.459699 seconds
+2026-08-13 08:38:23,807 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 08:38:23,807 [INFO] Retrying request to /v1/chat/completions in 0.773470 seconds
+2026-08-13 08:38:24,735 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 08:38:24,736 [WARNING] Cerebras API error (attempt 2/4): Error code: 429 - {'message': 'Tokens per day limit exceeded - too many tokens processed.', 'type': 'too_many_tokens_error', 'param': 'quota', 'code': 'token_quota_exceeded'} — backing off 4.0s
+2026-08-13 08:38:28,736 [INFO] Full pipeline — accumulation phase …
+2026-08-13 08:38:28,737 [INFO] Accumulation — extracting from document 0 …
+2026-08-13 08:38:29,130 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 08:38:29,324 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 08:38:29,325 [INFO] Retrying request to /v1/chat/completions in 0.398662 seconds
+2026-08-13 08:38:29,883 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 08:38:29,920 [INFO] Retrying request to /v1/chat/completions in 0.975944 seconds
+2026-08-13 08:38:31,086 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 08:38:31,087 [WARNING] Cerebras API error (attempt 3/4): Error code: 429 - {'message': 'Tokens per day limit exceeded - too many tokens processed.', 'type': 'too_many_tokens_error', 'param': 'quota', 'code': 'token_quota_exceeded'} — backing off 8.0s
+2026-08-13 08:38:39,087 [INFO] Full pipeline — accumulation phase …
+2026-08-13 08:38:39,087 [INFO] Accumulation — extracting from document 0 …
+2026-08-13 08:38:39,454 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 08:38:39,607 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 08:38:39,608 [INFO] Retrying request to /v1/chat/completions in 0.375521 seconds
+2026-08-13 08:38:40,164 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 08:38:40,165 [INFO] Retrying request to /v1/chat/completions in 0.893932 seconds
+2026-08-13 08:38:41,379 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 08:38:41,379 [WARNING] Cerebras API error (attempt 4/4): Error code: 429 - {'message': 'Tokens per day limit exceeded - too many tokens processed.', 'type': 'too_many_tokens_error', 'param': 'quota', 'code': 'token_quota_exceeded'} — backing off 16.0s
+2026-08-13 16:14:04,665 [ERROR] `trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'multi_news' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+2026-08-13 16:14:05,310 [WARNING] Using the latest cached version of the dataset since multi_news couldn't be found on the Hugging Face Hub
+2026-08-13 16:14:05,311 [WARNING] Found the latest cached dataset configuration 'default' at C:\Users\ncvet\.cache\huggingface\datasets\multi_news\default\1.0.0\2f1f69a2bedc8ad1c5d8ae5148e4755ee7095f465c1c01ae8f85454342065a72 (last modified on Thu Aug 13 07:09:06 2026).
+2026-08-13 16:14:05,378 [INFO] Processing 250 clusters (0-249) into data\training\clean
+2026-08-13 16:14:05,379 [INFO] Cluster 0 — already done, skipping.
+2026-08-13 16:14:05,380 [INFO] Cluster 1 — already done, skipping.
+2026-08-13 16:14:05,381 [INFO] Cluster 2 — already done, skipping.
+2026-08-13 16:14:05,381 [INFO] Cluster 3 — already done, skipping.
+2026-08-13 16:14:05,382 [INFO] Cluster 4 — already done, skipping.
+2026-08-13 16:14:05,382 [INFO] Cluster 5 — already done, skipping.
+2026-08-13 16:14:05,382 [INFO] Cluster 6 — already done, skipping.
+2026-08-13 16:14:05,383 [INFO] Cluster 7 — already done, skipping.
+2026-08-13 16:14:05,383 [INFO] Cluster 8 — already done, skipping.
+2026-08-13 16:14:05,383 [INFO] Cluster 9 — already done, skipping.
+2026-08-13 16:14:05,387 [INFO] Full pipeline — accumulation phase …
+2026-08-13 16:14:05,387 [INFO] Accumulation — extracting from document 0 …
+2026-08-13 16:14:06,124 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 16:14:06,322 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:14:06,323 [WARNING] Cerebras API error (attempt 1/4): Error code: 429 - {'message': "We're experiencing high traffic right now! Please try again soon.", 'type': 'too_many_requests_error', 'param': 'queue', 'code': 'queue_exceeded'} — backing off 2.0s
+2026-08-13 16:14:08,324 [INFO] Full pipeline — accumulation phase …
+2026-08-13 16:14:08,324 [INFO] Accumulation — extracting from document 0 …
+2026-08-13 16:14:08,715 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 16:14:29,554 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 16:14:29,572 [INFO] Accumulation — extracting from document 1 …
+2026-08-13 16:14:29,940 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 16:14:31,442 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 16:14:31,451 [INFO] Calling LLM (Grader) …
+2026-08-13 16:14:31,821 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 16:14:34,073 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 16:14:34,075 [INFO] Full pipeline grader iteration 1 — score 0.38
+2026-08-13 16:14:34,075 [INFO] Calling LLM (Finder — refinement) …
+2026-08-13 16:14:34,473 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 16:14:37,295 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 16:14:37,300 [INFO] Calling LLM (Grader) …
+2026-08-13 16:14:37,691 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 16:14:37,859 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:14:37,860 [INFO] Retrying request to /v1/chat/completions in 60.000000 seconds
+2026-08-13 16:15:45,593 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 16:15:45,594 [INFO] Full pipeline grader iteration 2 — score 0.78
+2026-08-13 16:15:45,594 [INFO] Full pipeline — reasoning paths …
+2026-08-13 16:15:45,963 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 16:15:46,138 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:15:46,138 [WARNING] Cerebras API error (attempt 2/4): Error code: 429 - {'message': "We're experiencing high traffic right now! Please try again soon.", 'type': 'too_many_requests_error', 'param': 'queue', 'code': 'queue_exceeded'} — backing off 4.0s
+2026-08-13 16:15:50,139 [INFO] Full pipeline — accumulation phase …
+2026-08-13 16:15:50,140 [INFO] Accumulation — extracting from document 0 …
+2026-08-13 16:15:50,516 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 16:15:50,736 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:15:50,737 [INFO] Retrying request to /v1/chat/completions in 60.000000 seconds
+2026-08-13 16:17:03,083 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 16:17:03,084 [INFO] Accumulation — extracting from document 1 …
+2026-08-13 16:17:03,470 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 16:17:03,623 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:17:03,624 [WARNING] Cerebras API error (attempt 3/4): Error code: 429 - {'message': "We're experiencing high traffic right now! Please try again soon.", 'type': 'too_many_requests_error', 'param': 'queue', 'code': 'queue_exceeded'} — backing off 8.0s
+2026-08-13 16:17:11,625 [INFO] Full pipeline — accumulation phase …
+2026-08-13 16:17:11,625 [INFO] Accumulation — extracting from document 0 …
+2026-08-13 16:17:12,004 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 16:17:12,168 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:17:12,169 [WARNING] Cerebras API error (attempt 4/4): Error code: 429 - {'message': "We're experiencing high traffic right now! Please try again soon.", 'type': 'too_many_requests_error', 'param': 'queue', 'code': 'queue_exceeded'} — backing off 16.0s
+2026-08-13 16:17:28,170 [INFO] Full pipeline — accumulation phase …
+2026-08-13 16:17:28,171 [INFO] Accumulation — extracting from document 0 …
+2026-08-13 16:17:28,576 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 16:17:28,733 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:17:28,733 [INFO] Retrying request to /v1/chat/completions in 60.000000 seconds
+2026-08-13 16:18:30,667 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 16:18:30,668 [INFO] Accumulation — extracting from document 1 …
+2026-08-13 16:18:31,023 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 16:18:31,174 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:18:31,174 [INFO] Retrying request to /v1/chat/completions in 60.000000 seconds
+2026-08-13 16:19:34,024 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 16:19:34,027 [INFO] Calling LLM (Grader) …
+2026-08-13 16:19:34,470 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 16:19:34,763 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:19:34,763 [ERROR] Cluster 10 — extraction failed: RateLimitError: Error code: 429 - {'message': "We're experiencing high traffic right now! Please try again soon.", 'type': 'too_many_requests_error', 'param': 'queue', 'code': 'queue_exceeded'}
+2026-08-13 16:19:34,770 [INFO] Cluster 11 — already done, skipping.
+2026-08-13 16:19:34,771 [INFO] Cluster 12 — already done, skipping.
+2026-08-13 16:19:34,771 [INFO] Cluster 13 — already done, skipping.
+2026-08-13 16:19:34,772 [INFO] Full pipeline — accumulation phase …
+2026-08-13 16:19:34,772 [INFO] Accumulation — extracting from document 0 …
+2026-08-13 16:19:35,151 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 16:19:35,351 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:19:35,351 [INFO] Retrying request to /v1/chat/completions in 59.000000 seconds
+2026-08-13 16:20:34,555 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:20:34,556 [WARNING] Cerebras API error (attempt 1/4): Error code: 429 - {'message': "We're experiencing high traffic right now! Please try again soon.", 'type': 'too_many_requests_error', 'param': 'queue', 'code': 'queue_exceeded'} — backing off 2.0s
+2026-08-13 16:20:36,556 [INFO] Full pipeline — accumulation phase …
+2026-08-13 16:20:36,557 [INFO] Accumulation — extracting from document 0 …
+2026-08-13 16:20:36,936 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 16:20:37,080 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:20:37,081 [INFO] Retrying request to /v1/chat/completions in 60.000000 seconds
+2026-08-13 16:21:37,284 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:21:37,285 [WARNING] Cerebras API error (attempt 2/4): Error code: 429 - {'message': "We're experiencing high traffic right now! Please try again soon.", 'type': 'too_many_requests_error', 'param': 'queue', 'code': 'queue_exceeded'} — backing off 4.0s
+2026-08-13 16:21:41,286 [INFO] Full pipeline — accumulation phase …
+2026-08-13 16:21:41,286 [INFO] Accumulation — extracting from document 0 …
+2026-08-13 16:21:41,687 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 16:21:41,847 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:21:41,848 [INFO] Retrying request to /v1/chat/completions in 60.000000 seconds
+2026-08-13 16:22:42,078 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:22:42,079 [WARNING] Cerebras API error (attempt 3/4): Error code: 429 - {'message': "We're experiencing high traffic right now! Please try again soon.", 'type': 'too_many_requests_error', 'param': 'queue', 'code': 'queue_exceeded'} — backing off 8.0s
+2026-08-13 16:22:50,080 [INFO] Full pipeline — accumulation phase …
+2026-08-13 16:22:50,080 [INFO] Accumulation — extracting from document 0 …
+2026-08-13 16:22:50,474 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 16:22:50,636 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:22:50,636 [INFO] Retrying request to /v1/chat/completions in 60.000000 seconds
+2026-08-13 16:23:54,099 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 16:23:54,100 [INFO] Accumulation — extracting from document 1 …
+2026-08-13 16:23:54,484 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 16:23:55,871 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 16:23:55,873 [INFO] Calling LLM (Grader) …
+2026-08-13 16:23:56,269 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 16:24:02,030 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 16:24:02,031 [INFO] Full pipeline grader iteration 1 — score 0.58
+2026-08-13 16:24:02,031 [INFO] Calling LLM (Finder — refinement) …
+2026-08-13 16:24:02,432 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 16:24:02,592 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:24:02,631 [WARNING] Cerebras API error (attempt 4/4): Error code: 429 - {'message': "We're experiencing high traffic right now! Please try again soon.", 'type': 'too_many_requests_error', 'param': 'queue', 'code': 'queue_exceeded'} — backing off 16.0s
+2026-08-13 16:24:18,634 [INFO] Full pipeline — accumulation phase …
+2026-08-13 16:24:18,634 [INFO] Accumulation — extracting from document 0 …
+2026-08-13 16:24:19,017 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 16:24:19,180 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:24:19,180 [INFO] Retrying request to /v1/chat/completions in 60.000000 seconds
+2026-08-13 16:25:20,766 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 16:25:20,767 [INFO] Accumulation — extracting from document 1 …
+2026-08-13 16:25:21,160 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 16:25:21,312 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:25:21,313 [ERROR] Cluster 14 — extraction failed: RateLimitError: Error code: 429 - {'message': "We're experiencing high traffic right now! Please try again soon.", 'type': 'too_many_requests_error', 'param': 'queue', 'code': 'queue_exceeded'}
+2026-08-13 16:25:21,314 [INFO] Full pipeline — accumulation phase …
+2026-08-13 16:25:21,315 [INFO] Accumulation — extracting from document 0 …
+2026-08-13 16:25:21,705 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 16:25:22,017 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:25:22,018 [INFO] Retrying request to /v1/chat/completions in 59.000000 seconds
+2026-08-13 16:26:21,298 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:26:21,298 [WARNING] Cerebras API error (attempt 1/4): Error code: 429 - {'message': "We're experiencing high traffic right now! Please try again soon.", 'type': 'too_many_requests_error', 'param': 'queue', 'code': 'queue_exceeded'} — backing off 2.0s
+2026-08-13 16:26:23,299 [INFO] Full pipeline — accumulation phase …
+2026-08-13 16:26:23,299 [INFO] Accumulation — extracting from document 0 …
+2026-08-13 16:26:23,694 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 16:26:23,867 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:26:23,868 [INFO] Retrying request to /v1/chat/completions in 60.000000 seconds
+2026-08-13 16:27:24,064 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:27:24,065 [WARNING] Cerebras API error (attempt 2/4): Error code: 429 - {'message': "We're experiencing high traffic right now! Please try again soon.", 'type': 'too_many_requests_error', 'param': 'queue', 'code': 'queue_exceeded'} — backing off 4.0s
+2026-08-13 16:27:28,066 [INFO] Full pipeline — accumulation phase …
+2026-08-13 16:27:28,067 [INFO] Accumulation — extracting from document 0 …
+2026-08-13 16:27:28,461 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 16:27:28,619 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:27:28,620 [INFO] Retrying request to /v1/chat/completions in 60.000000 seconds
+2026-08-13 16:28:28,808 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:28:28,809 [WARNING] Cerebras API error (attempt 3/4): Error code: 429 - {'message': "We're experiencing high traffic right now! Please try again soon.", 'type': 'too_many_requests_error', 'param': 'queue', 'code': 'queue_exceeded'} — backing off 8.0s
+2026-08-13 16:28:36,810 [INFO] Full pipeline — accumulation phase …
+2026-08-13 16:28:36,811 [INFO] Accumulation — extracting from document 0 …
+2026-08-13 16:28:37,212 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 16:28:37,370 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:28:37,371 [INFO] Retrying request to /v1/chat/completions in 60.000000 seconds
+2026-08-13 16:29:40,228 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 16:29:40,229 [INFO] Accumulation — extracting from document 1 …
+2026-08-13 16:29:40,603 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 16:29:40,753 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:29:40,753 [INFO] Retrying request to /v1/chat/completions in 60.000000 seconds
+2026-08-13 16:30:44,588 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 16:30:44,591 [INFO] Accumulation — extracting from document 2 …
+2026-08-13 16:30:44,957 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 16:30:56,592 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 16:30:56,600 [INFO] Calling LLM (Grader) …
+2026-08-13 16:30:57,016 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 16:30:57,222 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:30:57,222 [WARNING] Cerebras API error (attempt 4/4): Error code: 429 - {'message': "We're experiencing high traffic right now! Please try again soon.", 'type': 'too_many_requests_error', 'param': 'queue', 'code': 'queue_exceeded'} — backing off 16.0s
+2026-08-13 16:31:13,225 [INFO] Full pipeline — accumulation phase …
+2026-08-13 16:31:13,225 [INFO] Accumulation — extracting from document 0 …
+2026-08-13 16:31:13,613 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 16:31:13,763 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:31:13,764 [INFO] Retrying request to /v1/chat/completions in 60.000000 seconds
+2026-08-13 16:32:20,685 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 16:32:20,686 [INFO] Accumulation — extracting from document 1 …
+2026-08-13 16:32:21,068 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 16:32:21,222 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:32:21,223 [INFO] Retrying request to /v1/chat/completions in 0.443048 seconds
+2026-08-13 16:32:21,838 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:32:21,839 [INFO] Retrying request to /v1/chat/completions in 0.860979 seconds
+2026-08-13 16:32:22,942 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:32:22,943 [ERROR] Cluster 15 — extraction failed: RateLimitError: Error code: 429 - {'message': 'Tokens per day limit exceeded - too many tokens processed.', 'type': 'too_many_tokens_error', 'param': 'quota', 'code': 'token_quota_exceeded'}
+2026-08-13 16:32:22,944 [INFO] Full pipeline — accumulation phase …
+2026-08-13 16:32:22,944 [INFO] Accumulation — extracting from document 0 …
+2026-08-13 16:32:23,360 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 16:32:23,559 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:32:23,559 [INFO] Retrying request to /v1/chat/completions in 0.490263 seconds
+2026-08-13 16:32:24,211 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:32:24,211 [INFO] Retrying request to /v1/chat/completions in 0.759981 seconds
+2026-08-13 16:32:25,254 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:32:25,255 [WARNING] Cerebras API error (attempt 1/4): Error code: 429 - {'message': 'Tokens per day limit exceeded - too many tokens processed.', 'type': 'too_many_tokens_error', 'param': 'quota', 'code': 'token_quota_exceeded'} — backing off 2.0s
+2026-08-13 16:32:27,256 [INFO] Full pipeline — accumulation phase …
+2026-08-13 16:32:27,257 [INFO] Accumulation — extracting from document 0 …
+2026-08-13 16:32:27,638 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 16:32:27,799 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:32:27,800 [INFO] Retrying request to /v1/chat/completions in 0.388329 seconds
+2026-08-13 16:32:28,353 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:32:28,353 [INFO] Retrying request to /v1/chat/completions in 0.862195 seconds
+2026-08-13 16:32:29,405 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:32:29,406 [WARNING] Cerebras API error (attempt 2/4): Error code: 429 - {'message': 'Tokens per day limit exceeded - too many tokens processed.', 'type': 'too_many_tokens_error', 'param': 'quota', 'code': 'token_quota_exceeded'} — backing off 4.0s
+2026-08-13 16:32:33,406 [INFO] Full pipeline — accumulation phase …
+2026-08-13 16:32:33,407 [INFO] Accumulation — extracting from document 0 …
+2026-08-13 16:32:33,784 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 16:32:33,985 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:32:33,986 [INFO] Retrying request to /v1/chat/completions in 0.486611 seconds
+2026-08-13 16:32:34,629 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:32:34,671 [INFO] Retrying request to /v1/chat/completions in 0.798497 seconds
+2026-08-13 16:32:35,637 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:32:35,638 [WARNING] Cerebras API error (attempt 3/4): Error code: 429 - {'message': 'Tokens per day limit exceeded - too many tokens processed.', 'type': 'too_many_tokens_error', 'param': 'quota', 'code': 'token_quota_exceeded'} — backing off 8.0s
+2026-08-13 16:32:43,639 [INFO] Full pipeline — accumulation phase …
+2026-08-13 16:32:43,640 [INFO] Accumulation — extracting from document 0 …
+2026-08-13 16:32:44,026 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 16:32:44,201 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:32:44,202 [INFO] Retrying request to /v1/chat/completions in 0.483021 seconds
+2026-08-13 16:32:44,842 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:32:44,843 [INFO] Retrying request to /v1/chat/completions in 0.848521 seconds
+2026-08-13 16:32:45,868 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:32:45,869 [WARNING] Cerebras API error (attempt 4/4): Error code: 429 - {'message': 'Tokens per day limit exceeded - too many tokens processed.', 'type': 'too_many_tokens_error', 'param': 'quota', 'code': 'token_quota_exceeded'} — backing off 16.0s
+2026-08-13 16:33:01,871 [INFO] Full pipeline — accumulation phase …
+2026-08-13 16:33:01,872 [INFO] Accumulation — extracting from document 0 …
+2026-08-13 16:33:02,234 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 16:33:02,379 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:33:02,380 [INFO] Retrying request to /v1/chat/completions in 0.459098 seconds
+2026-08-13 16:33:02,998 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:33:02,999 [INFO] Retrying request to /v1/chat/completions in 0.853848 seconds
+2026-08-13 16:33:04,176 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:33:04,176 [ERROR] Cluster 16 — extraction failed: RateLimitError: Error code: 429 - {'message': 'Tokens per day limit exceeded - too many tokens processed.', 'type': 'too_many_tokens_error', 'param': 'quota', 'code': 'token_quota_exceeded'}
+2026-08-13 16:33:04,178 [INFO] Full pipeline — accumulation phase …
+2026-08-13 16:33:04,178 [INFO] Accumulation — extracting from document 0 …
+2026-08-13 16:33:04,555 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 16:33:04,705 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:33:04,706 [INFO] Retrying request to /v1/chat/completions in 0.384471 seconds
+2026-08-13 16:33:05,246 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:33:05,246 [INFO] Retrying request to /v1/chat/completions in 0.877279 seconds
+2026-08-13 16:33:06,317 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:33:06,318 [WARNING] Cerebras API error (attempt 1/4): Error code: 429 - {'message': 'Tokens per day limit exceeded - too many tokens processed.', 'type': 'too_many_tokens_error', 'param': 'quota', 'code': 'token_quota_exceeded'} — backing off 2.0s
+2026-08-13 16:33:08,319 [INFO] Full pipeline — accumulation phase …
+2026-08-13 16:33:08,319 [INFO] Accumulation — extracting from document 0 …
+2026-08-13 16:33:08,695 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 16:33:08,854 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:33:08,854 [INFO] Retrying request to /v1/chat/completions in 0.440770 seconds
+2026-08-13 16:33:09,447 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:33:09,488 [INFO] Retrying request to /v1/chat/completions in 0.837944 seconds
+2026-08-13 16:33:10,491 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:33:10,492 [WARNING] Cerebras API error (attempt 2/4): Error code: 429 - {'message': 'Tokens per day limit exceeded - too many tokens processed.', 'type': 'too_many_tokens_error', 'param': 'quota', 'code': 'token_quota_exceeded'} — backing off 4.0s
+2026-08-13 16:33:14,493 [INFO] Full pipeline — accumulation phase …
+2026-08-13 16:33:14,494 [INFO] Accumulation — extracting from document 0 …
+2026-08-13 16:33:14,866 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 16:33:15,059 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:33:15,059 [INFO] Retrying request to /v1/chat/completions in 0.395245 seconds
+2026-08-13 16:33:15,616 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:33:15,616 [INFO] Retrying request to /v1/chat/completions in 0.929859 seconds
+2026-08-13 16:33:16,703 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:33:16,704 [WARNING] Cerebras API error (attempt 3/4): Error code: 429 - {'message': 'Tokens per day limit exceeded - too many tokens processed.', 'type': 'too_many_tokens_error', 'param': 'quota', 'code': 'token_quota_exceeded'} — backing off 8.0s
+2026-08-13 16:33:24,705 [INFO] Full pipeline — accumulation phase …
+2026-08-13 16:33:24,705 [INFO] Accumulation — extracting from document 0 …
+2026-08-13 16:33:25,182 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 16:33:25,363 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:33:25,364 [INFO] Retrying request to /v1/chat/completions in 0.469747 seconds
+2026-08-13 16:33:26,006 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:33:26,007 [INFO] Retrying request to /v1/chat/completions in 0.981252 seconds
+2026-08-13 16:33:27,149 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:33:27,150 [WARNING] Cerebras API error (attempt 4/4): Error code: 429 - {'message': 'Tokens per day limit exceeded - too many tokens processed.', 'type': 'too_many_tokens_error', 'param': 'quota', 'code': 'token_quota_exceeded'} — backing off 16.0s
+2026-08-13 16:33:43,152 [INFO] Full pipeline — accumulation phase …
+2026-08-13 16:33:43,153 [INFO] Accumulation — extracting from document 0 …
+2026-08-13 16:33:43,571 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 16:33:43,737 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:33:43,738 [INFO] Retrying request to /v1/chat/completions in 0.497004 seconds
+2026-08-13 16:33:44,404 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:33:44,445 [INFO] Retrying request to /v1/chat/completions in 0.930288 seconds
+2026-08-13 16:33:45,544 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:33:45,545 [ERROR] Cluster 17 — extraction failed: RateLimitError: Error code: 429 - {'message': 'Tokens per day limit exceeded - too many tokens processed.', 'type': 'too_many_tokens_error', 'param': 'quota', 'code': 'token_quota_exceeded'}
+2026-08-13 16:33:45,546 [INFO] Full pipeline — accumulation phase …
+2026-08-13 16:33:45,546 [INFO] Accumulation — extracting from document 0 …
+2026-08-13 16:33:45,922 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 16:33:46,161 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:33:46,162 [INFO] Retrying request to /v1/chat/completions in 0.418260 seconds
+2026-08-13 16:33:46,913 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:33:46,914 [INFO] Retrying request to /v1/chat/completions in 0.756223 seconds
+2026-08-13 16:33:48,044 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:33:48,090 [WARNING] Cerebras API error (attempt 1/4): Error code: 429 - {'message': 'Tokens per day limit exceeded - too many tokens processed.', 'type': 'too_many_tokens_error', 'param': 'quota', 'code': 'token_quota_exceeded'} — backing off 2.0s
+2026-08-13 16:33:50,090 [INFO] Full pipeline — accumulation phase …
+2026-08-13 16:33:50,091 [INFO] Accumulation — extracting from document 0 …
+2026-08-13 16:33:50,535 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 16:33:50,680 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:33:50,681 [INFO] Retrying request to /v1/chat/completions in 0.478380 seconds
+2026-08-13 16:33:51,315 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:33:51,315 [INFO] Retrying request to /v1/chat/completions in 0.918526 seconds
+2026-08-13 16:33:52,431 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:33:52,431 [WARNING] Cerebras API error (attempt 2/4): Error code: 429 - {'message': 'Tokens per day limit exceeded - too many tokens processed.', 'type': 'too_many_tokens_error', 'param': 'quota', 'code': 'token_quota_exceeded'} — backing off 4.0s
+2026-08-13 16:33:56,432 [INFO] Full pipeline — accumulation phase …
+2026-08-13 16:33:56,432 [INFO] Accumulation — extracting from document 0 …
+2026-08-13 16:33:56,807 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 16:33:56,958 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:33:56,958 [INFO] Retrying request to /v1/chat/completions in 0.481001 seconds
+2026-08-13 16:33:57,602 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:33:57,603 [INFO] Retrying request to /v1/chat/completions in 0.751407 seconds
+2026-08-13 16:33:58,757 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:33:58,758 [WARNING] Cerebras API error (attempt 3/4): Error code: 429 - {'message': 'Tokens per day limit exceeded - too many tokens processed.', 'type': 'too_many_tokens_error', 'param': 'quota', 'code': 'token_quota_exceeded'} — backing off 8.0s
+2026-08-13 16:34:06,760 [INFO] Full pipeline — accumulation phase …
+2026-08-13 16:34:06,760 [INFO] Accumulation — extracting from document 0 …
+2026-08-13 16:34:07,138 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 16:34:07,298 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:34:07,299 [INFO] Retrying request to /v1/chat/completions in 0.393157 seconds
+2026-08-13 16:34:07,850 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:34:07,850 [INFO] Retrying request to /v1/chat/completions in 0.818558 seconds
+2026-08-13 16:34:08,834 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:34:08,835 [WARNING] Cerebras API error (attempt 4/4): Error code: 429 - {'message': 'Tokens per day limit exceeded - too many tokens processed.', 'type': 'too_many_tokens_error', 'param': 'quota', 'code': 'token_quota_exceeded'} — backing off 16.0s
+2026-08-13 16:34:24,837 [INFO] Full pipeline — accumulation phase …
+2026-08-13 16:34:24,837 [INFO] Accumulation — extracting from document 0 …
+2026-08-13 16:34:25,204 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 16:34:25,362 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:34:25,363 [INFO] Retrying request to /v1/chat/completions in 0.425396 seconds
+2026-08-13 16:34:25,957 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:34:25,958 [INFO] Retrying request to /v1/chat/completions in 0.970636 seconds
+2026-08-13 16:34:27,194 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:34:27,195 [ERROR] Cluster 18 — extraction failed: RateLimitError: Error code: 429 - {'message': 'Tokens per day limit exceeded - too many tokens processed.', 'type': 'too_many_tokens_error', 'param': 'quota', 'code': 'token_quota_exceeded'}
+2026-08-13 16:34:27,196 [INFO] Full pipeline — accumulation phase …
+2026-08-13 16:34:27,196 [INFO] Accumulation — extracting from document 0 …
+2026-08-13 16:34:27,567 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 16:34:27,760 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:34:27,761 [INFO] Retrying request to /v1/chat/completions in 0.422926 seconds
+2026-08-13 16:34:28,347 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:34:28,348 [INFO] Retrying request to /v1/chat/completions in 0.784450 seconds
+2026-08-13 16:34:29,281 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:34:29,319 [WARNING] Cerebras API error (attempt 1/4): Error code: 429 - {'message': 'Tokens per day limit exceeded - too many tokens processed.', 'type': 'too_many_tokens_error', 'param': 'quota', 'code': 'token_quota_exceeded'} — backing off 2.0s
+2026-08-13 16:34:31,320 [INFO] Full pipeline — accumulation phase …
+2026-08-13 16:34:31,321 [INFO] Accumulation — extracting from document 0 …
+2026-08-13 16:34:31,697 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 16:34:31,859 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:34:31,859 [INFO] Retrying request to /v1/chat/completions in 0.459399 seconds
+2026-08-13 16:34:32,480 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:34:32,481 [INFO] Retrying request to /v1/chat/completions in 0.823717 seconds
+2026-08-13 16:34:33,456 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:34:33,465 [WARNING] Cerebras API error (attempt 2/4): Error code: 429 - {'message': 'Tokens per day limit exceeded - too many tokens processed.', 'type': 'too_many_tokens_error', 'param': 'quota', 'code': 'token_quota_exceeded'} — backing off 4.0s
+2026-08-13 16:34:37,467 [INFO] Full pipeline — accumulation phase …
+2026-08-13 16:34:37,467 [INFO] Accumulation — extracting from document 0 …
+2026-08-13 16:34:37,851 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 16:34:40,165 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 200 OK"
+2026-08-13 16:34:40,171 [INFO] Accumulation — extracting from document 1 …
+2026-08-13 16:34:40,579 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 16:34:40,739 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:34:40,740 [INFO] Retrying request to /v1/chat/completions in 0.417698 seconds
+2026-08-13 16:34:41,308 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:34:41,309 [INFO] Retrying request to /v1/chat/completions in 0.936486 seconds
+2026-08-13 16:34:42,400 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:34:42,443 [WARNING] Cerebras API error (attempt 3/4): Error code: 429 - {'message': 'Tokens per day limit exceeded - too many tokens processed.', 'type': 'too_many_tokens_error', 'param': 'quota', 'code': 'token_quota_exceeded'} — backing off 8.0s
+2026-08-13 16:34:50,444 [INFO] Full pipeline — accumulation phase …
+2026-08-13 16:34:50,444 [INFO] Accumulation — extracting from document 0 …
+2026-08-13 16:34:50,870 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 16:34:51,022 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:34:51,023 [INFO] Retrying request to /v1/chat/completions in 0.450259 seconds
+2026-08-13 16:34:51,772 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:34:51,772 [INFO] Retrying request to /v1/chat/completions in 0.900857 seconds
+2026-08-13 16:34:52,828 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:34:52,829 [WARNING] Cerebras API error (attempt 4/4): Error code: 429 - {'message': 'Tokens per day limit exceeded - too many tokens processed.', 'type': 'too_many_tokens_error', 'param': 'quota', 'code': 'token_quota_exceeded'} — backing off 16.0s
+2026-08-13 16:35:08,830 [INFO] Full pipeline — accumulation phase …
+2026-08-13 16:35:08,831 [INFO] Accumulation — extracting from document 0 …
+2026-08-13 16:35:09,226 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 16:35:09,385 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:35:09,386 [INFO] Retrying request to /v1/chat/completions in 0.410181 seconds
+2026-08-13 16:35:09,948 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:35:09,949 [INFO] Retrying request to /v1/chat/completions in 0.832968 seconds
+2026-08-13 16:35:10,939 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:35:10,939 [ERROR] Cluster 19 — extraction failed: RateLimitError: Error code: 429 - {'message': 'Tokens per day limit exceeded - too many tokens processed.', 'type': 'too_many_tokens_error', 'param': 'quota', 'code': 'token_quota_exceeded'}
+2026-08-13 16:35:10,940 [INFO] Full pipeline — accumulation phase …
+2026-08-13 16:35:10,941 [INFO] Accumulation — extracting from document 0 …
+2026-08-13 16:35:11,299 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 16:35:11,466 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:35:11,467 [INFO] Retrying request to /v1/chat/completions in 0.488811 seconds
+2026-08-13 16:35:12,121 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:35:12,122 [INFO] Retrying request to /v1/chat/completions in 0.945385 seconds
+2026-08-13 16:35:13,224 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:35:13,225 [WARNING] Cerebras API error (attempt 1/4): Error code: 429 - {'message': 'Tokens per day limit exceeded - too many tokens processed.', 'type': 'too_many_tokens_error', 'param': 'quota', 'code': 'token_quota_exceeded'} — backing off 2.0s
+2026-08-13 16:35:15,225 [INFO] Full pipeline — accumulation phase …
+2026-08-13 16:35:15,226 [INFO] Accumulation — extracting from document 0 …
+2026-08-13 16:35:15,612 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 16:35:15,805 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:35:15,806 [INFO] Retrying request to /v1/chat/completions in 0.458853 seconds
+2026-08-13 16:35:16,429 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:35:16,429 [INFO] Retrying request to /v1/chat/completions in 0.944914 seconds
+2026-08-13 16:35:17,536 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:35:17,536 [WARNING] Cerebras API error (attempt 2/4): Error code: 429 - {'message': 'Tokens per day limit exceeded - too many tokens processed.', 'type': 'too_many_tokens_error', 'param': 'quota', 'code': 'token_quota_exceeded'} — backing off 4.0s
+2026-08-13 16:35:21,537 [INFO] Full pipeline — accumulation phase …
+2026-08-13 16:35:21,538 [INFO] Accumulation — extracting from document 0 …
+2026-08-13 16:35:21,915 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 16:35:22,121 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:35:22,122 [INFO] Retrying request to /v1/chat/completions in 0.382892 seconds
+2026-08-13 16:35:22,666 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:35:22,666 [INFO] Retrying request to /v1/chat/completions in 0.783715 seconds
+2026-08-13 16:35:23,616 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:35:23,616 [WARNING] Cerebras API error (attempt 3/4): Error code: 429 - {'message': 'Tokens per day limit exceeded - too many tokens processed.', 'type': 'too_many_tokens_error', 'param': 'quota', 'code': 'token_quota_exceeded'} — backing off 8.0s
+2026-08-13 16:35:31,618 [INFO] Full pipeline — accumulation phase …
+2026-08-13 16:35:31,618 [INFO] Accumulation — extracting from document 0 …
+2026-08-13 16:35:32,013 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 16:35:32,163 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:35:32,164 [INFO] Retrying request to /v1/chat/completions in 0.476960 seconds
+2026-08-13 16:35:32,844 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:35:32,844 [INFO] Retrying request to /v1/chat/completions in 0.767917 seconds
+2026-08-13 16:35:33,794 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:35:33,795 [WARNING] Cerebras API error (attempt 4/4): Error code: 429 - {'message': 'Tokens per day limit exceeded - too many tokens processed.', 'type': 'too_many_tokens_error', 'param': 'quota', 'code': 'token_quota_exceeded'} — backing off 16.0s
+2026-08-13 16:35:49,797 [INFO] Full pipeline — accumulation phase …
+2026-08-13 16:35:49,797 [INFO] Accumulation — extracting from document 0 …
+2026-08-13 16:35:50,222 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 16:35:50,399 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:35:50,400 [INFO] Retrying request to /v1/chat/completions in 0.463558 seconds
+2026-08-13 16:35:51,030 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:35:51,072 [INFO] Retrying request to /v1/chat/completions in 0.860412 seconds
+2026-08-13 16:35:52,101 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:35:52,102 [ERROR] Cluster 20 — extraction failed: RateLimitError: Error code: 429 - {'message': 'Tokens per day limit exceeded - too many tokens processed.', 'type': 'too_many_tokens_error', 'param': 'quota', 'code': 'token_quota_exceeded'}
+2026-08-13 16:35:52,103 [INFO] Full pipeline — accumulation phase …
+2026-08-13 16:35:52,103 [INFO] Accumulation — extracting from document 0 …
+2026-08-13 16:35:52,488 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 16:35:52,645 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:35:52,646 [INFO] Retrying request to /v1/chat/completions in 0.407701 seconds
+2026-08-13 16:35:53,215 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:35:53,216 [INFO] Retrying request to /v1/chat/completions in 0.997380 seconds
+2026-08-13 16:35:54,363 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:35:54,364 [WARNING] Cerebras API error (attempt 1/4): Error code: 429 - {'message': 'Tokens per day limit exceeded - too many tokens processed.', 'type': 'too_many_tokens_error', 'param': 'quota', 'code': 'token_quota_exceeded'} — backing off 2.0s
+2026-08-13 16:35:56,365 [INFO] Full pipeline — accumulation phase …
+2026-08-13 16:35:56,365 [INFO] Accumulation — extracting from document 0 …
+2026-08-13 16:35:56,788 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 16:35:56,954 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:35:56,955 [INFO] Retrying request to /v1/chat/completions in 0.426178 seconds
+2026-08-13 16:35:57,548 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:35:57,587 [INFO] Retrying request to /v1/chat/completions in 0.982701 seconds
+2026-08-13 16:35:58,740 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:35:58,741 [WARNING] Cerebras API error (attempt 2/4): Error code: 429 - {'message': 'Tokens per day limit exceeded - too many tokens processed.', 'type': 'too_many_tokens_error', 'param': 'quota', 'code': 'token_quota_exceeded'} — backing off 4.0s
+2026-08-13 16:36:02,742 [INFO] Full pipeline — accumulation phase …
+2026-08-13 16:36:02,742 [INFO] Accumulation — extracting from document 0 …
+2026-08-13 16:36:03,249 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 16:36:03,408 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:36:03,408 [INFO] Retrying request to /v1/chat/completions in 0.421842 seconds
+2026-08-13 16:36:03,989 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:36:03,990 [INFO] Retrying request to /v1/chat/completions in 0.901940 seconds
+2026-08-13 16:36:05,063 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:36:05,064 [WARNING] Cerebras API error (attempt 3/4): Error code: 429 - {'message': 'Tokens per day limit exceeded - too many tokens processed.', 'type': 'too_many_tokens_error', 'param': 'quota', 'code': 'token_quota_exceeded'} — backing off 8.0s
+2026-08-13 16:36:13,065 [INFO] Full pipeline — accumulation phase …
+2026-08-13 16:36:13,065 [INFO] Accumulation — extracting from document 0 …
+2026-08-13 16:36:13,451 [INFO] HTTP Request: GET https://api.cerebras.ai/v1/tcp_warming "HTTP/2 200 OK"
+2026-08-13 16:36:13,615 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:36:13,654 [INFO] Retrying request to /v1/chat/completions in 0.475238 seconds
+2026-08-13 16:36:14,281 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:36:14,282 [INFO] Retrying request to /v1/chat/completions in 0.898347 seconds
+2026-08-13 16:36:15,349 [INFO] HTTP Request: POST https://api.cerebras.ai/v1/chat/completions "HTTP/2 429 Too Many Requests"
+2026-08-13 16:36:15,349 [WARNING] Cerebras API error (attempt 4/4): Error code: 429 - {'message': 'Tokens per day limit exceeded - too many tokens processed.', 'type': 'too_many_tokens_error', 'param': 'quota', 'code': 'token_quota_exceeded'} — backing off 16.0s

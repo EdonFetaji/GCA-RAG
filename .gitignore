@@ -1,2 +1,23 @@
 .venv
 .env
+
+__pycache__/
+*.py[cod]
+
+.DS_Store
+.idea/
+
+.pytest_cache/
+.ruff_cache/
+
+# Local state written by `langgraph dev` (in-memory server's checkpoint cache).
+.langgraph_api/
+
+# Kept local, never committed: extracted graphs and run logs.
+# uv.lock is deliberately NOT here — it is tracked. Four worker processes have
+# to resolve to the same dependency set as each other and as the extraction box,
+# and an unlocked `uv sync` does not guarantee that.
+kg_dataset/data/
+*.h5.tmp
+batch.log
+mcp_logs.txt

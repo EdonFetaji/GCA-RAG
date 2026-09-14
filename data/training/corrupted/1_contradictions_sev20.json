@@ -1,0 +1,647 @@
+{
+  "cluster_idx": 1,
+  "corruption_type": "contradictions",
+  "severity": 0.2,
+  "label": {
+    "consistency": 0.0,
+    "missing_entities": 0.0,
+    "contradictions": 1.0,
+    "fragmentation": 0.0
+  },
+  "corruption_metadata": {
+    "corruption_type": "contradictions",
+    "severity": 0.2,
+    "flipped_relations": 3
+  },
+  "knowledge_graph": {
+    "entities": [
+      {
+        "id": "entity_1",
+        "name": "Richard Metzger",
+        "type": "PERSON",
+        "document_frequency": 1,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Read Richard Metzger: How I, a married, middle\u2011aged man, became an accidental spokesperson for gay rights overnight on Boing Boing",
+            "section": null
+          },
+          {
+            "document_index": 0,
+            "quote": "Richard Metzger (who lives in Los Angeles)",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_2",
+        "name": "Boing Boing",
+        "type": "ORGANIZATION",
+        "document_frequency": 1,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Read Richard Metzger: How I, a married, middle\u2011aged man, became an accidental spokesperson for gay rights overnight on Boing Boing",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_3",
+        "name": "John Snow Kiss\u2011In",
+        "type": "EVENT",
+        "document_frequency": 1,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "my first post about the John Snow Kiss\u2011In",
+            "section": null
+          },
+          {
+            "document_index": 0,
+            "quote": "the Facebook event for the John Snow Kiss\u2011In was not blocked by Facebook",
+            "section": null
+          },
+          {
+            "document_index": 0,
+            "quote": "organized the London \u201cKiss\u2011In\u201d event",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_4",
+        "name": "Eastenders",
+        "type": "ORGANIZATION",
+        "document_frequency": 1,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "a promotional still from the British soap opera \u201cEastenders.\u201d",
+            "section": null
+          },
+          {
+            "document_index": 0,
+            "quote": "It features one of the main characters from the show (Christian Clarke, played by the actor John Partridge- left)",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_5",
+        "name": "Christian Clarke",
+        "type": "PERSON",
+        "document_frequency": 1,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Christian Clarke, played by the actor John Partridge",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_6",
+        "name": "John Partridge",
+        "type": "PERSON",
+        "document_frequency": 1,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Christian Clarke, played by the actor John Partridge",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_7",
+        "name": "BBC",
+        "type": "ORGANIZATION",
+        "document_frequency": 1,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "led to a number of complaints to the BBC",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_8",
+        "name": "gay kiss",
+        "type": "CONCEPT",
+        "document_frequency": 1,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "as it was a gay kiss that was broadcast before the watershed",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_9",
+        "name": "Los Angeles",
+        "type": "LOCATION",
+        "document_frequency": 1,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Richard Metzger (who lives in Los Angeles)",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_10",
+        "name": "Paul Shetler",
+        "type": "PERSON",
+        "document_frequency": 1,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Paul Shetler, the organizer, left this comment on the previous thread",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_11",
+        "name": "Guardian",
+        "type": "ORGANIZATION",
+        "document_frequency": 1,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Here is a report on the John Snow Kiss\u2011In from the Guardian",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_12",
+        "name": "Facebook",
+        "type": "ORGANIZATION",
+        "document_frequency": 2,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "the Facebook event for the John Snow Kiss\u2011In was not blocked by Facebook",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "has been removed by the social networking site",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_13",
+        "name": "Dangerous Minds Facebook page",
+        "type": "ORGANIZATION",
+        "document_frequency": 1,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "The Dangerous Minds Facebook page was set up to promote a \u201cgay kiss\u2011in\u201d demonstration in London to protest the pub",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_14",
+        "name": "London pub",
+        "type": "LOCATION",
+        "document_frequency": 1,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "a photo of two men kissing that was posted on a Facebook page protesting a London pub\u2019s decision to eject a same\u2011sex couple for kissing",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_15",
+        "name": "America Blog",
+        "type": "ORGANIZATION",
+        "document_frequency": 1,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "\"The photo in question does not violate our Statement of Rights and Responsibilities\u2026\", the statement, obtained by America Blog, says",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_16",
+        "name": "Statement of Rights and Responsibilities",
+        "type": "CONCEPT",
+        "document_frequency": 1,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "\"The photo in question does not violate our Statement of Rights and Responsibilities\u2026\"",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_17",
+        "name": "NYULocal.com",
+        "type": "ORGANIZATION",
+        "document_frequency": 1,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "According to NYULocal.com, the photo was quickly removed and the following e\u2011mail was sent to administrators of the Facebook page: \u201cShares that contain nudity, or any kind of graphic or sexually suggestive content, are not permitted on Facebook.\u201d",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_18",
+        "name": "same\u2011sex couples",
+        "type": "CONCEPT",
+        "document_frequency": 1,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "The decision to remove the photo has prompted scores of people to post their own pictures of same\u2011sex couples kissing in protest",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_19",
+        "name": "October 2008",
+        "type": "DATE",
+        "document_frequency": 1,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "since this episode aired (October 2008)",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_20",
+        "name": "photo of two men kissing",
+        "type": "CONCEPT",
+        "document_frequency": 1,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "a photo of two men kissing that was posted on a Facebook page protesting a London pub\u2019s decision to eject a same\u2011sex couple for kissing has been removed by the social networking site",
+            "section": null
+          }
+        ]
+      },
+      {
+        "id": "entity_22",
+        "name": "London",
+        "type": "LOCATION",
+        "document_frequency": 2,
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "organized the London \u201cKiss\u2011In\u201d event",
+            "section": null
+          },
+          {
+            "document_index": 1,
+            "quote": "The Dangerous Minds Facebook page was set up to promote a \u201cgay kiss\u2011in\u201d demonstration in London",
+            "section": null
+          }
+        ]
+      }
+    ],
+    "relations": [
+      {
+        "source": "entity_2",
+        "target": "entity_1",
+        "relation_type": "AFFILIATED_WITH",
+        "support_count": 1,
+        "source_documents": [
+          0
+        ],
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Read Richard Metzger: How I, a married, middle\u2011aged man, became an accidental spokesperson for gay rights overnight on Boing Boing",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_5",
+        "target": "entity_4",
+        "relation_type": "AFFILIATED_WITH",
+        "support_count": 1,
+        "source_documents": [
+          0
+        ],
+        "confidence": 0.94,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Christian Clarke, played by the actor John Partridge",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_6",
+        "target": "entity_4",
+        "relation_type": "AFFILIATED_WITH",
+        "support_count": 1,
+        "source_documents": [
+          0
+        ],
+        "confidence": 0.94,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Christian Clarke, played by the actor John Partridge",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_8",
+        "target": "entity_7",
+        "relation_type": "CAUSES",
+        "support_count": 1,
+        "source_documents": [
+          0
+        ],
+        "confidence": 0.94,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "as it was a gay kiss that was broadcast before the watershed, and as such led to a number of complaints to the BBC",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_3",
+        "target": "entity_12",
+        "relation_type": "RELATED_TO",
+        "support_count": 1,
+        "source_documents": [
+          0
+        ],
+        "confidence": 0.93,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "the Facebook event for the John Snow Kiss\u2011In was not blocked by Facebook",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_10",
+        "target": "entity_3",
+        "relation_type": "PARTICIPATED_IN",
+        "support_count": 1,
+        "source_documents": [
+          0
+        ],
+        "confidence": 0.93,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Paul Shetler, the organizer, left this comment on the previous thread",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_9",
+        "target": "entity_1",
+        "relation_type": "LOCATED_IN",
+        "support_count": 1,
+        "source_documents": [
+          0
+        ],
+        "confidence": 0.95,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Richard Metzger (who lives in Los Angeles)",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_11",
+        "target": "entity_3",
+        "relation_type": "RELATED_TO",
+        "support_count": 1,
+        "source_documents": [
+          0
+        ],
+        "confidence": 0.94,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "Here is a report on the John Snow Kiss\u2011In from the Guardian",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_13",
+        "target": "entity_12",
+        "relation_type": "AFFILIATED_WITH",
+        "support_count": 1,
+        "source_documents": [
+          1
+        ],
+        "confidence": 0.93,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "The Dangerous Minds Facebook page was set up to promote a \u201cgay kiss\u2011in\u201d demonstration in London to protest the pub",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_12",
+        "target": "entity_18",
+        "relation_type": "RESULTED_IN",
+        "support_count": 1,
+        "source_documents": [
+          1
+        ],
+        "confidence": 0.9,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "The decision to remove the photo has prompted scores of people to post their own pictures of same\u2011sex couples kissing in protest",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_16",
+        "target": "entity_15",
+        "relation_type": "RELATED_TO",
+        "support_count": 1,
+        "source_documents": [
+          1
+        ],
+        "confidence": 0.91,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "\"The photo in question does not violate our Statement of Rights and Responsibilities\u2026\", the statement, obtained by America Blog, says",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_17",
+        "target": "entity_12",
+        "relation_type": "RELATED_TO",
+        "support_count": 1,
+        "source_documents": [
+          1
+        ],
+        "confidence": 0.91,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "According to NYULocal.com, the photo was quickly removed and the following e\u2011mail was sent to administrators of the Facebook page: \u201cShares that contain nudity, or any kind of graphic or sexually suggestive content, are not permitted on Facebook.\u201d",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_12",
+        "target": "entity_20",
+        "relation_type": "CAUSES",
+        "support_count": 1,
+        "source_documents": [
+          1
+        ],
+        "confidence": 0.88,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "a photo of two men kissing that was posted on a Facebook page protesting a London pub\u2019s decision to eject a same\u2011sex couple for kissing has been removed by the social networking site",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_14",
+        "target": "entity_22",
+        "relation_type": "LOCATED_IN",
+        "support_count": 1,
+        "source_documents": [
+          1
+        ],
+        "confidence": 0.92,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "a photo of two men kissing that was posted on a Facebook page protesting a London pub\u2019s decision to eject a same\u2011sex couple for kissing",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_13",
+        "target": "entity_22",
+        "relation_type": "LOCATED_IN",
+        "support_count": 1,
+        "source_documents": [
+          1
+        ],
+        "confidence": 0.92,
+        "evidence": [
+          {
+            "document_index": 1,
+            "quote": "The Dangerous Minds Facebook page was set up to promote a \u201cgay kiss\u2011in\u201d demonstration in London to protest the pub",
+            "section": null
+          }
+        ]
+      },
+      {
+        "source": "entity_3",
+        "target": "entity_22",
+        "relation_type": "LOCATED_IN",
+        "support_count": 1,
+        "source_documents": [
+          0
+        ],
+        "confidence": 0.92,
+        "evidence": [
+          {
+            "document_index": 0,
+            "quote": "organized the London \u201cKiss\u2011In\u201d event",
+            "section": null
+          }
+        ]
+      }
+    ],
+    "reasoning_paths": [
+      {
+        "path": [
+          "entity_10",
+          "entity_3",
+          "entity_22"
+        ],
+        "description": "Paul Shetler participated in (organized) the John Snow Kiss\u2011In event, and that event was located in London. This chain shows how an individual organizer connects the protest event to its geographic setting.",
+        "confidence": 0.92
+      },
+      {
+        "path": [
+          "entity_13",
+          "entity_12",
+          "entity_18"
+        ],
+        "description": "The Dangerous Minds Facebook page is affiliated with Facebook; Facebook\u2019s removal of the protest photo resulted in a wave of users posting their own pictures of same\u2011sex couples kissing. The chain links the platform\u2019s policy action to the ensuing public protest activity.",
+        "confidence": 0.9
+      },
+      {
+        "path": [
+          "entity_3",
+          "entity_12",
+          "entity_20"
+        ],
+        "description": "The John Snow Kiss\u2011In event is related to Facebook, and Facebook caused the deletion of a photo showing two men kissing. This illustrates how the online event\u2019s handling on the social network led directly to the removal of a specific image.",
+        "confidence": 0.88
+      }
+    ]
+  }
+}
