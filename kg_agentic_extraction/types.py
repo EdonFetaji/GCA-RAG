@@ -20,3 +20,6 @@ type LoopDecision = Literal["refine", "ground", "end"]
 
 #: A conditional edge: reads state, names the next branch.
 type RouterFn = Callable[[PipelineState], LoopDecision]
+
+#: Whether the validator overrules a converged grader this round.
+type VetoFn = Callable[[PipelineState], bool]

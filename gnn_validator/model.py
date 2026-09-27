@@ -15,6 +15,10 @@ features TransformerConv can attend over and a bare GCNConv can't.
 Configurable width/depth/heads, kept as constructor args (matching the
 existing GCN/GAT-configurable pattern) so a hyperparameter sweep doesn't
 need code changes.
+
+Element heads score every node and edge ("part of a defect?") from the same
+embeddings the graph readout pools. `element_heads=False` builds the original
+graph-only model, for checkpoints trained before they existed.
 """
 
 from __future__ import annotations
@@ -37,10 +41,12 @@ class GraphTransformerValidator(nn.Module):
         num_heads: int = 4,
         dropout: float = 0.2,
         head_names: list[str] | None = None,
+        element_heads: bool = True,
     ):
         super().__init__()
         self.head_names = head_names or list(HEAD_NAMES_EXTENDED)
         self.dropout = dropout
+        self.element_heads = element_heads
 
         assert hidden_dim % num_heads == 0, "hidden_dim must be divisible by num_heads"
         head_dim = hidden_dim // num_heads
@@ -76,33 +82,53 @@ class GraphTransformerValidator(nn.Module):
             nn.Linear(hidden_dim, len(self.head_names)),
         )
 
-    def forward(self, x: torch.Tensor, edge_index: torch.Tensor, edge_attr: torch.Tensor, batch: torch.Tensor) -> dict[str, torch.Tensor]:
-        h = self.input_proj(x)
+        if element_heads:
+            self.node_head = nn.Sequential(
+                nn.Linear(hidden_dim + readout_dim, hidden_dim),
+                nn.ReLU(),
+                nn.Dropout(dropout),
+                nn.Linear(hidden_dim, 1),
+            )
+            self.edge_head = nn.Sequential(
+                nn.Linear(hidden_dim * 2 + edge_feature_dim, hidden_dim),
+                nn.ReLU(),
+                nn.Dropout(dropout),
+                nn.Linear(hidden_dim, 1),
+            )
 
+    def _encode(self, x: torch.Tensor, edge_index: torch.Tensor, edge_attr: torch.Tensor) -> torch.Tensor:
+        h = self.input_proj(x)
         for conv, norm in zip(self.convs, self.norms):
             residual = h
             h = conv(h, edge_index, edge_attr)
             h = norm(h + residual)
             h = F.relu(h)
             h = F.dropout(h, p=self.dropout, training=self.training)
+        return h
 
+    def forward_all(
+        self, x: torch.Tensor, edge_index: torch.Tensor, edge_attr: torch.Tensor, batch: torch.Tensor
+    ) -> dict[str, torch.Tensor]:
+        """Raw logits: "graph" [num_graphs, num_heads], plus "node" [num_nodes] and
+        "edge" [num_edges] with element heads (both edge directions are scored)."""
+        h = self._encode(x, edge_index, edge_attr)
         pooled = torch.cat([global_mean_pool(h, batch), global_max_pool(h, batch)], dim=-1)
-        logits = self.classifier(pooled)  # [num_graphs, num_heads]
+        out = {"graph": self.classifier(pooled)}
 
-        scores = torch.sigmoid(logits)
+        if self.element_heads:
+            out["node"] = self.node_head(torch.cat([h, pooled[batch]], dim=-1)).squeeze(-1)
+            src, tgt = edge_index
+            out["edge"] = self.edge_head(torch.cat([h[src], h[tgt], edge_attr], dim=-1)).squeeze(-1)
+        return out
+
+    def forward(self, x: torch.Tensor, edge_index: torch.Tensor, edge_attr: torch.Tensor, batch: torch.Tensor) -> dict[str, torch.Tensor]:
+        scores = torch.sigmoid(self.forward_logits(x, edge_index, edge_attr, batch))
         return {name: scores[:, i] for i, name in enumerate(self.head_names)}
 
     def forward_logits(self, x: torch.Tensor, edge_index: torch.Tensor, edge_attr: torch.Tensor, batch: torch.Tensor) -> torch.Tensor:
         """Raw [num_graphs, num_heads] logits — used by train.py so the loss
         can go through BCEWithLogitsLoss instead of BCE-on-sigmoid-output,
-        which is numerically safer at the extremes (matches the confidence=0.0
-        fabricated edges/entities corruption.py writes for hallucinated content)."""
-        h = self.input_proj(x)
-        for conv, norm in zip(self.convs, self.norms):
-            residual = h
-            h = conv(h, edge_index, edge_attr)
-            h = norm(h + residual)
-            h = F.relu(h)
-            h = F.dropout(h, p=self.dropout, training=self.training)
+        which is numerically safer at the extremes."""
+        h = self._encode(x, edge_index, edge_attr)
         pooled = torch.cat([global_mean_pool(h, batch), global_max_pool(h, batch)], dim=-1)
         return self.classifier(pooled)

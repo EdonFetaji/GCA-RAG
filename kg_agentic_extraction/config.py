@@ -12,6 +12,7 @@ from __future__ import annotations
 import os
 import re
 from pathlib import Path
+from typing import Literal
 
 from dotenv import load_dotenv
 from pydantic import AliasChoices, BaseModel, Field, model_validator
@@ -301,7 +302,7 @@ class PipelineSettings(BaseSettings):
         ),
     )
     grader_prompt_version: str = Field(
-        "v5",
+        "v6",
         description=(
             "Version the grader resolves, separately from the extractor's, for the "
             "same reason the grounder pins its own. v4 and v5 both ask for "
@@ -312,7 +313,9 @@ class PipelineSettings(BaseSettings):
             "graph would yield and reports what that draft cannot say, may ask for "
             "an entity and its edges together, checks for isolated nodes, missing "
             "dates and figures, and uniform salience counts, and refuses to converge "
-            "on a thin graph. v1-v3 ask for typed issues and pair with "
+            "on a thin graph. v6 is v5 plus the structural validator's flags (`gnn_mode`), "
+            "and renders exactly as v5 when nothing is flagged. v1-v3 ask for typed "
+            "issues and pair with "
             "`GraderReport`, rendered by `report_to_markdown`. The template and the "
             "call shape in `GraderAgent` are one decision — setting this back to "
             "v1-v3 without also changing the agent asks a prompt for one contract "
@@ -352,6 +355,41 @@ class PipelineSettings(BaseSettings):
     )
     grounding_tool_timeout_seconds: float = Field(
         30.0, gt=0, description="Per-request timeout on the MCP session."
+    )
+
+    # ── Structural validator (GNN) ────────────────────────────────────
+    # off: no validate node. advise: flagged elements go to the grader's prompt.
+    # veto: advise, plus overruling a converged grader while consistency is low.
+    gnn_mode: Literal["off", "advise", "veto"] = Field(
+        "off", description="Structural validator in the loop: off | advise | veto."
+    )
+    gnn_checkpoint_dir: Path = Field(
+        Path("data/gnn_checkpoints_gcs"),
+        description=(
+            "Directory holding best_model.pt and feature_vocab.json from one "
+            "`gnn_validator.train` run. Always loaded together: the vocab is part of the model."
+        ),
+    )
+    gnn_top_k: int = Field(
+        5, ge=1, le=20, description="Most elements shown to the grader per round."
+    )
+    gnn_min_score: float = Field(
+        0.5,
+        ge=0.0,
+        le=1.0,
+        description="An element is only flagged at or above this suspicion score.",
+    )
+    gnn_veto_threshold: float = Field(
+        0.3,
+        ge=0.0,
+        le=1.0,
+        description=(
+            "veto mode: overrule a converged grader when graph consistency is below this. "
+            "Extracted graphs score a median ~0.53; 0.3 vetoes ~17% of them."
+        ),
+    )
+    gnn_max_vetoes: int = Field(
+        1, ge=0, le=3, description="veto mode: most extra rounds the validator may force per run."
     )
 
     # ── Output ────────────────────────────────────────────────────────

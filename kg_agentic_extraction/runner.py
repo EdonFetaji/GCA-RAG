@@ -20,6 +20,7 @@ from kg_agentic_extraction.graph import build_dependencies, build_graph
 from kg_agentic_extraction.models.grading import SimpleSchemaGraderReport
 from kg_agentic_extraction.models.grounding import GroundedKnowledgeGraph
 from kg_agentic_extraction.models.knowledge_graph import KnowledgeGraph
+from kg_agentic_extraction.models.validation import ValidationReport
 from kg_agentic_extraction.state import initial_state
 from kg_agentic_extraction.storage import (
     GCSUploadError,
@@ -43,6 +44,10 @@ class PipelineResult:
     iterations: int
     converged: bool
     errors: list[str]
+    #: One structural-validator report per round; empty when it is off.
+    validation_history: list[ValidationReport]
+    #: Extra rounds forced by the validator (veto mode).
+    validator_vetoes: int
     #: Wall-clock seconds spent inside the graph. Wall-clock rather than CPU
     #: because the run is almost entirely provider latency — which is the thing
     #: worth watching when comparing providers, and the thing a CPU timer would
@@ -67,6 +72,8 @@ class PipelineResult:
                 self.grounded_graph.model_dump(mode="json") if self.grounded_graph else None
             ),
             "grader_history": [r.model_dump(mode="json") for r in self.grader_history],
+            "validation_history": [r.model_dump(mode="json") for r in self.validation_history],
+            "validator_vetoes": self.validator_vetoes,
         }
         return json.dumps(payload, indent=indent)
 
@@ -111,6 +118,8 @@ def run_pipeline(
         iterations=final.get("iteration", 0),
         converged=final.get("converged", False),
         errors=final.get("errors", []),
+        validation_history=final.get("validation_reports", []),
+        validator_vetoes=final.get("validator_vetoes", 0),
         elapsed_seconds=elapsed,
     )
     logger.info(
@@ -168,6 +177,11 @@ def _build_parser() -> argparse.ArgumentParser:
     )
     parser.add_argument("--max-iterations", type=int, help="Override KG_MAX_ITERATIONS.")
     parser.add_argument("--no-grounding", action="store_true", help="Skip the grounder.")
+    parser.add_argument(
+        "--gnn-mode",
+        choices=["off", "advise", "veto"],
+        help="Override KG_GNN_MODE: the structural validator in the loop.",
+    )
     parser.add_argument("--draw", action="store_true", help="Print the graph topology and exit.")
     parser.add_argument("-v", "--verbose", action="store_true")
     return parser
@@ -210,16 +224,37 @@ def _save_graph(
             metadata={
                 "provider": settings.llm_provider,
                 "model": settings.model,
+                # `provider` / `model` are only the fallback pair; these are what ran.
+                "extractor_provider": settings.for_role("extractor").llm_provider,
+                "extractor_model": settings.for_role("extractor").model,
+                "grader_provider": settings.for_role("grader").llm_provider,
+                "grader_model": settings.for_role("grader").model,
                 "prompt_version": settings.prompt_version,
                 "converged": result.converged,
                 "iterations": result.iterations,
                 "elapsed_seconds": round(result.elapsed_seconds, 3),
                 "grounded": result.grounded_graph is not None,
+                **_validation_metadata(result, settings),
             },
         )
     except Exception as exc:
         logger.error("failed to save graph to %s: %s", path, exc)
         return None
+
+
+def _validation_metadata(result: PipelineResult, settings: PipelineSettings) -> dict[str, object]:
+    """The structural validator's per-round numbers, as HDF5 root attributes."""
+    meta: dict[str, object] = {"gnn_mode": settings.gnn_mode}
+    if result.validation_history:
+        meta["gnn_consistency_final"] = result.validation_history[-1].consistency
+        meta["gnn_consistency_history"] = json.dumps(
+            [round(r.consistency, 4) for r in result.validation_history]
+        )
+        meta["gnn_flagged_history"] = json.dumps(
+            [len(r.flagged) for r in result.validation_history]
+        )
+        meta["gnn_vetoes"] = result.validator_vetoes
+    return meta
 
 
 def _upload_graph(
@@ -264,6 +299,8 @@ def main(argv: list[str] | None = None) -> int:
         settings.max_iterations = args.max_iterations
     if args.no_grounding:
         settings.grounding_enabled = False
+    if args.gnn_mode:
+        settings.gnn_mode = args.gnn_mode
 
     if args.draw:
         print(build_graph(settings=settings).get_graph().draw_ascii())

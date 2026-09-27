@@ -8,11 +8,10 @@ operating on the KG dict shape (entities/relations lists) rather than a
 NetworkX graph, since that's the format data/training/clean/*.json is
 actually saved in.
 
-NOTE: the clean KGs on disk were produced by the legacy poc/extraction
-service, but the ontology is imported from kg_agentic_extraction — the two
-agree because the new package's ontology was carried over unchanged. If the
-ontology is ever extended, regenerate the dataset rather than assuming the
-existing files still match.
+Each corruption records the elements it damaged (`bad_entity_ids` /
+`bad_relation_keys` in its metadata) as element-level training labels.
+Fabricated elements copy confidence and evidence from real ones, so they
+cannot be spotted by a value no real element has.
 
 Also implements Track 2.3's labeling scheme — see label_for()'s docstring
 for the decision on how the (now six) corruption types map onto
@@ -25,7 +24,7 @@ import copy
 import random
 from typing import Optional
 
-from kg_agentic_extraction.models.ontology import RelationType
+from kg_agentic_extraction.models.ontology import EntityType, RelationType
 
 # The three types poc_validator.py originally prototyped. These map 1:1
 # onto SimpleGNN's three corruption-specific heads (see label_for()).
@@ -42,6 +41,11 @@ DEFAULT_SEVERITIES = (0.1, 0.2, 0.3)
 
 
 # ── Helpers ──────────────────────────────────────────────────────────────
+
+
+def relation_key(r: dict) -> str:
+    """The same identity kg_agentic_extraction's `Relation.key` uses."""
+    return f"{r['source']}|{r['relation_type']}|{r['target']}"
 
 
 def _degree_map(kg: dict) -> dict[str, int]:
@@ -77,6 +81,61 @@ def _seeded_rng(seed, corruption_type: str, severity: float) -> random.Random:
     return random.Random(f"{seed}:{corruption_type}:{severity}")
 
 
+def _labels(metadata: dict, bad_entity_ids=(), bad_relation_keys=()) -> dict:
+    """Attach the element-level labels to a corruption's metadata."""
+    metadata["bad_entity_ids"] = sorted(set(bad_entity_ids))
+    metadata["bad_relation_keys"] = sorted(set(bad_relation_keys))
+    return metadata
+
+
+def _skipped(corruption_type: str, severity: float, reason: str) -> dict:
+    return _labels({"corruption_type": corruption_type, "severity": severity, "skipped": True, "reason": reason})
+
+
+#: A removal labels an entity once it has lost this fraction of its edges.
+LOST_EDGE_FRACTION = 0.5
+
+
+def _lost_most_edges(relations: list[dict], removed: list[dict], survivors: set[str]) -> set[str]:
+    """Surviving entities that lost at least LOST_EDGE_FRACTION of their edges to `removed`."""
+    degree: dict[str, int] = {}
+    lost: dict[str, int] = {}
+    for r in relations:
+        for x in (r["source"], r["target"]):
+            degree[x] = degree.get(x, 0) + 1
+    for r in removed:
+        for x in (r["source"], r["target"]):
+            lost[x] = lost.get(x, 0) + 1
+    return {x for x, n in lost.items() if x in survivors and n / degree[x] >= LOST_EDGE_FRACTION}
+
+
+def _fabricated_relation_fields(kg: dict, rng: random.Random, near: str | None = None) -> dict:
+    """Realistic support/confidence/evidence for a fabricated relation, borrowed from real ones."""
+    relations = kg["relations"]
+    if not relations:
+        return {"support_count": 1, "source_documents": [], "confidence": 0.9, "evidence": []}
+    touching = [r for r in relations if near in (r["source"], r["target"])] if near else []
+    donor = rng.choice(touching or relations)
+    return {
+        "support_count": 1,
+        "source_documents": list(donor.get("source_documents", [])),
+        "confidence": rng.choice(relations).get("confidence", 1.0),
+        "evidence": copy.deepcopy(donor.get("evidence", [])),
+    }
+
+
+def _fabricated_entity_fields(kg: dict, rng: random.Random) -> dict:
+    """Realistic frequency/confidence/evidence for a fabricated entity, borrowed from real ones."""
+    entities = kg["entities"]
+    if not entities:
+        return {"document_frequency": 1, "confidence": 0.9, "evidence": []}
+    return {
+        "document_frequency": 1,
+        "confidence": rng.choice(entities).get("confidence", 1.0),
+        "evidence": copy.deepcopy(rng.choice(entities).get("evidence", [])),
+    }
+
+
 # ── Original three corruption types (map 1:1 to SimpleGNN's heads) ─────────
 
 
@@ -86,7 +145,7 @@ def corrupt_missing_entities(kg: dict, severity: float, rng: random.Random) -> t
     entities = kg["entities"]
 
     if len(entities) < 2:
-        return kg, {"corruption_type": "missing_entities", "severity": severity, "skipped": True, "reason": "too few entities"}
+        return kg, _skipped("missing_entities", severity, "too few entities")
 
     degrees = _degree_map(kg)
     # Shuffle first so ties don't always break the same way, then sort by degree desc.
@@ -100,14 +159,21 @@ def corrupt_missing_entities(kg: dict, severity: float, rng: random.Random) -> t
     kg["entities"] = [e for e in entities if e["id"] not in removed_ids]
     kept_relations = [r for r in kg["relations"] if r["source"] not in removed_ids and r["target"] not in removed_ids]
     removed_relation_count = len(kg["relations"]) - len(kept_relations)
+
+    dropped = [r for r in kg["relations"] if r["source"] in removed_ids or r["target"] in removed_ids]
+    survivors = {e["id"] for e in kg["entities"]}
+    bereaved = _lost_most_edges(kg["relations"], dropped, survivors)
     kg["relations"] = kept_relations
 
-    return kg, {
-        "corruption_type": "missing_entities",
-        "severity": severity,
-        "removed_entities": len(removed_ids),
-        "removed_relations": removed_relation_count,
-    }
+    return kg, _labels(
+        {
+            "corruption_type": "missing_entities",
+            "severity": severity,
+            "removed_entities": len(removed_ids),
+            "removed_relations": removed_relation_count,
+        },
+        bad_entity_ids=bereaved,
+    )
 
 
 # Relation types where a given source realistically has *one* correct target
@@ -117,7 +183,22 @@ def corrupt_missing_entities(kg: dict, severity: float, rng: random.Random) -> t
 # not just structural noise. This is the fix noted as outstanding: the old
 # implementation (uniform random edge-direction flipping) didn't actually
 # simulate contradictory claims, just topology noise.
-FUNCTIONAL_RELATION_TYPES = {"LOCATED_IN", "AFFILIATED_WITH", "ACQUIRED"}
+FUNCTIONAL_RELATION_TYPES = {
+    "LOCATED_IN",
+    "AFFILIATED_WITH",
+    "ACQUIRED",
+    "OCCURRED_ON",
+    "OCCURRED_IN",
+    "HAS_AGE",
+    "BORN_IN",
+    "BORN_ON",
+    "DIED_IN",
+    "DIED_ON",
+    "HEADQUARTERED_IN",
+    "CAPITAL_OF",
+    "SPOUSE_OF",
+    "MARRIED_TO",
+}
 
 
 def corrupt_contradictions(kg: dict, severity: float, rng: random.Random) -> tuple[dict, dict]:
@@ -128,6 +209,9 @@ def corrupt_contradictions(kg: dict, severity: float, rng: random.Random) -> tup
     incompatible claims about the same subject ("X is LOCATED_IN Paris" and
     "X is LOCATED_IN Tokyo"), rather than just noise in the graph topology.
 
+    The conflicting target has the same entity type as the real one, so the
+    type alone does not give it away.
+
     Falls back to the old behavior (reversing source/target on a random
     relation) for graphs that have no functional-relation edges to violate,
     so this never silently no-ops on a graph that's all RELATED_TO/CAUSES/etc.
@@ -137,51 +221,64 @@ def corrupt_contradictions(kg: dict, severity: float, rng: random.Random) -> tup
     entities = kg["entities"]
 
     if not relations:
-        return kg, {"corruption_type": "contradictions", "severity": severity, "skipped": True, "reason": "no relations"}
+        return kg, _skipped("contradictions", severity, "no relations")
 
     functional = [r for r in relations if r.get("relation_type") in FUNCTIONAL_RELATION_TYPES]
     ids = [e["id"] for e in entities]
+    type_of = {e["id"]: e.get("type") for e in entities}
 
-    if not functional or len(ids) < 2:
+    if not functional or len(ids) < 3:
         # Fallback: original edge-reversal behavior.
         num_to_flip = _n_to_affect(len(relations), severity)
         indices = rng.sample(range(len(relations)), num_to_flip)
         for i in indices:
             r = relations[i]
             r["source"], r["target"] = r["target"], r["source"]
-        return kg, {
-            "corruption_type": "contradictions",
-            "severity": severity,
-            "flipped_relations": num_to_flip,
-            "fallback": "no_functional_relations",
-        }
+        return kg, _labels(
+            {
+                "corruption_type": "contradictions",
+                "severity": severity,
+                "flipped_relations": num_to_flip,
+                "fallback": "no_functional_relations",
+            },
+            bad_relation_keys=[relation_key(relations[i]) for i in indices],
+        )
 
     num_to_violate = _n_to_affect(len(functional), severity)
     chosen = rng.sample(functional, num_to_violate)
 
+    existing = {relation_key(r) for r in relations}
     injected = []
     for base in chosen:
-        candidates = [i for i in ids if i != base["source"] and i != base["target"]]
+        others = [i for i in ids if i != base["source"] and i != base["target"]]
+        same_type = [i for i in others if type_of[i] == type_of.get(base["target"])]
+        candidates = same_type or others
         if not candidates:
             continue
-        conflicting_target = rng.choice(candidates)
-        injected.append({
+        new = {
             "source": base["source"],
-            "target": conflicting_target,
+            "target": rng.choice(candidates),
             "relation_type": base["relation_type"],
             "support_count": 1,
-            "source_documents": base.get("source_documents", []),
+            "source_documents": list(base.get("source_documents", [])),
             "confidence": base.get("confidence", 1.0),
-            "evidence": [],
-        })
+            "evidence": copy.deepcopy(base.get("evidence", [])),
+        }
+        if relation_key(new) in existing:
+            continue
+        existing.add(relation_key(new))
+        injected.append(new)
 
     kg["relations"] = relations + injected
 
-    return kg, {
-        "corruption_type": "contradictions",
-        "severity": severity,
-        "contradictory_relations_added": len(injected),
-    }
+    return kg, _labels(
+        {
+            "corruption_type": "contradictions",
+            "severity": severity,
+            "contradictory_relations_added": len(injected),
+        },
+        bad_relation_keys=[relation_key(r) for r in injected],
+    )
 
 
 def corrupt_fragmentation(kg: dict, severity: float, rng: random.Random) -> tuple[dict, dict]:
@@ -190,17 +287,23 @@ def corrupt_fragmentation(kg: dict, severity: float, rng: random.Random) -> tupl
     relations = kg["relations"]
 
     if not relations:
-        return kg, {"corruption_type": "fragmentation", "severity": severity, "skipped": True, "reason": "no relations"}
+        return kg, _skipped("fragmentation", severity, "no relations")
 
     num_to_remove = _n_to_affect(len(relations), severity)
     indices = set(rng.sample(range(len(relations)), num_to_remove))
     kg["relations"] = [r for i, r in enumerate(relations) if i not in indices]
 
-    return kg, {
-        "corruption_type": "fragmentation",
-        "severity": severity,
-        "removed_relations": num_to_remove,
-    }
+    survivors = {e["id"] for e in kg["entities"]}
+    endpoints = _lost_most_edges(relations, [relations[i] for i in indices], survivors)
+
+    return kg, _labels(
+        {
+            "corruption_type": "fragmentation",
+            "severity": severity,
+            "removed_relations": num_to_remove,
+        },
+        bad_entity_ids=endpoints,
+    )
 
 
 # ── Extra corruption types (not yet mapped to a SimpleGNN head) ────────────
@@ -217,7 +320,7 @@ def corrupt_entity_duplication(kg: dict, severity: float, rng: random.Random) ->
     entities = kg["entities"]
 
     if not entities:
-        return kg, {"corruption_type": "entity_duplication", "severity": severity, "skipped": True, "reason": "no entities"}
+        return kg, _skipped("entity_duplication", severity, "no entities")
 
     num_to_duplicate = _n_to_affect(len(entities), severity)
     originals = rng.sample(entities, num_to_duplicate)
@@ -241,23 +344,31 @@ def corrupt_entity_duplication(kg: dict, severity: float, rng: random.Random) ->
 
     kg["entities"] = entities + new_entities
 
-    return kg, {
-        "corruption_type": "entity_duplication",
-        "severity": severity,
-        "duplicated_entities": num_to_duplicate,
-        "reassigned_relations": reassigned,
-    }
+    return kg, _labels(
+        {
+            "corruption_type": "entity_duplication",
+            "severity": severity,
+            "duplicated_entities": num_to_duplicate,
+            "reassigned_relations": reassigned,
+        },
+        bad_entity_ids=[e["id"] for e in new_entities],
+    )
 
 
 def corrupt_relation_type_swap(kg: dict, severity: float, rng: random.Random) -> tuple[dict, dict]:
-    """Keep the correct entities but swap the relation label for `severity` fraction of relations."""
+    """
+    Keep the correct entities but swap the relation label for `severity` fraction of relations.
+
+    Replacement labels come from the graph's own vocabulary (ADR 0004).
+    """
     kg = copy.deepcopy(kg)
     relations = kg["relations"]
 
     if not relations:
-        return kg, {"corruption_type": "relation_type_swap", "severity": severity, "skipped": True, "reason": "no relations"}
+        return kg, _skipped("relation_type_swap", severity, "no relations")
 
-    all_types = [t.value for t in RelationType]
+    observed = sorted({r["relation_type"] for r in relations})
+    all_types = observed if len(observed) > 1 else [t.value for t in RelationType]
     num_to_swap = _n_to_affect(len(relations), severity)
     indices = rng.sample(range(len(relations)), num_to_swap)
 
@@ -267,22 +378,24 @@ def corrupt_relation_type_swap(kg: dict, severity: float, rng: random.Random) ->
         if choices:
             r["relation_type"] = rng.choice(choices)
 
-    return kg, {
-        "corruption_type": "relation_type_swap",
-        "severity": severity,
-        "swapped_relations": num_to_swap,
-    }
+    return kg, _labels(
+        {
+            "corruption_type": "relation_type_swap",
+            "severity": severity,
+            "swapped_relations": num_to_swap,
+        },
+        bad_relation_keys=[relation_key(relations[i]) for i in indices],
+    )
 
 
 def corrupt_orphan_node_injection(kg: dict, severity: float, rng: random.Random) -> tuple[dict, dict]:
-    """Add unsupported entities with no relations and no evidence — fabricated/hallucinated nodes."""
+    """Add unsupported entities with no relations — fabricated/hallucinated nodes."""
     kg = copy.deepcopy(kg)
     entities = kg["entities"]
     base_count = len(entities) if entities else 5
     num_to_add = _n_to_affect(base_count, severity)
 
-    from kg_agentic_extraction.models.ontology import EntityType
-    all_types = [t.value for t in EntityType]
+    all_types = [e["type"] for e in entities if e.get("type")] or [t.value for t in EntityType]
 
     new_entities = []
     for i in range(num_to_add):
@@ -290,18 +403,19 @@ def corrupt_orphan_node_injection(kg: dict, severity: float, rng: random.Random)
             "id": f"orphan_{rng.randint(100000, 999999)}",
             "name": f"Unverified Entity {i}",
             "type": rng.choice(all_types),
-            "document_frequency": 0,
-            "confidence": 0.0,
-            "evidence": [],
+            **_fabricated_entity_fields(kg, rng),
         })
 
     kg["entities"] = entities + new_entities
 
-    return kg, {
-        "corruption_type": "orphan_node_injection",
-        "severity": severity,
-        "injected_entities": num_to_add,
-    }
+    return kg, _labels(
+        {
+            "corruption_type": "orphan_node_injection",
+            "severity": severity,
+            "injected_entities": num_to_add,
+        },
+        bad_entity_ids=[e["id"] for e in new_entities],
+    )
 
 
 def corrupt_hallucinated_relations(kg: dict, severity: float, rng: random.Random) -> tuple[dict, dict]:
@@ -335,12 +449,16 @@ def corrupt_hallucinated_relations(kg: dict, severity: float, rng: random.Random
     relations = kg["relations"]
 
     if len(entities) < 2:
-        return kg, {"corruption_type": "hallucinated_relations", "severity": severity, "skipped": True, "reason": "too few entities"}
+        return kg, _skipped("hallucinated_relations", severity, "too few entities")
 
     existing_pairs = {(r["source"], r["target"]) for r in relations} | {(r["target"], r["source"]) for r in relations}
     ids = [e["id"] for e in entities]
+    type_of = {e["id"]: e.get("type") for e in entities}
     observed_types = sorted({r["relation_type"] for r in relations if r.get("relation_type")})
     candidate_types = observed_types or ["RELATED_TO"]
+    by_type_pair: dict[tuple, list[str]] = {}
+    for r in relations:
+        by_type_pair.setdefault((type_of.get(r["source"]), type_of.get(r["target"])), []).append(r["relation_type"])
 
     num_to_add = _n_to_affect(len(entities), severity)
     added = []
@@ -355,20 +473,20 @@ def corrupt_hallucinated_relations(kg: dict, severity: float, rng: random.Random
         added.append({
             "source": source,
             "target": target,
-            "relation_type": rng.choice(candidate_types),
-            "support_count": 0,
-            "source_documents": [],
-            "confidence": 0.0,
-            "evidence": [],
+            "relation_type": rng.choice(by_type_pair.get((type_of[source], type_of[target])) or candidate_types),
+            **_fabricated_relation_fields(kg, rng, near=source),
         })
 
     kg["relations"] = relations + added
 
-    return kg, {
-        "corruption_type": "hallucinated_relations",
-        "severity": severity,
-        "injected_relations": len(added),
-    }
+    return kg, _labels(
+        {
+            "corruption_type": "hallucinated_relations",
+            "severity": severity,
+            "injected_relations": len(added),
+        },
+        bad_relation_keys=[relation_key(r) for r in added],
+    )
 
 
 CORRUPTION_FUNCS = {

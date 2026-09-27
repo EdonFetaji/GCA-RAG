@@ -11,7 +11,7 @@ from __future__ import annotations
 import logging
 
 from kg_agentic_extraction.state import PipelineState
-from kg_agentic_extraction.types import LoopDecision, RouterFn
+from kg_agentic_extraction.types import LoopDecision, RouterFn, VetoFn
 
 logger = logging.getLogger(__name__)
 
@@ -53,3 +53,25 @@ def make_loop_router(*, max_iterations: int, grounding_enabled: bool) -> RouterF
         return "refine"
 
     return route
+
+
+def make_validator_veto(*, threshold: float, max_vetoes: int, max_iterations: int) -> VetoFn:
+    """
+    Build the rule for overruling a converged grader on the validator's word.
+
+    Vetoes only when consistency is below `threshold`, at least one element is
+    flagged (so the repair round has something to act on), fewer than
+    `max_vetoes` were used, and a round is left before `max_iterations`.
+    """
+
+    def veto(state: PipelineState) -> bool:
+        report = state.get("validation_report")
+        if report is None or not report.flagged:
+            return False
+        if state.get("validator_vetoes", 0) >= max_vetoes:
+            return False
+        if state.get("iteration", 0) >= max_iterations:
+            return False
+        return report.consistency < threshold
+
+    return veto

@@ -9,12 +9,16 @@ and partitions by data/training/splits.json's cluster-level split (Track 2.4)
 so a cluster's clean graph and every corrupted variant derived from it stay
 in the same split — the same leakage guard generate_splits.py's docstring
 describes, just enforced here on the *loading* side.
+
+OnTheFlyCorruptionDataset reads only the clean files and corrupts each graph
+in memory, with element-level labels for the per-node / per-edge heads.
 """
 
 from __future__ import annotations
 
 import json
 import math
+import random
 from pathlib import Path
 
 import torch
@@ -22,7 +26,20 @@ from torch.utils.data import Dataset
 from torch_geometric.data import Data
 
 from gnn_validator.feature_vocab import FeatureVocab
-from kg_dataset.corruption import HEAD_NAMES_EXTENDED, label_for_extended
+from kg_dataset.corruption import (
+    CORRUPTION_FUNCS,
+    DEFAULT_SEVERITIES,
+    EXTENDED_CORRUPTION_TYPES,
+    HEAD_NAMES_EXTENDED,
+    label_for_extended,
+    relation_key,
+)
+
+#: Element label for "unknown", masked out of the element losses.
+UNLABELED = -1.0
+
+#: data.corruption_id values: 0 is a clean graph, i+1 is EXTENDED_CORRUPTION_TYPES[i].
+CORRUPTION_IDS = ["clean", *EXTENDED_CORRUPTION_TYPES]
 
 # Fixed-scale caps for the scalar node/edge features. Deliberately NOT
 # per-graph max-normalized (unlike poc_validator.py's build_node_features) —
@@ -40,7 +57,12 @@ def _clipped(value: float, cap: float) -> float:
     return max(0.0, min(1.0, value / cap))
 
 
-def kg_to_pyg(kg: dict, vocab: FeatureVocab) -> Data | None:
+def kg_to_pyg(
+    kg: dict,
+    vocab: FeatureVocab,
+    bad_entity_ids: set[str] | None = None,
+    bad_relation_keys: set[str] | None = None,
+) -> Data | None:
     """
     Convert one KG dict (the {"entities": [...], "relations": [...]} shape
     used throughout kg_dataset/) into a PyG Data object.
@@ -53,6 +75,10 @@ def kg_to_pyg(kg: dict, vocab: FeatureVocab) -> Data | None:
     original relation direction — a missing/hallucinated/contradictory edge
     can only be judged from a node's full local neighborhood, not just its
     outgoing edges.
+
+    `y_node` / `y_edge` mark the elements in `bad_entity_ids` /
+    `bad_relation_keys` (UNLABELED when both are None). `rel_index` maps each
+    edge to its row in kg["relations"].
     """
     entities = kg.get("entities", [])
     relations = kg.get("relations", [])
@@ -83,17 +109,22 @@ def kg_to_pyg(kg: dict, vocab: FeatureVocab) -> Data | None:
 
     x = torch.tensor(node_features, dtype=torch.float)
 
+    labeled = bad_entity_ids is not None or bad_relation_keys is not None
+    bad_entity_ids = bad_entity_ids or set()
+    bad_relation_keys = bad_relation_keys or set()
+
     edge_index_list = []
     edge_attr_list = []
-    for r in relations:
+    edge_labels = []
+    rel_positions = []
+    for pos, r in enumerate(relations):
         src, tgt = r.get("source"), r.get("target")
         if src not in id_to_idx or tgt not in id_to_idx:
             # A dangling reference would be a bug elsewhere in the pipeline
             # (check_dataset.py's structural-validity pass should catch
             # these before they get here) — skip defensively rather than crash.
             continue
-        rel_onehot = [0.0] * vocab.num_relation_types
-        rel_onehot[vocab.relation_type_index(r.get("relation_type", ""))] = 1.0
+        rel_onehot = vocab.relation_type_vector(r.get("relation_type", ""))
         confidence = float(r.get("confidence", 1.0))
         support_norm = _clipped(float(r.get("support_count", 1)), _SUPPORT_COUNT_CAP)
 
@@ -105,6 +136,10 @@ def kg_to_pyg(kg: dict, vocab: FeatureVocab) -> Data | None:
         edge_index_list.append([id_to_idx[tgt], id_to_idx[src]])
         edge_attr_list.append(rel_onehot + [confidence, support_norm, 1.0])
 
+        label = (1.0 if relation_key(r) in bad_relation_keys else 0.0) if labeled else UNLABELED
+        edge_labels += [label, label]
+        rel_positions += [pos, pos]
+
     if edge_index_list:
         edge_index = torch.tensor(edge_index_list, dtype=torch.long).t().contiguous()
         edge_attr = torch.tensor(edge_attr_list, dtype=torch.float)
@@ -112,7 +147,42 @@ def kg_to_pyg(kg: dict, vocab: FeatureVocab) -> Data | None:
         edge_index = torch.empty((2, 0), dtype=torch.long)
         edge_attr = torch.empty((0, vocab.edge_feature_dim), dtype=torch.float)
 
-    return Data(x=x, edge_index=edge_index, edge_attr=edge_attr, num_nodes=len(entities))
+    if labeled:
+        y_node = [1.0 if e["id"] in bad_entity_ids else 0.0 for e in entities]
+    else:
+        y_node = [UNLABELED] * len(entities)
+
+    return Data(
+        x=x,
+        edge_index=edge_index,
+        edge_attr=edge_attr,
+        num_nodes=len(entities),
+        y_node=torch.tensor(y_node, dtype=torch.float),
+        y_edge=torch.tensor(edge_labels, dtype=torch.float),
+        rel_index=torch.tensor(rel_positions, dtype=torch.long),
+    )
+
+
+def _placeholder(vocab: FeatureVocab) -> Data:
+    """1-node stand-in for a 0-entity sample, so one bad record can't crash an epoch."""
+    return Data(
+        x=torch.zeros((1, vocab.node_feature_dim), dtype=torch.float),
+        edge_index=torch.empty((2, 0), dtype=torch.long),
+        edge_attr=torch.empty((0, vocab.edge_feature_dim), dtype=torch.float),
+        num_nodes=1,
+        y_node=torch.tensor([UNLABELED], dtype=torch.float),
+        y_edge=torch.empty(0, dtype=torch.float),
+        rel_index=torch.empty(0, dtype=torch.long),
+    )
+
+
+def _load_clean_kgs(clean_dir: str | Path, cluster_ids: set[int]) -> list[tuple[int, dict]]:
+    out = []
+    for path in sorted(Path(clean_dir).glob("*.json")):
+        if path.stem.isdigit() and int(path.stem) in cluster_ids:
+            record = json.loads(path.read_text(encoding="utf-8"))
+            out.append((int(path.stem), record["extraction"]["knowledge_graph"]))
+    return out
 
 
 class KGValidationDataset(Dataset):
@@ -179,20 +249,77 @@ class KGValidationDataset(Dataset):
             data = self._cache[idx].clone()
         else:
             kg, _ = self._samples[idx]
-            data = kg_to_pyg(kg, self.vocab)
-            if data is None:
-                # Degenerate (0-entity) sample — use a 1-node placeholder
-                # rather than raising, so a bad upstream record doesn't crash
-                # an entire training epoch. It carries no real signal either way.
-                data = Data(
-                    x=torch.zeros((1, self.vocab.node_feature_dim), dtype=torch.float),
-                    edge_index=torch.empty((2, 0), dtype=torch.long),
-                    edge_attr=torch.empty((0, self.vocab.edge_feature_dim), dtype=torch.float),
-                    num_nodes=1,
-                )
+            data = kg_to_pyg(kg, self.vocab) or _placeholder(self.vocab)
             self._cache[idx] = data
             data = data.clone()
 
         _, label = self._samples[idx]
         data.y = torch.tensor(label, dtype=torch.float).unsqueeze(0)
+        return data
+
+
+class OnTheFlyCorruptionDataset(Dataset):
+    """
+    Clean graphs from `clean_dir`, corrupted in memory as samples are drawn.
+
+    Each cluster yields one clean sample plus one per corruption type. Seeds are
+    (seed, epoch, cluster, type): `resample=True` gives fresh corruptions each
+    epoch (training); `resample=False` keeps val/test fixed.
+    """
+
+    def __init__(
+        self,
+        split: str,
+        clean_dir: str | Path = "data/training/clean_gcs",
+        splits_path: str | Path = "data/training/splits_gcs.json",
+        vocab: FeatureVocab | None = None,
+        severities: tuple[float, ...] = DEFAULT_SEVERITIES,
+        seed: int = 42,
+        resample: bool = False,
+    ):
+        self.vocab = vocab or FeatureVocab()
+        splits = json.loads(Path(splits_path).read_text())
+        if split not in splits["splits"]:
+            raise ValueError(f"Unknown split {split!r}, expected one of {list(splits['splits'])}")
+        self.clusters = _load_clean_kgs(clean_dir, set(splits["splits"][split]))
+        if not self.clusters:
+            raise RuntimeError(f"No clean KGs found for split={split!r} in {clean_dir}.")
+        self.severities = tuple(severities)
+        self.seed = seed
+        self.resample = resample
+        self.epoch = 0
+        self._variants = [None, *EXTENDED_CORRUPTION_TYPES]
+
+    def set_epoch(self, epoch: int) -> None:
+        self.epoch = epoch
+
+    def __len__(self) -> int:
+        return len(self.clusters) * len(self._variants)
+
+    def sample(self, idx: int) -> tuple[dict, str | None, dict]:
+        """(kg, corruption type or None, corruption metadata) for sample `idx`."""
+        cluster_idx, kg = self.clusters[idx // len(self._variants)]
+        corruption_type = self._variants[idx % len(self._variants)]
+        if corruption_type is None:
+            return kg, None, {"bad_entity_ids": [], "bad_relation_keys": []}
+
+        epoch = self.epoch if self.resample else 0
+        rng = random.Random(f"{self.seed}:{epoch}:{cluster_idx}:{corruption_type}")
+        severity = rng.choice(self.severities)
+        corrupted, metadata = CORRUPTION_FUNCS[corruption_type](kg, severity, rng)
+        if metadata.get("skipped"):
+            return kg, None, {"bad_entity_ids": [], "bad_relation_keys": []}
+        return corrupted, corruption_type, metadata
+
+    def __getitem__(self, idx: int) -> Data:
+        kg, corruption_type, metadata = self.sample(idx)
+        data = kg_to_pyg(
+            kg,
+            self.vocab,
+            bad_entity_ids=set(metadata["bad_entity_ids"]),
+            bad_relation_keys=set(metadata["bad_relation_keys"]),
+        ) or _placeholder(self.vocab)
+        label = label_for_extended(corruption_type)
+        data.y = torch.tensor([label[h] for h in HEAD_NAMES_EXTENDED], dtype=torch.float).unsqueeze(0)
+        data.corruption_id = torch.tensor([CORRUPTION_IDS.index(corruption_type or "clean")], dtype=torch.long)
         return data

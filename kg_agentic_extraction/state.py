@@ -18,6 +18,7 @@ from typing import Annotated, TypedDict
 from kg_agentic_extraction.models.grading import SimpleSchemaGraderReport
 from kg_agentic_extraction.models.grounding import GroundedKnowledgeGraph
 from kg_agentic_extraction.models.knowledge_graph import KnowledgeGraph
+from kg_agentic_extraction.models.validation import ValidationReport
 
 
 class PipelineState(TypedDict, total=False):
@@ -36,12 +37,17 @@ class PipelineState(TypedDict, total=False):
     grader_markdown: str | None
     iteration: int
     converged: bool
+    #: The structural validator's verdict on the current graph (None when off).
+    validation_report: ValidationReport | None
+    #: Times the validator has overruled a converged grader this run.
+    validator_vetoes: int
 
     # ── Output ────────────────────────────────────────────────────────
     grounded_graph: GroundedKnowledgeGraph | None
 
     # ── History (accumulated) ─────────────────────────────────────────
     grader_reports: Annotated[list[SimpleSchemaGraderReport], operator.add]
+    validation_reports: Annotated[list[ValidationReport], operator.add]
     errors: Annotated[list[str], operator.add]
 
 
@@ -61,7 +67,10 @@ def initial_state(documents: list[str], *, cluster_index: int | None = None) -> 
         grader_markdown=None,
         iteration=0,
         converged=False,
+        validation_report=None,
+        validator_vetoes=0,
         grounded_graph=None,
         grader_reports=[],
+        validation_reports=[],
         errors=[],
     )

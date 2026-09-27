@@ -6,6 +6,13 @@ Run:
     python -m gnn_validator.train --epochs 200 --hidden-dim 96 --num-layers 4
     python -m gnn_validator.train --gcs-bucket my-bucket --gcs-prefix gnn_checkpoints
 
+    # Real extracted clusters, corrupted in memory, with per-node/per-edge heads:
+    python -m gnn_validator.train --data on-the-fly --vocab fit-tokens \
+        --clean-dir data/training/clean_gcs --splits-path data/training/splits_gcs.json
+
+Loss = mean graph-head BCE + element_loss_weight x (node BCE + edge BCE), the
+element terms over labeled elements only (files-mode samples are UNLABELED).
+
 CPU-only by design (see pyproject.toml's "PyTorch: CPU-only build" note) —
 this doesn't touch cuda, matching the 4-core VM the rest of the pipeline runs on.
 """
@@ -23,7 +30,12 @@ import torch
 import torch.nn as nn
 from torch_geometric.loader import DataLoader
 
-from gnn_validator.data import KGValidationDataset
+from gnn_validator.data import (
+    KGValidationDataset,
+    OnTheFlyCorruptionDataset,
+    UNLABELED,
+    _load_clean_kgs,
+)
 from gnn_validator.feature_vocab import FeatureVocab
 from gnn_validator.model import GraphTransformerValidator
 from kg_dataset.corruption import HEAD_NAMES_EXTENDED
@@ -35,7 +47,15 @@ def _configure_logging() -> None:
     logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s", handlers=[logging.StreamHandler(sys.stdout)])
 
 
-def run_epoch(model, loader, criterion, optimizer=None) -> tuple[float, dict[str, float]]:
+def _element_loss(criterion, logits: torch.Tensor, labels: torch.Tensor) -> torch.Tensor:
+    """Mean BCE over the labeled elements; zero when there are none."""
+    mask = labels != UNLABELED
+    if not mask.any():
+        return logits.sum() * 0.0
+    return criterion(logits[mask], labels[mask]).mean()
+
+
+def run_epoch(model, loader, criterion, optimizer=None, element_loss_weight: float = 1.0) -> tuple[float, dict[str, float]]:
     """One pass over `loader`. Trains if `optimizer` is given, else eval-only (no grad)."""
     is_train = optimizer is not None
     model.train(is_train)
@@ -43,13 +63,21 @@ def run_epoch(model, loader, criterion, optimizer=None) -> tuple[float, dict[str
     total_loss = 0.0
     n_batches = 0
     per_head_loss = {h: 0.0 for h in HEAD_NAMES_EXTENDED}
+    if model.element_heads:
+        per_head_loss.update({"element_node": 0.0, "element_edge": 0.0})
 
     context = torch.enable_grad() if is_train else torch.no_grad()
     with context:
         for batch in loader:
-            logits = model.forward_logits(batch.x, batch.edge_index, batch.edge_attr, batch.batch)
-            loss_per_head = criterion(logits, batch.y)  # [batch, num_heads], reduction='none'
+            out = model.forward_all(batch.x, batch.edge_index, batch.edge_attr, batch.batch)
+            loss_per_head = criterion(out["graph"], batch.y)  # [batch, num_heads], reduction='none'
             loss = loss_per_head.mean()
+            if model.element_heads:
+                node_loss = _element_loss(criterion, out["node"], batch.y_node)
+                edge_loss = _element_loss(criterion, out["edge"], batch.y_edge)
+                loss = loss + element_loss_weight * (node_loss + edge_loss)
+                per_head_loss["element_node"] += node_loss.item()
+                per_head_loss["element_edge"] += edge_loss.item()
 
             if is_train:
                 optimizer.zero_grad()
@@ -86,6 +114,14 @@ def maybe_upload_to_gcs(local_path: Path, bucket: str | None, prefix: str) -> No
 
 def main():
     parser = argparse.ArgumentParser(description="Train the graph-transformer KG validator (Track 3)")
+    parser.add_argument(
+        "--data", choices=["files", "on-the-fly"], default="files",
+        help=(
+            "'files' (default): clean + pre-generated corrupted_extended/*.json. "
+            "'on-the-fly': clean files only, corrupted in memory per sample (fresh every "
+            "epoch for train) with element-level labels — nothing is written anywhere."
+        ),
+    )
     parser.add_argument("--clean-dir", type=str, default="data/training/clean")
     parser.add_argument("--corrupted-dir", type=str, default="data/training/corrupted_extended")
     parser.add_argument("--splits-path", type=str, default="data/training/splits.json")
@@ -103,18 +139,23 @@ def main():
     parser.add_argument("--gcs-bucket", type=str, default=None, help="Optional: upload best checkpoint here (not on the critical path — failures are logged, not raised).")
     parser.add_argument("--gcs-prefix", type=str, default="gnn_checkpoints")
     parser.add_argument(
-        "--vocab", choices=["ontology", "fit"], default="ontology",
+        "--vocab", choices=["ontology", "fit", "fit-tokens"], default="ontology",
         help=(
             "'ontology' (default): the closed 8/10-type kg_agentic_extraction.models.ontology "
             "enums — correct for data/training/clean (the legacy, closed-ontology extractor). "
             "'fit': build an open-vocabulary FeatureVocab from the training split itself "
             "(top-N most frequent types + OOV) — use this for clusters synced from GCS via "
             "sync_from_gcs.py, since per ADR 0004 the current kg_agentic_extraction pipeline "
-            "is open-vocabulary and the ontology enums would mostly miss."
+            "is open-vocabulary and the ontology enums would mostly miss. "
+            "'fit-tokens': as 'fit', but relation types are encoded by their words "
+            "(multi-hot over the top --vocab-max-relation-types words) — the right choice "
+            "for open-vocabulary graphs, where whole relation types are too sparse to one-hot."
         ),
     )
     parser.add_argument("--vocab-max-entity-types", type=int, default=32)
-    parser.add_argument("--vocab-max-relation-types", type=int, default=48)
+    parser.add_argument("--vocab-max-relation-types", type=int, default=48, help="Whole types for 'fit', words for 'fit-tokens'.")
+    parser.add_argument("--no-element-heads", action="store_true", help="Graph-level heads only (the original model).")
+    parser.add_argument("--element-loss-weight", type=float, default=1.0)
     args = parser.parse_args()
 
     _configure_logging()
@@ -123,18 +164,21 @@ def main():
     output_dir = Path(args.output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    if args.vocab == "fit":
+    if args.vocab in ("fit", "fit-tokens"):
         splits = json.loads(Path(args.splits_path).read_text())
         train_cluster_ids = set(splits["splits"]["train"])
-        fit_kgs = []
-        for path in sorted(Path(args.clean_dir).glob("*.json")):
-            if path.stem.isdigit() and int(path.stem) in train_cluster_ids:
-                fit_kgs.append(json.loads(path.read_text())["extraction"]["knowledge_graph"])
-        for path in sorted(Path(args.corrupted_dir).glob("*.json")) if Path(args.corrupted_dir).exists() else []:
-            record = json.loads(path.read_text())
-            if record["cluster_idx"] in train_cluster_ids:
-                fit_kgs.append(record["knowledge_graph"])
-        vocab = FeatureVocab.fit(fit_kgs, max_entity_types=args.vocab_max_entity_types, max_relation_types=args.vocab_max_relation_types)
+        fit_kgs = [kg for _, kg in _load_clean_kgs(args.clean_dir, train_cluster_ids)]
+        if args.data == "files" and Path(args.corrupted_dir).exists():
+            for path in sorted(Path(args.corrupted_dir).glob("*.json")):
+                record = json.loads(path.read_text())
+                if record["cluster_idx"] in train_cluster_ids:
+                    fit_kgs.append(record["knowledge_graph"])
+        vocab = FeatureVocab.fit(
+            fit_kgs,
+            max_entity_types=args.vocab_max_entity_types,
+            max_relation_types=args.vocab_max_relation_types,
+            relation_mode="token" if args.vocab == "fit-tokens" else "type",
+        )
         logger.info(
             "Fit open-vocabulary FeatureVocab from %d train-split KGs: %d entity types, %d relation types (incl. OOV).",
             len(fit_kgs), vocab.num_entity_types, vocab.num_relation_types,
@@ -143,8 +187,12 @@ def main():
         vocab = FeatureVocab()
     vocab.save(output_dir / "feature_vocab.json")
 
-    train_ds = KGValidationDataset("train", args.clean_dir, args.corrupted_dir, args.splits_path, vocab)
-    val_ds = KGValidationDataset("val", args.clean_dir, args.corrupted_dir, args.splits_path, vocab)
+    if args.data == "on-the-fly":
+        train_ds = OnTheFlyCorruptionDataset("train", args.clean_dir, args.splits_path, vocab, seed=args.seed, resample=True)
+        val_ds = OnTheFlyCorruptionDataset("val", args.clean_dir, args.splits_path, vocab, seed=args.seed)
+    else:
+        train_ds = KGValidationDataset("train", args.clean_dir, args.corrupted_dir, args.splits_path, vocab)
+        val_ds = KGValidationDataset("val", args.clean_dir, args.corrupted_dir, args.splits_path, vocab)
     logger.info("Loaded %d train / %d val samples.", len(train_ds), len(val_ds))
 
     train_loader = DataLoader(train_ds, batch_size=args.batch_size, shuffle=True)
@@ -157,6 +205,7 @@ def main():
         num_layers=args.num_layers,
         num_heads=args.num_heads,
         dropout=args.dropout,
+        element_heads=not args.no_element_heads,
     )
     optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=args.weight_decay)
     criterion = nn.BCEWithLogitsLoss(reduction="none")
@@ -171,12 +220,19 @@ def main():
 
     for epoch in range(1, args.epochs + 1):
         epoch_t0 = time.time()
-        train_loss, train_per_head = run_epoch(model, train_loader, criterion, optimizer)
-        val_loss, val_per_head = run_epoch(model, val_loader, criterion, optimizer=None)
+        if hasattr(train_ds, "set_epoch"):
+            train_ds.set_epoch(epoch)
+        train_loss, train_per_head = run_epoch(model, train_loader, criterion, optimizer, args.element_loss_weight)
+        val_loss, val_per_head = run_epoch(model, val_loader, criterion, None, args.element_loss_weight)
         epoch_dt = time.time() - epoch_t0
 
         history.append({"epoch": epoch, "train_loss": train_loss, "val_loss": val_loss, "train_per_head": train_per_head, "val_per_head": val_per_head, "seconds": epoch_dt})
-        logger.info("Epoch %3d/%d — train_loss=%.4f  val_loss=%.4f  (%.1fs)", epoch, args.epochs, train_loss, val_loss, epoch_dt)
+        logger.info(
+            "Epoch %3d/%d — train_loss=%.4f  val_loss=%.4f%s  (%.1fs)",
+            epoch, args.epochs, train_loss, val_loss,
+            f"  (val node={val_per_head['element_node']:.4f} edge={val_per_head['element_edge']:.4f})" if model.element_heads else "",
+            epoch_dt,
+        )
 
         if val_loss < best_val_loss - 1e-5:
             best_val_loss = val_loss
@@ -192,6 +248,7 @@ def main():
                         "num_heads": args.num_heads,
                         "dropout": args.dropout,
                         "head_names": HEAD_NAMES_EXTENDED,
+                        "element_heads": model.element_heads,
                     },
                     "epoch": epoch,
                     "val_loss": val_loss,

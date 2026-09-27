@@ -156,3 +156,74 @@ def test_all_keys_rate_limited_sleeps_then_retries(monkeypatch):
     assert result.ok
     assert slept  # it did sleep rather than spin
     assert client._daily_exhausted == set()  # rate limits never mark a key spent
+
+
+# ── Overload (503) ───────────────────────────────────────────────────
+
+_OVERLOAD_503 = (
+    "Error calling model 'gemini-3.6-flash' (UNAVAILABLE): 503 UNAVAILABLE. {'error': {'code': "
+    "503, 'message': 'This model is currently experiencing high demand. Spikes in demand are "
+    "usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}"
+)
+
+
+class _FlakyRunnable:
+    """Raises the scripted errors in order, then succeeds."""
+
+    def __init__(self, errors: list[Exception]) -> None:
+        self._errors = errors
+
+    def invoke(self, _messages):
+        if self._errors:
+            raise self._errors.pop(0)
+        return _Schema()
+
+
+def _flaky_client(errors: list[Exception], **kw) -> GeminiClient:
+    client = GeminiClient(model="gemini-3.6-flash", api_keys=["a", "b"], **kw)
+
+    class _LLM:
+        def with_structured_output(self, _schema, **_kw):
+            return runnable
+
+    runnable = _FlakyRunnable(errors)
+    client._make_llm = lambda key: _LLM()  # type: ignore[assignment]
+    client._llm = _LLM()
+    return client
+
+
+def test_overload_is_retried_on_the_same_key_with_doubling_waits(monkeypatch):
+    sleeps: list[float] = []
+    monkeypatch.setattr("kg_agentic_extraction.llm.gemini_client.time.sleep", sleeps.append)
+    client = _flaky_client(
+        [RuntimeError(_OVERLOAD_503)] * 3,
+        overload_backoff_seconds=10,
+        max_overload_wait_seconds=900,
+    )
+    assert client.structured(system="s", user="u", schema=_Schema).ok
+    assert sleeps == [10, 20, 40]
+    assert client._idx == 0  # overload is per model, so no key was rotated away
+
+
+def test_overload_gives_up_once_the_wait_budget_is_spent(monkeypatch):
+    sleeps: list[float] = []
+    monkeypatch.setattr("kg_agentic_extraction.llm.gemini_client.time.sleep", sleeps.append)
+    client = _flaky_client(
+        [RuntimeError(_OVERLOAD_503)] * 50,
+        overload_backoff_seconds=10,
+        max_overload_wait_seconds=60,
+    )
+    with pytest.raises(LLMStructuredOutputError):
+        client.structured(system="s", user="u", schema=_Schema)
+    assert sum(sleeps) <= 60
+
+
+def test_a_parse_failure_that_mentions_503_is_not_mistaken_for_overload(monkeypatch):
+    monkeypatch.setattr("kg_agentic_extraction.llm.gemini_client.time.sleep", lambda s: None)
+    parse_error = RuntimeError(
+        "Failed to parse KnowledgeGraph from completion {\"quote\": \"flight 503 UNAVAILABLE "
+        "seats, experiencing high demand\"}"
+    )
+    client = _flaky_client([parse_error])
+    with pytest.raises(LLMStructuredOutputError):
+        client.structured(system="s", user="u", schema=_Schema)

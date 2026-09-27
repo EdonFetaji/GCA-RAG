@@ -5,9 +5,12 @@ and a **grader** loop until the graph is clean, then an optional **grounder**
 maps entities and relations to DBpedia.
 
 ```
-extract → grade ─┬─ issues found → extract      (loop, up to KG_MAX_ITERATIONS)
-                 └─ clean        → ground → done
+extract → [validate] → grade ─┬─ issues found → extract      (loop, up to KG_MAX_ITERATIONS)
+                              └─ clean        → ground → done
 ```
+
+`validate` is an optional GNN structural check (`KG_GNN_MODE`, off by default) —
+see [The GNN validator in the loop](#the-gnn-validator-in-the-loop).
 
 ## Setup
 
@@ -71,6 +74,41 @@ server running in a second terminal:
 
 ```bash
 uv run python -m mcp_server.server
+```
+
+## The GNN validator in the loop
+
+A graph-transformer trained on deliberately corrupted graphs (`gnn_validator/`)
+scores each candidate graph between extraction and grading: one consistency
+score for the graph, and a "looks wrong" score for every entity and relation.
+It reads only the graph — never the documents — and runs in milliseconds on CPU.
+
+| `KG_GNN_MODE` | what it does |
+|---|---|
+| `off` (default) | no validate step; the pipeline is unchanged |
+| `advise` | the top `KG_GNN_TOP_K` suspicious elements are listed in the grader's prompt as leads to verify against the documents |
+| `veto` | `advise`, and a converged grader is overruled (at most `KG_GNN_MAX_VETOES` times) while the graph scores below `KG_GNN_VETO_THRESHOLD` with something flagged — the flags become the extractor's repair instructions |
+
+The three modes are the three arms of the with/without comparison: run the same
+clusters under each and compare rounds, tokens and final quality. Every saved
+`.h5` records `gnn_mode` and the per-round consistency and flag counts.
+
+```bash
+uv run python -m kg_agentic_extraction.runner --cluster 0 --no-grounding --gnn-mode advise
+```
+
+Needs `KG_GRADER_PROMPT_VERSION=v6` (the pipeline refuses to start otherwise)
+and a checkpoint directory at `KG_GNN_CHECKPOINT_DIR` holding `best_model.pt` and
+`feature_vocab.json` from one training run. To train one on the extracted clusters
+(copy `gs://<bucket>/cluster_*.h5` locally and convert them to
+`data/training/clean_gcs/<i>.json` first; corruption happens in memory):
+
+```bash
+uv run python -m kg_dataset.generate_splits --clean-dir data/training/clean_gcs --output data/training/splits_gcs.json
+uv run python -m gnn_validator.train --data on-the-fly --vocab fit-tokens --vocab-max-relation-types 256 \
+    --clean-dir data/training/clean_gcs --splits-path data/training/splits_gcs.json --output-dir data/gnn_checkpoints_gcs
+uv run python -m gnn_validator.eval --checkpoint data/gnn_checkpoints_gcs/best_model.pt --data on-the-fly \
+    --clean-dir data/training/clean_gcs --splits-path data/training/splits_gcs.json
 ```
 
 ## Run a batch

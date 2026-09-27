@@ -6,6 +6,10 @@ beside an explicit `converged` flag — so this node passes `issues_markdown`
 through as the single artifact read both by the human and by the extractor's
 next repair prompt. The convergence decision stays on the Pydantic object, where
 formatting cannot reach it.
+
+With the structural validator on, its flags go to the grader, and a `veto`
+policy (from `routing.py`) may overrule a converged grader, sending the flags
+to the extractor as repair instructions.
 """
 
 from __future__ import annotations
@@ -14,7 +18,8 @@ import logging
 
 from kg_agentic_extraction.agents.grader_agent import GraderAgent, GradingTask
 from kg_agentic_extraction.state import PipelineState
-from kg_agentic_extraction.types import NodeFn
+from kg_agentic_extraction.types import NodeFn, VetoFn
+from kg_agentic_extraction.validation.base import repair_notes
 
 logger = logging.getLogger(__name__)
 
@@ -25,6 +30,7 @@ def make_grade_node(
     agent: GraderAgent,
     *,
     max_documents: int,
+    veto: VetoFn | None = None,
 ) -> NodeFn:
     """Build the node function that audits the current graph."""
 
@@ -46,6 +52,7 @@ def make_grade_node(
             documents=state["documents"],
             max_documents=max_documents,
             iteration=iteration,
+            validation=state.get("validation_report"),
         )
 
         try:
@@ -69,6 +76,25 @@ def make_grade_node(
         # writes this to disk — so say what happened rather than saving a bare
         # heading. The extractor never reads it: the loop has already ended.
         body = report.issues_markdown.strip() or _CONVERGED_BODY
+
+        if report.converged and veto is not None and veto(state):
+            validation = state["validation_report"]
+            vetoes = state.get("validator_vetoes", 0) + 1
+            logger.info(
+                "grade — iteration %d: grader converged, validator vetoed "
+                "(consistency %.2f, %d flagged; veto %d)",
+                iteration,
+                validation.consistency,
+                len(validation.flagged),
+                vetoes,
+            )
+            return PipelineState(
+                grader_report=report,
+                grader_reports=[report],
+                grader_markdown=repair_notes(validation, iteration),
+                converged=False,
+                validator_vetoes=vetoes,
+            )
 
         return PipelineState(
             grader_report=report,

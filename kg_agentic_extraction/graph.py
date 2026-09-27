@@ -1,9 +1,11 @@
 """
 The pipeline graph.
 
-    START → extract → grade ─┬─ refine ──→ extract     (loop)
-                             ├─ ground ──→ END
-                             └─ end ─────→ END
+    START → extract → [validate] → grade ─┬─ refine ──→ extract     (loop)
+                                          ├─ ground ──→ END
+                                          └─ end ─────→ END
+
+`validate` (the GNN structural validator) is only added when `gnn_mode` is not "off".
 
 This file does two things and nothing else: assemble the collaborators
 (composition root) and declare the topology. There is no extraction logic, no
@@ -33,9 +35,12 @@ from kg_agentic_extraction.nodes import (
     make_grade_node,
     make_ground_node,
     make_loop_router,
+    make_validate_node,
+    make_validator_veto,
 )
 from kg_agentic_extraction.prompts.registry import PromptRegistry
 from kg_agentic_extraction.state import PipelineState
+from kg_agentic_extraction.validation.base import GraphValidator
 
 logger = logging.getLogger(__name__)
 
@@ -44,6 +49,7 @@ logger = logging.getLogger(__name__)
 NODE_EXTRACT = "extract"
 NODE_GRADE = "grade"
 NODE_GROUND = "ground"
+NODE_VALIDATE = "validate"
 
 
 @dataclass
@@ -55,6 +61,8 @@ class PipelineDependencies:
     grounder: GrounderAgent
     settings: PipelineSettings
     backend: GroundingBackend
+    #: None when `gnn_mode` is "off".
+    validator: GraphValidator | None = None
 
 
 def build_dependencies(
@@ -63,6 +71,7 @@ def build_dependencies(
     llm: LLMClient | None = None,
     backend: GroundingBackend | None = None,
     prompts: PromptRegistry | None = None,
+    validator: GraphValidator | None = None,
 ) -> PipelineDependencies:
     """
     Construct the agents and their collaborators.
@@ -106,6 +115,23 @@ def build_dependencies(
         else:
             backend = NullGroundingBackend()
 
+    if settings.gnn_mode != "off" and not _grader_reads_validator_flags(settings):
+        # An older template silently drops the flags, turning `advise` into `off`.
+        raise ValueError(
+            f"KG_GNN_MODE={settings.gnn_mode} needs a grader prompt that shows the validator's "
+            f"flags (v6+), but KG_GRADER_PROMPT_VERSION={settings.grader_prompt_version}. "
+            "Set KG_GRADER_PROMPT_VERSION=v6 — without flags it renders exactly as v5."
+        )
+
+    if validator is None and settings.gnn_mode != "off":
+        from kg_agentic_extraction.validation.gnn import GNNValidator
+
+        validator = GNNValidator(
+            settings.gnn_checkpoint_dir,
+            top_k=settings.gnn_top_k,
+            min_score=settings.gnn_min_score,
+        )
+
     return PipelineDependencies(
         extractor=ExtractorAgent(
             llm=extractor_llm,
@@ -132,7 +158,14 @@ def build_dependencies(
         ),
         settings=settings,
         backend=backend,
+        validator=validator if settings.gnn_mode != "off" else None,
     )
+
+
+def _grader_reads_validator_flags(settings: PipelineSettings) -> bool:
+    """Whether the configured grader template renders `gnn_flags` (v6 onwards)."""
+    version = settings.grader_prompt_version.lstrip("vV")
+    return version.isdigit() and int(version) >= 6
 
 
 def build_graph(
@@ -165,9 +198,16 @@ def build_graph(
             max_documents=cfg.max_documents,
         ),
     )
+    veto = None
+    if deps.validator is not None and cfg.gnn_mode == "veto":
+        veto = make_validator_veto(
+            threshold=cfg.gnn_veto_threshold,
+            max_vetoes=cfg.gnn_max_vetoes,
+            max_iterations=cfg.max_iterations,
+        )
     builder.add_node(
         NODE_GRADE,
-        make_grade_node(deps.grader, max_documents=cfg.max_documents),
+        make_grade_node(deps.grader, max_documents=cfg.max_documents, veto=veto),
     )
     builder.add_node(
         NODE_GROUND,
@@ -175,7 +215,12 @@ def build_graph(
     )
 
     builder.add_edge(START, NODE_EXTRACT)
-    builder.add_edge(NODE_EXTRACT, NODE_GRADE)
+    if deps.validator is not None:
+        builder.add_node(NODE_VALIDATE, make_validate_node(deps.validator))
+        builder.add_edge(NODE_EXTRACT, NODE_VALIDATE)
+        builder.add_edge(NODE_VALIDATE, NODE_GRADE)
+    else:
+        builder.add_edge(NODE_EXTRACT, NODE_GRADE)
 
     # The loop: grade decides whether to send the graph back for repair.
     builder.add_conditional_edges(
@@ -189,8 +234,9 @@ def build_graph(
     builder.add_edge(NODE_GROUND, END)
 
     logger.debug(
-        "graph built — max_iterations=%d grounding=%s",
+        "graph built — max_iterations=%d grounding=%s validator=%s",
         cfg.max_iterations,
         cfg.grounding_enabled,
+        cfg.gnn_mode if deps.validator is not None else "off",
     )
     return builder.compile(checkpointer=checkpointer)

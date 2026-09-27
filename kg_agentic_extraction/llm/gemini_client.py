@@ -22,6 +22,10 @@ are distinguished from the 429 body:
   immediately; if every key is rate-limited at once, sleep for the server's
   `retryDelay` and try the cycle again.
 
+**Overload.** A 503/504 retries the same call on the same key with a doubling
+pause (capped at two minutes) until `max_overload_wait_seconds` is spent; the
+overload is per model, so rotating keys would not help.
+
 When every key has hit its *daily* quota there is nothing left to do today, so
 `AllGeminiKeysExhausted` is raised. It is a `BaseException` on purpose: it has to
 propagate cleanly through the per-node ``except Exception`` handlers and abort
@@ -69,6 +73,19 @@ class AllGeminiKeysExhausted(BaseException):
 # `...PerMinute...` instead and is transient.
 _DAILY_MARKERS = ("perday", "per day", "per-day", "requests per day", "/day", "daily limit")
 _QUOTA_MARKERS = ("resource_exhausted", "resourceexhausted", "rate limit", "ratelimit", "quota")
+#: Google's own status wording, not bare numbers: an error chain can carry the
+#: model's output text, and news prose may well contain "503" or "overloaded".
+_OVERLOAD_MARKERS = (
+    "503 unavailable",
+    "'status': 'unavailable'",
+    "experiencing high demand",
+    "504 deadline_exceeded",
+    "'status': 'deadline_exceeded'",
+)
+#: A reply that arrived but did not parse is not an overload, whatever it says.
+_OUTPUT_ERROR_MARKERS = ("failed to parse", "validation error", "invalid json output")
+#: Longest single pause between overload retries.
+_OVERLOAD_MAX_STEP_SECONDS = 120.0
 _RETRY_DELAY_RE = re.compile(r"retry[_\s-]*delay['\"}\s:]*['\"]?(\d+(?:\.\d+)?)\s*s", re.IGNORECASE)
 
 
@@ -112,6 +129,14 @@ def _is_daily_quota_error(exc: BaseException) -> bool:
     return any(marker in text for marker in _DAILY_MARKERS)
 
 
+def _is_overload_error(exc: BaseException) -> bool:
+    """True for a 503 / 504 / deadline-exceeded: Gemini is busy, the request was fine."""
+    text = _error_chain_text(exc)
+    if any(marker in text for marker in _OUTPUT_ERROR_MARKERS):
+        return False
+    return any(marker in text for marker in _OVERLOAD_MARKERS)
+
+
 def _retry_after_seconds(exc: BaseException) -> float | None:
     """The `retryDelay` Gemini suggests, if the body carries one."""
     match = _RETRY_DELAY_RE.search(_error_chain_text(exc))
@@ -138,6 +163,8 @@ class GeminiClient(LangChainToolLoopMixin):
         max_retries: int = 2,
         rotation_cooldown_seconds: float = 60.0,
         max_rotation_wait_seconds: float = 900.0,
+        overload_backoff_seconds: float = 10.0,
+        max_overload_wait_seconds: float = 900.0,
     ) -> None:
         # Imported lazily so that merely importing the pipeline (to inspect the
         # graph, run unit tests with a fake client, etc.) does not require the
@@ -165,6 +192,8 @@ class GeminiClient(LangChainToolLoopMixin):
         self._daily_exhausted: set[int] = set()
         self._cooldown = rotation_cooldown_seconds
         self._max_wait = max_rotation_wait_seconds
+        self._overload_backoff = overload_backoff_seconds
+        self._max_overload_wait = max_overload_wait_seconds
         # Guards rotation only, not `invoke` — a call in flight on a stale key
         # simply fails and rotates itself, which the retry loop below absorbs.
         self._lock = threading.RLock()
@@ -237,6 +266,9 @@ class GeminiClient(LangChainToolLoopMixin):
         every remaining key is rate-limited at once, sleep once for the server's
         `retryDelay` (bounded by `max_rotation_wait_seconds`) and cycle again.
 
+        A 503/504 (model overloaded) retries `op` on the same key after a
+        doubling pause, bounded in total by `max_overload_wait_seconds`.
+
         `schema` is only ever used to name the failure when the wait budget runs
         out; `None` means `op` was a plain completion, which has no schema to
         name.
@@ -246,12 +278,33 @@ class GeminiClient(LangChainToolLoopMixin):
         # a key is permanently retired (daily quota) or after a sleep, so a
         # genuine per-minute wave triggers one bounded sleep rather than a spin.
         rate_rotations = 0
+        overload_wait = 0.0
+        overload_step = self._overload_backoff
         while True:
             try:
                 return op()
             except AllGeminiKeysExhausted:
                 raise
-            except BaseException as exc:  # noqa: BLE001 — re-raised unless it is a 429
+            except BaseException as exc:  # noqa: BLE001 — re-raised unless 429 or overload
+                if not _is_quota_error(exc) and _is_overload_error(exc):
+                    if overload_wait + overload_step > self._max_overload_wait:
+                        logger.error(
+                            "Gemini %s still overloaded after %.0fs of retries; giving up",
+                            self._model_name,
+                            overload_wait,
+                        )
+                        raise
+                    logger.warning(
+                        "Gemini %s overloaded (503) — retrying in %.0fs (waited %.0fs so far)",
+                        self._model_name,
+                        overload_step,
+                        overload_wait,
+                    )
+                    time.sleep(overload_step)
+                    overload_wait += overload_step
+                    overload_step = min(overload_step * 2, _OVERLOAD_MAX_STEP_SECONDS)
+                    continue
+
                 if not _is_quota_error(exc):
                     raise
 

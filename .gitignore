@@ -21,3 +21,10 @@ kg_dataset/data/
 *.h5.tmp
 batch.log
 mcp_logs.txt
+
+# Local copies of the extracted clusters pulled from GCS (gs://multi_news_kg),
+# and their JSON conversion for GNN training. Re-creatable from the bucket.
+data/gcs_raw/
+data/training/clean_gcs/
+# Local pipeline test runs (per extractor__grader pair / mode).
+data/runs/

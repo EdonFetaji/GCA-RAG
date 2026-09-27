@@ -33,7 +33,9 @@ from dataclasses import dataclass
 from kg_agentic_extraction.agents.base_agent import Agent
 from kg_agentic_extraction.models.grading import SimpleSchemaGraderReport
 from kg_agentic_extraction.models.knowledge_graph import KnowledgeGraph
+from kg_agentic_extraction.models.validation import ValidationReport
 from kg_agentic_extraction.prompts.renderers import format_documents, graph_to_json
+from kg_agentic_extraction.validation.base import grader_hints
 
 logger = logging.getLogger(__name__)
 
@@ -46,6 +48,8 @@ class GradingTask:
     documents: list[str]
     max_documents: int = 10
     iteration: int = 1
+    #: The structural validator's report on this graph, when it ran (v6 prompt).
+    validation: ValidationReport | None = None
 
 
 class GraderAgent(Agent[GradingTask, SimpleSchemaGraderReport]):
@@ -74,6 +78,8 @@ class GraderAgent(Agent[GradingTask, SimpleSchemaGraderReport]):
             "entity_type_vocabulary": payload.graph.entity_type_vocabulary,
             "relation_type_vocabulary": payload.graph.relation_type_vocabulary,
             "iteration": payload.iteration,
+            # Rendered by v6+ only; empty when nothing is flagged.
+            "gnn_flags": grader_hints(payload.validation),
         }
 
     def post_process(

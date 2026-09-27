@@ -20,6 +20,11 @@ Two ways to build one:
   version of that, rather than crushing everything into a handful of enum
   buckets it will mostly miss.
 
+- FeatureVocab.fit(kgs, relation_mode="token"): relation types are split into
+  words (`EMPLOYED_BY` -> EMPLOYED, BY) and encoded multi-hot over the top-N
+  words. With ~17k distinct relation types across the extracted clusters,
+  whole-type one-hot leaves most relations UNKNOWN; words cover ~89%.
+
 Unknown types at inference time (whichever construction path was used) fall
 back to a dedicated OTHER/UNKNOWN slot rather than raising.
 
@@ -44,17 +49,36 @@ UNKNOWN_RELATION = "__UNKNOWN_RELATION__"
 UNKNOWN_ENTITY = "__UNKNOWN_ENTITY__"
 
 
+RELATION_MODES = ("type", "token")
+
+
+def relation_tokens(relation_type: str) -> list[str]:
+    """The words of a relation type, after the extractor's own spelling fold."""
+    return [t for t in normalize_type(str(relation_type)).split("_") if t] if relation_type else []
+
+
 @dataclass
 class FeatureVocab:
     entity_types: list[str] = field(default_factory=lambda: [t.value for t in EntityType])
     relation_types: list[str] = field(default_factory=lambda: [t.value for t in RelationType] + [UNKNOWN_RELATION])
+    #: "type": one slot per whole relation type (one-hot). "token": one slot per
+    #: word, multi-hot — `relation_types` then holds words, not types.
+    relation_mode: str = "type"
 
     def __post_init__(self) -> None:
+        if self.relation_mode not in RELATION_MODES:
+            raise ValueError(f"relation_mode must be one of {RELATION_MODES}, got {self.relation_mode!r}")
         self._entity_idx = {t: i for i, t in enumerate(self.entity_types)}
         self._relation_idx = {t: i for i, t in enumerate(self.relation_types)}
 
     @classmethod
-    def fit(cls, kgs: list[dict], max_entity_types: int = 32, max_relation_types: int = 48) -> "FeatureVocab":
+    def fit(
+        cls,
+        kgs: list[dict],
+        max_entity_types: int = 32,
+        max_relation_types: int = 48,
+        relation_mode: str = "type",
+    ) -> "FeatureVocab":
         """
         Build an open-vocabulary FeatureVocab from a corpus of KG dicts
         (the {"entities": [...], "relations": [...]} shape).
@@ -68,6 +92,9 @@ class FeatureVocab:
         UNKNOWN_RELATION) beyond max_entity_types / max_relation_types, so a
         type that shows up once at eval time on real-world long-tail data
         still gets a defined (if uninformative) feature rather than crashing.
+
+        With relation_mode="token", max_relation_types caps the number of
+        relation *words* kept instead of whole types.
         """
         entity_counts: Counter[str] = Counter()
         relation_counts: Counter[str] = Counter()
@@ -75,7 +102,10 @@ class FeatureVocab:
             for e in kg.get("entities", []):
                 entity_counts[normalize_type(str(e.get("type", "")))] += 1
             for r in kg.get("relations", []):
-                relation_counts[normalize_type(str(r.get("relation_type", "")))] += 1
+                if relation_mode == "token":
+                    relation_counts.update(relation_tokens(r.get("relation_type", "")))
+                else:
+                    relation_counts[normalize_type(str(r.get("relation_type", "")))] += 1
 
         top_entities = [t for t, _ in entity_counts.most_common(max_entity_types)]
         top_relations = [t for t, _ in relation_counts.most_common(max_relation_types)]
@@ -83,6 +113,7 @@ class FeatureVocab:
         return cls(
             entity_types=top_entities + [UNKNOWN_ENTITY],
             relation_types=top_relations + [UNKNOWN_RELATION],
+            relation_mode=relation_mode,
         )
 
     @property
@@ -105,6 +136,22 @@ class FeatureVocab:
         key = normalize_type(str(relation_type)) if relation_type else ""
         return self._relation_idx.get(key, self._relation_idx[UNKNOWN_RELATION])
 
+    def relation_type_vector(self, relation_type: str) -> list[float]:
+        """
+        The relation-type block of an edge's features, for either mode.
+
+        "type": one-hot at relation_type_index(). "token": multi-hot over the
+        type's known words, or the UNKNOWN slot alone when none is known.
+        """
+        vec = [0.0] * self.num_relation_types
+        if self.relation_mode == "type":
+            vec[self.relation_type_index(relation_type)] = 1.0
+            return vec
+        hits = [self._relation_idx[t] for t in relation_tokens(relation_type) if t in self._relation_idx]
+        for i in hits or [self._relation_idx[UNKNOWN_RELATION]]:
+            vec[i] = 1.0
+        return vec
+
     # Node scalar features appended after the one-hot type block, in this
     # order — kept as a named constant so data.py and model.py can't drift
     # apart on how many/which scalar dims there are.
@@ -120,7 +167,7 @@ class FeatureVocab:
         return self.num_relation_types + len(self.EDGE_SCALAR_FEATURES)
 
     def to_json(self) -> dict:
-        return {"entity_types": self.entity_types, "relation_types": self.relation_types}
+        return {"entity_types": self.entity_types, "relation_types": self.relation_types, "relation_mode": self.relation_mode}
 
     def save(self, path: str | Path) -> None:
         Path(path).write_text(json.dumps(self.to_json(), indent=2))
@@ -128,4 +175,9 @@ class FeatureVocab:
     @classmethod
     def load(cls, path: str | Path) -> "FeatureVocab":
         data = json.loads(Path(path).read_text())
-        return cls(entity_types=data["entity_types"], relation_types=data["relation_types"])
+        # Files saved before token mode existed carry no relation_mode: they are "type".
+        return cls(
+            entity_types=data["entity_types"],
+            relation_types=data["relation_types"],
+            relation_mode=data.get("relation_mode", "type"),
+        )
